@@ -104,6 +104,16 @@ nav:
       - 8. Constructing a Correct Algorithm: course/02-iteration-recursion-and-data-types/08-constructing-a-correct-algorithm.md
       - 9. Worked Examples: course/02-iteration-recursion-and-data-types/09-worked-examples.md
       - 10. Module 02 Review: course/02-iteration-recursion-and-data-types/review.md
+  - 03 · Arrays, Records, and Memory:
+      - Module introduction: course/03-arrays-records-and-memory/index.md
+      - 1. Arrays as Indexed Aggregate Structures: course/03-arrays-records-and-memory/01-arrays-as-indexed-structures.md
+      - 2. Memory Representation and Direct Access: course/03-arrays-records-and-memory/02-memory-representation-and-direct-access.md
+      - 3. Traversing and Updating Arrays: course/03-arrays-records-and-memory/03-traversing-and-updating-arrays.md
+      - 4. Insertion, Deletion, and Shifting: course/03-arrays-records-and-memory/04-insertion-deletion-and-shifting.md
+      - 5. Records and Structured Entities: course/03-arrays-records-and-memory/05-records-and-structured-entities.md
+      - 6. Copying, Aliasing, and Mutation: course/03-arrays-records-and-memory/06-copying-aliasing-and-mutation.md
+      - 7. Worked Examples: course/03-arrays-records-and-memory/07-worked-examples.md
+      - 8. Module 03 Review: course/03-arrays-records-and-memory/review.md
   - Course sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
