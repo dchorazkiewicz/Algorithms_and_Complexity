@@ -74,18 +74,18 @@ extra_javascript:
 nav:
   - Home: index.md
   - Course map: course/index.md
-  - 00 · Think Algorithmically:
-      - course/00-learning-to-think-algorithmically/index.md
-      - 1. Problems and algorithms: course/00-learning-to-think-algorithmically/01-problems-algorithms-programs.md
-      - 2. Reading Python: course/00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm.md
-      - 3. Designing a solution: course/00-learning-to-think-algorithmically/03-designing-a-solution.md
-      - 4. Correctness and cost: course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost.md
-      - 5. How to study: course/00-learning-to-think-algorithmically/05-how-to-study-algorithms.md
-      - 6. Review: course/00-learning-to-think-algorithmically/review.md
-  - 01 · Algorithm Foundations:
-      - course/01-foundations-of-algorithm-design/index.md
-      - 1. Imperative computation: course/01-foundations-of-algorithm-design/imperative-computation.md
-  - Sources:
+  - 00 · Learning to Think Algorithmically:
+      - Module introduction: course/00-learning-to-think-algorithmically/index.md
+      - 1. Problems, Algorithms, Programs, and Executions: course/00-learning-to-think-algorithmically/01-problems-algorithms-programs.md
+      - 2. Reading Python as an Algorithm: course/00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm.md
+      - 3. Designing a Solution Step by Step: course/00-learning-to-think-algorithmically/03-designing-a-solution.md
+      - 4. Evidence That an Algorithm Works: course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost.md
+      - 5. How to Study Algorithms: course/00-learning-to-think-algorithmically/05-how-to-study-algorithms.md
+      - 6. Module 00 Review: course/00-learning-to-think-algorithmically/review.md
+  - 01 · Foundations of Algorithm Design:
+      - Module introduction: course/01-foundations-of-algorithm-design/index.md
+      - 1. Imperative Computation: course/01-foundations-of-algorithm-design/imperative-computation.md
+  - Course sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
 
