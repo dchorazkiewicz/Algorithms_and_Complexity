@@ -1,0 +1,2545 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/preconditions-and-postconditions/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Preconditions and Postconditions - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/layout-fixes.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#preconditions-and-postconditions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Preconditions and Postconditions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../00-learning-to-think-algorithmically/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 · Learning to Think Algorithmically
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 · Learning to Think Algorithmically
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Problems, Algorithms, Programs, and Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reading Python as an Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Designing a Solution Step by Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Evidence That an Algorithm Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. How to Study Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Module 00 Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Imperative Computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-an-algorithm-needs-a-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why an algorithm needs a contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-begin-with-the-required-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Begin with the required relationship
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-precondition-what-may-be-assumed-initially" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The precondition: what may be assumed initially
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The precondition: what may be assumed initially">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preconditions-describe-assumptions-not-wishes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preconditions describe assumptions, not wishes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-kinds-of-preconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typical kinds of preconditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-postcondition-what-must-be-true-at-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The postcondition: what must be true at the end
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The postcondition: what must be true at the end">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-postcondition-may-describe-more-than-a-return-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A postcondition may describe more than a return value
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-contract-divides-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. A contract divides responsibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. A contract divides responsibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-callers-obligation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The caller's obligation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-algorithms-obligation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The algorithm's obligation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-the-precondition-is-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What if the precondition is false?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preconditions-are-not-the-same-as-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Preconditions are not the same as validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Preconditions are not the same as validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-validate-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why validate at all?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-validate-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not validate everything?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-weak-and-strong-preconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Weak and strong preconditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Weak and strong preconditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-unnecessary-strength-is-a-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why unnecessary strength is a problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-precondition-may-be-too-weak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A precondition may be too weak
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-weak-and-strong-postconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Weak and strong postconditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Weak and strong postconditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postcondition-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postcondition A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postcondition-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postcondition B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-postcondition-may-be-too-weak-to-define-the-intended-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A postcondition may be too weak to define the intended problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-postcondition-may-be-stronger-than-necessary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A postcondition may be stronger than necessary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-one-problem-several-possible-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. One problem, several possible contracts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. One problem, several possible contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variant-a-return-any-matching-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant A: return any matching index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-b-return-the-first-matching-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant B: return the first matching index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-c-return-a-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant C: return a Boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-d-require-sorted-input-and-use-binary-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant D: require sorted input and use binary search
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-worked-example-safe-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Worked example: safe division
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Worked example: safe division">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#informal-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informal task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-hidden-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First hidden issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-implementation-with-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python implementation with validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-must-be-tested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What must be tested?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-worked-example-first-index-of-a-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Worked example: first index of a maximum
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Worked example: first index of a maximum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-the-range-condition-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the range condition matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-the-minimality-condition-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the minimality condition matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-specifications-reveal-incorrect-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Specifications reveal incorrect implementations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-postconditions-and-mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Postconditions and mutation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Postconditions and mutation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frame-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frame conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-contracts-guide-correctness-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Contracts guide correctness arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-contracts-guide-test-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Contracts guide test design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Contracts guide test design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordinary-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordinary behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smallest-valid-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smallest valid input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeated-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repeated maximum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-values-equal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All values equal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negative-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negative values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid input
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-common-specification-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Common specification mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common specification mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-describing-only-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 1: describing only types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-hiding-an-assumption-inside-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 2: hiding an assumption inside the code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-writing-a-postcondition-that-almost-any-result-satisfies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 3: writing a postcondition that almost any result satisfies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-imposing-unnecessary-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 4: imposing unnecessary restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-forgetting-duplicate-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 5: forgetting duplicate behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-ignoring-mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 6: ignoring mutation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-7-confusing-validation-with-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 7: confusing validation with specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-8-omitting-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 8: omitting failure behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-a-practical-method-for-writing-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. A practical method for writing contracts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. A practical method for writing contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-identify-the-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: identify the inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-define-the-valid-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: define the valid domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-identify-the-result-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: identify the result form
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-define-the-exact-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: define the exact relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-specify-duplicates-and-boundary-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: specify duplicates and boundary cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-specify-mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: specify mutation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-specify-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: specify failure behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-challenge-the-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: challenge the contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-remove-unnecessary-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: remove unnecessary restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-10-derive-tests-and-proof-obligations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 10: derive tests and proof obligations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-minimum-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Minimum value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-first-negative-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — First negative value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-any-target-versus-first-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Any target versus first target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-sortedness-as-a-precondition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Sortedness as a precondition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-in-place-normalisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — In-place normalisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-diagnose-a-weak-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Diagnose a weak contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-remove-unnecessary-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 7 — Remove unnecessary restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-mutation-versus-returned-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 8 — Mutation versus returned result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="preconditions-and-postconditions">Preconditions and Postconditions<a class="headerlink" href="#preconditions-and-postconditions" title="Permanent link">&para;</a></h1>
+<h2 id="why-an-algorithm-needs-a-contract">Why an algorithm needs a contract<a class="headerlink" href="#why-an-algorithm-needs-a-contract" title="Permanent link">&para;</a></h2>
+<p>A program can run without being well specified. It can accept data, perform operations, and return a value even when nobody has stated clearly which inputs are valid or what the returned value is supposed to mean.</p>
+<p>That is dangerous.</p>
+<p>Suppose we write a function called <code>binary_search</code>. It receives a list and a target value. The function returns an index. At first glance, the purpose may seem obvious. But several questions remain unanswered:</p>
+<ul>
+<li>Must the list be sorted?</li>
+<li>May the list be empty?</li>
+<li>What should happen when the target is absent?</li>
+<li>If the target occurs several times, may any matching index be returned, or must it be the first one?</li>
+<li>May the function modify the list?</li>
+<li>What does a negative result mean?</li>
+</ul>
+<p>Without answers, we cannot decide whether an implementation is correct. We can only observe what it happens to do.</p>
+<p>A <strong>contract</strong> makes the intended relationship explicit. It separates the responsibility of the caller from the responsibility of the algorithm.</p>
+<ul>
+<li>The <strong>precondition</strong> describes what must be true before the algorithm starts.</li>
+<li>The <strong>postcondition</strong> describes what the algorithm guarantees after it finishes, assuming the precondition was true.</li>
+</ul>
+<p>This chapter develops these ideas carefully. We will use contracts not as decorative comments, but as tools for understanding problems, designing state, choosing boundary behaviour, testing implementations, and constructing correctness arguments.</p>
+<div class="admonition note">
+<p class="admonition-title">What you should learn from this chapter</p>
+<p>By the end of the chapter, you should be able to formulate preconditions and postconditions for simple algorithms, distinguish weak and strong conditions, identify missing assumptions, separate caller and algorithm responsibilities, recognise when a specification is ambiguous, and use a contract to guide Python implementation and testing.</p>
+</div>
+<hr />
+<h2 id="1-begin-with-the-required-relationship">1. Begin with the required relationship<a class="headerlink" href="#1-begin-with-the-required-relationship" title="Permanent link">&para;</a></h2>
+<p>Consider the problem:</p>
+<blockquote>
+<p>Return the average of a sequence of numbers.</p>
+</blockquote>
+<p>The sentence appears simple, but it is incomplete.</p>
+<p>What should happen for an empty sequence? Mathematically, the arithmetic mean of no values is not defined by the ordinary formula:</p>
+<div class="arithmatex">\[
+\operatorname{average}(x_1,\ldots,x_n)=\frac{x_1+\cdots+x_n}{n}.
+\]</div>
+<p>When <code>n = 0</code>, the denominator is zero.</p>
+<p>We therefore need to decide whether emptiness is:</p>
+<ol>
+<li>forbidden by the contract;</li>
+<li>accepted but reported as an error;</li>
+<li>accepted with a special return value;</li>
+<li>handled using an application-specific convention.</li>
+</ol>
+<p>Different choices produce different interfaces. The algorithm cannot decide correctly until the problem is specified.</p>
+<p>A first contract might be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Input:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    values — a finite non-empty sequence of real numbers
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Precondition:
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    len(values) &gt; 0
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Postcondition:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    the returned value equals the arithmetic mean of all elements of values
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Side effects:
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    values is not modified
+</code></pre></div>
+<p>Now the problem is precise enough to evaluate an implementation.</p>
+<hr />
+<h2 id="2-the-precondition-what-may-be-assumed-initially">2. The precondition: what may be assumed initially<a class="headerlink" href="#2-the-precondition-what-may-be-assumed-initially" title="Permanent link">&para;</a></h2>
+<p>A <strong>precondition</strong> is a logical condition that must hold before an algorithm begins.</p>
+<p>It describes the valid initial states for which the algorithm promises correct behaviour.</p>
+<p>For the average problem:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>len(values) &gt; 0
+</code></pre></div>
+<p>is a precondition.</p>
+<p>It is not a statement about what the program has already checked. It is a statement about the domain on which the algorithm is specified.</p>
+<h3 id="preconditions-describe-assumptions-not-wishes">Preconditions describe assumptions, not wishes<a class="headerlink" href="#preconditions-describe-assumptions-not-wishes" title="Permanent link">&para;</a></h3>
+<p>Suppose a function uses:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">first</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<p>The code requires the sequence to contain at least one element. If the specification never states non-emptiness, then the implementation contains an unstated assumption.</p>
+<p>Unstated assumptions are dangerous because they are easy to violate and difficult to diagnose. The caller may reasonably believe that an empty list is allowed, while the implementation silently assumes the opposite.</p>
+<p>A precondition makes the assumption visible:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>values is non-empty
+</code></pre></div>
+<h3 id="typical-kinds-of-preconditions">Typical kinds of preconditions<a class="headerlink" href="#typical-kinds-of-preconditions" title="Permanent link">&para;</a></h3>
+<p>Preconditions may describe:</p>
+<ul>
+<li>the type or structure of input data;</li>
+<li>the allowed range of values;</li>
+<li>ordering requirements;</li>
+<li>uniqueness requirements;</li>
+<li>size restrictions;</li>
+<li>relationships between multiple inputs;</li>
+<li>required properties of a data structure;</li>
+<li>environmental or resource assumptions.</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Binary search:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    values is sorted in non-decreasing order
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Division:
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    denominator != 0
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Square root over real numbers:
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    value &gt;= 0
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>Index access:
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    0 &lt;= index &lt; len(values)
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>Merge of sorted sequences:
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    left and right are sorted
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>Graph traversal from a start vertex:
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    start belongs to the graph
+</code></pre></div>
+<p>Each condition identifies a boundary of valid use.</p>
+<hr />
+<h2 id="3-the-postcondition-what-must-be-true-at-the-end">3. The postcondition: what must be true at the end<a class="headerlink" href="#3-the-postcondition-what-must-be-true-at-the-end" title="Permanent link">&para;</a></h2>
+<p>A <strong>postcondition</strong> is a logical condition that must hold after the algorithm terminates, provided that the precondition held before execution.</p>
+<p>The postcondition defines the required result. It should describe meaning, not merely data type.</p>
+<p>For the average problem, this is too weak:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Postcondition:
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    returns a number
+</code></pre></div>
+<p>Many incorrect implementations return a number.</p>
+<p>A useful postcondition states the relationship between input and output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Postcondition:
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    result = sum(values) / len(values)
+</code></pre></div>
+<p>This is stronger because it identifies the exact value required.</p>
+<h3 id="a-postcondition-may-describe-more-than-a-return-value">A postcondition may describe more than a return value<a class="headerlink" href="#a-postcondition-may-describe-more-than-a-return-value" title="Permanent link">&para;</a></h3>
+<p>An algorithm may modify a data structure instead of returning a new one.</p>
+<p>Consider an in-place reversal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">reverse_in_place</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="o">...</span>
+</code></pre></div>
+<p>A suitable contract is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Precondition:
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    values is a finite list
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Postcondition:
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    values contains exactly the elements of its initial state,
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    but in reverse order
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>Return value:
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    None
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>Side effect:
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    values is modified
+</code></pre></div>
+<p>The postcondition must refer to both the final and initial states. To express this clearly, we may write <code>old(values)</code> for the value before execution:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>values = reverse(old(values))
+</code></pre></div>
+<p>The notation <code>old(...)</code> is conceptual. It allows the specification to compare the state before and after the algorithm.</p>
+<hr />
+<h2 id="4-a-contract-divides-responsibility">4. A contract divides responsibility<a class="headerlink" href="#4-a-contract-divides-responsibility" title="Permanent link">&para;</a></h2>
+<p>A contract creates two obligations.</p>
+<h3 id="the-callers-obligation">The caller's obligation<a class="headerlink" href="#the-callers-obligation" title="Permanent link">&para;</a></h3>
+<p>The caller must establish the precondition before invoking the algorithm.</p>
+<p>For example, before calling binary search, the caller must provide sorted data if sortedness is part of the precondition.</p>
+<h3 id="the-algorithms-obligation">The algorithm's obligation<a class="headerlink" href="#the-algorithms-obligation" title="Permanent link">&para;</a></h3>
+<p>If the precondition holds, the algorithm must terminate and establish the postcondition.</p>
+<p>This relationship can be written informally as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>if the precondition holds before execution,
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>then the postcondition must hold after execution
+</code></pre></div>
+<p>Or symbolically:</p>
+<div class="arithmatex">\[
+P \;\Rightarrow\; \text{algorithm} \;\Rightarrow\; Q,
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(P\)</span> is the precondition;</li>
+<li><span class="arithmatex">\(Q\)</span> is the postcondition.</li>
+</ul>
+<p>This is not ordinary arithmetic notation. It expresses a reasoning pattern: valid initial states must be transformed into required final states.</p>
+<h3 id="what-if-the-precondition-is-false">What if the precondition is false?<a class="headerlink" href="#what-if-the-precondition-is-false" title="Permanent link">&para;</a></h3>
+<p>If the caller violates the precondition, the contract no longer promises the normal postcondition.</p>
+<p>The implementation may:</p>
+<ul>
+<li>raise an exception;</li>
+<li>report an error;</li>
+<li>return a failure result;</li>
+<li>behave in an unspecified way;</li>
+<li>enforce the condition internally before proceeding.</li>
+</ul>
+<p>The chosen behaviour should be documented. A contract should not leave failure semantics accidental.</p>
+<hr />
+<h2 id="5-preconditions-are-not-the-same-as-validation">5. Preconditions are not the same as validation<a class="headerlink" href="#5-preconditions-are-not-the-same-as-validation" title="Permanent link">&para;</a></h2>
+<p>This distinction is essential.</p>
+<p>A <strong>precondition</strong> belongs to the specification. It describes valid input.</p>
+<p><strong>Validation</strong> belongs to the implementation. It checks whether an input satisfies some requirement.</p>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+<p>The precondition is still:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>len(values) &gt; 0
+</code></pre></div>
+<p>The <code>if</code> statement is a runtime check enforcing that condition.</p>
+<p>We could instead write:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+<p>and document that callers must not pass an empty list. The contract may be the same, but the failure behaviour differs.</p>
+<h3 id="why-validate-at-all">Why validate at all?<a class="headerlink" href="#why-validate-at-all" title="Permanent link">&para;</a></h3>
+<p>Validation may be useful when:</p>
+<ul>
+<li>invalid input is likely;</li>
+<li>failure would otherwise be obscure;</li>
+<li>the function is part of a public interface;</li>
+<li>the cost of checking is acceptable;</li>
+<li>the program needs predictable error handling.</li>
+</ul>
+<h3 id="why-not-validate-everything">Why not validate everything?<a class="headerlink" href="#why-not-validate-everything" title="Permanent link">&para;</a></h3>
+<p>Validation may be expensive or redundant.</p>
+<p>For binary search, checking whether a list is sorted requires linear time. If the main search runs in logarithmic time, validating sortedness on every call destroys the expected performance advantage.</p>
+<p>The function may therefore document sortedness as a precondition and rely on the caller or surrounding data model to maintain it.</p>
+<p>This illustrates a broader design decision:</p>
+<blockquote>
+<p>A precondition identifies required truth. Validation decides who checks it, when it is checked, and at what cost.</p>
+</blockquote>
+<hr />
+<h2 id="6-weak-and-strong-preconditions">6. Weak and strong preconditions<a class="headerlink" href="#6-weak-and-strong-preconditions" title="Permanent link">&para;</a></h2>
+<p>Preconditions can be compared by how much they restrict valid input.</p>
+<p>A <strong>stronger precondition</strong> permits fewer initial states.</p>
+<p>A <strong>weaker precondition</strong> permits more initial states.</p>
+<p>Consider two specifications for finding a maximum.</p>
+<h3 id="contract-a">Contract A<a class="headerlink" href="#contract-a" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Precondition:
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    values is a non-empty list of integers
+</code></pre></div>
+<h3 id="contract-b">Contract B<a class="headerlink" href="#contract-b" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Precondition:
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    values is a non-empty list of positive integers
+</code></pre></div>
+<p>Contract B is stronger because every input satisfying B also satisfies A, but not every input satisfying A satisfies B.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[-5, -2, -11]
+</code></pre></div>
+<p>satisfies A but not B.</p>
+<h3 id="why-unnecessary-strength-is-a-problem">Why unnecessary strength is a problem<a class="headerlink" href="#why-unnecessary-strength-is-a-problem" title="Permanent link">&para;</a></h3>
+<p>Suppose an algorithm works correctly for all integers, including negative values. Declaring that only positive integers are allowed unnecessarily reduces usefulness.</p>
+<p>A good specification should not impose restrictions that the algorithm does not need.</p>
+<p>This leads to an important design principle:</p>
+<blockquote>
+<p>Prefer the weakest precondition that is sufficient to guarantee the intended behaviour of the algorithm.</p>
+</blockquote>
+<p>This does not mean accepting every imaginable input. It means avoiding arbitrary restrictions.</p>
+<h3 id="a-precondition-may-be-too-weak">A precondition may be too weak<a class="headerlink" href="#a-precondition-may-be-too-weak" title="Permanent link">&para;</a></h3>
+<p>Suppose binary search is specified with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Precondition:
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    values is a finite list
+</code></pre></div>
+<p>This is too weak. Binary search relies on sorted order. Without sortedness, its decisions are not justified.</p>
+<p>The correct precondition must include:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>values is sorted in non-decreasing order
+</code></pre></div>
+<p>A too-weak precondition claims correctness on inputs for which the algorithm cannot meet its postcondition.</p>
+<hr />
+<h2 id="7-weak-and-strong-postconditions">7. Weak and strong postconditions<a class="headerlink" href="#7-weak-and-strong-postconditions" title="Permanent link">&para;</a></h2>
+<p>Postconditions can also be compared.</p>
+<p>A <strong>stronger postcondition</strong> promises more.</p>
+<p>A <strong>weaker postcondition</strong> promises less.</p>
+<p>Consider the problem of locating a maximum.</p>
+<h3 id="postcondition-a">Postcondition A<a class="headerlink" href="#postcondition-a" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>result is an index of a greatest element
+</code></pre></div>
+<h3 id="postcondition-b">Postcondition B<a class="headerlink" href="#postcondition-b" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>result is the smallest index of a greatest element
+</code></pre></div>
+<p>Postcondition B is stronger. It not only requires a maximum, but also requires the first occurrence.</p>
+<p>For:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>[4, 9, 2, 9]
+</code></pre></div>
+<p>both indices <code>1</code> and <code>3</code> satisfy A, but only index <code>1</code> satisfies B.</p>
+<h3 id="a-postcondition-may-be-too-weak-to-define-the-intended-problem">A postcondition may be too weak to define the intended problem<a class="headerlink" href="#a-postcondition-may-be-too-weak-to-define-the-intended-problem" title="Permanent link">&para;</a></h3>
+<p>This postcondition:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>result occurs in values
+</code></pre></div>
+<p>is true for almost any returned input element. It does not express maximum, minimum, order, count, or position.</p>
+<p>An implementation could return the first element for every input and still satisfy it.</p>
+<p>A useful postcondition must distinguish correct results from plausible but wrong ones.</p>
+<h3 id="a-postcondition-may-be-stronger-than-necessary">A postcondition may be stronger than necessary<a class="headerlink" href="#a-postcondition-may-be-stronger-than-necessary" title="Permanent link">&para;</a></h3>
+<p>Suppose the task is:</p>
+<blockquote>
+<p>Return any index containing the target value.</p>
+</blockquote>
+<p>Requiring the first occurrence would be a stronger promise than the problem asks for. It may force a different algorithm or prevent an otherwise valid optimisation.</p>
+<p>A contract should promise exactly what the intended interface requires.</p>
+<hr />
+<h2 id="8-one-problem-several-possible-contracts">8. One problem, several possible contracts<a class="headerlink" href="#8-one-problem-several-possible-contracts" title="Permanent link">&para;</a></h2>
+<p>Consider searching for a value in a list.</p>
+<p>The informal task is:</p>
+<blockquote>
+<p>Find <code>target</code> in <code>values</code>.</p>
+</blockquote>
+<p>This sentence supports several distinct contracts.</p>
+<h3 id="variant-a-return-any-matching-index">Variant A: return any matching index<a class="headerlink" href="#variant-a-return-any-matching-index" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Precondition:
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    values is a finite sequence
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>Postcondition:
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    if target occurs in values, result is an index i such that values[i] = target;
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    otherwise result = -1
+</code></pre></div>
+<h3 id="variant-b-return-the-first-matching-index">Variant B: return the first matching index<a class="headerlink" href="#variant-b-return-the-first-matching-index" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Postcondition:
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    if target occurs in values, result is the smallest index i such that values[i] = target;
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    otherwise result = -1
+</code></pre></div>
+<h3 id="variant-c-return-a-boolean">Variant C: return a Boolean<a class="headerlink" href="#variant-c-return-a-boolean" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Postcondition:
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    result is True exactly when target occurs in values
+</code></pre></div>
+<h3 id="variant-d-require-sorted-input-and-use-binary-search">Variant D: require sorted input and use binary search<a class="headerlink" href="#variant-d-require-sorted-input-and-use-binary-search" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Precondition:
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    values is sorted in non-decreasing order
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>Postcondition:
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    if target occurs in values, result is an index i such that values[i] = target;
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    otherwise result = -1
+</code></pre></div>
+<p>The English phrase “find the target” is not enough to choose among these variants.</p>
+<p>The contract determines the problem that the implementation must solve.</p>
+<hr />
+<h2 id="9-worked-example-safe-division">9. Worked example: safe division<a class="headerlink" href="#9-worked-example-safe-division" title="Permanent link">&para;</a></h2>
+<p>Let us design a contract for division.</p>
+<h3 id="informal-task">Informal task<a class="headerlink" href="#informal-task" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Divide <code>numerator</code> by <code>denominator</code>.</p>
+</blockquote>
+<h3 id="first-hidden-issue">First hidden issue<a class="headerlink" href="#first-hidden-issue" title="Permanent link">&para;</a></h3>
+<p>Division by zero is undefined in ordinary real arithmetic.</p>
+<h3 id="contract">Contract<a class="headerlink" href="#contract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Input:
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    numerator, denominator — real numbers
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>Precondition:
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    denominator != 0
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>Postcondition:
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>    result * denominator = numerator
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>Side effects:
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    none
+</code></pre></div>
+<p>We could also write:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>result = numerator / denominator
+</code></pre></div>
+<p>The multiplication form emphasises the relationship but assumes ordinary arithmetic behaviour.</p>
+<h3 id="python-implementation-with-validation">Python implementation with validation<a class="headerlink" href="#python-implementation-with-validation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">numerator</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="k">if</span> <span class="n">denominator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;denominator must not be zero&quot;</span><span class="p">)</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+</code></pre></div>
+<h3 id="what-must-be-tested">What must be tested?<a class="headerlink" href="#what-must-be-tested" title="Permanent link">&para;</a></h3>
+<p>Tests should be derived from the contract:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">assert</span> <span class="n">divide</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="k">assert</span> <span class="n">divide</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">3</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="k">assert</span> <span class="n">divide</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+<p>We must also verify the documented failure behaviour:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">divide</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="k">pass</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;division by zero should be rejected&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The tests are not arbitrary examples. They correspond to ordinary values, signs, zero numerator, and violation of the precondition.</p>
+<hr />
+<h2 id="10-worked-example-first-index-of-a-maximum">10. Worked example: first index of a maximum<a class="headerlink" href="#10-worked-example-first-index-of-a-maximum" title="Permanent link">&para;</a></h2>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_index_of_maximum</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="n">best_index</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>        <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">values</span><span class="p">[</span><span class="n">best_index</span><span class="p">]:</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>            <span class="n">best_index</span> <span class="o">=</span> <span class="n">index</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    <span class="k">return</span> <span class="n">best_index</span>
+</code></pre></div>
+<p>A precise contract is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>Precondition:
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    values is a non-empty finite list of comparable integers
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>Postcondition:
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    0 &lt;= result &lt; len(values)
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    and values[result] &gt;= values[j] for every valid index j
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>    and result is the smallest index with that property
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>Side effects:
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    values is not modified
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>Failure behaviour:
+<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>    raises ValueError when values is empty
+</code></pre></div>
+<h3 id="why-the-range-condition-matters">Why the range condition matters<a class="headerlink" href="#why-the-range-condition-matters" title="Permanent link">&para;</a></h3>
+<p>This part:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>0 &lt;= result &lt; len(values)
+</code></pre></div>
+<p>states that the result is a valid index.</p>
+<p>Without it, a specification could accidentally permit an invalid result such as <code>-1</code>, even if another condition mentions maximum values incompletely.</p>
+<h3 id="why-the-minimality-condition-matters">Why the minimality condition matters<a class="headerlink" href="#why-the-minimality-condition-matters" title="Permanent link">&para;</a></h3>
+<p>This part:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>result is the smallest index with that property
+</code></pre></div>
+<p>expresses “first occurrence.”</p>
+<p>The implementation uses <code>&gt;</code> rather than <code>&gt;=</code> precisely because the postcondition requires the smallest matching index.</p>
+<p>The contract explains the comparison operator.</p>
+<hr />
+<h2 id="11-specifications-reveal-incorrect-implementations">11. Specifications reveal incorrect implementations<a class="headerlink" href="#11-specifications-reveal-incorrect-implementations" title="Permanent link">&para;</a></h2>
+<p>Consider this function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_index_of_maximum</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="n">best_index</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>        <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">values</span><span class="p">[</span><span class="n">best_index</span><span class="p">]:</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>            <span class="n">best_index</span> <span class="o">=</span> <span class="n">index</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>    <span class="k">return</span> <span class="n">best_index</span>
+</code></pre></div>
+<p>For:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>[4, 9, 2, 9]
+</code></pre></div>
+<p>it returns <code>3</code>.</p>
+<p>Does it find an index containing a maximum? Yes.</p>
+<p>Does it satisfy the stronger postcondition requiring the smallest index? No.</p>
+<p>The contract allows us to identify the error precisely:</p>
+<blockquote>
+<p>The implementation violates the minimality part of the postcondition when the maximum occurs more than once.</p>
+</blockquote>
+<p>This explanation is better than saying only “the comparison sign is wrong.” It states which promised property fails and under what input pattern.</p>
+<hr />
+<h2 id="12-postconditions-and-mutation">12. Postconditions and mutation<a class="headerlink" href="#12-postconditions-and-mutation" title="Permanent link">&para;</a></h2>
+<p>Algorithms that modify data require particular care because the final state must be related to the initial state.</p>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">increment_all</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>        <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>A weak description is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>Postcondition:
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    values contains integers
+</code></pre></div>
+<p>That says almost nothing.</p>
+<p>A meaningful postcondition is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>Postcondition:
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    len(values) = len(old(values))
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>    and for every valid index i:
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>        values[i] = old(values[i]) + 1
+</code></pre></div>
+<p>This states two facts:</p>
+<ol>
+<li>the list length is unchanged;</li>
+<li>each final element is exactly one greater than its original value.</li>
+</ol>
+<p>It also rules out implementations that reorder elements, append new elements, or increment only part of the list.</p>
+<h3 id="frame-conditions">Frame conditions<a class="headerlink" href="#frame-conditions" title="Permanent link">&para;</a></h3>
+<p>A contract may also state what does <strong>not</strong> change.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>The function modifies only the elements of values.
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>No global state is changed.
+</code></pre></div>
+<p>Such statements are sometimes called frame conditions. They define the boundary of permitted side effects.</p>
+<hr />
+<h2 id="13-contracts-guide-correctness-arguments">13. Contracts guide correctness arguments<a class="headerlink" href="#13-contracts-guide-correctness-arguments" title="Permanent link">&para;</a></h2>
+<p>A correctness argument begins with the precondition and ends with the postcondition.</p>
+<p>For first maximum:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>Precondition:
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>    values is non-empty
+</code></pre></div>
+<p>allows us to initialise:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">best_index</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+<p>because index <code>0</code> exists.</p>
+<p>The loop maintains the claim:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>best_index is the smallest index of a greatest value
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>among the elements processed so far
+</code></pre></div>
+<p>When all elements have been processed, that claim becomes the postcondition for the entire list.</p>
+<p>The contract therefore determines the proof obligations:</p>
+<ul>
+<li>the precondition must justify the initial state;</li>
+<li>each step must preserve a useful property;</li>
+<li>the final property must imply the postcondition;</li>
+<li>the algorithm must terminate.</li>
+</ul>
+<p>Without a clear postcondition, there is no precise target for a correctness argument.</p>
+<hr />
+<h2 id="14-contracts-guide-test-design">14. Contracts guide test design<a class="headerlink" href="#14-contracts-guide-test-design" title="Permanent link">&para;</a></h2>
+<p>A good test suite should challenge every meaningful part of the contract.</p>
+<p>For first maximum, the contract suggests:</p>
+<h3 id="ordinary-behaviour">Ordinary behaviour<a class="headerlink" href="#ordinary-behaviour" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>[4, 9, 2, 7] → 1
+</code></pre></div>
+<h3 id="smallest-valid-input">Smallest valid input<a class="headerlink" href="#smallest-valid-input" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>[8] → 0
+</code></pre></div>
+<h3 id="repeated-maximum">Repeated maximum<a class="headerlink" href="#repeated-maximum" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>[4, 9, 2, 9] → 1
+</code></pre></div>
+<h3 id="all-values-equal">All values equal<a class="headerlink" href="#all-values-equal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>[5, 5, 5] → 0
+</code></pre></div>
+<h3 id="negative-values">Negative values<a class="headerlink" href="#negative-values" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>[-3, -7, -1] → 2
+</code></pre></div>
+<h3 id="invalid-input">Invalid input<a class="headerlink" href="#invalid-input" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>[] → ValueError
+</code></pre></div>
+<p>Each case targets a specific part of the precondition, postcondition, or failure behaviour.</p>
+<p>Random tests may add confidence, but a contract tells us which categories cannot be omitted.</p>
+<hr />
+<h2 id="15-common-specification-mistakes">15. Common specification mistakes<a class="headerlink" href="#15-common-specification-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-1-describing-only-types">Mistake 1: describing only types<a class="headerlink" href="#mistake-1-describing-only-types" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>Input: list[int]
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>Output: int
+</code></pre></div>
+<p>This does not say what the integer means.</p>
+<h3 id="mistake-2-hiding-an-assumption-inside-the-code">Mistake 2: hiding an assumption inside the code<a class="headerlink" href="#mistake-2-hiding-an-assumption-inside-the-code" title="Permanent link">&para;</a></h3>
+<p>Using <code>values[0]</code> without stating non-emptiness leaves the domain incomplete.</p>
+<h3 id="mistake-3-writing-a-postcondition-that-almost-any-result-satisfies">Mistake 3: writing a postcondition that almost any result satisfies<a class="headerlink" href="#mistake-3-writing-a-postcondition-that-almost-any-result-satisfies" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>result is one of the input values
+</code></pre></div>
+<p>This does not define maximum, minimum, median, or another intended relationship.</p>
+<h3 id="mistake-4-imposing-unnecessary-restrictions">Mistake 4: imposing unnecessary restrictions<a class="headerlink" href="#mistake-4-imposing-unnecessary-restrictions" title="Permanent link">&para;</a></h3>
+<p>Requiring all integers to be positive when the algorithm works for arbitrary integers makes the precondition too strong.</p>
+<h3 id="mistake-5-forgetting-duplicate-behaviour">Mistake 5: forgetting duplicate behaviour<a class="headerlink" href="#mistake-5-forgetting-duplicate-behaviour" title="Permanent link">&para;</a></h3>
+<p>“Return an index of the target” and “return the first index” are different contracts.</p>
+<h3 id="mistake-6-ignoring-mutation">Mistake 6: ignoring mutation<a class="headerlink" href="#mistake-6-ignoring-mutation" title="Permanent link">&para;</a></h3>
+<p>A function may return the right value while also modifying input unexpectedly. Side effects belong in the contract.</p>
+<h3 id="mistake-7-confusing-validation-with-specification">Mistake 7: confusing validation with specification<a class="headerlink" href="#mistake-7-confusing-validation-with-specification" title="Permanent link">&para;</a></h3>
+<p>An <code>if</code> statement that checks input is not a substitute for explaining why the condition matters.</p>
+<h3 id="mistake-8-omitting-failure-behaviour">Mistake 8: omitting failure behaviour<a class="headerlink" href="#mistake-8-omitting-failure-behaviour" title="Permanent link">&para;</a></h3>
+<p>If invalid input may occur, the interface should state whether it raises, returns a sentinel, or uses another mechanism.</p>
+<hr />
+<h2 id="16-a-practical-method-for-writing-contracts">16. A practical method for writing contracts<a class="headerlink" href="#16-a-practical-method-for-writing-contracts" title="Permanent link">&para;</a></h2>
+<p>When given a problem, work through these questions.</p>
+<h3 id="step-1-identify-the-inputs">Step 1: identify the inputs<a class="headerlink" href="#step-1-identify-the-inputs" title="Permanent link">&para;</a></h3>
+<p>What values or structures enter the algorithm?</p>
+<h3 id="step-2-define-the-valid-domain">Step 2: define the valid domain<a class="headerlink" href="#step-2-define-the-valid-domain" title="Permanent link">&para;</a></h3>
+<p>Which inputs are meaningful? Which assumptions does the method require?</p>
+<h3 id="step-3-identify-the-result-form">Step 3: identify the result form<a class="headerlink" href="#step-3-identify-the-result-form" title="Permanent link">&para;</a></h3>
+<p>Is the result a value, index, Boolean, modified structure, or failure report?</p>
+<h3 id="step-4-define-the-exact-relationship">Step 4: define the exact relationship<a class="headerlink" href="#step-4-define-the-exact-relationship" title="Permanent link">&para;</a></h3>
+<p>What must be true between the initial input and the final result?</p>
+<h3 id="step-5-specify-duplicates-and-boundary-cases">Step 5: specify duplicates and boundary cases<a class="headerlink" href="#step-5-specify-duplicates-and-boundary-cases" title="Permanent link">&para;</a></h3>
+<p>Does the first, last, any, smallest, or largest valid result matter?</p>
+<h3 id="step-6-specify-mutation">Step 6: specify mutation<a class="headerlink" href="#step-6-specify-mutation" title="Permanent link">&para;</a></h3>
+<p>Which inputs may change? Which must remain unchanged?</p>
+<h3 id="step-7-specify-failure-behaviour">Step 7: specify failure behaviour<a class="headerlink" href="#step-7-specify-failure-behaviour" title="Permanent link">&para;</a></h3>
+<p>What happens when the precondition is violated or no ordinary result exists?</p>
+<h3 id="step-8-challenge-the-contract">Step 8: challenge the contract<a class="headerlink" href="#step-8-challenge-the-contract" title="Permanent link">&para;</a></h3>
+<p>Can a clearly wrong implementation still satisfy the wording? If yes, the postcondition is probably too weak.</p>
+<h3 id="step-9-remove-unnecessary-restrictions">Step 9: remove unnecessary restrictions<a class="headerlink" href="#step-9-remove-unnecessary-restrictions" title="Permanent link">&para;</a></h3>
+<p>Does the precondition forbid inputs that the intended algorithm could handle correctly?</p>
+<h3 id="step-10-derive-tests-and-proof-obligations">Step 10: derive tests and proof obligations<a class="headerlink" href="#step-10-derive-tests-and-proof-obligations" title="Permanent link">&para;</a></h3>
+<p>Which cases test each clause? Which property must remain true during execution?</p>
+<hr />
+<h2 id="17-what-you-must-be-able-to-explain">17. What you must be able to explain<a class="headerlink" href="#17-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>After studying this chapter, you should be able to explain:</p>
+<ol>
+<li>why an algorithm cannot be judged correct without a specification;</li>
+<li>what a precondition describes;</li>
+<li>what a postcondition guarantees;</li>
+<li>how a contract divides caller and algorithm responsibilities;</li>
+<li>why preconditions and runtime validation are related but different;</li>
+<li>what it means for one precondition to be stronger than another;</li>
+<li>what it means for one postcondition to be stronger than another;</li>
+<li>why a specification should avoid both missing assumptions and unnecessary restrictions;</li>
+<li>how duplicate values change search and maximum contracts;</li>
+<li>how side effects and mutation are expressed;</li>
+<li>how contracts guide tests;</li>
+<li>how contracts guide correctness arguments.</li>
+</ol>
+<hr />
+<h2 id="18-practice">18. Practice<a class="headerlink" href="#18-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-minimum-value">Exercise 1 — Minimum value<a class="headerlink" href="#exercise-1-minimum-value" title="Permanent link">&para;</a></h3>
+<p>Write a contract for a function that returns the smallest value in a non-empty list of integers.</p>
+<p>State:</p>
+<ul>
+<li>the precondition;</li>
+<li>the postcondition;</li>
+<li>side effects;</li>
+<li>failure behaviour for an empty list.</li>
+</ul>
+<p>Then explain why initialising the minimum to <code>0</code> does not satisfy the intended domain.</p>
+<h3 id="exercise-2-first-negative-value">Exercise 2 — First negative value<a class="headerlink" href="#exercise-2-first-negative-value" title="Permanent link">&para;</a></h3>
+<p>Specify a function that returns the index of the first negative element, or <code>-1</code> if no negative element exists.</p>
+<p>Your postcondition must distinguish:</p>
+<ul>
+<li>a valid matching index;</li>
+<li>absence of a negative element;</li>
+<li>first occurrence.</li>
+</ul>
+<h3 id="exercise-3-any-target-versus-first-target">Exercise 3 — Any target versus first target<a class="headerlink" href="#exercise-3-any-target-versus-first-target" title="Permanent link">&para;</a></h3>
+<p>Write two postconditions for searching a list:</p>
+<ol>
+<li>one that permits any matching index;</li>
+<li>one that requires the first matching index.</li>
+</ol>
+<p>Give an input on which the two contracts permit different outputs.</p>
+<h3 id="exercise-4-sortedness-as-a-precondition">Exercise 4 — Sortedness as a precondition<a class="headerlink" href="#exercise-4-sortedness-as-a-precondition" title="Permanent link">&para;</a></h3>
+<p>Explain why binary search requires sorted input.</p>
+<p>Then discuss whether checking sortedness inside every binary-search call is desirable when performance matters.</p>
+<h3 id="exercise-5-in-place-normalisation">Exercise 5 — In-place normalisation<a class="headerlink" href="#exercise-5-in-place-normalisation" title="Permanent link">&para;</a></h3>
+<p>A function modifies a list of numbers so that every element is divided by the sum of all elements.</p>
+<p>Write a contract that addresses:</p>
+<ul>
+<li>the requirement that the sum is not zero;</li>
+<li>preservation of list length;</li>
+<li>the relationship between every final value and its initial value;</li>
+<li>mutation of the input.</li>
+</ul>
+<h3 id="exercise-6-diagnose-a-weak-contract">Exercise 6 — Diagnose a weak contract<a class="headerlink" href="#exercise-6-diagnose-a-weak-contract" title="Permanent link">&para;</a></h3>
+<p>A student writes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>Precondition:
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>    values is a list
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>Postcondition:
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>    returns an integer
+</code></pre></div>
+<p>for a function intended to count positive values.</p>
+<p>Explain why the contract is too weak and replace it with a useful one.</p>
+<h3 id="exercise-7-remove-unnecessary-restrictions">Exercise 7 — Remove unnecessary restrictions<a class="headerlink" href="#exercise-7-remove-unnecessary-restrictions" title="Permanent link">&para;</a></h3>
+<p>A maximum-finding function works for every non-empty list of comparable values, but its precondition says:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>values is a non-empty list of positive integers shorter than 100 elements
+</code></pre></div>
+<p>Identify each restriction that may be unnecessary. State a weaker sufficient precondition.</p>
+<h3 id="exercise-8-mutation-versus-returned-result">Exercise 8 — Mutation versus returned result<a class="headerlink" href="#exercise-8-mutation-versus-returned-result" title="Permanent link">&para;</a></h3>
+<p>Compare these interfaces:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">sorted_copy</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>    <span class="o">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">sort_in_place</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>    <span class="o">...</span>
+</code></pre></div>
+<p>Write a separate postcondition and side-effect description for each.</p>
+<hr />
+<h2 id="19-summary">19. Summary<a class="headerlink" href="#19-summary" title="Permanent link">&para;</a></h2>
+<p>A precondition describes the valid initial states in which an algorithm may be used. A postcondition describes the final state or returned result that the algorithm guarantees when the precondition holds.</p>
+<p>Together they form a contract:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>caller establishes the precondition
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>algorithm establishes the postcondition
+</code></pre></div>
+<p>A useful contract:</p>
+<ul>
+<li>states assumptions explicitly;</li>
+<li>defines the exact relationship between input and output;</li>
+<li>distinguishes ordinary results from failure behaviour;</li>
+<li>documents mutation and side effects;</li>
+<li>is strong enough to reject incorrect solutions;</li>
+<li>avoids restrictions the algorithm does not need;</li>
+<li>guides implementation, tests, and correctness reasoning.</li>
+</ul>
+<p>The next chapter studies the different forms in which an algorithm may be represented. A contract tells us what an algorithm must accomplish; a representation tells us how the method is communicated.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
