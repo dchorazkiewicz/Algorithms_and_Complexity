@@ -29,5 +29,11 @@ The website is written iteratively:
 
 The complete breakdown and checklist are available in the [development plan](development-plan.md).
 
-!!! note "Current stage"
-    The previous practical-class file structure has been removed. The repository is now being rebuilt as a coherent MkDocs learning website. The current iteration establishes the site architecture and the complete syllabus-driven content plan before any chapter is rewritten.
+## Current module
+
+Development has started on [Module 01 — Foundations of Algorithm Design](course/01-foundations-of-algorithm-design/index.md).
+
+The first published topic is [Imperative Computation](course/01-foundations-of-algorithm-design/imperative-computation.md), which introduces program state, assignments, state transitions, control flow, input, output, side effects, manual execution traces, and the relationship between imperative execution, correctness, and complexity.
+
+!!! success "Current stage"
+    The content plan has been approved. The MkDocs site is now being developed module by module and topic by topic, beginning with the first syllabus block.
