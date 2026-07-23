@@ -2,7 +2,7 @@
 
 ## Status
 
-**In progress — Iteration 1: module plan and theoretical foundation.**
+**In progress — Iteration 2 complete: theory, pseudocode, manual traces, and paired Python/C++ examples.**
 
 This module is developed section by section. A section is checked only after its content has been written and reviewed against both syllabus files.
 
@@ -33,16 +33,18 @@ After completing the module, the student should be able to:
 8. identify basic edge cases and invalid inputs;
 9. translate the same algorithmic idea into Python and C++ without changing its contract.
 
-## Planned examples
+## Implemented examples
 
-The first version of this module uses small problems that expose algorithm structure without requiring advanced data structures:
+The module currently contains six paired examples:
 
-1. determine the maximum of two or three values;
-2. swap two values;
-3. calculate the sum of a finite sequence;
-4. count values satisfying a condition;
-5. validate input before calculation;
-6. find the minimum and maximum values in a sequence.
+1. determine the maximum of two values;
+2. determine the maximum of three values;
+3. swap two values;
+4. calculate the sum of a finite sequence;
+5. count values satisfying a predicate;
+6. find the minimum and maximum values in one traversal.
+
+Each example includes a contract, pseudocode, manual trace, correctness argument, complexity analysis, and corresponding Python and C++ implementations using equivalent assertions.
 
 ## Planned files
 
@@ -80,44 +82,44 @@ course/01_algorithm_foundations/
 
 ### B. Theory
 
-- [~] Problem, algorithm, program, and execution.
-- [~] Imperative computation and program state.
-- [~] Input and output.
-- [~] Preconditions and postconditions.
-- [~] Forms of algorithm representation.
-- [~] Properties of algorithms.
-- [~] Sequence, selection, iteration, and decomposition.
-- [~] Edge cases and failure behavior.
-- [~] Introductory correctness reasoning.
-- [~] Introductory complexity reasoning.
+- [x] Problem, algorithm, program, and execution.
+- [x] Imperative computation and program state.
+- [x] Input and output.
+- [x] Preconditions and postconditions.
+- [x] Forms of algorithm representation.
+- [x] Properties of algorithms.
+- [x] Sequence, selection, iteration, and decomposition.
+- [x] Edge cases and failure behavior.
+- [x] Introductory correctness reasoning.
+- [x] Introductory complexity reasoning.
 - [ ] Review and approve `theory.md`.
 
 ### C. Pseudocode and manual traces
 
-- [ ] Maximum of two values.
-- [ ] Maximum of three values.
-- [ ] Swap two values.
-- [ ] Sum a sequence.
-- [ ] Count values satisfying a predicate.
-- [ ] Minimum and maximum in one traversal.
+- [x] Maximum of two values.
+- [x] Maximum of three values.
+- [x] Swap two values.
+- [x] Sum a sequence.
+- [x] Count values satisfying a predicate.
+- [x] Minimum and maximum in one traversal.
 
 ### D. Python examples
 
-- [ ] Implement paired examples.
-- [ ] Add type hints and docstrings.
-- [ ] Add assertions for normal, boundary, and invalid cases.
-- [ ] Verify conformance with `shared/coding_standards.md`.
+- [x] Implement paired examples.
+- [x] Add type hints and docstrings.
+- [x] Add assertions for normal, boundary, and invalid cases.
+- [x] Verify conformance with `shared/coding_standards.md`.
 
 ### E. C++ examples
 
-- [ ] Implement equivalents of the Python examples.
-- [ ] Use C++20 and the standard library.
-- [ ] Add assertions matching the Python test cases.
-- [ ] Verify conformance with `shared/coding_standards.md`.
+- [x] Implement equivalents of the Python examples.
+- [x] Use C++20 and the standard library.
+- [x] Add assertions matching the Python test cases.
+- [x] Verify conformance with `shared/coding_standards.md`.
 
 ### F. Student practice
 
-- [ ] Create worked examples.
+- [x] Create worked examples.
 - [ ] Create guided tracing exercises.
 - [ ] Create code-completion exercises.
 - [ ] Create debugging exercises.
@@ -142,15 +144,30 @@ course/01_algorithm_foundations/
 - [ ] Update `SYLLABUS_TRACEABILITY.md`.
 - [ ] Approve Module 01.
 
-## Definition of the current iteration
+## Iteration history
 
-Iteration 1 is complete when:
+### Iteration 1
 
-- the module plan exists;
-- the complete first draft of `theory.md` exists;
-- every theory section is explicitly tied to the source scope;
-- no programming examples or exercises are marked complete prematurely.
+Completed the module plan and the first complete draft of `theory.md`.
+
+### Iteration 2
+
+Completed:
+
+- six contracts and pseudocode descriptions;
+- six manual traces;
+- introductory correctness arguments and complexity analyses;
+- one paired Python implementation file;
+- one paired C++20 implementation file;
+- equivalent normal, boundary, and invalid-input assertions.
 
 ## Next iteration
 
-Create and review `theory.md`, then proceed to pseudocode and manually traced examples before writing Python and C++ implementations.
+Prepare student-practice materials:
+
+1. guided tracing exercises;
+2. code-completion exercises;
+3. debugging exercises;
+4. contract-writing exercises;
+5. independent tasks at Core, Standard, and Extension levels;
+6. self-check questions.
