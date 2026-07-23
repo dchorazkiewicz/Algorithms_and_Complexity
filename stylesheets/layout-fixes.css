@@ -22,9 +22,8 @@
   }
 
   /*
-   * The Course tab contains the course map and all modules in the MkDocs
-   * navigation tree. On a module page, keep only two entries visible:
-   * the course map and the module that contains the current page.
+   * Inside the Course tab, hide every module except the one containing the
+   * current page. The complete module list belongs only on the Course Map.
    */
   .md-sidebar--primary
     .md-nav--primary
@@ -36,13 +35,6 @@
     display: none;
   }
 
-  .md-sidebar--primary
-    .md-nav--primary
-    > .md-nav__list
-    > .md-nav__item--active
-    > .md-nav
-    > .md-nav__list
-    > .md-nav__item:first-child,
   .md-sidebar--primary
     .md-nav--primary
     > .md-nav__list
