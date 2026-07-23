@@ -55,6 +55,15 @@ extra_javascript:
 
 nav:
   - Course home: index.md
+  - Course contents: course/index.md
+  - Module 00 — Learning to Think Algorithmically:
+      - Module introduction: course/00-learning-to-think-algorithmically/index.md
+      - Problems, algorithms, programs, and executions: course/00-learning-to-think-algorithmically/01-problems-algorithms-programs.md
+      - Reading Python as an algorithm: course/00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm.md
+      - Designing a solution step by step: course/00-learning-to-think-algorithmically/03-designing-a-solution.md
+      - Evidence that an algorithm works: course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost.md
+      - How to study algorithms: course/00-learning-to-think-algorithmically/05-how-to-study-algorithms.md
+      - Review: course/00-learning-to-think-algorithmically/review.md
   - Module 01 — Foundations of Algorithm Design:
       - Module overview: course/01-foundations-of-algorithm-design/index.md
       - Imperative computation: course/01-foundations-of-algorithm-design/imperative-computation.md
