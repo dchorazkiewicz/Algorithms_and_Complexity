@@ -22,16 +22,51 @@
   }
 
   /*
-   * Inside the Course tab, show only the course map entry and the current
-   * module. Other modules stay accessible from the dedicated dashboard.
+   * The Course tab contains the course map and all modules in the MkDocs
+   * navigation tree. On a module page, keep only two entries visible:
+   * the course map and the module that contains the current page.
    */
-  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item {
+  .md-sidebar--primary
+    .md-nav--primary
+    > .md-nav__list
+    > .md-nav__item--active
+    > .md-nav
+    > .md-nav__list
+    > .md-nav__item {
     display: none;
   }
 
-  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item:first-child,
-  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--active {
+  .md-sidebar--primary
+    .md-nav--primary
+    > .md-nav__list
+    > .md-nav__item--active
+    > .md-nav
+    > .md-nav__list
+    > .md-nav__item:first-child,
+  .md-sidebar--primary
+    .md-nav--primary
+    > .md-nav__list
+    > .md-nav__item--active
+    > .md-nav
+    > .md-nav__list
+    > .md-nav__item--active,
+  .md-sidebar--primary
+    .md-nav--primary
+    > .md-nav__list
+    > .md-nav__item--active
+    > .md-nav
+    > .md-nav__list
+    > .md-nav__item:has(.md-nav__link--active) {
     display: block;
+  }
+
+  /* The dashboard itself is the only place that presents the whole course. */
+  body[data-md-url="course/"] .md-sidebar--primary {
+    display: none;
+  }
+
+  body[data-md-url="course/"] .md-content {
+    margin-left: 0;
   }
 }
 
