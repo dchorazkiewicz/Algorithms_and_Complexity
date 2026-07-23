@@ -1,0 +1,1495 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/00-learning-to-think-algorithmically/05-how-to-study-algorithms/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>How to Study Algorithms - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-study-algorithms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How to Study Algorithms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imperative computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-algorithms-cannot-be-learned-by-recognition-alone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Algorithms cannot be learned by recognition alone
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-three-passes-through-every-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The three passes through every topic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The three passes through every topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pass-1-build-the-conceptual-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pass 1 — Build the conceptual model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-2-follow-the-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pass 2 — Follow the mechanism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-3-justify-and-generalise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pass 3 — Justify and generalise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-notebook-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. A notebook method
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. A notebook method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input and output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-how-to-use-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. How to use worked examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-to-use-python-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. How to use Python examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-how-to-learn-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. How to learn definitions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-how-to-study-data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. How to study data structures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. How to study data structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Representation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invariant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invariant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-how-to-study-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. How to study recursion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. How to study recursion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-level-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem-level recursion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-level-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution-level recursion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-how-to-study-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. How to study complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-how-to-use-mistakes-productively" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. How to use mistakes productively
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-how-to-know-whether-a-topic-is-mastered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. How to know whether a topic is mastered
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. How to know whether a topic is mastered">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 — Vocabulary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 — Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 — Construction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-justification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 — Justification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-5-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 5 — Adaptation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-6-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 6 — Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-a-weekly-study-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. A weekly study cycle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. A weekly study cycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before reading
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        During reading
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After reading
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-questions-that-reveal-shallow-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Questions that reveal shallow understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-communication-is-part-of-algorithmic-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Communication is part of algorithmic skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-the-role-of-module-00" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. The role of Module 00
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="how-to-study-algorithms">How to Study Algorithms<a class="headerlink" href="#how-to-study-algorithms" title="Permanent link">&para;</a></h1>
+<h2 id="1-algorithms-cannot-be-learned-by-recognition-alone">1. Algorithms cannot be learned by recognition alone<a class="headerlink" href="#1-algorithms-cannot-be-learned-by-recognition-alone" title="Permanent link">&para;</a></h2>
+<p>It is easy to read a familiar piece of code and feel that it is understood. The real test is different:</p>
+<ul>
+<li>Can you explain the problem without looking at the code?</li>
+<li>Can you state the assumptions?</li>
+<li>Can you trace the algorithm for a new input?</li>
+<li>Can you explain why it works?</li>
+<li>Can you modify it when the problem changes?</li>
+<li>Can you estimate its cost?</li>
+<li>Can you identify a wrong solution and construct a counterexample?</li>
+</ul>
+<p>This course is designed around those abilities. The goal is active understanding, not recognition.</p>
+<h2 id="2-the-three-passes-through-every-topic">2. The three passes through every topic<a class="headerlink" href="#2-the-three-passes-through-every-topic" title="Permanent link">&para;</a></h2>
+<p>A useful way to study each chapter is to make three passes.</p>
+<h3 id="pass-1-build-the-conceptual-model">Pass 1 — Build the conceptual model<a class="headerlink" href="#pass-1-build-the-conceptual-model" title="Permanent link">&para;</a></h3>
+<p>During the first pass, focus on:</p>
+<ul>
+<li>definitions;</li>
+<li>notation;</li>
+<li>the problem being solved;</li>
+<li>the data representation;</li>
+<li>the meaning of important state variables;</li>
+<li>the main algorithmic idea.</li>
+</ul>
+<p>Do not try to memorise code yet.</p>
+<p>At the end of this pass, you should be able to explain the topic in plain language.</p>
+<h3 id="pass-2-follow-the-mechanism">Pass 2 — Follow the mechanism<a class="headerlink" href="#pass-2-follow-the-mechanism" title="Permanent link">&para;</a></h3>
+<p>During the second pass:</p>
+<ul>
+<li>trace examples by hand;</li>
+<li>write state tables;</li>
+<li>predict branch decisions;</li>
+<li>identify what changes after each step;</li>
+<li>compare the trace with the pseudocode and Python implementation.</li>
+</ul>
+<p>At the end of this pass, you should be able to simulate the algorithm for a small input.</p>
+<h3 id="pass-3-justify-and-generalise">Pass 3 — Justify and generalise<a class="headerlink" href="#pass-3-justify-and-generalise" title="Permanent link">&para;</a></h3>
+<p>During the third pass:</p>
+<ul>
+<li>explain correctness;</li>
+<li>explain termination;</li>
+<li>analyse complexity;</li>
+<li>test boundary cases;</li>
+<li>modify the problem;</li>
+<li>compare alternative implementations;</li>
+<li>solve problems without copying the worked example.</li>
+</ul>
+<p>At the end of this pass, you should be able to use the idea in a new context.</p>
+<h2 id="3-a-notebook-method">3. A notebook method<a class="headerlink" href="#3-a-notebook-method" title="Permanent link">&para;</a></h2>
+<p>For every major algorithm, create one page with the following structure.</p>
+<h3 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h3>
+<p>Write the task in one precise sentence.</p>
+<h3 id="input-and-output">Input and output<a class="headerlink" href="#input-and-output" title="Permanent link">&para;</a></h3>
+<p>State the valid input domain and exact required result.</p>
+<h3 id="key-idea">Key idea<a class="headerlink" href="#key-idea" title="Permanent link">&para;</a></h3>
+<p>Write the algorithmic insight in two or three sentences.</p>
+<h3 id="state">State<a class="headerlink" href="#state" title="Permanent link">&para;</a></h3>
+<p>List the variables or data structures that carry information during execution. State what each one means.</p>
+<h3 id="pseudocode">Pseudocode<a class="headerlink" href="#pseudocode" title="Permanent link">&para;</a></h3>
+<p>Write a language-independent version.</p>
+<h3 id="trace">Trace<a class="headerlink" href="#trace" title="Permanent link">&para;</a></h3>
+<p>Trace one ordinary example and one boundary case.</p>
+<h3 id="correctness">Correctness<a class="headerlink" href="#correctness" title="Permanent link">&para;</a></h3>
+<p>Write the initialisation, preservation, and completion argument, or the equivalent recursive reasoning.</p>
+<h3 id="termination">Termination<a class="headerlink" href="#termination" title="Permanent link">&para;</a></h3>
+<p>State why the loop or recursion must stop.</p>
+<h3 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h3>
+<p>Define the input size and state time and auxiliary-space complexity.</p>
+<h3 id="mistakes">Mistakes<a class="headerlink" href="#mistakes" title="Permanent link">&para;</a></h3>
+<p>Write at least one plausible wrong solution and the input that exposes it.</p>
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<p>Implement the algorithm after the reasoning is complete.</p>
+<p>This format becomes a reusable study tool throughout the course.</p>
+<h2 id="4-how-to-use-worked-examples">4. How to use worked examples<a class="headerlink" href="#4-how-to-use-worked-examples" title="Permanent link">&para;</a></h2>
+<p>A worked example should not be read like a story whose ending is already known.</p>
+<p>Before revealing each step:</p>
+<ol>
+<li>predict the next state;</li>
+<li>state which condition will be true or false;</li>
+<li>explain which variable should change;</li>
+<li>compare your prediction with the solution;</li>
+<li>explain any difference.</li>
+</ol>
+<p>If you only read the completed trace, you practise recognition. If you predict each step, you practise execution reasoning.</p>
+<h2 id="5-how-to-use-python-examples">5. How to use Python examples<a class="headerlink" href="#5-how-to-use-python-examples" title="Permanent link">&para;</a></h2>
+<p>Python code in this course serves four purposes:</p>
+<ol>
+<li>make the algorithm executable;</li>
+<li>show how the abstract state is represented concretely;</li>
+<li>expose language-specific operation costs;</li>
+<li>provide material for testing and modification.</li>
+</ol>
+<p>Do not begin by copying the function.</p>
+<p>Use this sequence:</p>
+<ol>
+<li>hide the implementation;</li>
+<li>read the problem and contract;</li>
+<li>write your own pseudocode;</li>
+<li>implement a first Python version;</li>
+<li>compare it with the course version;</li>
+<li>explain every difference;</li>
+<li>run both on the same tests;</li>
+<li>analyse whether the differences affect correctness or complexity.</li>
+</ol>
+<h2 id="6-how-to-learn-definitions">6. How to learn definitions<a class="headerlink" href="#6-how-to-learn-definitions" title="Permanent link">&para;</a></h2>
+<p>A definition is not learned when you can repeat the sentence. It is learned when you can:</p>
+<ul>
+<li>identify examples;</li>
+<li>identify non-examples;</li>
+<li>explain why the distinction matters;</li>
+<li>use the term correctly in an argument.</li>
+</ul>
+<p>For example, to learn <strong>problem instance</strong>, you should be able to:</p>
+<ul>
+<li>define it;</li>
+<li>give an instance of a search problem;</li>
+<li>explain why the general search task is not itself one instance;</li>
+<li>distinguish a test case from the problem class.</li>
+</ul>
+<p>Use definition cards with four fields:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Term:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Definition:
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Example:
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Non-example or common confusion:
+</code></pre></div>
+<h2 id="7-how-to-study-data-structures">7. How to study data structures<a class="headerlink" href="#7-how-to-study-data-structures" title="Permanent link">&para;</a></h2>
+<p>For every structure—array, linked list, stack, queue, tree, heap, or graph—ask six questions.</p>
+<h3 id="representation">Representation<a class="headerlink" href="#representation" title="Permanent link">&para;</a></h3>
+<p>What information is stored, and how are elements connected or located?</p>
+<h3 id="invariant">Invariant<a class="headerlink" href="#invariant" title="Permanent link">&para;</a></h3>
+<p>What property must always remain true?</p>
+<h3 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h3>
+<p>Which operations are supported?</p>
+<h3 id="cost">Cost<a class="headerlink" href="#cost" title="Permanent link">&para;</a></h3>
+<p>How much time and additional memory does each operation require?</p>
+<h3 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
+<p>Which problems benefit from this structure?</p>
+<h3 id="language-mapping">Language mapping<a class="headerlink" href="#language-mapping" title="Permanent link">&para;</a></h3>
+<p>How is the abstract structure represented in Python and C++, and which differences matter?</p>
+<p>Do not reduce a data structure to a library class. The structure is the model and its rules; the class is one implementation.</p>
+<h2 id="8-how-to-study-recursion">8. How to study recursion<a class="headerlink" href="#8-how-to-study-recursion" title="Permanent link">&para;</a></h2>
+<p>Recursion must be studied at two levels.</p>
+<h3 id="problem-level-recursion">Problem-level recursion<a class="headerlink" href="#problem-level-recursion" title="Permanent link">&para;</a></h3>
+<p>Ask:</p>
+<ul>
+<li>What smaller instance is being solved?</li>
+<li>What is the base case?</li>
+<li>Why is the smaller instance genuinely smaller?</li>
+<li>How are partial results combined?</li>
+</ul>
+<h3 id="execution-level-recursion">Execution-level recursion<a class="headerlink" href="#execution-level-recursion" title="Permanent link">&para;</a></h3>
+<p>Ask:</p>
+<ul>
+<li>What arguments belong to each call?</li>
+<li>What local state is stored?</li>
+<li>What is waiting to happen after the recursive call returns?</li>
+<li>How deep can the call stack become?</li>
+</ul>
+<p>Module 02 introduces the first level. Module 05 develops the second in detail.</p>
+<h2 id="9-how-to-study-complexity">9. How to study complexity<a class="headerlink" href="#9-how-to-study-complexity" title="Permanent link">&para;</a></h2>
+<p>Do not memorise complexity labels without deriving them.</p>
+<p>For each algorithm:</p>
+<ol>
+<li>define the input size;</li>
+<li>identify the dominant operation;</li>
+<li>count or bound its executions;</li>
+<li>include hidden costs such as copying or sorting;</li>
+<li>simplify the growth rate;</li>
+<li>state auxiliary-space use;</li>
+<li>name the analysed case when best, average, and worst cases differ.</li>
+</ol>
+<p>For example, one loop does not automatically imply <code>O(n)</code>. The loop body may perform an <code>O(n)</code> operation, producing <code>O(n²)</code> total time.</p>
+<h2 id="10-how-to-use-mistakes-productively">10. How to use mistakes productively<a class="headerlink" href="#10-how-to-use-mistakes-productively" title="Permanent link">&para;</a></h2>
+<p>An incorrect solution is valuable when you can explain:</p>
+<ul>
+<li>the assumption it makes;</li>
+<li>the input that violates the assumption;</li>
+<li>the observed failure;</li>
+<li>the exact invariant or contract clause that is broken;</li>
+<li>the smallest repair that restores correctness.</li>
+</ul>
+<p>Keep a mistake log with entries such as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Problem:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Wrong idea:
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Counterexample:
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Why it fails:
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Corrected principle:
+</code></pre></div>
+<p>This directly supports the syllabus outcome concerning improvement based on constructive feedback.</p>
+<h2 id="11-how-to-know-whether-a-topic-is-mastered">11. How to know whether a topic is mastered<a class="headerlink" href="#11-how-to-know-whether-a-topic-is-mastered" title="Permanent link">&para;</a></h2>
+<p>Recognition is the weakest level. Mastery develops through several stages.</p>
+<h3 id="level-1-vocabulary">Level 1 — Vocabulary<a class="headerlink" href="#level-1-vocabulary" title="Permanent link">&para;</a></h3>
+<p>You can define the terms.</p>
+<h3 id="level-2-mechanism">Level 2 — Mechanism<a class="headerlink" href="#level-2-mechanism" title="Permanent link">&para;</a></h3>
+<p>You can trace the algorithm.</p>
+<h3 id="level-3-construction">Level 3 — Construction<a class="headerlink" href="#level-3-construction" title="Permanent link">&para;</a></h3>
+<p>You can implement it from a specification.</p>
+<h3 id="level-4-justification">Level 4 — Justification<a class="headerlink" href="#level-4-justification" title="Permanent link">&para;</a></h3>
+<p>You can explain correctness, termination, and complexity.</p>
+<h3 id="level-5-adaptation">Level 5 — Adaptation<a class="headerlink" href="#level-5-adaptation" title="Permanent link">&para;</a></h3>
+<p>You can modify the algorithm for a changed requirement.</p>
+<h3 id="level-6-evaluation">Level 6 — Evaluation<a class="headerlink" href="#level-6-evaluation" title="Permanent link">&para;</a></h3>
+<p>You can compare alternatives and choose an appropriate data structure or strategy.</p>
+<p>Do not move on merely because Level 1 or Level 2 feels comfortable.</p>
+<h2 id="12-a-weekly-study-cycle">12. A weekly study cycle<a class="headerlink" href="#12-a-weekly-study-cycle" title="Permanent link">&para;</a></h2>
+<p>A practical cycle for one topic is:</p>
+<h3 id="before-reading">Before reading<a class="headerlink" href="#before-reading" title="Permanent link">&para;</a></h3>
+<p>Answer the diagnostic questions and record what you do not know.</p>
+<h3 id="during-reading">During reading<a class="headerlink" href="#during-reading" title="Permanent link">&para;</a></h3>
+<p>Write definitions, traces, and questions. Run only small examples.</p>
+<h3 id="after-reading">After reading<a class="headerlink" href="#after-reading" title="Permanent link">&para;</a></h3>
+<p>Close the notes and explain the topic aloud or in writing.</p>
+<h3 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h3>
+<p>Solve problems that require tracing, construction, debugging, correctness, and complexity.</p>
+<h3 id="review">Review<a class="headerlink" href="#review" title="Permanent link">&para;</a></h3>
+<p>Return after one or two days and repeat the explanation without looking.</p>
+<h3 id="extend">Extend<a class="headerlink" href="#extend" title="Permanent link">&para;</a></h3>
+<p>Change one assumption or requirement and adapt the solution.</p>
+<h2 id="13-questions-that-reveal-shallow-understanding">13. Questions that reveal shallow understanding<a class="headerlink" href="#13-questions-that-reveal-shallow-understanding" title="Permanent link">&para;</a></h2>
+<p>When you think you understand a topic, ask:</p>
+<ul>
+<li>What breaks if the input is empty?</li>
+<li>Which assumption is essential?</li>
+<li>Can the input contain duplicates?</li>
+<li>Does the algorithm modify its input?</li>
+<li>Why is the initial state valid?</li>
+<li>Why does the loop stop?</li>
+<li>What if the comparison operator changes?</li>
+<li>What is the worst valid input?</li>
+<li>Which operation dominates the cost?</li>
+<li>Could another data structure improve the solution?</li>
+</ul>
+<p>If these questions cannot be answered, the topic is not yet secure.</p>
+<h2 id="14-communication-is-part-of-algorithmic-skill">14. Communication is part of algorithmic skill<a class="headerlink" href="#14-communication-is-part-of-algorithmic-skill" title="Permanent link">&para;</a></h2>
+<p>The syllabus requires precise communication of difficulties during solution development. Practise writing statements such as:</p>
+<ul>
+<li>“The implementation fails when all values are negative because the initial maximum is outside the input.”</li>
+<li>“The algorithm returns the last maximum because equality causes the stored index to be replaced.”</li>
+<li>“The function is logically correct, but slicing creates linear auxiliary-space use.”</li>
+<li>“Termination is not established because the loop condition depends on a variable that is never updated.”</li>
+</ul>
+<p>Avoid vague statements such as:</p>
+<ul>
+<li>“It does not work.”</li>
+<li>“The loop is wrong.”</li>
+<li>“Python is slow.”</li>
+</ul>
+<p>Precise diagnosis is a technical ability.</p>
+<h2 id="15-the-role-of-module-00">15. The role of Module 00<a class="headerlink" href="#15-the-role-of-module-00" title="Permanent link">&para;</a></h2>
+<p>Module 00 does not attempt to teach the entire syllabus. It establishes a method that will be applied repeatedly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>understand → specify → represent → execute → justify → analyse → improve
+</code></pre></div>
+<p>Module 01 now formalises the first part of that process through imperative computation, preconditions, postconditions, algorithm representations, properties, pseudocode, and structuring techniques.</p>
+<h2 id="16-what-you-must-be-able-to-explain">16. What you must be able to explain<a class="headerlink" href="#16-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>Before leaving this chapter, you should be able to:</p>
+<ul>
+<li>describe the three-pass study method;</li>
+<li>build a complete algorithm notebook entry;</li>
+<li>use a worked example actively;</li>
+<li>explain why Python code should follow rather than replace reasoning;</li>
+<li>study a data structure through representation, invariant, operations, cost, and use;</li>
+<li>distinguish problem-level recursion from execution-level recursion;</li>
+<li>derive rather than memorise complexity;</li>
+<li>use counterexamples and feedback to improve a solution;</li>
+<li>state the difference between recognition and mastery.</li>
+</ul>
+<h2 id="17-summary">17. Summary<a class="headerlink" href="#17-summary" title="Permanent link">&para;</a></h2>
+<p>Algorithms are learned through active reconstruction.</p>
+<p>Read definitions, but also produce examples and non-examples. Read traces, but also predict them. Read code, but also implement from the specification. Run tests, but also construct counterexamples. Learn complexity labels, but also derive them. Study correct solutions, but also diagnose broken ones.</p>
+<p>The course is organised to support that process. The Module 00 review now checks whether the foundational vocabulary and study method are in place before the formal syllabus sequence begins.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

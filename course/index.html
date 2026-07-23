@@ -1,0 +1,933 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Course Contents and Learning Path - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#course-contents-and-learning-path" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Course Contents and Learning Path
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-foundations-of-algorithm-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-foundations-of-algorithm-design/imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imperative computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-book-is-organised" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the book is organised
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-00-learning-to-think-algorithmically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 00 — Learning to Think Algorithmically
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-01-foundations-of-algorithm-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 01 — Foundations of Algorithm Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-02-iteration-recursion-and-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 02 — Iteration, Recursion, and Data Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-03-arrays-records-and-memory-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 03 — Arrays, Records, and Memory Representation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-04-searching-sorting-and-divide-and-conquer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 04 — Searching, Sorting, and Divide and Conquer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-05-functions-the-call-stack-and-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 05 — Functions, the Call Stack, and Recursion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-06-backtracking-greedy-methods-and-dynamic-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 06 — Backtracking, Greedy Methods, and Dynamic Structures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-07-linked-lists-stacks-queues-and-priority-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 07 — Linked Lists, Stacks, Queues, and Priority Queues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-08-binary-trees-avl-trees-and-heaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 08 — Binary Trees, AVL Trees, and Heaps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-09-graphs-and-depth-first-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 09 — Graphs and Depth-First Search
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-10-computational-complexity-and-hard-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module 10 — Computational Complexity and Hard Problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-learning-objective-of-the-whole-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The learning objective of the whole course
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="course-contents-and-learning-path">Course Contents and Learning Path<a class="headerlink" href="#course-contents-and-learning-path" title="Permanent link">&para;</a></h1>
+<p>This course is organised as a book rather than as a collection of disconnected notes. Each module develops one coherent part of the syllabus, and each chapter assumes that the earlier ideas are already understood.</p>
+<p>The recommended order is therefore important. Read the modules from beginning to end, work through the examples, and do not skip the review questions. Later topics—recursion, trees, graphs, and complexity—depend on habits introduced near the beginning: defining the problem precisely, tracing state, stating assumptions, and explaining why a solution works.</p>
+<h2 id="how-the-book-is-organised">How the book is organised<a class="headerlink" href="#how-the-book-is-organised" title="Permanent link">&para;</a></h2>
+<p>Every module follows the same learning pattern:</p>
+<ol>
+<li><strong>Motivation</strong> — what kind of problem the topic addresses and why it matters.</li>
+<li><strong>Definitions</strong> — the exact vocabulary needed to reason about the topic.</li>
+<li><strong>Conceptual model</strong> — how to imagine the objects and operations involved.</li>
+<li><strong>Theory</strong> — the principles, properties, and relationships that govern the topic.</li>
+<li><strong>Worked examples</strong> — complete solutions developed step by step.</li>
+<li><strong>Python examples</strong> — executable versions of the ideas used in the explanation.</li>
+<li><strong>Correctness and termination</strong> — why the algorithm produces the required result and, when relevant, why it eventually stops.</li>
+<li><strong>Complexity</strong> — how time and additional memory grow with the input size.</li>
+<li><strong>Common mistakes</strong> — incorrect intuitions, broken algorithms, and misleading implementations.</li>
+<li><strong>Review and problems</strong> — questions and tasks that test understanding rather than memorisation.</li>
+</ol>
+<p>Python is the primary language used inside the narrative because it allows the algorithmic idea to remain visible. C++ comparisons are introduced in dedicated sections when memory representation, types, ownership, or standard-library differences matter.</p>
+<hr />
+<h2 id="module-00-learning-to-think-algorithmically">Module 00 — Learning to Think Algorithmically<a class="headerlink" href="#module-00-learning-to-think-algorithmically" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> establish the habits needed to study the rest of the course.</p>
+<p>You will learn:</p>
+<ul>
+<li>what a computational problem is;</li>
+<li>how a problem instance differs from a general problem;</li>
+<li>how an algorithm differs from a program and from one execution;</li>
+<li>how to read a short Python function as a sequence of state changes;</li>
+<li>how to move from a problem statement to a first correct solution;</li>
+<li>how examples, counterexamples, tests, correctness arguments, and complexity analysis play different roles;</li>
+<li>how to study algorithms actively instead of memorising code.</li>
+</ul>
+<p><a href="00-learning-to-think-algorithmically/">Start Module 00</a></p>
+<hr />
+<h2 id="module-01-foundations-of-algorithm-design">Module 01 — Foundations of Algorithm Design<a class="headerlink" href="#module-01-foundations-of-algorithm-design" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> imperative computation, preconditions and postconditions, forms of algorithm representation, properties of algorithms, pseudocode, and basic techniques for structuring algorithms.</p>
+<p>You will learn:</p>
+<ul>
+<li>how imperative commands transform program state;</li>
+<li>how to specify valid initial states and required final states;</li>
+<li>how the same algorithm can be represented in prose, diagrams, pseudocode, Python, and C++;</li>
+<li>what properties distinguish a valid algorithm;</li>
+<li>how sequence, selection, iteration, and decomposition structure a solution.</li>
+</ul>
+<p><a href="01-foundations-of-algorithm-design/">Open Module 01</a></p>
+<hr />
+<h2 id="module-02-iteration-recursion-and-data-types">Module 02 — Iteration, Recursion, and Data Types<a class="headerlink" href="#module-02-iteration-recursion-and-data-types" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> iterative loops, loop termination conditions, recursion, constructing a correct algorithm, and primitive and compound data types.</p>
+<p>You will learn:</p>
+<ul>
+<li>how loops represent repeated state transitions;</li>
+<li>how to formulate a termination condition and a progress argument;</li>
+<li>how recursion reduces a problem to smaller instances;</li>
+<li>how base cases and recursive cases cooperate;</li>
+<li>how primitive and compound data types affect algorithm design.</li>
+</ul>
+<hr />
+<h2 id="module-03-arrays-records-and-memory-representation">Module 03 — Arrays, Records, and Memory Representation<a class="headerlink" href="#module-03-arrays-records-and-memory-representation" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> arrays and records as aggregate types, in-memory representation, direct access to components, and basic array operations.</p>
+<p>You will learn:</p>
+<ul>
+<li>what arrays and records represent conceptually;</li>
+<li>how contiguous storage, indices, fields, references, and values differ;</li>
+<li>why direct access is efficient;</li>
+<li>how traversal, insertion, deletion, copying, and resizing work;</li>
+<li>why a Python <code>list</code> is not identical to a C++ array or <code>std::vector</code>.</li>
+</ul>
+<hr />
+<h2 id="module-04-searching-sorting-and-divide-and-conquer">Module 04 — Searching, Sorting, and Divide and Conquer<a class="headerlink" href="#module-04-searching-sorting-and-divide-and-conquer" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> linear and binary search, sorting methods and properties, algorithmic complexity, divide and conquer, Quicksort, index arrays, and recursive algorithms.</p>
+<p>You will learn:</p>
+<ul>
+<li>when linear and binary search are applicable;</li>
+<li>how sorting algorithms differ in stability, memory use, and running time;</li>
+<li>how divide and conquer reduces a problem into smaller subproblems;</li>
+<li>how Quicksort partitions data;</li>
+<li>how index arrays preserve source data while changing logical order.</li>
+</ul>
+<hr />
+<h2 id="module-05-functions-the-call-stack-and-recursion">Module 05 — Functions, the Call Stack, and Recursion<a class="headerlink" href="#module-05-functions-the-call-stack-and-recursion" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> function interaction with the environment, side effects, stack behaviour, recursive calls, indirect and nested recursion, explicit-stack implementation, recursion problems, and recursion versus iteration.</p>
+<p>You will learn:</p>
+<ul>
+<li>how functions communicate through parameters, return values, and external state;</li>
+<li>what side effects are and why they matter;</li>
+<li>what a stack frame stores;</li>
+<li>how recursive calls build and unwind the call stack;</li>
+<li>how to recognise indirect and nested recursion;</li>
+<li>how to replace recursion with an explicit stack when appropriate.</li>
+</ul>
+<hr />
+<h2 id="module-06-backtracking-greedy-methods-and-dynamic-structures">Module 06 — Backtracking, Greedy Methods, and Dynamic Structures<a class="headerlink" href="#module-06-backtracking-greedy-methods-and-dynamic-structures" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> backtracking, systematic and heuristic methods for improving greedy algorithms, and dynamic data structures.</p>
+<p>You will learn:</p>
+<ul>
+<li>how a search space is explored and pruned;</li>
+<li>how backtracking restores an earlier partial state;</li>
+<li>how greedy choices are formulated and evaluated;</li>
+<li>how systematic and heuristic improvement differ;</li>
+<li>how dynamic structures change size or shape during execution.</li>
+</ul>
+<hr />
+<h2 id="module-07-linked-lists-stacks-queues-and-priority-queues">Module 07 — Linked Lists, Stacks, Queues, and Priority Queues<a class="headerlink" href="#module-07-linked-lists-stacks-queues-and-priority-queues" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> linear lists, LIFO stacks, FIFO queues, priority queues, doubly linked and circular lists, self-organising lists, skip lists, and selected list algorithms.</p>
+<p>You will learn:</p>
+<ul>
+<li>how nodes and links represent sequences;</li>
+<li>how singly and doubly linked lists differ;</li>
+<li>how stacks, queues, and priority queues define restricted access rules;</li>
+<li>how circular and self-organising lists behave;</li>
+<li>how skip lists use multiple levels to accelerate search;</li>
+<li>how representation choices affect operation costs.</li>
+</ul>
+<hr />
+<h2 id="module-08-binary-trees-avl-trees-and-heaps">Module 08 — Binary Trees, AVL Trees, and Heaps<a class="headerlink" href="#module-08-binary-trees-avl-trees-and-heaps" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> tree terminology, binary trees, traversals, binary search trees, dictionaries, balancing, AVL trees, and heaps.</p>
+<p>You will learn:</p>
+<ul>
+<li>how rooted trees are described using parent, child, depth, and height;</li>
+<li>how preorder, inorder, postorder, and level-order traversals work;</li>
+<li>how a binary search tree maintains order;</li>
+<li>why unbalanced trees can degrade;</li>
+<li>how AVL rotations restore balance;</li>
+<li>how binary heaps support priority-queue operations.</li>
+</ul>
+<hr />
+<h2 id="module-09-graphs-and-depth-first-search">Module 09 — Graphs and Depth-First Search<a class="headerlink" href="#module-09-graphs-and-depth-first-search" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> graph representations, graph properties, basic operations, adjacency-list representation, depth-first search as exhaustive search, and DFS applications.</p>
+<p>You will learn:</p>
+<ul>
+<li>how vertices and edges model relationships;</li>
+<li>how directed, undirected, weighted, and unweighted graphs differ;</li>
+<li>how adjacency matrices and adjacency lists represent a graph;</li>
+<li>how DFS explores reachable vertices;</li>
+<li>how visited-state tracking prevents repeated work;</li>
+<li>how DFS supports reachability, component analysis, cycle detection, and path exploration.</li>
+</ul>
+<hr />
+<h2 id="module-10-computational-complexity-and-hard-problems">Module 10 — Computational Complexity and Hard Problems<a class="headerlink" href="#module-10-computational-complexity-and-hard-problems" title="Permanent link">&para;</a></h2>
+<p><strong>Syllabus scope:</strong> time-complexity analysis, computational complexity, Big O notation, worked calculations, hard algorithmic problems, and the source topic described as N- and NP-complete problems.</p>
+<p>You will learn:</p>
+<ul>
+<li>how to define input size;</li>
+<li>how to count or bound relevant operations;</li>
+<li>how common growth classes differ;</li>
+<li>how to analyse loops, nested loops, recursion, and data-structure operations;</li>
+<li>why some problems appear fundamentally harder than others;</li>
+<li>how complexity theory distinguishes efficient verification and efficient solution under standard terminology.</li>
+</ul>
+<hr />
+<h2 id="the-learning-objective-of-the-whole-course">The learning objective of the whole course<a class="headerlink" href="#the-learning-objective-of-the-whole-course" title="Permanent link">&para;</a></h2>
+<p>At the end of the course, you should not merely recognise familiar code. You should be able to take a new technical problem and explain:</p>
+<ol>
+<li>what the valid input is;</li>
+<li>what result is required;</li>
+<li>which data representation is appropriate;</li>
+<li>which algorithmic strategy is being used;</li>
+<li>why the algorithm is correct;</li>
+<li>why it terminates;</li>
+<li>what its important boundary cases are;</li>
+<li>how much time and additional memory it requires;</li>
+<li>how Python and C++ implementations preserve or alter the same abstract idea;</li>
+<li>how the solution could be improved after analysis or feedback.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.sections", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1417 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Evidence That an Algorithm Works - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#evidence-that-an-algorithm-works" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Evidence That an Algorithm Works
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imperative computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-correct-looking-output-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A correct-looking output is not enough
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-tests-are-chosen-from-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good tests are chosen from the specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-counterexamples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Counterexamples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Correctness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-correctness-argument-for-counting-positives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. A correctness argument for counting positives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. A correctness argument for counting positives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Termination
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Termination">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-non-terminating-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A non-terminating version
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-define-input-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Define input size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-compare-two-correct-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Compare two correct approaches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Compare two correct approaches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct scan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-a-filtered-list-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build a filtered list first
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-testing-proof-and-analysis-answer-different-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Testing, proof, and analysis answer different questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common misconceptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Common misconceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-tests-passed-so-the-program-is-proven-correct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “All tests passed, so the program is proven correct”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-loop-has-a-condition-so-it-terminates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “The loop has a condition, so it terminates”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-function-is-on-because-it-contains-one-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “The function is O(n) because it contains one loop”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-tells-us-the-exact-number-of-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “O(n) tells us the exact number of operations”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-faster-algorithm-is-better-even-if-it-is-harder-to-understand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “A faster algorithm is better even if it is harder to understand”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-a-complete-evidence-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. A complete evidence checklist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. A complete evidence checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-and-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples and tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-counterexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Counterexample
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-correctness-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Correctness claim
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="evidence-that-an-algorithm-works">Evidence That an Algorithm Works<a class="headerlink" href="#evidence-that-an-algorithm-works" title="Permanent link">&para;</a></h1>
+<h2 id="1-a-correct-looking-output-is-not-enough">1. A correct-looking output is not enough<a class="headerlink" href="#1-a-correct-looking-output-is-not-enough" title="Permanent link">&para;</a></h2>
+<p>Suppose a program prints the expected result for the input:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[4, 9, 2, 7]
+</code></pre></div>
+<p>That observation is useful, but it answers only one question:</p>
+<blockquote>
+<p>Did this execution produce the expected result for this input?</p>
+</blockquote>
+<p>It does not answer:</p>
+<ul>
+<li>Will the program work for every valid input?</li>
+<li>Will it terminate for every valid input?</li>
+<li>Does it accidentally modify its input?</li>
+<li>How does its running time grow?</li>
+<li>How much additional memory does it use?</li>
+</ul>
+<p>Algorithm analysis uses several different kinds of evidence. They complement one another, but they are not interchangeable.</p>
+<h2 id="2-examples">2. Examples<a class="headerlink" href="#2-examples" title="Permanent link">&para;</a></h2>
+<p>An <strong>example</strong> illustrates the intended meaning of a problem or algorithm.</p>
+<p>For a function that counts positive values:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[-3, 5, 0, 8, -1] → 2
+</code></pre></div>
+<p>The example helps a reader understand that:</p>
+<ul>
+<li>zero is not counted as positive;</li>
+<li>negative values are ignored;</li>
+<li>the result is a count, not a list of matching values.</li>
+</ul>
+<p>Examples are explanatory. They do not establish general correctness.</p>
+<h2 id="3-tests">3. Tests<a class="headerlink" href="#3-tests" title="Permanent link">&para;</a></h2>
+<p>A <strong>test</strong> executes a program for a selected input and compares the observed behaviour with the expected behaviour.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_positive</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">return</span> <span class="n">count</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">assert</span> <span class="n">count_positive</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">assert</span> <span class="n">count_positive</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">assert</span> <span class="n">count_positive</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">assert</span> <span class="n">count_positive</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+<p>Tests can reveal errors. A failed test is evidence that the implementation is wrong relative to the expected behaviour.</p>
+<p>A passed test is weaker evidence. It tells us only that no error was observed for that selected case.</p>
+<h3 id="good-tests-are-chosen-from-the-specification">Good tests are chosen from the specification<a class="headerlink" href="#good-tests-are-chosen-from-the-specification" title="Permanent link">&para;</a></h3>
+<p>Useful test categories include:</p>
+<ul>
+<li>ordinary input;</li>
+<li>smallest valid input;</li>
+<li>empty input, when allowed or explicitly rejected;</li>
+<li>one element;</li>
+<li>all values satisfying the condition;</li>
+<li>no values satisfying the condition;</li>
+<li>repeated values;</li>
+<li>negative values;</li>
+<li>values at domain boundaries;</li>
+<li>invalid input when validation is part of the interface.</li>
+</ul>
+<p>Testing is strongest when cases are selected to challenge assumptions rather than to repeat similar successful examples.</p>
+<h2 id="4-counterexamples">4. Counterexamples<a class="headerlink" href="#4-counterexamples" title="Permanent link">&para;</a></h2>
+<p>A <strong>counterexample</strong> is one valid input that disproves a general claim.</p>
+<p>Consider the claim:</p>
+<blockquote>
+<p>Initialising a maximum to zero works for every non-empty list of integers.</p>
+</blockquote>
+<p>The input:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[-5, -2, -11]
+</code></pre></div>
+<p>is a counterexample. The algorithm returns <code>0</code>, but the correct maximum is <code>-2</code>.</p>
+<p>One counterexample is enough to show that a universal claim is false.</p>
+<p>This makes counterexample search a powerful design tool. Before trying to prove that an algorithm is correct, try to break it.</p>
+<p>Ask:</p>
+<ul>
+<li>What if all values are negative?</li>
+<li>What if the list has one element?</li>
+<li>What if the best value appears more than once?</li>
+<li>What if the result is absent?</li>
+<li>What if the input is already ordered?</li>
+<li>What if the input is ordered in the opposite direction?</li>
+</ul>
+<h2 id="5-correctness">5. Correctness<a class="headerlink" href="#5-correctness" title="Permanent link">&para;</a></h2>
+<p>An algorithm is <strong>correct</strong> when, for every input satisfying its assumptions, it terminates and produces a result satisfying the required specification.</p>
+<p>Correctness therefore contains two obligations:</p>
+<ol>
+<li>the produced result is right;</li>
+<li>the algorithm eventually stops.</li>
+</ol>
+<p>The first is often called <strong>partial correctness</strong>. The second is <strong>termination</strong>. Together they give total correctness.</p>
+<p>At this stage, we use structured informal arguments. Later modules introduce preconditions, postconditions, invariants, and recursive reasoning in more detail.</p>
+<h2 id="6-a-correctness-argument-for-counting-positives">6. A correctness argument for counting positives<a class="headerlink" href="#6-a-correctness-argument-for-counting-positives" title="Permanent link">&para;</a></h2>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_positive</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+<p>The central claim is:</p>
+<blockquote>
+<p>After processing any number of elements, <code>count</code> equals the number of positive elements among those processed elements.</p>
+</blockquote>
+<h3 id="initial-state">Initial state<a class="headerlink" href="#initial-state" title="Permanent link">&para;</a></h3>
+<p>Before the loop, zero elements have been processed. The number of positive elements among zero elements is zero, so <code>count = 0</code> is correct.</p>
+<h3 id="one-iteration">One iteration<a class="headerlink" href="#one-iteration" title="Permanent link">&para;</a></h3>
+<p>Assume the claim is true before processing the current value.</p>
+<ul>
+<li>If the current value is positive, the number of positive processed elements increases by one, and the algorithm increments <code>count</code>.</li>
+<li>If the current value is not positive, the number does not increase, and the algorithm leaves <code>count</code> unchanged.</li>
+</ul>
+<p>Therefore the claim remains true after the iteration.</p>
+<h3 id="final-state">Final state<a class="headerlink" href="#final-state" title="Permanent link">&para;</a></h3>
+<p>When the loop finishes, all elements have been processed. The claim then says that <code>count</code> equals the number of positive elements in the entire input. That is exactly the required result.</p>
+<p>This argument explains every possible execution, not only one trace.</p>
+<h2 id="7-termination">7. Termination<a class="headerlink" href="#7-termination" title="Permanent link">&para;</a></h2>
+<p>A loop terminates when it cannot repeat forever.</p>
+<p>For:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+</code></pre></div>
+<p>termination follows from the assumption that <code>values</code> is finite. The loop processes one element per iteration and stops after the last element.</p>
+<p>For a <code>while</code> loop, the argument may require a quantity that moves toward a boundary.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">countdown</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="k">while</span> <span class="n">current</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="n">current</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>If <code>start</code> is a non-negative integer, then:</p>
+<ul>
+<li><code>current</code> begins finite;</li>
+<li>each iteration decreases it by one;</li>
+<li>it cannot decrease forever while remaining greater than zero;</li>
+<li>eventually <code>current == 0</code>, so the loop stops.</li>
+</ul>
+<p>The quantity <code>current</code> acts as a progress measure.</p>
+<h3 id="a-non-terminating-version">A non-terminating version<a class="headerlink" href="#a-non-terminating-version" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">broken_countdown</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="k">while</span> <span class="n">current</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>The condition depends on <code>current</code>, but <code>current</code> never changes. For positive <code>start</code>, the condition remains true forever.</p>
+<p>The error is not that the loop lacks a condition. The error is that the state does not make progress toward making the condition false.</p>
+<h2 id="8-complexity">8. Complexity<a class="headerlink" href="#8-complexity" title="Permanent link">&para;</a></h2>
+<p>Complexity analysis studies how resource use grows as the input grows.</p>
+<p>The two primary resources in this course are:</p>
+<ul>
+<li><strong>time complexity</strong> — growth in the number of relevant operations;</li>
+<li><strong>auxiliary-space complexity</strong> — growth in additional memory used by the algorithm.</li>
+</ul>
+<p>Complexity is not the same as measured clock time. Real execution time also depends on hardware, language implementation, compiler, interpreter, cache behaviour, and constant factors.</p>
+<p>Complexity describes growth.</p>
+<h2 id="9-define-input-size">9. Define input size<a class="headerlink" href="#9-define-input-size" title="Permanent link">&para;</a></h2>
+<p>A complexity statement is incomplete unless the input size is clear.</p>
+<p>For a list-processing function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>n = len(values)
+</code></pre></div>
+<p>For <code>count_positive</code>, the loop processes every element once. Under the introductory assumption that comparison and increment are constant-time operations:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Time complexity: O(n)
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Auxiliary space: O(1)
+</code></pre></div>
+<p>The function stores only a fixed number of additional values, regardless of list length.</p>
+<h2 id="10-compare-two-correct-approaches">10. Compare two correct approaches<a class="headerlink" href="#10-compare-two-correct-approaches" title="Permanent link">&para;</a></h2>
+<p>Suppose we want to count positive values.</p>
+<h3 id="direct-scan">Direct scan<a class="headerlink" href="#direct-scan" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_positive</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+<h3 id="build-a-filtered-list-first">Build a filtered list first<a class="headerlink" href="#build-a-filtered-list-first" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_positive_with_list</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">positive_values</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>            <span class="n">positive_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">positive_values</span><span class="p">)</span>
+</code></pre></div>
+<p>Both are correct.</p>
+<p>The direct scan uses constant auxiliary space:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>O(1)
+</code></pre></div>
+<p>The second may store up to <code>n</code> positive values:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>O(n)
+</code></pre></div>
+<p>The time complexity of both is linear:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>O(n)
+</code></pre></div>
+<p>This example shows why correctness and efficiency are separate dimensions.</p>
+<h2 id="11-testing-proof-and-analysis-answer-different-questions">11. Testing, proof, and analysis answer different questions<a class="headerlink" href="#11-testing-proof-and-analysis-answer-different-questions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Question answered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Example</td>
+<td>What does the problem or method mean in one concrete case?</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>Does this implementation behave as expected for this selected input?</td>
+</tr>
+<tr>
+<td>Counterexample</td>
+<td>Can one input disprove the general claim?</td>
+</tr>
+<tr>
+<td>Correctness argument</td>
+<td>Why does the algorithm satisfy the specification for every valid input?</td>
+</tr>
+<tr>
+<td>Termination argument</td>
+<td>Why must the execution eventually stop?</td>
+</tr>
+<tr>
+<td>Complexity analysis</td>
+<td>How do resource requirements grow with input size?</td>
+</tr>
+</tbody>
+</table>
+<p>A mature algorithm explanation uses several of these forms together.</p>
+<h2 id="12-common-misconceptions">12. Common misconceptions<a class="headerlink" href="#12-common-misconceptions" title="Permanent link">&para;</a></h2>
+<h3 id="all-tests-passed-so-the-program-is-proven-correct">“All tests passed, so the program is proven correct”<a class="headerlink" href="#all-tests-passed-so-the-program-is-proven-correct" title="Permanent link">&para;</a></h3>
+<p>Tests cover selected inputs. Unless the valid input domain is tiny and exhaustively tested, passing tests is not a proof.</p>
+<h3 id="the-loop-has-a-condition-so-it-terminates">“The loop has a condition, so it terminates”<a class="headerlink" href="#the-loop-has-a-condition-so-it-terminates" title="Permanent link">&para;</a></h3>
+<p>A condition is not enough. The state must move toward making the condition false.</p>
+<h3 id="the-function-is-on-because-it-contains-one-loop">“The function is <code>O(n)</code> because it contains one loop”<a class="headerlink" href="#the-function-is-on-because-it-contains-one-loop" title="Permanent link">&para;</a></h3>
+<p>The cost of the loop body matters. A loop may call sorting, copy large slices, or perform another non-constant operation.</p>
+<h3 id="on-tells-us-the-exact-number-of-operations">“<code>O(n)</code> tells us the exact number of operations”<a class="headerlink" href="#on-tells-us-the-exact-number-of-operations" title="Permanent link">&para;</a></h3>
+<p>Big O gives an asymptotic upper bound, not an exact count.</p>
+<h3 id="a-faster-algorithm-is-better-even-if-it-is-harder-to-understand">“A faster algorithm is better even if it is harder to understand”<a class="headerlink" href="#a-faster-algorithm-is-better-even-if-it-is-harder-to-understand" title="Permanent link">&para;</a></h3>
+<p>Correctness and clarity come first. Optimisation should address an actual cost and preserve the specification.</p>
+<h2 id="13-a-complete-evidence-checklist">13. A complete evidence checklist<a class="headerlink" href="#13-a-complete-evidence-checklist" title="Permanent link">&para;</a></h2>
+<p>For an important algorithm, ask:</p>
+<h3 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What inputs are valid?</li>
+<li>What output is required?</li>
+<li>What side effects are permitted?</li>
+</ul>
+<h3 id="examples-and-tests">Examples and tests<a class="headerlink" href="#examples-and-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What ordinary example illustrates the task?</li>
+<li>What boundary cases challenge the design?</li>
+<li>Can I construct a counterexample to a weak assumption?</li>
+</ul>
+<h3 id="correctness">Correctness<a class="headerlink" href="#correctness" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What does each important state variable mean?</li>
+<li>Why is the meaning true initially?</li>
+<li>Why does every update preserve it?</li>
+<li>Why does the final state imply the required output?</li>
+</ul>
+<h3 id="termination">Termination<a class="headerlink" href="#termination" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What finite process is being consumed?</li>
+<li>What quantity makes progress?</li>
+<li>Why can progress not continue forever?</li>
+</ul>
+<h3 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What is the input-size parameter?</li>
+<li>Which operation dominates the cost?</li>
+<li>How many times can it execute?</li>
+<li>How much additional memory is used?</li>
+<li>Are there hidden language-specific costs?</li>
+</ul>
+<h2 id="14-what-you-must-be-able-to-explain">14. What you must be able to explain<a class="headerlink" href="#14-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>After this chapter, you should be able to:</p>
+<ul>
+<li>distinguish examples, tests, counterexamples, and correctness arguments;</li>
+<li>explain why passing tests does not prove general correctness;</li>
+<li>identify the central state claim in a simple loop;</li>
+<li>explain initialisation, preservation, and completion;</li>
+<li>give a progress argument for termination;</li>
+<li>define input size before stating complexity;</li>
+<li>compare two correct solutions by auxiliary-space use;</li>
+<li>recognise hidden costs such as copied lists.</li>
+</ul>
+<h2 id="15-practice">15. Practice<a class="headerlink" href="#15-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-counterexample">Exercise 1 — Counterexample<a class="headerlink" href="#exercise-1-counterexample" title="Permanent link">&para;</a></h3>
+<p>A student claims that the following function returns the smallest integer in any non-empty list:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">minimum</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">:</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>            <span class="n">result</span> <span class="o">=</span> <span class="n">value</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>Find a counterexample and explain the violated assumption.</p>
+<h3 id="exercise-2-termination">Exercise 2 — Termination<a class="headerlink" href="#exercise-2-termination" title="Permanent link">&para;</a></h3>
+<p>Explain why this function terminates for every non-negative integer <code>value</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">halve_until_zero</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="k">while</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="n">value</span> <span class="o">//=</span> <span class="mi">2</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="k">return</span> <span class="n">steps</span>
+</code></pre></div>
+<p>Identify the progress measure.</p>
+<h3 id="exercise-3-complexity">Exercise 3 — Complexity<a class="headerlink" href="#exercise-3-complexity" title="Permanent link">&para;</a></h3>
+<p>Compare the auxiliary-space use of:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">doubled_copy</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>and:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">double_in_place</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>        <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">2</span>
+</code></pre></div>
+<p>State the side effects as well as the complexity.</p>
+<h3 id="exercise-4-correctness-claim">Exercise 4 — Correctness claim<a class="headerlink" href="#exercise-4-correctness-claim" title="Permanent link">&para;</a></h3>
+<p>For a function that sums all elements in a list, formulate a sentence describing what the accumulator means after processing the first <code>k</code> elements.</p>
+<h2 id="16-summary">16. Summary<a class="headerlink" href="#16-summary" title="Permanent link">&para;</a></h2>
+<p>Algorithmic evidence has several layers.</p>
+<p>Examples explain. Tests check selected executions. Counterexamples disprove general claims. Correctness arguments explain why all valid inputs produce valid outputs. Termination arguments explain why the process stops. Complexity analysis explains how resource use grows.</p>
+<p>These layers should not be collapsed into one another. A reliable solution is not merely code that produced the expected output once. It is a method whose assumptions, behaviour, correctness, termination, and cost can be explained.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
