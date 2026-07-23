@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/preconditions-and-postconditions/">
       
       
+        <link rel="prev" href="../imperative-computation/">
+      
+      
+        <link rel="next" href="../../../source/syllabus-pl/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Preconditions and Postconditions - Algorithms and Complexity</title>
+        <title>2. Preconditions and Postconditions - Algorithms and Complexity</title>
       
     
     
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Preconditions and Postconditions
+              2. Preconditions and Postconditions
             
           </span>
         </div>
@@ -569,6 +573,8 @@
       
   
   
+    
+  
   
   
     
@@ -580,6 +586,8 @@
       
         
       
+        
+      
     
     
     
@@ -589,13 +597,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -623,7 +629,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -659,6 +665,1045 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-an-algorithm-needs-a-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why an algorithm needs a contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-begin-with-the-required-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Begin with the required relationship
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-precondition-what-may-be-assumed-initially" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The precondition: what may be assumed initially
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The precondition: what may be assumed initially">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preconditions-describe-assumptions-not-wishes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preconditions describe assumptions, not wishes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-kinds-of-preconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typical kinds of preconditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-postcondition-what-must-be-true-at-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The postcondition: what must be true at the end
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The postcondition: what must be true at the end">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-postcondition-may-describe-more-than-a-return-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A postcondition may describe more than a return value
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-contract-divides-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. A contract divides responsibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. A contract divides responsibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-callers-obligation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The caller's obligation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-algorithms-obligation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The algorithm's obligation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-the-precondition-is-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What if the precondition is false?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preconditions-are-not-the-same-as-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Preconditions are not the same as validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Preconditions are not the same as validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-validate-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why validate at all?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-validate-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not validate everything?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-weak-and-strong-preconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Weak and strong preconditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Weak and strong preconditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-unnecessary-strength-is-a-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why unnecessary strength is a problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-precondition-may-be-too-weak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A precondition may be too weak
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-weak-and-strong-postconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Weak and strong postconditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Weak and strong postconditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postcondition-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postcondition A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postcondition-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postcondition B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-postcondition-may-be-too-weak-to-define-the-intended-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A postcondition may be too weak to define the intended problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-postcondition-may-be-stronger-than-necessary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A postcondition may be stronger than necessary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-one-problem-several-possible-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. One problem, several possible contracts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. One problem, several possible contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variant-a-return-any-matching-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant A: return any matching index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-b-return-the-first-matching-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant B: return the first matching index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-c-return-a-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant C: return a Boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-d-require-sorted-input-and-use-binary-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant D: require sorted input and use binary search
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-worked-example-safe-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Worked example: safe division
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Worked example: safe division">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#informal-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informal task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-hidden-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First hidden issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-implementation-with-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python implementation with validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-must-be-tested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What must be tested?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-worked-example-first-index-of-a-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Worked example: first index of a maximum
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Worked example: first index of a maximum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-the-range-condition-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the range condition matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-the-minimality-condition-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the minimality condition matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-specifications-reveal-incorrect-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Specifications reveal incorrect implementations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-postconditions-and-mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Postconditions and mutation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Postconditions and mutation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frame-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frame conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-contracts-guide-correctness-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Contracts guide correctness arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-contracts-guide-test-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Contracts guide test design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Contracts guide test design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordinary-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordinary behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smallest-valid-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smallest valid input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeated-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repeated maximum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-values-equal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All values equal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negative-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negative values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid input
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-common-specification-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Common specification mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common specification mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-describing-only-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 1: describing only types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-hiding-an-assumption-inside-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 2: hiding an assumption inside the code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-writing-a-postcondition-that-almost-any-result-satisfies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 3: writing a postcondition that almost any result satisfies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-imposing-unnecessary-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 4: imposing unnecessary restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-forgetting-duplicate-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 5: forgetting duplicate behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-ignoring-mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 6: ignoring mutation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-7-confusing-validation-with-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 7: confusing validation with specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-8-omitting-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 8: omitting failure behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-a-practical-method-for-writing-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. A practical method for writing contracts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. A practical method for writing contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-identify-the-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: identify the inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-define-the-valid-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: define the valid domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-identify-the-result-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: identify the result form
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-define-the-exact-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: define the exact relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-specify-duplicates-and-boundary-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: specify duplicates and boundary cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-specify-mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: specify mutation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-specify-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: specify failure behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-challenge-the-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: challenge the contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-remove-unnecessary-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9: remove unnecessary restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-10-derive-tests-and-proof-obligations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 10: derive tests and proof obligations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-minimum-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Minimum value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-first-negative-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — First negative value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-any-target-versus-first-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Any target versus first target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-sortedness-as-a-precondition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Sortedness as a precondition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-in-place-normalisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — In-place normalisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-diagnose-a-weak-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Diagnose a weak contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-remove-unnecessary-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 7 — Remove unnecessary restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-mutation-versus-returned-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 8 — Mutation versus returned result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1802,6 +2847,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    01 · Foundations of Algorithm Design
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -2502,6 +3587,44 @@ P \;\Rightarrow\; \text{algorithm} \;\Rightarrow\; Q,
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../imperative-computation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Imperative Computation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1. Imperative Computation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../source/syllabus-pl/" class="md-footer__link md-footer__link--next" aria-label="Next: Polish syllabus">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Polish syllabus
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
