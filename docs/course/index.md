@@ -54,14 +54,14 @@ Choose a module from the dashboard. The course map is the only page that shows t
     </span>
   </a>
 
-  <div class="module-tile module-tile--planned">
+  <a class="module-tile module-tile--available" href="05-functions-call-stack-and-recursion/">
     <span class="module-tile__number">05</span>
     <span class="module-tile__body">
       <strong>Functions, the Call Stack, and Recursion</strong>
-      <small>Function environments, side effects, stack frames, and advanced recursion.</small>
-      <em>Planned</em>
+      <small>Function environments, side effects, stack frames, recursive execution, explicit stacks, and failure modes.</small>
+      <em>Available</em>
     </span>
-  </div>
+  </a>
 
   <div class="module-tile module-tile--planned">
     <span class="module-tile__number">06</span>
