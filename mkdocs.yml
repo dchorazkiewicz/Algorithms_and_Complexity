@@ -142,6 +142,16 @@ nav:
           - 9. Recursion versus Iteration Revisited: course/05-functions-call-stack-and-recursion/09-recursion-versus-iteration.md
           - 10. Worked Examples: course/05-functions-call-stack-and-recursion/10-worked-examples.md
           - 11. Module 05 Review: course/05-functions-call-stack-and-recursion/review.md
+      - 06 · Backtracking, Greedy Methods, and Dynamic Structures:
+          - Module introduction: course/06-backtracking-greedy-and-dynamic-structures/index.md
+          - 1. Search Spaces and Partial Solutions: course/06-backtracking-greedy-and-dynamic-structures/01-search-spaces-and-partial-solutions.md
+          - 2. The Backtracking Pattern: course/06-backtracking-greedy-and-dynamic-structures/02-the-backtracking-pattern.md
+          - 3. Pruning and Constraint Propagation: course/06-backtracking-greedy-and-dynamic-structures/03-pruning-and-constraint-propagation.md
+          - 4. Greedy Construction: course/06-backtracking-greedy-and-dynamic-structures/04-greedy-construction.md
+          - 5. Improving Greedy Solutions: course/06-backtracking-greedy-and-dynamic-structures/05-improving-greedy-solutions.md
+          - 6. Dynamic Data Structures: course/06-backtracking-greedy-and-dynamic-structures/06-dynamic-data-structures.md
+          - 7. Worked Examples: course/06-backtracking-greedy-and-dynamic-structures/07-worked-examples.md
+          - 8. Module 06 Review: course/06-backtracking-greedy-and-dynamic-structures/review.md
   - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
