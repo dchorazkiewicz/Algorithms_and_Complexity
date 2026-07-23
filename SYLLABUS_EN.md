@@ -1,204 +1,113 @@
-# Algorithms and Complexity — Requirements and Course Scope
+# Algorithms and Complexity
 
-## Course focus
+## Course format
 
-The course develops practical problem-solving skills through algorithm design, the appropriate use of data structures, and the evaluation of algorithmic efficiency.
+**ECTS credits:** 6
 
-## Learning objectives
+| Course component | Contact hours — full-time studies | Contact hours — part-time studies | Assessment form | Weight |
+|---|---:|---:|---|---:|
+| Lectures | 30 | 16 | Examination | 40 |
+| Practical classes | 45 | 24 | Graded course assessment | 60 |
+| Seminars | - | - |  |  |
+| Total scheduled classes | 75 | 40 |  |  |
+| Consultations, examinations, and assessments | 25 | 25 |  |  |
+| Total instructor-led workload | 100 | 65 |  |  |
+| Student independent study | 50 | 85 |  |  |
+| Total workload | 150 | 150 |  |  |
 
-1. Develop the ability to transform computational problems into correct algorithms.
-2. Gain both theoretical understanding and practical proficiency in working with non-trivial data structures.
-3. Develop the ability to classify algorithms and estimate their computational complexity.
+## Course objectives
 
-## Expected knowledge
+1. Develop the ability to solve problems by formulating correct algorithms.
+2. Acquire theoretical and practical proficiency in using complex data structures.
+3. Develop the ability to evaluate algorithm classes and estimate their computational complexity.
 
-The student understands:
+## Learning outcomes
 
-- the differences in structure, behavior, properties, and performance between iterative and recursive algorithms;
-- how to use compound data structures correctly in algorithm design, particularly arrays, linked lists, trees, and graphs;
-- the fundamentals of estimating algorithmic complexity.
+### KNOWLEDGE
 
-## Expected practical skills
+| No. | Course learning outcome (The student knows and understands) | Assessment method |
+|---|---|---|
+| W1 | The student knows and understands the differences in the properties, structure, operation, and efficiency of iterative and recursive algorithms.<br><br>The student knows and understands how to use complex data structures correctly in algorithm design: arrays, linked lists, trees, and graphs.<br><br>The student knows and understands how to estimate the computational complexity of algorithms. | Examination |
 
-The student is able to:
+### SKILLS
 
-- express the solution to a non-trivial problem as an algorithm, including its preconditions and postconditions;
-- use both primitive and compound data types when designing algorithms;
-- work with arrays and records;
-- use singly linked and doubly linked lists;
-- use LIFO stacks and FIFO queues;
-- use priority queues;
-- use binary trees, binary search trees, AVL trees, and heaps;
-- choose an appropriate graph representation and perform fundamental graph operations;
-- design and implement iterative and recursive algorithms;
-- estimate the computational complexity of simple iterative algorithms using Big O notation;
-- improve an existing solution based on constructive feedback;
-- communicate implementation difficulties, constraints, and design decisions precisely.
+| No. | Course learning outcome (The student is able to) | Assessment method |
+|---|---|---|
+| U1 | The student is able to express the solution to a complex problem as an algorithm, including its precondition and postcondition.<br><br>The student is able to use primitive and compound data types in algorithm design: arrays, singly and doubly linked lists, LIFO stacks and FIFO queues, binary trees, heaps, and graphs.<br><br>The student is able to estimate the computational complexity of simple iterative algorithms using Big O notation. | Practical-class tests.<br><br>Participation in discussions during practical classes and lectures. |
+| U2 | The student is able to improve developed solutions based on constructive feedback. | Discussion outside scheduled classes in an in-person format.<br><br>Discussion outside scheduled classes in a remote format.<br><br>Remote demonstration of work progress. |
 
-## Expected competencies
+### SOCIAL COMPETENCES
 
-The student is prepared to:
+| No. | Course learning outcome (The student is prepared to) | Assessment method |
+|---|---|---|
+| K1 | The student is prepared to solve broadly understood technical problems through algorithm design. | Discussion during practical classes. |
+| K2 | The student is able to communicate difficulties arising during the software solution development process precisely. | Discussion outside scheduled classes in an in-person format.<br><br>Discussion outside scheduled classes in a remote format. |
 
-- solve technical problems through systematic algorithm design;
-- select algorithms and data structures that match the characteristics of a problem;
-- evaluate the correctness and efficiency of a proposed solution;
-- report problems, limitations, and implementation progress in a precise technical manner.
+## Course content
 
-# Course content
+| No. | Course content (class topics) | Lectures — full-time studies | Lectures — part-time studies | Practical classes — full-time studies | Practical classes — part-time studies |
+|---:|---|---:|---:|---:|---:|
+| 1 | Imperative programming. Algorithm preconditions and postconditions. Forms of algorithm representation. Properties of algorithms. Pseudocode. Basic techniques for structuring algorithms. | 1 | 1 | 2 | 1 |
+| 2 | Iterative loops and loop termination conditions. Recursion. A method for constructing a correct algorithm. Primitive and compound data types. | 1 | 1 | 4 | 1 |
+| 3 | Arrays and records as aggregate data types. In-memory representation of different data types. Direct access to components. Basic array operations. | 2 | 1 | 3 | 1 |
+| 4 | Linear and binary search. Sorting methods. Properties of sorting algorithms. Computational complexity of algorithms. The divide-and-conquer paradigm. Outline of the QuickSort algorithm. Index arrays. Recursive algorithms. | 2 | 2 | 4 | 1 |
+| 5 | Function interaction with its environment and side effects. Variable behavior on the call stack. Recursive functions. Anatomy of a recursive call. Indirect and nested recursion. Stack-based implementation of recursion. Problems with recursion. Recursion versus iteration. | 5 | 2 | 8 | 4 |
+| 6 | Backtracking algorithms. Methods for improving greedy algorithms: systematic and heuristic approaches. Dynamic data structures. | 1 | 1 | 4 | 2 |
+| 7 | Linear linked lists. LIFO stacks and FIFO queues, priority queues, doubly linked and circular lists. Self-organizing lists. Skip lists. Selected list-processing algorithms. | 2 | 2 | 5 | 2 |
+| 8 | Binary trees. Fundamental tree concepts. Binary trees. Binary tree traversal. Binary search trees. Using trees to implement a dictionary. Tree balancing. AVL trees. Heaps. | 5 | 2 | 6 | 2 |
+| 9 | Graphs. Graph representation methods. Analysis of properties of example graphs. Basic graph operations. Adjacency-list graph representation. Depth-first search for graphs as an example of exhaustive search and its applications. Examples of applications of depth-first search. | 6 | 2 | 7 | 1 |
+| 10 | Analysis of algorithmic time complexity. Computational complexity. Big O notation. Examples of complexity calculations. Computationally hard problems. N- and NP-complete problems. | 6 | 2 | 2 | 1 |
+|  | **Total** | **30** | **16** | **45** | **16** |
 
-## 1. Foundations of algorithm design
+## Teaching methods
 
-- imperative computation;
-- algorithm preconditions and postconditions;
-- forms of algorithm representation;
-- defining properties of algorithms;
-- pseudocode;
-- fundamental techniques for structuring algorithms;
-- a systematic process for constructing a correct algorithm.
+| Teaching method | Lectures | Practical classes | Seminars | Other |
+|---|:---:|:---:|:---:|:---:|
+| Informational and/or problem-oriented lecture with a multimedia presentation | X |  |  |  |
+| Discussion-based lecture |  |  |  |  |
+| Case studies and worked examples | X | X |  |  |
+| Discussion, debate, brainstorming, gamification |  | X |  |  |
+| Problem-solving tasks, team exercises, laboratory exercises |  | X |  |  |
+| Design, programming, simulations | X | X |  |  |
+| Programming assignments |  | X |  |  |
+| Group work |  |  |  |  |
 
-## 2. Iteration and recursion
+## Assessment requirements
 
-- iterative loops;
-- loop termination conditions;
-- recursion;
-- recursive functions;
-- anatomy of a recursive call;
-- indirect recursion and nested recursion;
-- stack-based implementation of recursion;
-- common recursion-related problems and limitations;
-- comparison of recursive and iterative solutions.
+| Assessment method | Laboratory classes | Lectures |
+|---|---:|---:|
+| Oral examination |  |  |
+| Written examination |  | 90% |
+| Test | 80% |  |
+| Preparation and presentation of an essay, report, or another form of written work |  |  |
+| Completion of tasks, exercises, or a project during classes | 20% |  |
+| Completion of tasks, exercises, or a project outside classes |  |  |
+| Oral contributions during classes (e.g. discussion or debate) |  | 10% |
+| Other: attendance |  |  |
+| **Total** | **100%** | **100%** |
 
-## 3. Data types and data representation
+## Student independent study workload
 
-- primitive and compound data types;
-- arrays and records as aggregate data structures;
-- in-memory representation of different data types;
-- direct access to structure components;
-- fundamental array operations;
-- index arrays.
+| No. | Independent study activity | Estimated hours — full-time studies | Estimated hours — part-time studies |
+|---:|---|---:|---:|
+| 1 | Preparation for participation in classes (e.g. preliminary reading, preparation or collection of materials and teaching aids, preparation of a report or presentation for class, etc.) |  |  |
+| 2 | Completion of exercises or tasks after classes, to consolidate or extend the material covered | 15 | 25 |
+| 3 | Completion of project work outside classes |  |  |
+| 4 | Preparation of written work outside classes |  |  |
+| 5 | Required reading |  |  |
+| 6 | Mandatory review of other materials or content (e.g. audio and video materials, tools, teaching aids, software, hardware, legal acts, documentation, workplace conditions, etc.) |  |  |
+| 6 | Preparation for a test | 25 | 40 |
+| 7 | Preparation for the examination | 10 | 20 |
+| 8 | Other |  |  |
+|  | **Total** | **50** | **85** |
 
-## 4. Searching and sorting
+## Required reading
 
-- linear search;
-- binary search;
-- fundamental sorting algorithms;
-- properties of sorting algorithms;
-- complexity analysis of searching and sorting algorithms;
-- the divide-and-conquer paradigm;
-- the structure of the QuickSort algorithm;
-- recursive searching and sorting algorithms.
+1. *Zrozum struktury danych. Algorytmy i praca na danych w Javie*, Helion.
+2. *Algorytmy struktury danych i techniki programowania*, 5th edition, Helion.
+3. *Struktury danych i algorytmy w języku Java. Przewodnik dla początkujących*, Helion.
 
-## 5. Functions, the call stack, and side effects
+## Supplementary reading
 
-- function interaction with the surrounding program state;
-- side effects;
-- stack behavior of variables;
-- the relationship between the call stack and recursion.
-
-## 6. Algorithm design strategies
-
-- backtracking algorithms;
-- greedy algorithms;
-- systematic and heuristic methods for improving algorithms;
-- dynamic data structures.
-
-## 7. Linked lists, stacks, and queues
-
-- linear linked structures;
-- singly linked and doubly linked lists;
-- circular linked lists;
-- LIFO stacks;
-- FIFO queues;
-- priority queues;
-- self-organizing lists;
-- skip lists;
-- fundamental list-processing algorithms.
-
-## 8. Trees and heaps
-
-- fundamental tree terminology;
-- binary trees;
-- binary tree traversal;
-- binary search trees;
-- dictionary implementations based on trees;
-- tree balancing;
-- AVL trees;
-- heaps.
-
-## 9. Graphs
-
-- fundamental graph terminology;
-- graph representation techniques;
-- analysis of graph properties;
-- fundamental graph operations;
-- adjacency-list graph representation;
-- depth-first search (DFS);
-- DFS as an exhaustive search technique;
-- selected applications of DFS.
-
-## 10. Computational complexity
-
-- analysis of algorithmic time complexity;
-- computational complexity;
-- Big O notation;
-- examples of complexity estimation;
-- comparison of algorithmic efficiency;
-- computationally hard problems;
-- N-class and NP-complete problems, following the terminology used in the source syllabus.
-
-# Learning activities
-
-The course includes:
-
-- analysis of cases and worked examples;
-- problem-solving exercises;
-- team-based and laboratory exercises;
-- software design and implementation;
-- simulations;
-- programming assignments;
-- technical discussion of correctness, constraints, and performance.
-
-# Assessment
-
-Student achievement is evaluated through:
-
-- a written examination;
-- in-class tests;
-- completion of exercises, programming tasks, or project work during classes;
-- active participation in technical discussions;
-- presentation of work progress and analysis of problems encountered during implementation.
-
-## Assessment weights
-
-### Practical classes
-
-- in-class tests: 80%;
-- exercises, programming tasks, or project work completed during classes: 20%.
-
-### Lectures
-
-- written examination: 90%;
-- oral contributions and participation in discussions: 10%.
-
-# Independent study expectations
-
-The student is expected to allocate time to:
-
-- reinforcing and extending course material through exercises completed after class;
-- preparing for in-class tests;
-- preparing for the final examination;
-- reviewing, testing, and improving developed solutions;
-- consulting on technical problems, functional completeness, and implementation progress.
-
-# Minimum expected learning outcome
-
-By the end of the course, the student should be able to independently:
-
-1. formulate an algorithmic problem;
-2. define the input, expected output, preconditions, and postconditions;
-3. design an iterative or recursive solution;
-4. select an appropriate data structure;
-5. express the solution in pseudocode or as an executable program;
-6. justify the correctness of the selected approach;
-7. estimate the time complexity of the solution using Big O notation;
-8. identify the limitations of the solution and propose possible improvements.
+1. *C++ Algorytmy i struktury danych*, Helion.
+2. *Projektowanie i analiza algorytmów*, Helion.
