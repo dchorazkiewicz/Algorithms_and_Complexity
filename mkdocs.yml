@@ -188,6 +188,18 @@ nav:
           - 8. Cycle Detection and Ordering Applications: course/09-graphs-and-depth-first-search/08-cycles-and-ordering-applications.md
           - 9. Worked Examples: course/09-graphs-and-depth-first-search/09-worked-examples.md
           - 10. Module 09 Review: course/09-graphs-and-depth-first-search/review.md
+      - 10 · Computational Complexity and Hard Problems:
+          - Module introduction: course/10-computational-complexity-and-hard-problems/index.md
+          - 1. Cost Models and Input Size: course/10-computational-complexity-and-hard-problems/01-cost-models-and-input-size.md
+          - 2. Asymptotic Notation: course/10-computational-complexity-and-hard-problems/02-asymptotic-notation.md
+          - 3. Counting Iterative Algorithms: course/10-computational-complexity-and-hard-problems/03-counting-iterative-algorithms.md
+          - 4. Recursive Complexity and Recurrences: course/10-computational-complexity-and-hard-problems/04-recursive-complexity-and-recurrences.md
+          - 5. Growth Classes and Practical Scalability: course/10-computational-complexity-and-hard-problems/05-growth-classes-and-scalability.md
+          - 6. Best, Worst, Average, and Amortised Analysis: course/10-computational-complexity-and-hard-problems/06-cases-and-amortised-analysis.md
+          - 7. Tractability and Hard Problems: course/10-computational-complexity-and-hard-problems/07-tractability-and-hard-problems.md
+          - 8. P, NP, Reductions, and NP-Completeness: course/10-computational-complexity-and-hard-problems/08-p-np-reductions-and-completeness.md
+          - 9. Worked Examples: course/10-computational-complexity-and-hard-problems/09-worked-examples.md
+          - 10. Module 10 Review: course/10-computational-complexity-and-hard-problems/review.md
   - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
