@@ -1,0 +1,2320 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/structuring-algorithms/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Structuring Algorithms - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/layout-fixes.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#structuring-algorithms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Structuring Algorithms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../00-learning-to-think-algorithmically/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 · Learning to Think Algorithmically
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 · Learning to Think Algorithmically
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Problems, Algorithms, Programs, and Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reading Python as an Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Designing a Solution Step by Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Evidence That an Algorithm Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. How to Study Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Module 00 Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Imperative Computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preconditions-and-postconditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-structure-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why structure matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-start-from-the-problem-not-from-the-control-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Start from the problem, not from the control structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sequence-state-changes-in-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sequence: state changes in order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sequence: state changes in order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accidental-order-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accidental order dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-selection-express-distinct-logical-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Selection: express distinct logical cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Selection: express distinct logical cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditions-should-come-from-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions should come from the specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exhaustive-and-mutually-exclusive-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exhaustive and mutually exclusive cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#independent-conditions-versus-exclusive-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Independent conditions versus exclusive branches
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-iteration-repeat-one-meaningful-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Iteration: repeat one meaningful step
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Iteration: repeat one meaningful step">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-loop-body-should-represent-one-unit-of-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The loop body should represent one unit of progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-while-loops-and-explicit-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. While loops and explicit progress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. While loops and explicit progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-while-loop-must-expose-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A while loop must expose progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-nesting-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Nesting structures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Nesting structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nesting-should-reflect-problem-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nesting should reflect problem hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unnecessary-nesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unnecessary nesting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-decomposition-divide-the-problem-into-named-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Decomposition: divide the problem into named responsibilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Decomposition: divide the problem into named responsibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits-of-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benefits of decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-is-not-fragmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decomposition is not fragmentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-contracts-connect-decomposed-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Contracts connect decomposed parts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-avoid-duplicated-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Avoid duplicated logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Avoid duplicated logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duplication-can-hide-semantic-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplication can hide semantic drift
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-guard-clauses-and-early-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Guard clauses and early return
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Guard clauses and early return">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#early-return-in-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Early return in search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#early-return-versus-single-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Early return versus single exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-state-locality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. State locality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-refactoring-a-poorly-structured-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Refactoring a poorly structured algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Refactoring a poorly structured algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#further-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further decomposition?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-structure-and-correctness-reasoning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Structure and correctness reasoning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Structure and correctness reasoning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-structure-and-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Structure and complexity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Structure and complexity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequence_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-common-structural-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Common structural mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common structural mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mixing-unrelated-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixing unrelated responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excessive-nesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excessive nesting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unclear-loop-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unclear loop state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeated-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repeated conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hidden-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hidden side effects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premature-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premature decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-structure-chosen-before-the-problem-is-understood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control structure chosen before the problem is understood
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-a-practical-structuring-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. A practical structuring workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-derive-the-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Derive the structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-exclusive-or-independent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Exclusive or independent?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-refactor-nesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Refactor nesting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-decompose-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Decompose a task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-find-the-progress-measure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Find the progress measure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-detect-duplicated-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Detect duplicated logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-structure-a-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 7 — Structure a proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="structuring-algorithms">Structuring Algorithms<a class="headerlink" href="#structuring-algorithms" title="Permanent link">&para;</a></h1>
+<h2 id="why-structure-matters">Why structure matters<a class="headerlink" href="#why-structure-matters" title="Permanent link">&para;</a></h2>
+<p>A correct idea can become difficult to understand when it is expressed as a long, tangled sequence of instructions. The problem is not only aesthetic. Poor structure makes it harder to see what the algorithm is doing, harder to test individual parts, harder to reason about correctness, and easier to introduce hidden interactions between variables.</p>
+<p>Structured algorithm design addresses this problem by building solutions from a small number of well-understood forms:</p>
+<ul>
+<li><strong>sequence</strong> — perform steps in order;</li>
+<li><strong>selection</strong> — choose among alternatives;</li>
+<li><strong>iteration</strong> — repeat a block;</li>
+<li><strong>decomposition</strong> — divide a larger task into named subproblems.</li>
+</ul>
+<p>These forms are sufficient to express a very large class of algorithms. Their value comes from predictability. Each has a clear entry, a clear exit, and a clear role in the reasoning.</p>
+<div class="admonition note">
+<p class="admonition-title">What you should learn from this chapter</p>
+<p>By the end of the chapter, you should be able to design a small algorithm using sequence, selection, iteration, and decomposition; explain how state moves through each structure; recognise unnecessary nesting and duplicated logic; and refactor a monolithic procedure into smaller parts with explicit responsibilities.</p>
+</div>
+<hr />
+<h2 id="1-start-from-the-problem-not-from-the-control-structure">1. Start from the problem, not from the control structure<a class="headerlink" href="#1-start-from-the-problem-not-from-the-control-structure" title="Permanent link">&para;</a></h2>
+<p>Control structures are tools. They should be chosen because the problem requires a certain form of reasoning.</p>
+<p>Consider the task:</p>
+<blockquote>
+<p>Given a finite sequence of integers, return the sum of the positive values and the number of negative values.</p>
+</blockquote>
+<p>The requirements suggest:</p>
+<ul>
+<li>every value must be examined;</li>
+<li>positive and negative values require different actions;</li>
+<li>two independent summaries must be maintained;</li>
+<li>zero contributes to neither result.</li>
+</ul>
+<p>From those requirements, the structure follows naturally:</p>
+<ol>
+<li>initialise two state variables;</li>
+<li>iterate through the sequence;</li>
+<li>select one of the relevant cases;</li>
+<li>update the corresponding state;</li>
+<li>return both results.</li>
+</ol>
+<p>We do not begin by deciding “I want a loop.” We identify repeated work, then choose iteration.</p>
+<hr />
+<h2 id="2-sequence-state-changes-in-order">2. Sequence: state changes in order<a class="headerlink" href="#2-sequence-state-changes-in-order" title="Permanent link">&para;</a></h2>
+<p>A <strong>sequence</strong> executes instructions one after another.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>positive_sum ← 0
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>negative_count ← 0
+</code></pre></div>
+<p>The order of these two assignments does not matter because they are independent.</p>
+<p>Now consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>average ← total / count
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>RETURN average
+</code></pre></div>
+<p>Here the order matters. <code>average</code> must be computed before it can be returned.</p>
+<h3 id="data-dependencies">Data dependencies<a class="headerlink" href="#data-dependencies" title="Permanent link">&para;</a></h3>
+<p>A later instruction may depend on state produced earlier.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>width ← 5
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>height ← 4
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>area ← width * height
+</code></pre></div>
+<p>The final assignment depends on both earlier assignments.</p>
+<p>A useful question is:</p>
+<blockquote>
+<p>Which values must already exist before this instruction can execute correctly?</p>
+</blockquote>
+<p>This reveals the data dependency structure of the sequence.</p>
+<h3 id="accidental-order-dependencies">Accidental order dependencies<a class="headerlink" href="#accidental-order-dependencies" title="Permanent link">&para;</a></h3>
+<p>Poorly designed code sometimes creates unnecessary dependencies through reused variables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">border</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">price_per_unit</span>
+</code></pre></div>
+<p>The same variable represents three different meanings over time. The code may be correct, but reasoning is harder.</p>
+<p>Clearer version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">area_with_border</span> <span class="o">=</span> <span class="n">area</span> <span class="o">+</span> <span class="n">border</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">cost</span> <span class="o">=</span> <span class="n">area_with_border</span> <span class="o">*</span> <span class="n">price_per_unit</span>
+</code></pre></div>
+<p>Structure includes naming state so that each stage has a visible meaning.</p>
+<hr />
+<h2 id="3-selection-express-distinct-logical-cases">3. Selection: express distinct logical cases<a class="headerlink" href="#3-selection-express-distinct-logical-cases" title="Permanent link">&para;</a></h2>
+<p>A <strong>selection</strong> chooses which instructions execute based on a condition.</p>
+<p>For the motivating task:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>IF value &gt; 0 THEN
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    positive_sum ← positive_sum + value
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>ELSE IF value &lt; 0 THEN
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    negative_count ← negative_count + 1
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>END IF
+</code></pre></div>
+<p>Zero causes no update.</p>
+<h3 id="conditions-should-come-from-the-specification">Conditions should come from the specification<a class="headerlink" href="#conditions-should-come-from-the-specification" title="Permanent link">&para;</a></h3>
+<p>The cases are not arbitrary. They correspond to three mathematical categories:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>value &gt; 0
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>value &lt; 0
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>value = 0
+</code></pre></div>
+<p>The first two require actions. The third requires none.</p>
+<h3 id="exhaustive-and-mutually-exclusive-cases">Exhaustive and mutually exclusive cases<a class="headerlink" href="#exhaustive-and-mutually-exclusive-cases" title="Permanent link">&para;</a></h3>
+<p>Good case analysis asks:</p>
+<ul>
+<li>Do the cases cover every valid possibility?</li>
+<li>Can more than one case apply at the same time?</li>
+</ul>
+<p>For sign classification:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>value &lt; 0
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>value = 0
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>value &gt; 0
+</code></pre></div>
+<p>The cases are mutually exclusive and exhaustive.</p>
+<h3 id="independent-conditions-versus-exclusive-branches">Independent conditions versus exclusive branches<a class="headerlink" href="#independent-conditions-versus-exclusive-branches" title="Permanent link">&para;</a></h3>
+<p>Compare:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">positive_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">even_count</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>A value may be both positive and even, so two independent <code>if</code> statements are appropriate.</p>
+<p>By contrast:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;negative&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;zero&quot;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;positive&quot;</span>
+</code></pre></div>
+<p>Only one category applies, so an exclusive chain is appropriate.</p>
+<p>Using <code>elif</code> where conditions are not exclusive can silently skip required actions.</p>
+<hr />
+<h2 id="4-iteration-repeat-one-meaningful-step">4. Iteration: repeat one meaningful step<a class="headerlink" href="#4-iteration-repeat-one-meaningful-step" title="Permanent link">&para;</a></h2>
+<p>Iteration is appropriate when the same logical operation must be applied repeatedly.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>FOR EACH value IN values DO
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    ...
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>END FOR
+</code></pre></div>
+<p>The loop should have a clear interpretation.</p>
+<p>For our task:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>After processing a prefix of the sequence:
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    positive_sum is the sum of positive values in that prefix
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    negative_count is the number of negative values in that prefix
+</code></pre></div>
+<p>Each iteration extends the processed prefix by one element while preserving those meanings.</p>
+<h3 id="the-loop-body-should-represent-one-unit-of-progress">The loop body should represent one unit of progress<a class="headerlink" href="#the-loop-body-should-represent-one-unit-of-progress" title="Permanent link">&para;</a></h3>
+<p>A good loop body answers:</p>
+<blockquote>
+<p>What changes when one additional element is processed?</p>
+</blockquote>
+<p>For the current value:</p>
+<ul>
+<li>if positive, add it to <code>positive_sum</code>;</li>
+<li>if negative, increment <code>negative_count</code>;</li>
+<li>if zero, change nothing.</li>
+</ul>
+<h3 id="full-pseudocode">Full pseudocode<a class="headerlink" href="#full-pseudocode" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ALGORITHM summarise_signs(values)
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    positive_sum ← 0
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    negative_count ← 0
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    FOR EACH value IN values DO
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        IF value &gt; 0 THEN
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>            positive_sum ← positive_sum + value
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        ELSE IF value &lt; 0 THEN
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>            negative_count ← negative_count + 1
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>        END IF
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    END FOR
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    RETURN (positive_sum, negative_count)
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>END ALGORITHM
+</code></pre></div>
+<h3 id="python-implementation">Python implementation<a class="headerlink" href="#python-implementation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">summarise_signs</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">positive_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">negative_count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>            <span class="n">positive_sum</span> <span class="o">+=</span> <span class="n">value</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="k">elif</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>            <span class="n">negative_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="k">return</span> <span class="n">positive_sum</span><span class="p">,</span> <span class="n">negative_count</span>
+</code></pre></div>
+<p>The implementation mirrors the conceptual structure directly.</p>
+<hr />
+<h2 id="5-while-loops-and-explicit-progress">5. While loops and explicit progress<a class="headerlink" href="#5-while-loops-and-explicit-progress" title="Permanent link">&para;</a></h2>
+<p>A <code>for</code> loop is useful when the iteration set is known. A <code>while</code> loop is useful when repetition continues until a condition changes.</p>
+<p>Example:</p>
+<blockquote>
+<p>Repeatedly divide a positive integer by two using integer division until it becomes zero, and count the steps.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">halving_steps</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be positive&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>        <span class="n">number</span> <span class="o">//=</span> <span class="mi">2</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="k">return</span> <span class="n">steps</span>
+</code></pre></div>
+<p>The loop structure contains:</p>
+<ul>
+<li>initial state: positive <code>number</code>, <code>steps = 0</code>;</li>
+<li>continuation condition: <code>number &gt; 0</code>;</li>
+<li>progress: integer division reduces <code>number</code>;</li>
+<li>bound: <code>number</code> cannot remain a positive integer forever while being halved;</li>
+<li>final meaning: <code>steps</code> counts the performed reductions.</li>
+</ul>
+<h3 id="a-while-loop-must-expose-progress">A while loop must expose progress<a class="headerlink" href="#a-while-loop-must-expose-progress" title="Permanent link">&para;</a></h3>
+<p>Bad structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>The condition depends on <code>number</code>, but <code>number</code> never changes. The loop does not progress.</p>
+<p>When reading a <code>while</code> loop, identify which statement moves the state toward termination.</p>
+<hr />
+<h2 id="6-nesting-structures">6. Nesting structures<a class="headerlink" href="#6-nesting-structures" title="Permanent link">&para;</a></h2>
+<p>Algorithms often combine sequence, selection, and iteration.</p>
+<p>Example:</p>
+<blockquote>
+<p>For every row of a matrix, count how many values are negative.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">negative_counts</span><span class="p">(</span><span class="n">rows</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">result</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>            <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>Structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>outer iteration over rows
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    initialise one row count
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    inner iteration over values
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>        selection for negative values
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    store row result
+</code></pre></div>
+<h3 id="nesting-should-reflect-problem-hierarchy">Nesting should reflect problem hierarchy<a class="headerlink" href="#nesting-should-reflect-problem-hierarchy" title="Permanent link">&para;</a></h3>
+<p>The outer loop corresponds to rows. The inner loop corresponds to values within one row. The nesting is meaningful because the data itself is nested.</p>
+<h3 id="unnecessary-nesting">Unnecessary nesting<a class="headerlink" href="#unnecessary-nesting" title="Permanent link">&para;</a></h3>
+<p>Poor version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">if</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>            <span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<p>The logic may be flattened:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<p>The clearer form depends on whether the separate conditions have distinct conceptual roles. Nesting should reveal logic, not merely accumulate indentation.</p>
+<hr />
+<h2 id="7-decomposition-divide-the-problem-into-named-responsibilities">7. Decomposition: divide the problem into named responsibilities<a class="headerlink" href="#7-decomposition-divide-the-problem-into-named-responsibilities" title="Permanent link">&para;</a></h2>
+<p>A large algorithm becomes easier to understand when it is divided into smaller functions or procedures.</p>
+<p>Suppose we need to process student scores:</p>
+<ol>
+<li>validate that every score is between <code>0</code> and <code>100</code>;</li>
+<li>compute the average;</li>
+<li>determine whether the average is passing;</li>
+<li>return a summary.</li>
+</ol>
+<p>Monolithic version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_summary</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">scores</span><span class="p">:</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;scores must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>        <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;score out of range&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>        <span class="n">total</span> <span class="o">+=</span> <span class="n">score</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>    <span class="n">average</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>    <span class="k">if</span> <span class="n">average</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>        <span class="n">passed</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>        <span class="n">passed</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;average&quot;</span><span class="p">:</span> <span class="n">average</span><span class="p">,</span> <span class="s2">&quot;passed&quot;</span><span class="p">:</span> <span class="n">passed</span><span class="p">}</span>
+</code></pre></div>
+<p>This is understandable, but several responsibilities are mixed.</p>
+<p>Decomposed version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">validate_scores</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">scores</span><span class="p">:</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;scores must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>        <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;score out of range&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>        <span class="n">total</span> <span class="o">+=</span> <span class="n">score</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>    <span class="k">return</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">has_passed</span><span class="p">(</span><span class="n">average_score</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>    <span class="k">return</span> <span class="n">average_score</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_summary</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>    <span class="n">validate_scores</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>    <span class="n">average_score</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>    <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>        <span class="s2">&quot;average&quot;</span><span class="p">:</span> <span class="n">average_score</span><span class="p">,</span>
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>        <span class="s2">&quot;passed&quot;</span><span class="p">:</span> <span class="n">has_passed</span><span class="p">(</span><span class="n">average_score</span><span class="p">),</span>
+<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>    <span class="p">}</span>
+</code></pre></div>
+<h3 id="benefits-of-decomposition">Benefits of decomposition<a class="headerlink" href="#benefits-of-decomposition" title="Permanent link">&para;</a></h3>
+<p>Each function now has:</p>
+<ul>
+<li>one primary responsibility;</li>
+<li>a smaller contract;</li>
+<li>fewer state variables;</li>
+<li>simpler tests;</li>
+<li>a clearer correctness argument;</li>
+<li>potential reuse.</li>
+</ul>
+<h3 id="decomposition-is-not-fragmentation">Decomposition is not fragmentation<a class="headerlink" href="#decomposition-is-not-fragmentation" title="Permanent link">&para;</a></h3>
+<p>Too many tiny functions can also harm readability.</p>
+<p>A function should represent a meaningful operation or decision. Creating a separate function for every arithmetic expression adds indirection without clarifying the design.</p>
+<p>Useful question:</p>
+<blockquote>
+<p>Does this part have a coherent responsibility that can be named and specified independently?</p>
+</blockquote>
+<hr />
+<h2 id="8-contracts-connect-decomposed-parts">8. Contracts connect decomposed parts<a class="headerlink" href="#8-contracts-connect-decomposed-parts" title="Permanent link">&para;</a></h2>
+<p>When one function calls another, the caller relies on the callee's contract.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">average_score</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+</code></pre></div>
+<p>The caller needs to know:</p>
+<ul>
+<li>whether <code>scores</code> may be empty;</li>
+<li>whether the function modifies <code>scores</code>;</li>
+<li>what value is returned;</li>
+<li>what errors may occur.</li>
+</ul>
+<p>Decomposition works well only when interfaces are explicit.</p>
+<p>A large proof can then be organised compositionally:</p>
+<ol>
+<li>validation establishes the precondition for <code>average</code>;</li>
+<li><code>average</code> guarantees a valid mean;</li>
+<li><code>has_passed</code> classifies the mean;</li>
+<li><code>build_summary</code> combines the guaranteed results.</li>
+</ol>
+<p>This is one reason modularity supports correctness.</p>
+<hr />
+<h2 id="9-avoid-duplicated-logic">9. Avoid duplicated logic<a class="headerlink" href="#9-avoid-duplicated-logic" title="Permanent link">&para;</a></h2>
+<p>Duplication creates multiple places where the same rule must remain consistent.</p>
+<p>Bad example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pass&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># later</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">save_result</span><span class="p">(</span><span class="s2">&quot;pass&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The two conditions differ. One treats <code>50</code> as passing, the other does not.</p>
+<p>Better:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">has_passed</span><span class="p">(</span><span class="n">score</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="k">return</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+</code></pre></div>
+<p>Then both uses depend on one definition.</p>
+<h3 id="duplication-can-hide-semantic-drift">Duplication can hide semantic drift<a class="headerlink" href="#duplication-can-hide-semantic-drift" title="Permanent link">&para;</a></h3>
+<p>Two blocks may begin identical and later evolve differently. Centralising a meaningful rule reduces that risk.</p>
+<p>Do not remove duplication mechanically. Extract shared logic when the duplicated code represents the same concept.</p>
+<hr />
+<h2 id="10-guard-clauses-and-early-return">10. Guard clauses and early return<a class="headerlink" href="#10-guard-clauses-and-early-return" title="Permanent link">&para;</a></h2>
+<p>A <strong>guard clause</strong> handles a special or invalid case early.</p>
+<p>Nested version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_value</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="k">if</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>        <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Guard-clause version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_value</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<p>The second version separates failure from the main path and reduces nesting.</p>
+<h3 id="early-return-in-search">Early return in search<a class="headerlink" href="#early-return-in-search" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>            <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+<p>The algorithm stops as soon as the answer is known.</p>
+<h3 id="early-return-versus-single-exit">Early return versus single exit<a class="headerlink" href="#early-return-versus-single-exit" title="Permanent link">&para;</a></h3>
+<p>Multiple returns can improve clarity when they correspond to decisive outcomes. They can also make reasoning harder if scattered unpredictably through a large procedure.</p>
+<p>Use early return when it clarifies the contract and control flow.</p>
+<hr />
+<h2 id="11-state-locality">11. State locality<a class="headerlink" href="#11-state-locality" title="Permanent link">&para;</a></h2>
+<p>State should exist in the smallest scope that needs it.</p>
+<p>Bad design:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_positive</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="k">global</span> <span class="n">count</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+<p>The result depends on global mutable state.</p>
+<p>Better:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_positive</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+<p>Local state:</p>
+<ul>
+<li>is easier to reason about;</li>
+<li>avoids interference between calls;</li>
+<li>makes the function easier to test;</li>
+<li>reduces side effects.</li>
+</ul>
+<p>Module 05 develops side effects and function interaction with the environment in greater depth.</p>
+<hr />
+<h2 id="12-refactoring-a-poorly-structured-algorithm">12. Refactoring a poorly structured algorithm<a class="headerlink" href="#12-refactoring-a-poorly-structured-algorithm" title="Permanent link">&para;</a></h2>
+<p>Task:</p>
+<blockquote>
+<p>Return the average of non-negative values, or <code>None</code> if no non-negative value exists.</p>
+</blockquote>
+<p>Poor version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">average_non_negative</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>        <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">y</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>        <span class="k">return</span> <span class="n">result</span> <span class="o">/</span> <span class="n">x</span>
+</code></pre></div>
+<p>The algorithm is correct, but naming and structure are weak.</p>
+<p>Improved version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">average_non_negative</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>            <span class="n">total</span> <span class="o">+=</span> <span class="n">value</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>    <span class="k">return</span> <span class="n">total</span> <span class="o">/</span> <span class="n">count</span>
+</code></pre></div>
+<p>Improvements:</p>
+<ul>
+<li>names expose state meanings;</li>
+<li>initialisation is grouped;</li>
+<li>the loop body expresses one case;</li>
+<li>the no-result case is handled by a guard clause;</li>
+<li>the main return is visually clear.</li>
+</ul>
+<h3 id="further-decomposition">Further decomposition?<a class="headerlink" href="#further-decomposition" title="Permanent link">&para;</a></h3>
+<p>A separate function is not necessary unless the filtering or averaging rule needs independent reuse or testing.</p>
+<p>Refactoring should improve conceptual structure, not maximise function count.</p>
+<hr />
+<h2 id="13-structure-and-correctness-reasoning">13. Structure and correctness reasoning<a class="headerlink" href="#13-structure-and-correctness-reasoning" title="Permanent link">&para;</a></h2>
+<p>Structured code supports structured reasoning.</p>
+<h3 id="sequence">Sequence<a class="headerlink" href="#sequence" title="Permanent link">&para;</a></h3>
+<p>Show that each step establishes what the next step requires.</p>
+<h3 id="selection">Selection<a class="headerlink" href="#selection" title="Permanent link">&para;</a></h3>
+<p>Show that every possible case is covered and that each branch establishes the required condition.</p>
+<h3 id="iteration">Iteration<a class="headerlink" href="#iteration" title="Permanent link">&para;</a></h3>
+<p>Show:</p>
+<ul>
+<li>initialisation;</li>
+<li>invariant preservation;</li>
+<li>progress;</li>
+<li>termination;</li>
+<li>postcondition at completion.</li>
+</ul>
+<h3 id="decomposition">Decomposition<a class="headerlink" href="#decomposition" title="Permanent link">&para;</a></h3>
+<p>Use the contracts of smaller functions to justify the larger function.</p>
+<p>This correspondence is one of the main reasons structured programming matters in algorithmics.</p>
+<hr />
+<h2 id="14-structure-and-complexity">14. Structure and complexity<a class="headerlink" href="#14-structure-and-complexity" title="Permanent link">&para;</a></h2>
+<p>Structure also guides cost analysis.</p>
+<h3 id="sequence_1">Sequence<a class="headerlink" href="#sequence_1" title="Permanent link">&para;</a></h3>
+<p>Costs add:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>O(n) + O(n) = O(n)
+</code></pre></div>
+<h3 id="selection_1">Selection<a class="headerlink" href="#selection_1" title="Permanent link">&para;</a></h3>
+<p>For worst-case analysis, consider the more expensive branch.</p>
+<h3 id="iteration_1">Iteration<a class="headerlink" href="#iteration_1" title="Permanent link">&para;</a></h3>
+<p>Multiply the number of iterations by the cost of the body, then account for changing body costs when necessary.</p>
+<h3 id="nested-iteration">Nested iteration<a class="headerlink" href="#nested-iteration" title="Permanent link">&para;</a></h3>
+<p>Two nested loops over <code>n</code> elements often suggest <code>O(n²)</code>, but only if the inner loop executes <code>n</code> times for each outer iteration.</p>
+<h3 id="function-calls">Function calls<a class="headerlink" href="#function-calls" title="Permanent link">&para;</a></h3>
+<p>Include the cost of called functions. A one-line call may hide substantial work.</p>
+<p>Structure does not automatically determine complexity, but it provides the skeleton of the analysis.</p>
+<hr />
+<h2 id="15-common-structural-mistakes">15. Common structural mistakes<a class="headerlink" href="#15-common-structural-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mixing-unrelated-responsibilities">Mixing unrelated responsibilities<a class="headerlink" href="#mixing-unrelated-responsibilities" title="Permanent link">&para;</a></h3>
+<p>One function validates input, reads files, transforms data, prints results, and updates global state.</p>
+<h3 id="excessive-nesting">Excessive nesting<a class="headerlink" href="#excessive-nesting" title="Permanent link">&para;</a></h3>
+<p>Deeply nested branches make the main path difficult to see.</p>
+<h3 id="unclear-loop-state">Unclear loop state<a class="headerlink" href="#unclear-loop-state" title="Permanent link">&para;</a></h3>
+<p>Variables change, but their intended meanings are not stated.</p>
+<h3 id="repeated-conditions">Repeated conditions<a class="headerlink" href="#repeated-conditions" title="Permanent link">&para;</a></h3>
+<p>The same business or mathematical rule appears in multiple places with slight differences.</p>
+<h3 id="hidden-side-effects">Hidden side effects<a class="headerlink" href="#hidden-side-effects" title="Permanent link">&para;</a></h3>
+<p>A helper function modifies input even though its name suggests a calculation.</p>
+<h3 id="premature-decomposition">Premature decomposition<a class="headerlink" href="#premature-decomposition" title="Permanent link">&para;</a></h3>
+<p>Every tiny expression becomes a separate function, making the algorithm fragmented.</p>
+<h3 id="control-structure-chosen-before-the-problem-is-understood">Control structure chosen before the problem is understood<a class="headerlink" href="#control-structure-chosen-before-the-problem-is-understood" title="Permanent link">&para;</a></h3>
+<p>The author forces recursion, a loop, or a library operation without first deriving the need from the specification.</p>
+<hr />
+<h2 id="16-a-practical-structuring-workflow">16. A practical structuring workflow<a class="headerlink" href="#16-a-practical-structuring-workflow" title="Permanent link">&para;</a></h2>
+<p>For a new algorithm:</p>
+<ol>
+<li>write the contract;</li>
+<li>identify the main states or phases;</li>
+<li>place dependent steps in sequence;</li>
+<li>identify genuinely different cases;</li>
+<li>identify repeated work and its progress measure;</li>
+<li>assign a precise meaning to each persistent state variable;</li>
+<li>extract coherent subproblems into functions;</li>
+<li>make side effects visible;</li>
+<li>remove duplicated rules;</li>
+<li>trace the structured algorithm;</li>
+<li>justify each structure;</li>
+<li>analyse cost by following the structure.</li>
+</ol>
+<hr />
+<h2 id="17-what-you-must-be-able-to-explain">17. What you must be able to explain<a class="headerlink" href="#17-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>After this chapter, you should be able to:</p>
+<ul>
+<li>derive sequence, selection, and iteration from problem requirements;</li>
+<li>distinguish exclusive and independent conditions;</li>
+<li>state the meaning of loop state;</li>
+<li>identify progress in a while loop;</li>
+<li>explain when nesting reflects data structure and when it obscures logic;</li>
+<li>decompose a task into meaningful functions;</li>
+<li>connect function contracts during composition;</li>
+<li>use guard clauses and early returns deliberately;</li>
+<li>keep state local;</li>
+<li>refactor a monolithic algorithm without changing its behaviour;</li>
+<li>use structure to support correctness and complexity analysis.</li>
+</ul>
+<hr />
+<h2 id="18-practice">18. Practice<a class="headerlink" href="#18-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-derive-the-structure">Exercise 1 — Derive the structure<a class="headerlink" href="#exercise-1-derive-the-structure" title="Permanent link">&para;</a></h3>
+<p>Design an algorithm that returns:</p>
+<ul>
+<li>the number of even values;</li>
+<li>the sum of odd values.</li>
+</ul>
+<p>State why iteration and selection are needed.</p>
+<h3 id="exercise-2-exclusive-or-independent">Exercise 2 — Exclusive or independent?<a class="headerlink" href="#exercise-2-exclusive-or-independent" title="Permanent link">&para;</a></h3>
+<p>For each pair of conditions, decide whether to use two independent <code>if</code> statements or an <code>if</code>/<code>elif</code> chain:</p>
+<ol>
+<li>value is positive; value is even;</li>
+<li>score is below 50; score is at least 50;</li>
+<li>record is invalid; record should be logged;</li>
+<li>number is negative; number is zero; number is positive.</li>
+</ol>
+<h3 id="exercise-3-refactor-nesting">Exercise 3 — Refactor nesting<a class="headerlink" href="#exercise-3-refactor-nesting" title="Permanent link">&para;</a></h3>
+<p>Rewrite:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">collect</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="k">if</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>            <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>                <span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>Explain every structural change.</p>
+<h3 id="exercise-4-decompose-a-task">Exercise 4 — Decompose a task<a class="headerlink" href="#exercise-4-decompose-a-task" title="Permanent link">&para;</a></h3>
+<p>Design a program that validates temperatures, computes minimum and maximum, and formats a report. Propose meaningful function boundaries and contracts.</p>
+<h3 id="exercise-5-find-the-progress-measure">Exercise 5 — Find the progress measure<a class="headerlink" href="#exercise-5-find-the-progress-measure" title="Permanent link">&para;</a></h3>
+<p>For each loop, identify what changes and why termination follows:</p>
+<ul>
+<li>scanning an array by increasing index;</li>
+<li>repeatedly dividing a positive integer by two;</li>
+<li>moving <code>left</code> upward and <code>right</code> downward;</li>
+<li>removing one item from a queue each iteration.</li>
+</ul>
+<h3 id="exercise-6-detect-duplicated-logic">Exercise 6 — Detect duplicated logic<a class="headerlink" href="#exercise-6-detect-duplicated-logic" title="Permanent link">&para;</a></h3>
+<p>Write two examples where duplicated conditions may drift apart. Refactor each into one named rule.</p>
+<h3 id="exercise-7-structure-a-proof">Exercise 7 — Structure a proof<a class="headerlink" href="#exercise-7-structure-a-proof" title="Permanent link">&para;</a></h3>
+<p>For <code>average_non_negative</code>, state:</p>
+<ul>
+<li>the loop invariant;</li>
+<li>the completion argument;</li>
+<li>the no-result case;</li>
+<li>time and auxiliary-space complexity.</li>
+</ul>
+<hr />
+<h2 id="19-summary">19. Summary<a class="headerlink" href="#19-summary" title="Permanent link">&para;</a></h2>
+<p>Structured algorithms are built from sequence, selection, iteration, and decomposition. These are not merely programming-language constructs. They are reasoning forms.</p>
+<p>Sequence expresses dependency. Selection expresses cases. Iteration expresses repeated progress. Decomposition expresses responsibility and composition.</p>
+<p>Good structure makes state meanings visible, isolates side effects, reduces duplication, supports testing, clarifies correctness, and guides complexity analysis.</p>
+<p>The next chapter combines the complete Module 01 toolkit—contracts, representations, properties, pseudocode, and structure—in fully worked examples.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
