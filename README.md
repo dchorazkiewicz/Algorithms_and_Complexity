@@ -1,13 +1,21 @@
 # Algorithms and Complexity
 
-This repository is being rebuilt as a complete set of English-language lecture notes and study materials for **Algorithms and Complexity**.
+This repository contains a complete set of English-language lecture notes and self-study materials for **Algorithms and Complexity**.
 
-The website is generated with **MkDocs Material** and is designed to cover the retained syllabus content in its original order, without omitting required topics.
+The primary objective is educational: a student should be able to learn the required syllabus material from the website, understand the definitions and theory, follow worked examples, compare Python and C++ implementations, reason about correctness and termination, and analyse computational complexity.
+
+The repository is not intended to be a collection of short tasks or technical project documentation.
 
 ## Source documents
 
-- `SYLABUS.md` — filtered Polish source syllabus;
-- `SYLLABUS_EN.md` — English terminology version of the same syllabus.
+- `SYLABUS.md` — filtered Polish source syllabus and the primary scope reference;
+- `SYLLABUS_EN.md` — English terminology version of the same syllabus;
+- `CONTENT_REQUIREMENTS.md` — binding student-first editorial requirements;
+- `CONTENT_AUDIT.md` — current audit and required corrections.
+
+## Website
+
+The notes are published with MkDocs Material through GitHub Pages.
 
 ## Local preview
 
@@ -27,4 +35,4 @@ Open `http://127.0.0.1:8000`.
 mkdocs build --strict
 ```
 
-The detailed, iterative content plan is available in `docs/development-plan.md` and on the generated website.
+Development remains iterative, but the public website prioritises learning content. Technical planning documents are kept outside the main student navigation.
