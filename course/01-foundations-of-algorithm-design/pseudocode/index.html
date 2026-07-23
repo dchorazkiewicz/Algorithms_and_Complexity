@@ -1,0 +1,2448 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/pseudocode/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Pseudocode - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/layout-fixes.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pseudocode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pseudocode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../00-learning-to-think-algorithmically/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 · Learning to Think Algorithmically
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 · Learning to Think Algorithmically
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Problems, Algorithms, Programs, and Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reading Python as an Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Designing a Solution Step by Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Evidence That an Algorithm Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. How to Study Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Module 00 Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Imperative Computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preconditions-and-postconditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-pseudocode-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why pseudocode exists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-main-objective-reveal-the-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The main objective: reveal the algorithm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pseudocode-needs-explicit-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pseudocode needs explicit conventions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pseudocode needs explicit conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equality-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equality comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inequality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inequality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indexing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-variables-and-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Variables and assignment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Variables and assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simultaneous-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simultaneous assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Expressions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arithmetic expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combined-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combined conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-way-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One-way selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-way-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-way selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-way-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-way selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-overlapping-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avoid overlapping ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-iteration-over-a-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Iteration over a sequence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Iteration over a sequence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-an-index-is-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When an index is needed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empty-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Empty ranges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-while-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. While loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. While loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-common-error-missing-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A common error: missing progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-repeat-until-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Repeat-until loops
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-functions-and-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Functions and procedures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Functions and procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-returning-versus-printing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Returning versus printing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-accessing-sequences-and-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Accessing sequences and records
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Accessing sequences and records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequence-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence indexing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#record-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updating a component
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-sentinel-values-and-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Sentinel values and failure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-full-example-first-index-of-the-minimum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Full example: first index of the minimum
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Full example: first index of the minimum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-the-comparison-is-strict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the comparison is strict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python translation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-full-example-counting-a-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Full example: counting a range
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Full example: counting a range">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-full-example-in-place-reversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Full example: in-place reversal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Full example: in-place reversal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-common-pseudocode-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Common pseudocode mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Common pseudocode mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-mixing-assignment-and-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 1: mixing assignment and equality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-using-undefined-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 2: using undefined operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-hiding-a-complex-algorithm-in-one-verb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 3: hiding a complex algorithm in one verb
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-language-dependent-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 4: language-dependent syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-unclear-range-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 5: unclear range boundaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-omitting-the-failure-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 6: omitting the failure path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-7-writing-comments-instead-of-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 7: writing comments instead of operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-translating-pseudocode-into-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Translating pseudocode into Python
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Translating pseudocode into Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-preserve-the-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: preserve the contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-map-state-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: map state variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-map-control-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: map control structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-check-boundary-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: check boundary conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-account-for-language-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: account for language semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-test-the-translation-against-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: test the translation against traces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="20. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-translate-to-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Translate to pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-translate-to-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Translate to Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-repair-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Repair the loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-first-versus-last-occurrence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — First versus last occurrence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-in-place-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — In-place update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-range-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Range conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-ambiguity-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 7 — Ambiguity audit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pseudocode">Pseudocode<a class="headerlink" href="#pseudocode" title="Permanent link">&para;</a></h1>
+<h2 id="why-pseudocode-exists">Why pseudocode exists<a class="headerlink" href="#why-pseudocode-exists" title="Permanent link">&para;</a></h2>
+<p>When we explain an algorithm directly in Python, readers may focus on syntax, library functions, type annotations, or language-specific behaviour. When we explain it only in ordinary prose, the description may be too vague to execute or analyse.</p>
+<p>Pseudocode occupies the space between those extremes.</p>
+<p>It is a <strong>precise but language-independent representation of an algorithm</strong>. Its purpose is not to compile. Its purpose is to expose the logic, state, control flow, and data operations clearly enough that the algorithm can be understood, traced, justified, and translated into a real programming language.</p>
+<p>Good pseudocode therefore behaves like a carefully designed notation. It is not random English with indentation, and it is not Python with punctuation removed.</p>
+<div class="admonition note">
+<p class="admonition-title">What you should learn from this chapter</p>
+<p>By the end of the chapter, you should be able to read and write consistent pseudocode using assignment, expressions, conditions, loops, procedures, functions, returns, and data access; translate between pseudocode and Python; and identify pseudocode that is ambiguous, language-dependent, or logically incomplete.</p>
+</div>
+<hr />
+<h2 id="1-the-main-objective-reveal-the-algorithm">1. The main objective: reveal the algorithm<a class="headerlink" href="#1-the-main-objective-reveal-the-algorithm" title="Permanent link">&para;</a></h2>
+<p>Consider the problem:</p>
+<blockquote>
+<p>Count how many values in a finite sequence are negative.</p>
+</blockquote>
+<p>A prose description might say:</p>
+<blockquote>
+<p>Go through the values and increase a counter whenever a negative value appears.</p>
+</blockquote>
+<p>A Python implementation might be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_negative</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+<p>Pseudocode keeps the algorithmic structure while removing Python-specific syntax:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ALGORITHM count_negative(values)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    count ← 0
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    FOR EACH value IN values DO
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        IF value &lt; 0 THEN
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>            count ← count + 1
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        END IF
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    END FOR
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    RETURN count
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>END ALGORITHM
+</code></pre></div>
+<p>The essential ideas remain visible:</p>
+<ul>
+<li>state variable <code>count</code>;</li>
+<li>initial value <code>0</code>;</li>
+<li>traversal of every input element;</li>
+<li>condition <code>value &lt; 0</code>;</li>
+<li>update of the count;</li>
+<li>returned result.</li>
+</ul>
+<hr />
+<h2 id="2-pseudocode-needs-explicit-conventions">2. Pseudocode needs explicit conventions<a class="headerlink" href="#2-pseudocode-needs-explicit-conventions" title="Permanent link">&para;</a></h2>
+<p>Pseudocode is not governed by one universal syntax. Different books and courses use different styles. That is acceptable only if the conventions are consistent.</p>
+<p>This course uses the following rules.</p>
+<h3 id="assignment">Assignment<a class="headerlink" href="#assignment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>x ← expression
+</code></pre></div>
+<p>The left arrow means: evaluate the expression and store the result in <code>x</code>.</p>
+<h3 id="equality-comparison">Equality comparison<a class="headerlink" href="#equality-comparison" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>x = y
+</code></pre></div>
+<p>The equality symbol is used in conditions, not for assignment.</p>
+<h3 id="inequality">Inequality<a class="headerlink" href="#inequality" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>x ≠ y
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>x &lt; y
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>x ≤ y
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>x &gt; y
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>x ≥ y
+</code></pre></div>
+<h3 id="boolean-operators">Boolean operators<a class="headerlink" href="#boolean-operators" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>AND
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>OR
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>NOT
+</code></pre></div>
+<h3 id="blocks">Blocks<a class="headerlink" href="#blocks" title="Permanent link">&para;</a></h3>
+<p>Blocks are indented and explicitly closed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>IF condition THEN
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    ...
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>END IF
+</code></pre></div>
+<h3 id="indexing">Indexing<a class="headerlink" href="#indexing" title="Permanent link">&para;</a></h3>
+<p>Unless stated otherwise, sequences use zero-based indexing.</p>
+<h3 id="return">Return<a class="headerlink" href="#return" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>RETURN value
+</code></pre></div>
+<p><code>RETURN</code> ends the current function or algorithm immediately and produces the specified result.</p>
+<h3 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>// comment
+</code></pre></div>
+<p>Comments explain intent but do not form part of the executable method.</p>
+<hr />
+<h2 id="3-variables-and-assignment">3. Variables and assignment<a class="headerlink" href="#3-variables-and-assignment" title="Permanent link">&para;</a></h2>
+<p>Pseudocode variables represent components of algorithm state.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>count ← 0
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>current_maximum ← values[0]
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>index ← index + 1
+</code></pre></div>
+<p>Assignment must not be confused with mathematical equality.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>index ← index + 1
+</code></pre></div>
+<p>means:</p>
+<ol>
+<li>read the old value of <code>index</code>;</li>
+<li>add one;</li>
+<li>replace the old value by the result.</li>
+</ol>
+<h3 id="simultaneous-assignment">Simultaneous assignment<a class="headerlink" href="#simultaneous-assignment" title="Permanent link">&para;</a></h3>
+<p>Sometimes two values must be updated without destroying information.</p>
+<p>A swap may be written:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>temporary ← left
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>left ← right
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>right ← temporary
+</code></pre></div>
+<p>Some pseudocode styles allow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>(left, right) ← (right, left)
+</code></pre></div>
+<p>This course prefers the explicit temporary-variable version when teaching state changes, because it exposes the sequence of operations.</p>
+<hr />
+<h2 id="4-expressions">4. Expressions<a class="headerlink" href="#4-expressions" title="Permanent link">&para;</a></h2>
+<p>Expressions produce values.</p>
+<h3 id="arithmetic-expressions">Arithmetic expressions<a class="headerlink" href="#arithmetic-expressions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>a + b
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>length * width
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sum / count
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>value MOD 2
+</code></pre></div>
+<p><code>MOD</code> denotes the remainder operation.</p>
+<h3 id="boolean-expressions">Boolean expressions<a class="headerlink" href="#boolean-expressions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>value &lt; 0
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>index &lt; length(values)
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>left ≤ right
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>values[index] = target
+</code></pre></div>
+<h3 id="combined-conditions">Combined conditions<a class="headerlink" href="#combined-conditions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>index ≥ 0 AND index &lt; length(values)
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>NOT found
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>value &lt; minimum OR value &gt; maximum
+</code></pre></div>
+<p>Parentheses should be used when precedence could be unclear.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>(valid_index AND matches) OR allow_missing
+</code></pre></div>
+<p>A precise condition is preferable to relying on assumed operator precedence.</p>
+<hr />
+<h2 id="5-sequence">5. Sequence<a class="headerlink" href="#5-sequence" title="Permanent link">&para;</a></h2>
+<p>A sequence executes instructions in order.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>width ← 5
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>height ← 4
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>area ← width * height
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>RETURN area
+</code></pre></div>
+<p>Later instructions see the state created by earlier instructions.</p>
+<p>Changing order may change the result.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>x ← 2
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>y ← x + 1
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>x ← 10
+</code></pre></div>
+<p>produces <code>y = 3</code>, while:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>x ← 2
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>x ← 10
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>y ← x + 1
+</code></pre></div>
+<p>produces <code>y = 11</code>.</p>
+<p>Pseudocode should therefore preserve meaningful ordering explicitly.</p>
+<hr />
+<h2 id="6-selection">6. Selection<a class="headerlink" href="#6-selection" title="Permanent link">&para;</a></h2>
+<p>Selection chooses one path based on a Boolean condition.</p>
+<h3 id="one-way-selection">One-way selection<a class="headerlink" href="#one-way-selection" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>IF value &lt; 0 THEN
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    negative_count ← negative_count + 1
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>END IF
+</code></pre></div>
+<p>If the condition is false, the body is skipped.</p>
+<h3 id="two-way-selection">Two-way selection<a class="headerlink" href="#two-way-selection" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>IF first ≥ second THEN
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    maximum ← first
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>ELSE
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    maximum ← second
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>END IF
+</code></pre></div>
+<p>Exactly one branch executes.</p>
+<h3 id="multi-way-selection">Multi-way selection<a class="headerlink" href="#multi-way-selection" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>IF score ≥ 90 THEN
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    grade ← &quot;A&quot;
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>ELSE IF score ≥ 80 THEN
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    grade ← &quot;B&quot;
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>ELSE IF score ≥ 70 THEN
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    grade ← &quot;C&quot;
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>ELSE
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    grade ← &quot;D&quot;
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>END IF
+</code></pre></div>
+<p>The conditions are checked in order. The ordering matters because earlier branches may make later checks unnecessary.</p>
+<h3 id="avoid-overlapping-ambiguity">Avoid overlapping ambiguity<a class="headerlink" href="#avoid-overlapping-ambiguity" title="Permanent link">&para;</a></h3>
+<p>Suppose the specification distinguishes negative, zero, and positive values.</p>
+<p>Clear version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>IF value &lt; 0 THEN
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    category ← &quot;negative&quot;
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>ELSE IF value = 0 THEN
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    category ← &quot;zero&quot;
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>ELSE
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    category ← &quot;positive&quot;
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>END IF
+</code></pre></div>
+<p>The cases are mutually exclusive and exhaustive.</p>
+<hr />
+<h2 id="7-iteration-over-a-sequence">7. Iteration over a sequence<a class="headerlink" href="#7-iteration-over-a-sequence" title="Permanent link">&para;</a></h2>
+<p>For-each iteration expresses traversal when the element values matter more than their indices.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>FOR EACH value IN values DO
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    total ← total + value
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>END FOR
+</code></pre></div>
+<p>This means that every element is processed once in sequence order.</p>
+<h3 id="when-an-index-is-needed">When an index is needed<a class="headerlink" href="#when-an-index-is-needed" title="Permanent link">&para;</a></h3>
+<p>Use an indexed loop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>FOR index ← 0 TO length(values) - 1 DO
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    IF values[index] = target THEN
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>        RETURN index
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    END IF
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>END FOR
+</code></pre></div>
+<p>The convention here is that both range endpoints are included.</p>
+<p>This is why the final index is written as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>length(values) - 1
+</code></pre></div>
+<h3 id="empty-ranges">Empty ranges<a class="headerlink" href="#empty-ranges" title="Permanent link">&para;</a></h3>
+<p>If <code>length(values) = 0</code>, then the range from <code>0</code> to <code>-1</code> contains no indices. The loop body executes zero times.</p>
+<p>A course or document must state such conventions explicitly because different pseudocode styles interpret ranges differently.</p>
+<hr />
+<h2 id="8-while-loops">8. While loops<a class="headerlink" href="#8-while-loops" title="Permanent link">&para;</a></h2>
+<p>A <code>WHILE</code> loop repeats while a condition is true.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>WHILE index &lt; length(values) DO
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    process values[index]
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    index ← index + 1
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>END WHILE
+</code></pre></div>
+<p>A correct while loop usually needs three elements:</p>
+<ol>
+<li>initialisation;</li>
+<li>condition;</li>
+<li>progress update.</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>index ← 0
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>WHILE index &lt; length(values) DO
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    IF values[index] = target THEN
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>        RETURN index
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    END IF
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    index ← index + 1
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>END WHILE
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>RETURN -1
+</code></pre></div>
+<h3 id="a-common-error-missing-progress">A common error: missing progress<a class="headerlink" href="#a-common-error-missing-progress" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>index ← 0
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>WHILE index &lt; length(values) DO
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    IF values[index] = target THEN
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>        RETURN index
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    END IF
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>END WHILE
+</code></pre></div>
+<p>If the first element does not match, <code>index</code> never changes. The loop repeats forever.</p>
+<p>Pseudocode must make progress visible.</p>
+<hr />
+<h2 id="9-repeat-until-loops">9. Repeat-until loops<a class="headerlink" href="#9-repeat-until-loops" title="Permanent link">&para;</a></h2>
+<p>Some pseudocode traditions include:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>REPEAT
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    ...
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>UNTIL condition
+</code></pre></div>
+<p>The body executes at least once, and repetition stops when the condition becomes true.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>REPEAT
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    value ← read_value()
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>UNTIL value ≥ 0
+</code></pre></div>
+<p>This differs from:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>WHILE value &lt; 0 DO
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    value ← read_value()
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>END WHILE
+</code></pre></div>
+<p>because the <code>REPEAT</code> body is guaranteed to execute once.</p>
+<p>This course uses <code>WHILE</code> and <code>FOR</code> as the primary loop forms unless a post-test loop clarifies the algorithm.</p>
+<hr />
+<h2 id="10-functions-and-procedures">10. Functions and procedures<a class="headerlink" href="#10-functions-and-procedures" title="Permanent link">&para;</a></h2>
+<p>A named algorithm may return a value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>FUNCTION absolute_value(number)
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    IF number &lt; 0 THEN
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>        RETURN -number
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    ELSE
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>        RETURN number
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    END IF
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>END FUNCTION
+</code></pre></div>
+<p>A procedure may perform an action without returning a meaningful value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>PROCEDURE swap_first_two(values)
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    temporary ← values[0]
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    values[0] ← values[1]
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    values[1] ← temporary
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>END PROCEDURE
+</code></pre></div>
+<p>The second procedure modifies its input. Its contract must make the side effect explicit.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<p>Parameters represent input supplied to the named computation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>FUNCTION first_index(values, target)
+</code></pre></div>
+<p>A pseudocode convention should explain whether parameters are passed by value, by reference, or abstractly. In this course, parameters are treated abstractly unless mutation is stated explicitly.</p>
+<hr />
+<h2 id="11-returning-versus-printing">11. Returning versus printing<a class="headerlink" href="#11-returning-versus-printing" title="Permanent link">&para;</a></h2>
+<p>These are not equivalent.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>RETURN result
+</code></pre></div>
+<p>passes a value back to the caller.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>PRINT result
+</code></pre></div>
+<p>produces an output side effect.</p>
+<p>A function that prints a number may still return no useful value. Pseudocode should preserve this distinction.</p>
+<p>Incorrectly replacing <code>RETURN</code> with <code>PRINT</code> changes the interface.</p>
+<hr />
+<h2 id="12-accessing-sequences-and-records">12. Accessing sequences and records<a class="headerlink" href="#12-accessing-sequences-and-records" title="Permanent link">&para;</a></h2>
+<h3 id="sequence-indexing">Sequence indexing<a class="headerlink" href="#sequence-indexing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>values[index]
+</code></pre></div>
+<h3 id="sequence-length">Sequence length<a class="headerlink" href="#sequence-length" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>length(values)
+</code></pre></div>
+<h3 id="record-fields">Record fields<a class="headerlink" href="#record-fields" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>student.name
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>student.score
+</code></pre></div>
+<h3 id="updating-a-component">Updating a component<a class="headerlink" href="#updating-a-component" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>values[index] ← new_value
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>student.score ← student.score + 1
+</code></pre></div>
+<p>These operations are abstract. Later modules examine their actual memory representation and cost.</p>
+<hr />
+<h2 id="13-sentinel-values-and-failure">13. Sentinel values and failure<a class="headerlink" href="#13-sentinel-values-and-failure" title="Permanent link">&para;</a></h2>
+<p>A search may return a distinguished value when no result exists.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>RETURN -1
+</code></pre></div>
+<p>This is valid only if <code>-1</code> cannot be confused with a successful index.</p>
+<p>Alternative pseudocode may use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>RETURN NOT_FOUND
+</code></pre></div>
+<p>or:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>RAISE NotFoundError
+</code></pre></div>
+<p>The failure convention belongs to the contract and should be stated before the pseudocode.</p>
+<hr />
+<h2 id="14-full-example-first-index-of-the-minimum">14. Full example: first index of the minimum<a class="headerlink" href="#14-full-example-first-index-of-the-minimum" title="Permanent link">&para;</a></h2>
+<h3 id="contract">Contract<a class="headerlink" href="#contract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>Input:
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    values — a finite non-empty sequence of comparable values
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>Output:
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>    the smallest index of a minimum value
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a>
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a>Side effects:
+<a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a>    none
+</code></pre></div>
+<h3 id="pseudocode_1">Pseudocode<a class="headerlink" href="#pseudocode_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>ALGORITHM first_index_of_minimum(values)
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>    best_index ← 0
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>    FOR index ← 1 TO length(values) - 1 DO
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>        IF values[index] &lt; values[best_index] THEN
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>            best_index ← index
+<a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a>        END IF
+<a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a>    END FOR
+<a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a>
+<a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a>    RETURN best_index
+<a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a>END ALGORITHM
+</code></pre></div>
+<h3 id="why-the-comparison-is-strict">Why the comparison is strict<a class="headerlink" href="#why-the-comparison-is-strict" title="Permanent link">&para;</a></h3>
+<p>If an equal minimum appears later, the earlier index must be preserved. Therefore the condition is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>&lt;
+</code></pre></div>
+<p>not:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>≤
+</code></pre></div>
+<h3 id="python-translation">Python translation<a class="headerlink" href="#python-translation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_index_of_minimum</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>
+<a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>    <span class="n">best_index</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>
+<a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a>    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+<a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a>        <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">values</span><span class="p">[</span><span class="n">best_index</span><span class="p">]:</span>
+<a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a>            <span class="n">best_index</span> <span class="o">=</span> <span class="n">index</span>
+<a id="__codelineno-49-10" name="__codelineno-49-10" href="#__codelineno-49-10"></a>
+<a id="__codelineno-49-11" name="__codelineno-49-11" href="#__codelineno-49-11"></a>    <span class="k">return</span> <span class="n">best_index</span>
+</code></pre></div>
+<p>The pseudocode and Python preserve the same algorithmic state and update rule.</p>
+<hr />
+<h2 id="15-full-example-counting-a-range">15. Full example: counting a range<a class="headerlink" href="#15-full-example-counting-a-range" title="Permanent link">&para;</a></h2>
+<p>Problem:</p>
+<blockquote>
+<p>Count how many elements satisfy <code>lower ≤ value ≤ upper</code>.</p>
+</blockquote>
+<h3 id="pseudocode_2">Pseudocode<a class="headerlink" href="#pseudocode_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>ALGORITHM count_in_range(values, lower, upper)
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>    count ← 0
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    FOR EACH value IN values DO
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>        IF lower ≤ value AND value ≤ upper THEN
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>            count ← count + 1
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>        END IF
+<a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>    END FOR
+<a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>
+<a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a>    RETURN count
+<a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>END ALGORITHM
+</code></pre></div>
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_in_range</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">lower</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">upper</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>        <span class="k">if</span> <span class="n">lower</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">upper</span><span class="p">:</span>
+<a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a>
+<a id="__codelineno-51-8" name="__codelineno-51-8" href="#__codelineno-51-8"></a>    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+<p>Python allows chained comparison syntax. The pseudocode writes the logical conjunction explicitly.</p>
+<p>This is a useful reminder: translation need not be character-for-character. It must preserve meaning.</p>
+<hr />
+<h2 id="16-full-example-in-place-reversal">16. Full example: in-place reversal<a class="headerlink" href="#16-full-example-in-place-reversal" title="Permanent link">&para;</a></h2>
+<p>Problem:</p>
+<blockquote>
+<p>Reverse a finite sequence in place.</p>
+</blockquote>
+<h3 id="contract_1">Contract<a class="headerlink" href="#contract_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>Precondition:
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    values is a finite mutable sequence
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>
+<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>Postcondition:
+<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>    for every valid index i,
+<a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a>    values[i] equals old(values[length(values) - 1 - i])
+<a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a>
+<a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a>Side effects:
+<a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a>    values is modified
+</code></pre></div>
+<h3 id="pseudocode_3">Pseudocode<a class="headerlink" href="#pseudocode_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>ALGORITHM reverse_in_place(values)
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>    left ← 0
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>    right ← length(values) - 1
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>    WHILE left &lt; right DO
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>        temporary ← values[left]
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a>        values[left] ← values[right]
+<a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a>        values[right] ← temporary
+<a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a>
+<a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a>        left ← left + 1
+<a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a>        right ← right - 1
+<a id="__codelineno-53-12" name="__codelineno-53-12" href="#__codelineno-53-12"></a>    END WHILE
+<a id="__codelineno-53-13" name="__codelineno-53-13" href="#__codelineno-53-13"></a>END ALGORITHM
+</code></pre></div>
+<p>The pseudocode exposes:</p>
+<ul>
+<li>two boundary indices;</li>
+<li>one swap per iteration;</li>
+<li>inward progress;</li>
+<li>termination when the indices meet or cross.</li>
+</ul>
+<p>The detailed correctness argument belongs to later chapters, but the representation already supports it.</p>
+<hr />
+<h2 id="17-common-pseudocode-mistakes">17. Common pseudocode mistakes<a class="headerlink" href="#17-common-pseudocode-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-1-mixing-assignment-and-equality">Mistake 1: mixing assignment and equality<a class="headerlink" href="#mistake-1-mixing-assignment-and-equality" title="Permanent link">&para;</a></h3>
+<p>Ambiguous:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>x = x + 1
+</code></pre></div>
+<p>Preferred:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>x ← x + 1
+</code></pre></div>
+<h3 id="mistake-2-using-undefined-operations">Mistake 2: using undefined operations<a class="headerlink" href="#mistake-2-using-undefined-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>make the list efficient
+</code></pre></div>
+<p>The action has no precise meaning.</p>
+<h3 id="mistake-3-hiding-a-complex-algorithm-in-one-verb">Mistake 3: hiding a complex algorithm in one verb<a class="headerlink" href="#mistake-3-hiding-a-complex-algorithm-in-one-verb" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>sort values optimally
+</code></pre></div>
+<p>This avoids describing the actual method.</p>
+<h3 id="mistake-4-language-dependent-syntax">Mistake 4: language-dependent syntax<a class="headerlink" href="#mistake-4-language-dependent-syntax" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>for i in range(len(values)):
+</code></pre></div>
+<p>This is Python syntax.</p>
+<h3 id="mistake-5-unclear-range-boundaries">Mistake 5: unclear range boundaries<a class="headerlink" href="#mistake-5-unclear-range-boundaries" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>FOR i FROM 0 TO n
+</code></pre></div>
+<p>Does this execute <code>n</code> or <code>n + 1</code> times? The convention must be stated.</p>
+<h3 id="mistake-6-omitting-the-failure-path">Mistake 6: omitting the failure path<a class="headerlink" href="#mistake-6-omitting-the-failure-path" title="Permanent link">&para;</a></h3>
+<p>A search that only shows what happens when the target is found is incomplete.</p>
+<h3 id="mistake-7-writing-comments-instead-of-operations">Mistake 7: writing comments instead of operations<a class="headerlink" href="#mistake-7-writing-comments-instead-of-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>// somehow find the correct index
+</code></pre></div>
+<p>A comment cannot replace the algorithm.</p>
+<hr />
+<h2 id="18-translating-pseudocode-into-python">18. Translating pseudocode into Python<a class="headerlink" href="#18-translating-pseudocode-into-python" title="Permanent link">&para;</a></h2>
+<p>Use the following method.</p>
+<h3 id="step-1-preserve-the-contract">Step 1: preserve the contract<a class="headerlink" href="#step-1-preserve-the-contract" title="Permanent link">&para;</a></h3>
+<p>Do not change the input domain, result, failure behaviour, or side effects accidentally.</p>
+<h3 id="step-2-map-state-variables">Step 2: map state variables<a class="headerlink" href="#step-2-map-state-variables" title="Permanent link">&para;</a></h3>
+<p>Every important pseudocode variable should have a clear Python counterpart.</p>
+<h3 id="step-3-map-control-structures">Step 3: map control structures<a class="headerlink" href="#step-3-map-control-structures" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>IF</code> → <code>if</code>;</li>
+<li><code>ELSE</code> → <code>else</code>;</li>
+<li><code>FOR EACH</code> → Python <code>for</code>;</li>
+<li>indexed <code>FOR</code> → <code>range</code>;</li>
+<li><code>WHILE</code> → <code>while</code>;</li>
+<li><code>RETURN</code> → <code>return</code>.</li>
+</ul>
+<h3 id="step-4-check-boundary-conventions">Step 4: check boundary conventions<a class="headerlink" href="#step-4-check-boundary-conventions" title="Permanent link">&para;</a></h3>
+<p>An inclusive pseudocode range may require a different Python endpoint because <code>range</code> excludes its stop argument.</p>
+<p>Pseudocode:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>FOR index ← 1 TO n - 1 DO
+</code></pre></div>
+<p>Python:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</code></pre></div>
+<h3 id="step-5-account-for-language-semantics">Step 5: account for language semantics<a class="headerlink" href="#step-5-account-for-language-semantics" title="Permanent link">&para;</a></h3>
+<p>Ask whether operations copy, mutate, allocate, or raise exceptions in Python.</p>
+<h3 id="step-6-test-the-translation-against-traces">Step 6: test the translation against traces<a class="headerlink" href="#step-6-test-the-translation-against-traces" title="Permanent link">&para;</a></h3>
+<p>The same input should produce the same state progression and result.</p>
+<hr />
+<h2 id="19-what-you-must-be-able-to-explain">19. What you must be able to explain<a class="headerlink" href="#19-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>After this chapter, you should be able to:</p>
+<ul>
+<li>explain the purpose of pseudocode;</li>
+<li>use assignment and equality consistently;</li>
+<li>write sequence, selection, and iteration;</li>
+<li>distinguish <code>FOR EACH</code>, indexed <code>FOR</code>, and <code>WHILE</code>;</li>
+<li>write functions, procedures, and returns;</li>
+<li>distinguish returned results from side effects;</li>
+<li>state indexing and range conventions;</li>
+<li>translate pseudocode into Python without changing the contract;</li>
+<li>identify ambiguous or language-specific pseudocode.</li>
+</ul>
+<hr />
+<h2 id="20-practice">20. Practice<a class="headerlink" href="#20-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-translate-to-pseudocode">Exercise 1 — Translate to pseudocode<a class="headerlink" href="#exercise-1-translate-to-pseudocode" title="Permanent link">&para;</a></h3>
+<p>Write pseudocode for a Python function that returns the sum of positive values.</p>
+<h3 id="exercise-2-translate-to-python">Exercise 2 — Translate to Python<a class="headerlink" href="#exercise-2-translate-to-python" title="Permanent link">&para;</a></h3>
+<p>Translate:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>ALGORITHM contains_zero(values)
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>    FOR EACH value IN values DO
+<a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>        IF value = 0 THEN
+<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a>            RETURN TRUE
+<a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a>        END IF
+<a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>    END FOR
+<a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>
+<a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a>    RETURN FALSE
+<a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a>END ALGORITHM
+</code></pre></div>
+<h3 id="exercise-3-repair-the-loop">Exercise 3 — Repair the loop<a class="headerlink" href="#exercise-3-repair-the-loop" title="Permanent link">&para;</a></h3>
+<p>Find and fix the error:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>index ← 0
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>WHILE index &lt; length(values) DO
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>    PRINT values[index]
+<a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a>END WHILE
+</code></pre></div>
+<h3 id="exercise-4-first-versus-last-occurrence">Exercise 4 — First versus last occurrence<a class="headerlink" href="#exercise-4-first-versus-last-occurrence" title="Permanent link">&para;</a></h3>
+<p>Write pseudocode for both:</p>
+<ul>
+<li>first index of a target;</li>
+<li>last index of a target.</li>
+</ul>
+<p>Explain how control flow or update rules differ.</p>
+<h3 id="exercise-5-in-place-update">Exercise 5 — In-place update<a class="headerlink" href="#exercise-5-in-place-update" title="Permanent link">&para;</a></h3>
+<p>Write a contract and pseudocode for adding one to every element of a mutable sequence.</p>
+<h3 id="exercise-6-range-conventions">Exercise 6 — Range conventions<a class="headerlink" href="#exercise-6-range-conventions" title="Permanent link">&para;</a></h3>
+<p>Explain how the pseudocode loop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>FOR i ← 0 TO n - 1 DO
+</code></pre></div>
+<p>translates to Python and C++.</p>
+<h3 id="exercise-7-ambiguity-audit">Exercise 7 — Ambiguity audit<a class="headerlink" href="#exercise-7-ambiguity-audit" title="Permanent link">&para;</a></h3>
+<p>Rewrite this as precise pseudocode:</p>
+<blockquote>
+<p>Look through the values until something interesting appears; otherwise stop at the end.</p>
+</blockquote>
+<p>First define what “interesting” means and what result is required.</p>
+<hr />
+<h2 id="21-summary">21. Summary<a class="headerlink" href="#21-summary" title="Permanent link">&para;</a></h2>
+<p>Pseudocode is a disciplined representation of an algorithm. It removes unnecessary programming-language syntax while preserving the state, conditions, updates, control flow, and results needed for understanding and reasoning.</p>
+<p>Good pseudocode is:</p>
+<ul>
+<li>consistent;</li>
+<li>precise;</li>
+<li>explicit about assignment;</li>
+<li>clear about ranges and indexing;</li>
+<li>independent of one programming language;</li>
+<li>complete on success and failure paths;</li>
+<li>suitable for tracing and translation.</li>
+</ul>
+<p>The next chapter shows how sequence, selection, iteration, and decomposition can be combined systematically to structure larger algorithms.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
