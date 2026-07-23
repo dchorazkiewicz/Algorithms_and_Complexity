@@ -85,6 +85,7 @@ nav:
   - 01 · Foundations of Algorithm Design:
       - Module introduction: course/01-foundations-of-algorithm-design/index.md
       - 1. Imperative Computation: course/01-foundations-of-algorithm-design/imperative-computation.md
+      - 2. Preconditions and Postconditions: course/01-foundations-of-algorithm-design/preconditions-and-postconditions.md
   - Course sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
