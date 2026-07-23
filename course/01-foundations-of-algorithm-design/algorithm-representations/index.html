@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/algorithm-representations/">
       
       
+        <link rel="prev" href="../preconditions-and-postconditions/">
+      
+      
+        <link rel="next" href="../properties-of-algorithms/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Forms of Algorithm Representation - Algorithms and Complexity</title>
+        <title>3. Forms of Algorithm Representation - Algorithms and Complexity</title>
       
     
     
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Forms of Algorithm Representation
+              3. Forms of Algorithm Representation
             
           </span>
         </div>
@@ -569,6 +573,8 @@
       
   
   
+    
+  
   
   
     
@@ -582,6 +588,18 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -591,13 +609,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -625,7 +641,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -681,6 +697,747 @@
     
   
     2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Forms of Algorithm Representation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Forms of Algorithm Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-one-algorithm-needs-several-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why one algorithm needs several representations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-begin-with-one-algorithmic-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Begin with one algorithmic idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-structured-natural-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Structured natural language
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Structured natural language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strengths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weaknesses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weaknesses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weak-and-strong-prose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weak and strong prose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tables-and-trace-oriented-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tables and trace-oriented representations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flowcharts-and-control-flow-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Flowcharts and control-flow diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Flowcharts and control-flow diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-a-flowchart-makes-visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a flowchart makes visible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-flowchart-may-hide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a flowchart may hide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-flowcharts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use flowcharts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Pseudocode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Pseudocode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-pseudocode-is-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why pseudocode is useful
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode-is-not-informal-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudocode is not “informal code”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-python-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Python source code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Python source code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-source-code-adds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What source code adds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-algorithm-and-implementation-are-related-but-not-identical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The algorithm and implementation are related but not identical
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-c-as-another-representation-of-the-same-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. C++ as another representation of the same method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mathematical-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Mathematical specification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-same-algorithm-viewed-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. The same algorithm viewed side by side
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-representation-changes-the-questions-we-can-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Representation changes the questions we can ask
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Representation changes the questions we can ask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-prose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With prose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-a-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With a diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With source code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-a-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With a trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-a-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With a specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-representation-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common representation mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common representation mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-treating-one-example-as-the-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 1: treating one example as the algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-writing-prose-that-hides-control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 2: writing prose that hides control flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-writing-source-code-before-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 3: writing source code before the specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-writing-pseudocode-tied-to-one-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 4: writing pseudocode tied to one language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-assuming-visual-means-clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 5: assuming visual means clear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-omitting-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 6: omitting failure behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-a-practical-representation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. A practical representation workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-represent-one-algorithm-four-ways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Represent one algorithm four ways
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-diagnose-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Diagnose ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-diagram-a-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Diagram a branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-separate-specification-from-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Separate specification from implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-trace-versus-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Trace versus proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-compare-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Compare languages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../properties-of-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Properties of Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pseudocode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Pseudocode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structuring-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Structuring Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../worked-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Worked Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Module 01 Review
   
 
     
@@ -1394,6 +2151,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    01 · Foundations of Algorithm Design
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -1919,6 +2716,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../preconditions-and-postconditions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Preconditions and Postconditions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2. Preconditions and Postconditions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../properties-of-algorithms/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Properties of Algorithms">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4. Properties of Algorithms
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

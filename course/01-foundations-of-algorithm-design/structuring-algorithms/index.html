@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/structuring-algorithms/">
       
       
+        <link rel="prev" href="../pseudocode/">
+      
+      
+        <link rel="next" href="../worked-examples/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Structuring Algorithms - Algorithms and Complexity</title>
+        <title>6. Structuring Algorithms - Algorithms and Complexity</title>
       
     
     
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Structuring Algorithms
+              6. Structuring Algorithms
             
           </span>
         </div>
@@ -569,6 +573,8 @@
       
   
   
+    
+  
   
   
     
@@ -582,6 +588,18 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -591,13 +609,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -625,7 +641,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -681,6 +697,959 @@
     
   
     2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithm-representations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Forms of Algorithm Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../properties-of-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Properties of Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pseudocode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Pseudocode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Structuring Algorithms
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Structuring Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-structure-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why structure matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-start-from-the-problem-not-from-the-control-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Start from the problem, not from the control structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sequence-state-changes-in-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sequence: state changes in order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sequence: state changes in order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accidental-order-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accidental order dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-selection-express-distinct-logical-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Selection: express distinct logical cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Selection: express distinct logical cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditions-should-come-from-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions should come from the specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exhaustive-and-mutually-exclusive-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exhaustive and mutually exclusive cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#independent-conditions-versus-exclusive-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Independent conditions versus exclusive branches
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-iteration-repeat-one-meaningful-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Iteration: repeat one meaningful step
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Iteration: repeat one meaningful step">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-loop-body-should-represent-one-unit-of-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The loop body should represent one unit of progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-while-loops-and-explicit-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. While loops and explicit progress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. While loops and explicit progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-while-loop-must-expose-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A while loop must expose progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-nesting-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Nesting structures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Nesting structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nesting-should-reflect-problem-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nesting should reflect problem hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unnecessary-nesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unnecessary nesting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-decomposition-divide-the-problem-into-named-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Decomposition: divide the problem into named responsibilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Decomposition: divide the problem into named responsibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits-of-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benefits of decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-is-not-fragmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decomposition is not fragmentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-contracts-connect-decomposed-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Contracts connect decomposed parts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-avoid-duplicated-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Avoid duplicated logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Avoid duplicated logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duplication-can-hide-semantic-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplication can hide semantic drift
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-guard-clauses-and-early-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Guard clauses and early return
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Guard clauses and early return">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#early-return-in-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Early return in search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#early-return-versus-single-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Early return versus single exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-state-locality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. State locality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-refactoring-a-poorly-structured-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Refactoring a poorly structured algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Refactoring a poorly structured algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#further-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further decomposition?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-structure-and-correctness-reasoning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Structure and correctness reasoning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Structure and correctness reasoning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-structure-and-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Structure and complexity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Structure and complexity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequence_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-common-structural-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Common structural mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common structural mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mixing-unrelated-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixing unrelated responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excessive-nesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excessive nesting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unclear-loop-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unclear loop state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeated-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repeated conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hidden-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hidden side effects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premature-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Premature decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-structure-chosen-before-the-problem-is-understood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control structure chosen before the problem is understood
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-a-practical-structuring-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. A practical structuring workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-derive-the-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Derive the structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-exclusive-or-independent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Exclusive or independent?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-refactor-nesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Refactor nesting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-decompose-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Decompose a task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-find-the-progress-measure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Find the progress measure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-detect-duplicated-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Detect duplicated logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-structure-a-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 7 — Structure a proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../worked-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Worked Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Module 01 Review
   
 
     
@@ -1606,6 +2575,46 @@
   
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    01 · Foundations of Algorithm Design
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -2277,6 +3286,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../pseudocode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5. Pseudocode">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                5. Pseudocode
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../worked-examples/" class="md-footer__link md-footer__link--next" aria-label="Next: 7. Worked Examples">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                7. Worked Examples
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
