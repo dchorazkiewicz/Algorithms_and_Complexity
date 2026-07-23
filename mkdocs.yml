@@ -152,6 +152,18 @@ nav:
           - 6. Dynamic Data Structures: course/06-backtracking-greedy-and-dynamic-structures/06-dynamic-data-structures.md
           - 7. Worked Examples: course/06-backtracking-greedy-and-dynamic-structures/07-worked-examples.md
           - 8. Module 06 Review: course/06-backtracking-greedy-and-dynamic-structures/review.md
+      - 07 · Lists, Stacks, Queues, and Priority Queues:
+          - Module introduction: course/07-lists-stacks-queues-and-priority-queues/index.md
+          - 1. Linear Lists as Abstract Sequences: course/07-lists-stacks-queues-and-priority-queues/01-linear-lists-as-abstract-sequences.md
+          - 2. Singly Linked Lists: course/07-lists-stacks-queues-and-priority-queues/02-singly-linked-lists.md
+          - 3. Doubly Linked and Circular Lists: course/07-lists-stacks-queues-and-priority-queues/03-doubly-linked-and-circular-lists.md
+          - 4. Stacks: course/07-lists-stacks-queues-and-priority-queues/04-stacks.md
+          - 5. Queues: course/07-lists-stacks-queues-and-priority-queues/05-queues.md
+          - 6. Priority Queues: course/07-lists-stacks-queues-and-priority-queues/06-priority-queues.md
+          - 7. Self-Organising Lists and Skip Lists: course/07-lists-stacks-queues-and-priority-queues/07-self-organising-and-skip-lists.md
+          - 8. Selected List Algorithms: course/07-lists-stacks-queues-and-priority-queues/08-selected-list-algorithms.md
+          - 9. Worked Examples: course/07-lists-stacks-queues-and-priority-queues/09-worked-examples.md
+          - 10. Module 07 Review: course/07-lists-stacks-queues-and-priority-queues/review.md
   - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
