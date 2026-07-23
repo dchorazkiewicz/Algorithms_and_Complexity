@@ -2,7 +2,7 @@
 
 ## Current status
 
-Module 00 has a complete first draft. It remains **unapproved** until the conventions are reviewed and accepted for use in Module 01.
+Module 00 is **approved** and serves as the foundation for all subsequent course modules.
 
 ## Deliverables
 
@@ -19,11 +19,9 @@ Module 00 has a complete first draft. It remains **unapproved** until the conven
 - [x] Create `shared/coding_standards.md`.
 - [x] Separate syllabus requirements from repository conventions.
 - [x] Preserve ambiguous source terminology instead of silently correcting it.
-- [ ] Review and approve the conventions before starting Module 01.
+- [x] Review and approve the conventions before starting Module 01.
 
-## Decisions currently proposed
-
-The first draft adopts the following repository conventions:
+## Approved repository conventions
 
 1. Student-facing course materials are written in English.
 2. Polish source terminology is retained in the bilingual glossary and traceability records.
@@ -37,22 +35,20 @@ The first draft adopts the following repository conventions:
 10. Big O is the required baseline notation; Theta, Omega, amortized analysis, and the Master Theorem are marked as extensions unless a later module explicitly promotes them.
 11. The phrase `problemy N- i NP-zupełne` is preserved as source wording and flagged for clarification before the relevant teaching material is written.
 
-## Review questions
+## Approved review decisions
 
-Before approval, decide whether to keep or change:
-
-- [ ] Python 3.11+ as the baseline;
-- [ ] C++20 as the baseline;
-- [ ] zero-based indexing in all pseudocode unless explicitly overridden;
-- [ ] `snake_case` naming in both languages for paired examples;
-- [ ] exception-based rejection of invalid input where the contract requires validation;
-- [ ] simple assertions as the initial cross-language testing mechanism;
-- [ ] smart-pointer-first ownership in C++, with raw pointers reserved for explicitly educational examples;
-- [ ] Big O as the required analysis notation and other asymptotic notation as an extension;
-- [ ] the proposed English terminology in `shared/glossary_en_pl.md`.
+- [x] Python 3.11+ as the baseline.
+- [x] C++20 as the baseline.
+- [x] Zero-based indexing in all pseudocode unless explicitly overridden.
+- [x] `snake_case` naming in both languages for paired examples.
+- [x] Exception-based rejection of invalid input where the contract requires validation.
+- [x] Simple assertions as the initial cross-language testing mechanism.
+- [x] Smart-pointer-first ownership in C++, with raw pointers reserved for explicitly educational examples.
+- [x] Big O as the required analysis notation and other asymptotic notation as an extension.
+- [x] The proposed English terminology in `shared/glossary_en_pl.md`.
 
 ## Approval
 
-- [ ] **Module 00 approved for use as the foundation of Module 01.**
+- [x] **Module 00 approved for use as the foundation of Module 01.**
 
-Approval should be recorded only after requested corrections are committed.
+Approved conventions may be revised later, but every revision must be explicit, documented, and applied consistently across affected modules.
