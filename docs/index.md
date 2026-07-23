@@ -1,99 +1,71 @@
 # Algorithms and Complexity
 
-This website is a complete course for learning how algorithms are designed, represented, implemented, justified, and analysed.
+This course is written as a book for learning how algorithms are designed, represented, implemented, justified, and analysed.
 
-It follows the order and scope of the retained course syllabus. The material is written as lecture notes for independent study: definitions come before notation, theory before implementation, and worked reasoning before exercises.
+The central objective is not to memorise code. It is to understand how a problem becomes a precise specification, how a representation and data structure are chosen, how an algorithm changes state, why the algorithm works, why it terminates, and how its cost grows with the input.
 
-## Course objectives
+Python is used as the primary language inside the explanations because it keeps the algorithmic idea visible. C++ is introduced in dedicated comparisons when type systems, memory representation, ownership, containers, or operation costs materially change the discussion.
 
-By studying the complete course, you should develop the ability to:
+## What the course develops
+
+By working through the complete material, you should develop the ability to:
 
 1. solve technical problems by designing correct algorithms;
-2. use complex data structures both theoretically and in working programs;
-3. compare classes of algorithms and estimate their computational complexity.
+2. describe algorithms using explicit assumptions, preconditions, and postconditions;
+3. use arrays, linked lists, stacks, queues, trees, heaps, and graphs as conceptual models and practical structures;
+4. compare iterative and recursive solutions;
+5. explain correctness and termination;
+6. estimate time and auxiliary-space complexity;
+7. compare alternative solutions and improve them after feedback;
+8. communicate technical difficulties precisely.
 
-## What you are expected to understand and do
+## How the book begins
 
-The course is designed to help you:
+The official syllabus sequence begins with imperative computation, algorithm contracts, representations, properties, pseudocode, and structuring techniques.
 
-- explain differences between iterative and recursive algorithms;
-- describe an algorithm using a precondition and a postcondition;
-- reason about correctness and termination;
-- use primitive and compound data types;
-- work with arrays, linked lists, stacks, queues, binary trees, heaps, and graphs;
-- understand how the representation of a data structure affects its operations;
-- estimate the complexity of simple iterative algorithms using Big O notation;
-- compare alternative solutions and improve them after feedback;
-- communicate implementation and design difficulties precisely.
+Before that formal sequence, **Module 00** establishes the reading and reasoning habits needed to study the course effectively. It explains the difference between a problem, an instance, an algorithm, a program, and an execution; shows how to read Python as a state-changing process; develops a step-by-step design method; and distinguishes examples, tests, correctness arguments, termination arguments, and complexity analysis.
 
-## Course map
+[Start Module 00 — Learning to Think Algorithmically](course/00-learning-to-think-algorithmically/index.md)
 
-The material is organised in the same sequence as the syllabus.
+## Book structure
 
-### 1. Foundations of Algorithm Design
+The complete [Course Contents and Learning Path](course/index.md) explains what each module teaches and how the modules depend on one another.
 
-Imperative computation, preconditions and postconditions, forms of algorithm representation, properties of algorithms, pseudocode, and basic structuring techniques.
+The modules follow the syllabus order:
 
-[Start Module 01](course/01-foundations-of-algorithm-design/index.md)
+1. foundations of algorithm design;
+2. iteration, recursion, and data types;
+3. arrays, records, and memory representation;
+4. searching, sorting, and divide and conquer;
+5. functions, the call stack, and recursion;
+6. backtracking, greedy methods, and dynamic structures;
+7. linked lists, stacks, queues, and priority queues;
+8. binary trees, AVL trees, and heaps;
+9. graphs and depth-first search;
+10. computational complexity and hard problems.
 
-### 2. Iteration, Recursion, and Data Types
+## How to read a chapter
 
-Iterative loops, termination conditions, an introduction to recursion, constructing correct algorithms, and primitive and compound data types.
+Every substantial chapter follows the same intellectual order:
 
-### 3. Arrays, Records, and Memory
+1. understand the problem and motivation;
+2. learn the definitions and notation;
+3. build the conceptual model;
+4. follow worked examples;
+5. trace the important state manually;
+6. study the Python implementation;
+7. explain correctness and termination;
+8. analyse time and memory use;
+9. identify boundary cases and common errors;
+10. solve problems that require reasoning rather than copying.
 
-Arrays and records as aggregate types, in-memory representation, direct access, and basic array operations.
+!!! tip "The learning objective"
+    You have not mastered an algorithm when you can only reproduce its code. You have mastered it when you can explain the problem, assumptions, state, representation, method, correctness, termination, boundary cases, and cost—and adapt the solution when the requirements change.
 
-### 4. Searching, Sorting, and Divide and Conquer
+## Continue
 
-Linear and binary search, sorting methods and their properties, complexity, divide and conquer, Quicksort, index arrays, and recursive algorithms.
-
-### 5. Functions, the Call Stack, and Recursion
-
-Function interaction with the environment, side effects, stack behaviour, recursive calls, indirect and nested recursion, explicit-stack simulation, and recursion versus iteration.
-
-### 6. Backtracking, Greedy Methods, and Dynamic Structures
-
-Backtracking, systematic and heuristic methods for improving greedy solutions, and dynamic data structures.
-
-### 7. Linked Lists, Stacks, and Queues
-
-Linear lists, LIFO stacks, FIFO queues, priority queues, doubly linked and circular lists, self-organising lists, skip lists, and list-processing algorithms.
-
-### 8. Binary Trees, AVL Trees, and Heaps
-
-Tree terminology, binary trees, traversals, binary search trees, dictionaries, balancing, AVL trees, and heaps.
-
-### 9. Graphs and Depth-First Search
-
-Graph representations and properties, basic operations, adjacency-list representation, depth-first search as exhaustive search, and DFS applications.
-
-### 10. Computational Complexity and Hard Problems
-
-Time-complexity analysis, computational complexity, Big O notation, worked calculations, hard algorithmic problems, and the source syllabus topic described as N- and NP-complete problems.
-
-## How to study each topic
-
-For every chapter:
-
-1. learn the definitions and notation;
-2. build the conceptual model;
-3. follow the worked examples step by step;
-4. trace the algorithm manually;
-5. compare the pseudocode with Python and C++;
-6. explain why the algorithm is correct and why it terminates;
-7. analyse time and auxiliary-space complexity;
-8. test boundary cases and diagnose common errors;
-9. answer the review questions without looking back;
-10. solve the problems and explain your reasoning.
-
-!!! tip "Do not learn only the code"
-    The objective is to understand the problem, the representation, the algorithmic idea, the correctness argument, and the cost. Python and C++ are used to make the same concepts executable.
-
-## Begin the course
-
-Start with [Module 01 — Foundations of Algorithm Design](course/01-foundations-of-algorithm-design/index.md), then read [Imperative Computation](course/01-foundations-of-algorithm-design/imperative-computation.md).
+Begin with [Module 00](course/00-learning-to-think-algorithmically/index.md). After completing its review, continue with [Module 01 — Foundations of Algorithm Design](course/01-foundations-of-algorithm-design/index.md).
 
 ## Course sources
 
-The public notes are developed from the retained [Polish syllabus](source/syllabus-pl.md) and its [English terminology version](source/syllabus-en.md).
+The scope and order come from the retained [Polish syllabus](source/syllabus-pl.md) and its [English terminology version](source/syllabus-en.md).
