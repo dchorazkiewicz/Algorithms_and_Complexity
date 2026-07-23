@@ -86,6 +86,12 @@ nav:
       - Module introduction: course/01-foundations-of-algorithm-design/index.md
       - 1. Imperative Computation: course/01-foundations-of-algorithm-design/imperative-computation.md
       - 2. Preconditions and Postconditions: course/01-foundations-of-algorithm-design/preconditions-and-postconditions.md
+      - 3. Forms of Algorithm Representation: course/01-foundations-of-algorithm-design/algorithm-representations.md
+      - 4. Properties of Algorithms: course/01-foundations-of-algorithm-design/properties-of-algorithms.md
+      - 5. Pseudocode: course/01-foundations-of-algorithm-design/pseudocode.md
+      - 6. Structuring Algorithms: course/01-foundations-of-algorithm-design/structuring-algorithms.md
+      - 7. Worked Examples: course/01-foundations-of-algorithm-design/worked-examples.md
+      - 8. Module 01 Review: course/01-foundations-of-algorithm-design/review.md
   - Course sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
