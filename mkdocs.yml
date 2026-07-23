@@ -54,13 +54,12 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - Home: index.md
-  - Development plan: development-plan.md
-  - Source syllabus:
-      - Polish source: source/syllabus-pl.md
-      - English version: source/syllabus-en.md
+  - Course home: index.md
   - Module 01 — Foundations of Algorithm Design:
       - Module overview: course/01-foundations-of-algorithm-design/index.md
       - Imperative computation: course/01-foundations-of-algorithm-design/imperative-computation.md
+  - Course sources:
+      - Polish syllabus: source/syllabus-pl.md
+      - English syllabus: source/syllabus-en.md
 
 strict: true
