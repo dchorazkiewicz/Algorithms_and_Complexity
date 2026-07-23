@@ -176,6 +176,18 @@ nav:
           - 8. Heaps and Priority Queues: course/08-binary-trees-avl-and-heaps/08-heaps-and-priority-queues.md
           - 9. Worked Examples: course/08-binary-trees-avl-and-heaps/09-worked-examples.md
           - 10. Module 08 Review: course/08-binary-trees-avl-and-heaps/review.md
+      - 09 · Graphs and Depth-First Search:
+          - Module introduction: course/09-graphs-and-depth-first-search/index.md
+          - 1. Graph Models and Vocabulary: course/09-graphs-and-depth-first-search/01-graph-models-and-vocabulary.md
+          - 2. Graph Representations and Their Costs: course/09-graphs-and-depth-first-search/02-graph-representations-and-costs.md
+          - 3. Graph Properties and Basic Operations: course/09-graphs-and-depth-first-search/03-properties-and-basic-operations.md
+          - 4. Adjacency-List Implementation: course/09-graphs-and-depth-first-search/04-adjacency-list-implementation.md
+          - 5. Recursive Depth-First Search: course/09-graphs-and-depth-first-search/05-recursive-depth-first-search.md
+          - 6. Iterative DFS and Exhaustive Search: course/09-graphs-and-depth-first-search/06-iterative-dfs-and-exhaustive-search.md
+          - 7. Reachability, Paths, and Connected Components: course/09-graphs-and-depth-first-search/07-reachability-paths-and-components.md
+          - 8. Cycle Detection and Ordering Applications: course/09-graphs-and-depth-first-search/08-cycles-and-ordering-applications.md
+          - 9. Worked Examples: course/09-graphs-and-depth-first-search/09-worked-examples.md
+          - 10. Module 09 Review: course/09-graphs-and-depth-first-search/review.md
   - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
