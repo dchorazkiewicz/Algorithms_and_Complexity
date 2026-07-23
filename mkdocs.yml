@@ -16,6 +16,8 @@ theme:
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.path
     - navigation.indexes
@@ -73,48 +75,49 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Course map: course/index.md
-  - 00 · Learning to Think Algorithmically:
-      - Module introduction: course/00-learning-to-think-algorithmically/index.md
-      - 1. Problems, Algorithms, Programs, and Executions: course/00-learning-to-think-algorithmically/01-problems-algorithms-programs.md
-      - 2. Reading Python as an Algorithm: course/00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm.md
-      - 3. Designing a Solution Step by Step: course/00-learning-to-think-algorithmically/03-designing-a-solution.md
-      - 4. Evidence That an Algorithm Works: course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost.md
-      - 5. How to Study Algorithms: course/00-learning-to-think-algorithmically/05-how-to-study-algorithms.md
-      - 6. Module 00 Review: course/00-learning-to-think-algorithmically/review.md
-  - 01 · Foundations of Algorithm Design:
-      - Module introduction: course/01-foundations-of-algorithm-design/index.md
-      - 1. Imperative Computation: course/01-foundations-of-algorithm-design/imperative-computation.md
-      - 2. Preconditions and Postconditions: course/01-foundations-of-algorithm-design/preconditions-and-postconditions.md
-      - 3. Forms of Algorithm Representation: course/01-foundations-of-algorithm-design/algorithm-representations.md
-      - 4. Properties of Algorithms: course/01-foundations-of-algorithm-design/properties-of-algorithms.md
-      - 5. Pseudocode: course/01-foundations-of-algorithm-design/pseudocode.md
-      - 6. Structuring Algorithms: course/01-foundations-of-algorithm-design/structuring-algorithms.md
-      - 7. Worked Examples: course/01-foundations-of-algorithm-design/worked-examples.md
-      - 8. Module 01 Review: course/01-foundations-of-algorithm-design/review.md
-  - 02 · Iteration, Recursion, and Data Types:
-      - Module introduction: course/02-iteration-recursion-and-data-types/index.md
-      - 1. Iteration as Repeated State Transformation: course/02-iteration-recursion-and-data-types/01-iteration-as-state-transformation.md
-      - 2. for Loops and Definite Iteration: course/02-iteration-recursion-and-data-types/02-for-loops-and-definite-iteration.md
-      - 3. while Loops and Condition-Controlled Iteration: course/02-iteration-recursion-and-data-types/03-while-loops-and-condition-controlled-iteration.md
-      - 4. Loop Termination and Correctness: course/02-iteration-recursion-and-data-types/04-loop-termination-and-correctness.md
-      - 5. Recursion: course/02-iteration-recursion-and-data-types/05-recursion.md
-      - 6. Iteration versus Recursion: course/02-iteration-recursion-and-data-types/06-iteration-versus-recursion.md
-      - 7. Primitive and Compound Data Types: course/02-iteration-recursion-and-data-types/07-primitive-and-compound-data-types.md
-      - 8. Constructing a Correct Algorithm: course/02-iteration-recursion-and-data-types/08-constructing-a-correct-algorithm.md
-      - 9. Worked Examples: course/02-iteration-recursion-and-data-types/09-worked-examples.md
-      - 10. Module 02 Review: course/02-iteration-recursion-and-data-types/review.md
-  - 03 · Arrays, Records, and Memory:
-      - Module introduction: course/03-arrays-records-and-memory/index.md
-      - 1. Arrays as Indexed Aggregate Structures: course/03-arrays-records-and-memory/01-arrays-as-indexed-structures.md
-      - 2. Memory Representation and Direct Access: course/03-arrays-records-and-memory/02-memory-representation-and-direct-access.md
-      - 3. Traversing and Updating Arrays: course/03-arrays-records-and-memory/03-traversing-and-updating-arrays.md
-      - 4. Insertion, Deletion, and Shifting: course/03-arrays-records-and-memory/04-insertion-deletion-and-shifting.md
-      - 5. Records and Structured Entities: course/03-arrays-records-and-memory/05-records-and-structured-entities.md
-      - 6. Copying, Aliasing, and Mutation: course/03-arrays-records-and-memory/06-copying-aliasing-and-mutation.md
-      - 7. Worked Examples: course/03-arrays-records-and-memory/07-worked-examples.md
-      - 8. Module 03 Review: course/03-arrays-records-and-memory/review.md
-  - Course sources:
+  - Course:
+      - Course map: course/index.md
+      - 00 · Learning to Think Algorithmically:
+          - Module introduction: course/00-learning-to-think-algorithmically/index.md
+          - 1. Problems, Algorithms, Programs, and Executions: course/00-learning-to-think-algorithmically/01-problems-algorithms-programs.md
+          - 2. Reading Python as an Algorithm: course/00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm.md
+          - 3. Designing a Solution Step by Step: course/00-learning-to-think-algorithmically/03-designing-a-solution.md
+          - 4. Evidence That an Algorithm Works: course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost.md
+          - 5. How to Study Algorithms: course/00-learning-to-think-algorithmically/05-how-to-study-algorithms.md
+          - 6. Module 00 Review: course/00-learning-to-think-algorithmically/review.md
+      - 01 · Foundations of Algorithm Design:
+          - Module introduction: course/01-foundations-of-algorithm-design/index.md
+          - 1. Imperative Computation: course/01-foundations-of-algorithm-design/imperative-computation.md
+          - 2. Preconditions and Postconditions: course/01-foundations-of-algorithm-design/preconditions-and-postconditions.md
+          - 3. Forms of Algorithm Representation: course/01-foundations-of-algorithm-design/algorithm-representations.md
+          - 4. Properties of Algorithms: course/01-foundations-of-algorithm-design/properties-of-algorithms.md
+          - 5. Pseudocode: course/01-foundations-of-algorithm-design/pseudocode.md
+          - 6. Structuring Algorithms: course/01-foundations-of-algorithm-design/structuring-algorithms.md
+          - 7. Worked Examples: course/01-foundations-of-algorithm-design/worked-examples.md
+          - 8. Module 01 Review: course/01-foundations-of-algorithm-design/review.md
+      - 02 · Iteration, Recursion, and Data Types:
+          - Module introduction: course/02-iteration-recursion-and-data-types/index.md
+          - 1. Iteration as Repeated State Transformation: course/02-iteration-recursion-and-data-types/01-iteration-as-state-transformation.md
+          - 2. for Loops and Definite Iteration: course/02-iteration-recursion-and-data-types/02-for-loops-and-definite-iteration.md
+          - 3. while Loops and Condition-Controlled Iteration: course/02-iteration-recursion-and-data-types/03-while-loops-and-condition-controlled-iteration.md
+          - 4. Loop Termination and Correctness: course/02-iteration-recursion-and-data-types/04-loop-termination-and-correctness.md
+          - 5. Recursion: course/02-iteration-recursion-and-data-types/05-recursion.md
+          - 6. Iteration versus Recursion: course/02-iteration-recursion-and-data-types/06-iteration-versus-recursion.md
+          - 7. Primitive and Compound Data Types: course/02-iteration-recursion-and-data-types/07-primitive-and-compound-data-types.md
+          - 8. Constructing a Correct Algorithm: course/02-iteration-recursion-and-data-types/08-constructing-a-correct-algorithm.md
+          - 9. Worked Examples: course/02-iteration-recursion-and-data-types/09-worked-examples.md
+          - 10. Module 02 Review: course/02-iteration-recursion-and-data-types/review.md
+      - 03 · Arrays, Records, and Memory:
+          - Module introduction: course/03-arrays-records-and-memory/index.md
+          - 1. Arrays as Indexed Aggregate Structures: course/03-arrays-records-and-memory/01-arrays-as-indexed-structures.md
+          - 2. Memory Representation and Direct Access: course/03-arrays-records-and-memory/02-memory-representation-and-direct-access.md
+          - 3. Traversing and Updating Arrays: course/03-arrays-records-and-memory/03-traversing-and-updating-arrays.md
+          - 4. Insertion, Deletion, and Shifting: course/03-arrays-records-and-memory/04-insertion-deletion-and-shifting.md
+          - 5. Records and Structured Entities: course/03-arrays-records-and-memory/05-records-and-structured-entities.md
+          - 6. Copying, Aliasing, and Mutation: course/03-arrays-records-and-memory/06-copying-aliasing-and-mutation.md
+          - 7. Worked Examples: course/03-arrays-records-and-memory/07-worked-examples.md
+          - 8. Module 03 Review: course/03-arrays-records-and-memory/review.md
+  - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
 
