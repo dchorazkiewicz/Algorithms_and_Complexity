@@ -1094,7 +1094,7 @@
   <a href="#1-imperative-computation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Imperative computation
+        1. Imperative Computation
       
     </span>
   </a>
@@ -1105,7 +1105,7 @@
   <a href="#2-preconditions-and-postconditions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Preconditions and postconditions
+        2. Preconditions and Postconditions
       
     </span>
   </a>
@@ -1116,7 +1116,7 @@
   <a href="#3-forms-of-algorithm-representation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Forms of algorithm representation
+        3. Forms of Algorithm Representation
       
     </span>
   </a>
@@ -1127,7 +1127,7 @@
   <a href="#4-properties-of-algorithms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Properties of algorithms
+        4. Properties of Algorithms
       
     </span>
   </a>
@@ -1149,7 +1149,7 @@
   <a href="#6-structuring-algorithms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Structuring algorithms
+        6. Structuring Algorithms
       
     </span>
   </a>
@@ -1157,10 +1157,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-worked-examples-and-implementation" class="md-nav__link">
+  <a href="#7-worked-examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Worked examples and implementation
+        7. Worked Examples
       
     </span>
   </a>
@@ -1168,10 +1168,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-problems-and-review" class="md-nav__link">
+  <a href="#8-module-01-review" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Problems and review
+        8. Module 01 Review
       
     </span>
   </a>
@@ -1180,6 +1180,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-study-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to study the module
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1210,6 +1221,17 @@
     <span class="md-ellipsis">
       
         Mastery checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completion-of-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completion of the module
       
     </span>
   </a>
@@ -1287,91 +1309,139 @@
 <h1 id="module-01-foundations-of-algorithm-design">Module 01 — Foundations of Algorithm Design<a class="headerlink" href="#module-01-foundations-of-algorithm-design" title="Permanent link">&para;</a></h1>
 <h2 id="why-this-module-comes-first">Why this module comes first<a class="headerlink" href="#why-this-module-comes-first" title="Permanent link">&para;</a></h2>
 <p>Before studying searching, sorting, recursion, lists, trees, graphs, or complexity, you need a precise language for describing a computation.</p>
-<p>This module builds that language. It explains how a problem becomes an algorithm, how an algorithm changes state, how its required behaviour is specified, how it can be represented, and how larger solutions are constructed from a small set of control structures.</p>
+<p>This module builds that language. It explains how a problem becomes a specification, how a specification guides an algorithm, how an imperative algorithm changes state, how one method can be represented in several forms, and how larger solutions are assembled from a small set of structural patterns.</p>
+<p>The objective is not to memorise definitions separately. The objective is to see one connected chain:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>problem
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>contract
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>algorithmic idea
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↓
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>state and control flow
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ↓
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>representation
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    ↓
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Python implementation
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    ↓
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>trace, correctness, termination, and cost
+</code></pre></div>
+<p>Every later module depends on this chain.</p>
 <h2 id="syllabus-scope">Syllabus scope<a class="headerlink" href="#syllabus-scope" title="Permanent link">&para;</a></h2>
 <p>This module develops the first course-content block:</p>
 <blockquote>
 <p>Imperative programming. Algorithm preconditions and postconditions. Forms of algorithm representation. Properties of algorithms. Pseudocode. Basic techniques for structuring algorithms.</p>
 </blockquote>
-<p>The chapter is more detailed than the scheduled class time because it is intended to support independent study, revision, practical work, and lecture preparation.</p>
+<p>The material is more detailed than a short classroom introduction because it is intended to function as lecture notes for independent study, revision, practical work, and exam preparation.</p>
+<hr />
 <h2 id="what-you-should-be-able-to-do-after-this-module">What you should be able to do after this module<a class="headerlink" href="#what-you-should-be-able-to-do-after-this-module" title="Permanent link">&para;</a></h2>
 <p>After completing the module, you should be able to:</p>
 <ol>
 <li>distinguish a computational problem, a problem instance, an algorithm, a program, and an execution;</li>
 <li>identify input, output, state, expressions, statements, and control flow;</li>
-<li>explain how assignments and other commands transform state;</li>
-<li>formulate meaningful preconditions and postconditions;</li>
+<li>explain how assignments and commands transform state;</li>
+<li>formulate meaningful preconditions, postconditions, side effects, and failure behaviour;</li>
 <li>distinguish a specification from an implementation;</li>
-<li>represent the same algorithm in structured prose, pseudocode, a diagram, Python, and C++;</li>
-<li>explain the essential properties of an algorithm;</li>
+<li>represent the same algorithm in structured prose, a diagram, pseudocode, Python, and C++;</li>
+<li>explain input, output, definiteness, effectiveness, finiteness, generality, correctness, and efficiency;</li>
+<li>write consistent language-independent pseudocode;</li>
 <li>structure an algorithm using sequence, selection, iteration, and decomposition;</li>
 <li>trace a simple algorithm manually;</li>
-<li>identify boundary cases, invalid inputs, side effects, and failure behaviour;</li>
-<li>give an introductory correctness and complexity argument for a simple algorithm.</li>
+<li>identify boundary cases, invalid inputs, hidden assumptions, and side effects;</li>
+<li>give an introductory correctness, termination, time-complexity, and auxiliary-space argument.</li>
 </ol>
+<hr />
 <h2 id="concept-map">Concept map<a class="headerlink" href="#concept-map" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>computational problem
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        ├── input domain
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        ├── required output
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        └── constraints
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        │
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        ▼
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>algorithm specification
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        ├── precondition
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        ├── postcondition
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        └── side effects / failure behaviour
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        │
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        ▼
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>algorithm representation
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        ├── structured natural language
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        ├── diagram or flowchart
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        ├── pseudocode
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        └── source code
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        │
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        ▼
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>imperative execution
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        ├── state
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        ├── assignment
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        ├── sequence
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        ├── selection
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        ├── iteration
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        └── decomposition
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        │
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        ▼
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>reasoning
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        ├── manual trace
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        ├── correctness
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        ├── termination
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        └── complexity
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>computational problem
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        ├── input domain
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        ├── required output
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        └── constraints
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        ▼
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>algorithm specification
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        ├── precondition
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        ├── postcondition
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        ├── side effects
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        └── failure behaviour
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        │
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        ▼
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>algorithm representation
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        ├── structured natural language
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        ├── diagram or flowchart
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        ├── pseudocode
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        └── source code
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        │
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        ▼
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>imperative execution
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        ├── state
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>        ├── assignment
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        ├── sequence
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        ├── selection
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>        ├── iteration
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>        └── decomposition
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>        │
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>        ▼
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>reasoning
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>        ├── manual trace
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>        ├── correctness
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>        ├── termination
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>        └── complexity
 </code></pre></div>
+<hr />
 <h2 id="learning-path">Learning path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h2>
-<h3 id="1-imperative-computation">1. Imperative computation<a class="headerlink" href="#1-imperative-computation" title="Permanent link">&para;</a></h3>
+<p>The chapters should be read in order. Each one adds a layer needed by the next.</p>
+<h3 id="1-imperative-computation">1. Imperative Computation<a class="headerlink" href="#1-imperative-computation" title="Permanent link">&para;</a></h3>
 <p>Learn how a program is modelled as a sequence of state transitions. Distinguish values, variables, expressions, statements, assignments, control flow, input, output, and side effects.</p>
 <p><a href="imperative-computation/">Read: Imperative Computation</a></p>
-<h3 id="2-preconditions-and-postconditions">2. Preconditions and postconditions<a class="headerlink" href="#2-preconditions-and-postconditions" title="Permanent link">&para;</a></h3>
-<p>Learn how to specify valid initial states and required final states. Practise writing contracts that are neither too weak nor unnecessarily restrictive.</p>
-<h3 id="3-forms-of-algorithm-representation">3. Forms of algorithm representation<a class="headerlink" href="#3-forms-of-algorithm-representation" title="Permanent link">&para;</a></h3>
-<p>Compare structured prose, diagrams, pseudocode, and executable programs. Understand what information each representation exposes or hides.</p>
-<h3 id="4-properties-of-algorithms">4. Properties of algorithms<a class="headerlink" href="#4-properties-of-algorithms" title="Permanent link">&para;</a></h3>
-<p>Study input and output, definiteness, finiteness, effectiveness, correctness, generality, and efficiency.</p>
+<h3 id="2-preconditions-and-postconditions">2. Preconditions and Postconditions<a class="headerlink" href="#2-preconditions-and-postconditions" title="Permanent link">&para;</a></h3>
+<p>Learn how to define valid initial states and required final states. Study contracts, weak and strong conditions, validation, failure behaviour, mutation, and references to the old state.</p>
+<p><a href="preconditions-and-postconditions/">Read: Preconditions and Postconditions</a></p>
+<h3 id="3-forms-of-algorithm-representation">3. Forms of Algorithm Representation<a class="headerlink" href="#3-forms-of-algorithm-representation" title="Permanent link">&para;</a></h3>
+<p>Compare structured prose, traces, diagrams, pseudocode, mathematical specifications, Python, and C++. Understand what each form reveals, what it hides, and why an algorithm is not identical to any one representation.</p>
+<p><a href="algorithm-representations/">Read: Forms of Algorithm Representation</a></p>
+<h3 id="4-properties-of-algorithms">4. Properties of Algorithms<a class="headerlink" href="#4-properties-of-algorithms" title="Permanent link">&para;</a></h3>
+<p>Study input and output, definiteness, effectiveness, finiteness, generality, correctness, total correctness, efficiency, and explicit failure behaviour.</p>
+<p><a href="properties-of-algorithms/">Read: Properties of Algorithms</a></p>
 <h3 id="5-pseudocode">5. Pseudocode<a class="headerlink" href="#5-pseudocode" title="Permanent link">&para;</a></h3>
-<p>Learn a precise language-independent notation that can be translated into Python or C++ without confusing syntax with the algorithm itself.</p>
-<h3 id="6-structuring-algorithms">6. Structuring algorithms<a class="headerlink" href="#6-structuring-algorithms" title="Permanent link">&para;</a></h3>
-<p>Use sequence, selection, iteration, and decomposition to build understandable and verifiable solutions.</p>
-<h3 id="7-worked-examples-and-implementation">7. Worked examples and implementation<a class="headerlink" href="#7-worked-examples-and-implementation" title="Permanent link">&para;</a></h3>
-<p>Connect contracts, pseudocode, traces, correctness arguments, complexity analysis, Python, and C++.</p>
-<h3 id="8-problems-and-review">8. Problems and review<a class="headerlink" href="#8-problems-and-review" title="Permanent link">&para;</a></h3>
-<p>Verify understanding through definition questions, tracing, contract writing, debugging, reasoning, and implementation problems.</p>
+<p>Learn consistent notation for assignment, expressions, conditions, loops, functions, procedures, returns, mutation, indexing, and failure. Translate between pseudocode and Python without changing the contract.</p>
+<p><a href="pseudocode/">Read: Pseudocode</a></p>
+<h3 id="6-structuring-algorithms">6. Structuring Algorithms<a class="headerlink" href="#6-structuring-algorithms" title="Permanent link">&para;</a></h3>
+<p>Use sequence, selection, iteration, guard clauses, state locality, and decomposition to build understandable and verifiable solutions. Learn how structure supports correctness and complexity reasoning.</p>
+<p><a href="structuring-algorithms/">Read: Structuring Algorithms</a></p>
+<h3 id="7-worked-examples">7. Worked Examples<a class="headerlink" href="#7-worked-examples" title="Permanent link">&para;</a></h3>
+<p>Connect contracts, state meanings, pseudocode, Python, traces, correctness arguments, termination, and complexity in complete examples.</p>
+<p><a href="worked-examples/">Read: Worked Examples</a></p>
+<h3 id="8-module-01-review">8. Module 01 Review<a class="headerlink" href="#8-module-01-review" title="Permanent link">&para;</a></h3>
+<p>Check whether you can use the concepts independently through definitions, traces, contract writing, representation, debugging, proof sketches, complexity analysis, decomposition, and a capstone problem.</p>
+<p><a href="review/">Open: Module 01 Review</a></p>
+<hr />
+<h2 id="how-to-study-the-module">How to study the module<a class="headerlink" href="#how-to-study-the-module" title="Permanent link">&para;</a></h2>
+<p>For each chapter:</p>
+<ol>
+<li>read the motivation before memorising terminology;</li>
+<li>rewrite the main definitions in your own words;</li>
+<li>reproduce the central example without looking at the solution;</li>
+<li>trace the important state manually;</li>
+<li>explain why initial values are justified;</li>
+<li>identify what the contract requires and what it excludes;</li>
+<li>translate between prose, pseudocode, and Python;</li>
+<li>state why the algorithm terminates;</li>
+<li>estimate time and auxiliary-space cost;</li>
+<li>answer the final questions without returning immediately to the text.</li>
+</ol>
+<p>Do not treat the worked examples as templates to copy mechanically. Change the requirements—first versus last occurrence, strict versus non-strict comparison, mutation versus new result—and observe which parts of the design must change.</p>
+<hr />
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>You need only basic familiarity with:</p>
 <ul>
 <li>arithmetic expressions;</li>
 <li>variables;</li>
-<li>simple boolean conditions;</li>
-<li>elementary Python or C++ syntax.</li>
+<li>simple Boolean conditions;</li>
+<li>elementary Python syntax.</li>
 </ul>
+<p>C++ appears as a comparison where language details are relevant, but Python is the primary executable notation in the narrative.</p>
 <p>No advanced data-structure knowledge is required.</p>
+<hr />
 <h2 id="diagnostic-questions">Diagnostic questions<a class="headerlink" href="#diagnostic-questions" title="Permanent link">&para;</a></h2>
 <p>Before beginning, try to answer these questions. It is acceptable not to know the answers yet.</p>
 <ol>
@@ -1380,11 +1450,14 @@
 <li>Why is <code>x ← x + 1</code> not a mathematical equation?</li>
 <li>What must be true before binary search may be used?</li>
 <li>How can one algorithm be represented without choosing a programming language?</li>
-<li>What makes an algorithm correct?</li>
-<li>Why is a terminating procedure not automatically a correct algorithm?</li>
+<li>What makes a procedure definite?</li>
+<li>What makes an algorithm totally correct?</li>
+<li>Why is a terminating procedure not automatically correct?</li>
 <li>What is the difference between returning a value and modifying an input object?</li>
+<li>Why can two correct implementations of the same algorithm have different memory costs?</li>
 </ol>
 <p>Return to these questions after completing the module.</p>
+<hr />
 <h2 id="mastery-checklist">Mastery checklist<a class="headerlink" href="#mastery-checklist" title="Permanent link">&para;</a></h2>
 <p>You have mastered this module when you can honestly say:</p>
 <ul>
@@ -1392,17 +1465,33 @@
 <li>[ ] I can describe the state of a simple computation.</li>
 <li>[ ] I can manually trace assignments, selections, and loops.</li>
 <li>[ ] I can write a precondition and a postcondition for a simple problem.</li>
-<li>[ ] I can identify an overly weak or overly strong specification.</li>
+<li>[ ] I can identify an overly weak or unnecessarily strong specification.</li>
+<li>[ ] I can explain side effects and failure behaviour.</li>
 <li>[ ] I can translate the same idea between prose, pseudocode, Python, and C++.</li>
+<li>[ ] I can explain the principal properties of an algorithm.</li>
+<li>[ ] I can structure a solution with sequence, selection, iteration, and decomposition.</li>
 <li>[ ] I can explain why a simple algorithm produces the required result.</li>
 <li>[ ] I can explain why it terminates.</li>
-<li>[ ] I can identify basic boundary cases and side effects.</li>
-<li>[ ] I can give an introductory time- and space-complexity analysis.</li>
+<li>[ ] I can identify boundary cases and hidden assumptions.</li>
+<li>[ ] I can give an introductory time- and auxiliary-space analysis.</li>
+<li>[ ] I can redesign a solution when one word in the requirement changes.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Study objective</p>
-<p>Do not stop when you can reproduce a code fragment. The objective is to explain the problem, specification, state changes, algorithmic structure, correctness, termination, and cost.</p>
+<p>Do not stop when you can reproduce a code fragment. The objective is to explain the problem, specification, state changes, representation, algorithmic structure, correctness, termination, boundary cases, and cost.</p>
 </div>
+<hr />
+<h2 id="completion-of-the-module">Completion of the module<a class="headerlink" href="#completion-of-the-module" title="Permanent link">&para;</a></h2>
+<p>Module 01 now covers every topic listed in the first syllabus block:</p>
+<ul>
+<li>imperative computation;</li>
+<li>algorithm preconditions and postconditions;</li>
+<li>forms of algorithm representation;</li>
+<li>properties of algorithms;</li>
+<li>pseudocode;</li>
+<li>basic techniques for structuring algorithms.</li>
+</ul>
+<p>The review chapter closes the module. After completing it, continue to Module 02, where iteration, loop termination, recursion, correct algorithm construction, and primitive and compound data types are developed in depth.</p>
 
 
 
