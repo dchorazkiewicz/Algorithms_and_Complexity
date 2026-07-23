@@ -1,0 +1,1962 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/algorithm-representations/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Forms of Algorithm Representation - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/layout-fixes.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#forms-of-algorithm-representation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Forms of Algorithm Representation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../00-learning-to-think-algorithmically/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 · Learning to Think Algorithmically
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 · Learning to Think Algorithmically
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Problems, Algorithms, Programs, and Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reading Python as an Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Designing a Solution Step by Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Evidence That an Algorithm Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. How to Study Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Module 00 Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Imperative Computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preconditions-and-postconditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-one-algorithm-needs-several-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why one algorithm needs several representations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-begin-with-one-algorithmic-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Begin with one algorithmic idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-structured-natural-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Structured natural language
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Structured natural language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strengths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weaknesses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weaknesses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weak-and-strong-prose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weak and strong prose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tables-and-trace-oriented-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tables and trace-oriented representations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flowcharts-and-control-flow-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Flowcharts and control-flow diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Flowcharts and control-flow diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-a-flowchart-makes-visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a flowchart makes visible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-flowchart-may-hide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a flowchart may hide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-flowcharts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use flowcharts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Pseudocode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Pseudocode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-pseudocode-is-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why pseudocode is useful
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode-is-not-informal-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudocode is not “informal code”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-python-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Python source code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Python source code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-source-code-adds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What source code adds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-algorithm-and-implementation-are-related-but-not-identical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The algorithm and implementation are related but not identical
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-c-as-another-representation-of-the-same-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. C++ as another representation of the same method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mathematical-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Mathematical specification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-same-algorithm-viewed-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. The same algorithm viewed side by side
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-representation-changes-the-questions-we-can-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Representation changes the questions we can ask
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Representation changes the questions we can ask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-prose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With prose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-a-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With a diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With source code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-a-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With a trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-a-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With a specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-representation-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common representation mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common representation mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-treating-one-example-as-the-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 1: treating one example as the algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-writing-prose-that-hides-control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 2: writing prose that hides control flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-writing-source-code-before-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 3: writing source code before the specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-writing-pseudocode-tied-to-one-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 4: writing pseudocode tied to one language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-assuming-visual-means-clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 5: assuming visual means clear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-omitting-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 6: omitting failure behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-a-practical-representation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. A practical representation workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-represent-one-algorithm-four-ways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Represent one algorithm four ways
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-diagnose-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Diagnose ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-diagram-a-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Diagram a branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-separate-specification-from-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Separate specification from implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-trace-versus-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Trace versus proof
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-compare-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Compare languages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="forms-of-algorithm-representation">Forms of Algorithm Representation<a class="headerlink" href="#forms-of-algorithm-representation" title="Permanent link">&para;</a></h1>
+<h2 id="why-one-algorithm-needs-several-representations">Why one algorithm needs several representations<a class="headerlink" href="#why-one-algorithm-needs-several-representations" title="Permanent link">&para;</a></h2>
+<p>An algorithm is an abstract method. It is not identical to a paragraph, a diagram, pseudocode, Python, or C++. Each of those is a <strong>representation</strong> of the method.</p>
+<p>This distinction matters because every representation reveals some aspects of an algorithm and hides others. Natural language can explain motivation well but may be ambiguous. A flowchart can make control flow visible but may become unwieldy. Pseudocode can express the method precisely without committing to a programming language. Source code can be executed, but it introduces language-specific details that may distract from the underlying idea.</p>
+<p>A strong algorithm designer does not ask only:</p>
+<blockquote>
+<p>How do I write this in Python?</p>
+</blockquote>
+<p>The stronger question is:</p>
+<blockquote>
+<p>Which representation best supports the current task: understanding, communicating, proving, implementing, testing, or maintaining the algorithm?</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">What you should learn from this chapter</p>
+<p>By the end of this chapter, you should be able to represent the same algorithm in structured natural language, a control-flow diagram, pseudocode, and Python; explain what each representation makes easy or difficult to see; and recognise when a representation is too vague or too implementation-specific.</p>
+</div>
+<hr />
+<h2 id="1-begin-with-one-algorithmic-idea">1. Begin with one algorithmic idea<a class="headerlink" href="#1-begin-with-one-algorithmic-idea" title="Permanent link">&para;</a></h2>
+<p>We will use a single problem throughout the chapter:</p>
+<blockquote>
+<p>Given a finite sequence of integers and a target value, return the index of the first occurrence of the target, or <code>-1</code> if the target does not occur.</p>
+</blockquote>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>values = [4, 7, 2, 7, 9]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>target = 7
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>result = 1
+</code></pre></div>
+<p>The central idea is simple:</p>
+<blockquote>
+<p>Scan the sequence from left to right and stop when the target is found.</p>
+</blockquote>
+<p>This idea can be expressed in several ways. The algorithm does not change merely because its representation changes.</p>
+<hr />
+<h2 id="2-structured-natural-language">2. Structured natural language<a class="headerlink" href="#2-structured-natural-language" title="Permanent link">&para;</a></h2>
+<p>A first representation may use carefully written prose:</p>
+<ol>
+<li>Start at the first element of the sequence.</li>
+<li>Compare the current element with the target.</li>
+<li>If they are equal, return the current index.</li>
+<li>Otherwise move to the next element.</li>
+<li>If every element has been examined without a match, return <code>-1</code>.</li>
+</ol>
+<p>This representation is easy to read because it uses ordinary language. It is useful when the reader is not yet familiar with formal notation.</p>
+<h3 id="strengths">Strengths<a class="headerlink" href="#strengths" title="Permanent link">&para;</a></h3>
+<p>Structured natural language is good for:</p>
+<ul>
+<li>explaining motivation;</li>
+<li>introducing the main idea;</li>
+<li>communicating with non-programmers;</li>
+<li>discussing a solution before notation has been agreed;</li>
+<li>connecting steps with reasons.</li>
+</ul>
+<h3 id="weaknesses">Weaknesses<a class="headerlink" href="#weaknesses" title="Permanent link">&para;</a></h3>
+<p>Natural language can hide ambiguity.</p>
+<p>For example, what exactly does “move to the next element” mean? How is the current position stored? What happens for an empty sequence? Is the comparison exact? Does the algorithm return the first occurrence or any occurrence?</p>
+<p>A prose description becomes useful only when important choices are made explicit.</p>
+<h3 id="weak-and-strong-prose">Weak and strong prose<a class="headerlink" href="#weak-and-strong-prose" title="Permanent link">&para;</a></h3>
+<p>Weak description:</p>
+<blockquote>
+<p>Search the list and return the item if it is present.</p>
+</blockquote>
+<p>This is unclear because it does not specify whether the result is the value, the index, a Boolean value, or something else.</p>
+<p>Stronger description:</p>
+<blockquote>
+<p>Examine indices from <code>0</code> upward. Return the first index whose element equals the target. If no such index exists, return <code>-1</code>.</p>
+</blockquote>
+<p>The stronger description exposes the order, the stopping condition, the exact result, and the failure value.</p>
+<hr />
+<h2 id="3-tables-and-trace-oriented-representations">3. Tables and trace-oriented representations<a class="headerlink" href="#3-tables-and-trace-oriented-representations" title="Permanent link">&para;</a></h2>
+<p>A table can represent the behaviour of one execution.</p>
+<p>For:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>values = [4, 7, 2, 7, 9]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>target = 7
+</code></pre></div>
+<p>we can write:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Step</th>
+<th style="text-align: right;">Index</th>
+<th style="text-align: right;">Current value</th>
+<th style="text-align: center;">Match?</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">No</td>
+<td>continue</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: center;">Yes</td>
+<td>return 1</td>
+</tr>
+</tbody>
+</table>
+<p>This is not a complete algorithm representation because it describes only one instance. It is a <strong>trace representation</strong> of one execution.</p>
+<p>That distinction is important:</p>
+<ul>
+<li>an algorithm representation describes the general method;</li>
+<li>a trace describes what happens for one concrete input.</li>
+</ul>
+<p>Tables are excellent for exposing state transitions, but they do not replace a general procedure.</p>
+<hr />
+<h2 id="4-flowcharts-and-control-flow-diagrams">4. Flowcharts and control-flow diagrams<a class="headerlink" href="#4-flowcharts-and-control-flow-diagrams" title="Permanent link">&para;</a></h2>
+<p>A flowchart represents control flow visually.</p>
+<p>A simplified version of linear search can be described as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>START
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  |
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  v
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>index &lt;- 0
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  |
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  v
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>index &lt; length(values)? ---- No ----&gt; return -1
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  |
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> Yes
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  |
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>  v
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>values[index] == target? --- Yes ---&gt; return index
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>  |
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a> No
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>  |
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>  v
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>index &lt;- index + 1
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>  |
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>  +---------------------------&gt; repeat
+</code></pre></div>
+<h3 id="what-a-flowchart-makes-visible">What a flowchart makes visible<a class="headerlink" href="#what-a-flowchart-makes-visible" title="Permanent link">&para;</a></h3>
+<p>A flowchart clearly shows:</p>
+<ul>
+<li>the order of actions;</li>
+<li>branch points;</li>
+<li>repetition;</li>
+<li>termination paths;</li>
+<li>the relationship between conditions and actions.</li>
+</ul>
+<h3 id="what-a-flowchart-may-hide">What a flowchart may hide<a class="headerlink" href="#what-a-flowchart-may-hide" title="Permanent link">&para;</a></h3>
+<p>A diagram often says less about:</p>
+<ul>
+<li>the precise meaning of variables;</li>
+<li>input assumptions;</li>
+<li>postconditions;</li>
+<li>data representation;</li>
+<li>complexity;</li>
+<li>why the algorithm is correct.</li>
+</ul>
+<p>Large algorithms can also produce diagrams so complex that the visual representation becomes harder to read than pseudocode.</p>
+<h3 id="when-to-use-flowcharts">When to use flowcharts<a class="headerlink" href="#when-to-use-flowcharts" title="Permanent link">&para;</a></h3>
+<p>Flowcharts are most useful when:</p>
+<ul>
+<li>control flow is the central issue;</li>
+<li>the algorithm is small;</li>
+<li>a branch or loop is difficult to visualise;</li>
+<li>the audience benefits from a visual overview;</li>
+<li>the diagram is accompanied by a contract and explanation.</li>
+</ul>
+<p>They are less useful as the only representation of a large data-structure algorithm.</p>
+<hr />
+<h2 id="5-pseudocode">5. Pseudocode<a class="headerlink" href="#5-pseudocode" title="Permanent link">&para;</a></h2>
+<p>Pseudocode is a language-independent representation designed to express the algorithm precisely without requiring the syntax of a real programming language.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ALGORITHM first_index(values, target)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    FOR index &lt;- 0 TO length(values) - 1 DO
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        IF values[index] = target THEN
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>            RETURN index
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        END IF
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    END FOR
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    RETURN -1
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>END ALGORITHM
+</code></pre></div>
+<p>This representation exposes the essential control flow while avoiding Python-specific or C++-specific syntax.</p>
+<h3 id="why-pseudocode-is-useful">Why pseudocode is useful<a class="headerlink" href="#why-pseudocode-is-useful" title="Permanent link">&para;</a></h3>
+<p>Pseudocode helps separate:</p>
+<ul>
+<li>the algorithmic idea;</li>
+<li>the data and state;</li>
+<li>the control structure;</li>
+<li>the implementation language.</li>
+</ul>
+<p>It supports discussion, manual tracing, correctness arguments, and translation into multiple languages.</p>
+<h3 id="pseudocode-is-not-informal-code">Pseudocode is not “informal code”<a class="headerlink" href="#pseudocode-is-not-informal-code" title="Permanent link">&para;</a></h3>
+<p>Poor pseudocode is often just source code with punctuation removed. Good pseudocode has a deliberate notation and uses constructs consistently.</p>
+<p>For example, it should be clear whether:</p>
+<ul>
+<li>assignment uses <code>←</code>;</li>
+<li>equality uses <code>=</code>;</li>
+<li>ranges include both endpoints;</li>
+<li>indices start at zero;</li>
+<li><code>RETURN</code> stops execution immediately;</li>
+<li>functions may modify their arguments.</li>
+</ul>
+<p>Pseudocode requires conventions. Those conventions are developed fully in the next dedicated chapter.</p>
+<hr />
+<h2 id="6-python-source-code">6. Python source code<a class="headerlink" href="#6-python-source-code" title="Permanent link">&para;</a></h2>
+<p>The same algorithm can be implemented in Python:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_index</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>            <span class="k">return</span> <span class="n">index</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+<p>This form is executable. It can be tested, integrated into a program, analysed by tools, and maintained in a repository.</p>
+<h3 id="what-source-code-adds">What source code adds<a class="headerlink" href="#what-source-code-adds" title="Permanent link">&para;</a></h3>
+<p>Source code must make language-specific decisions:</p>
+<ul>
+<li>how parameters are declared;</li>
+<li>how sequences are represented;</li>
+<li>how loops are written;</li>
+<li>which equality operator is used;</li>
+<li>how errors are reported;</li>
+<li>which types are expected;</li>
+<li>whether annotations are present;</li>
+<li>whether library functions are used.</li>
+</ul>
+<p>These details are necessary for execution but are not all part of the abstract algorithm.</p>
+<h3 id="the-algorithm-and-implementation-are-related-but-not-identical">The algorithm and implementation are related but not identical<a class="headerlink" href="#the-algorithm-and-implementation-are-related-but-not-identical" title="Permanent link">&para;</a></h3>
+<p>This Python version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_index</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+<p>implements the same high-level behaviour using a library operation.</p>
+<p>The source code is different. The abstract method—searching for the first matching position—remains related.</p>
+<p>When analysing an implementation, we must therefore ask both:</p>
+<ol>
+<li>Which algorithmic idea is used?</li>
+<li>What costs and behaviours are introduced by the chosen language operations?</li>
+</ol>
+<hr />
+<h2 id="7-c-as-another-representation-of-the-same-method">7. C++ as another representation of the same method<a class="headerlink" href="#7-c-as-another-representation-of-the-same-method" title="Permanent link">&para;</a></h2>
+<p>The same algorithm can be expressed in C++:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">first_index</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">values</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">}</span>
+</code></pre></div>
+<p>The algorithmic structure is the same:</p>
+<ul>
+<li>initialise a position;</li>
+<li>inspect elements from left to right;</li>
+<li>compare with the target;</li>
+<li>return immediately on the first match;</li>
+<li>return a sentinel when no match exists.</li>
+</ul>
+<p>The implementation details differ:</p>
+<ul>
+<li><code>std::vector&lt;int&gt;</code> represents the sequence;</li>
+<li>the input is passed by constant reference;</li>
+<li><code>std::size_t</code> is used for the index;</li>
+<li>conversion is needed before returning <code>int</code>;</li>
+<li>braces and semicolons are required.</li>
+</ul>
+<p>This comparison shows why source code is a representation rather than the algorithm itself.</p>
+<hr />
+<h2 id="8-mathematical-specification">8. Mathematical specification<a class="headerlink" href="#8-mathematical-specification" title="Permanent link">&para;</a></h2>
+<p>An algorithm can also be described by a relation between input and output.</p>
+<p>Let <code>values</code> be a sequence of length <code>n</code>, and let <code>target</code> be a value.</p>
+<p>The required result <code>r</code> satisfies one of two cases:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Case 1: target occurs
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    0 &lt;= r &lt; n
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    values[r] = target
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    for every j with 0 &lt;= j &lt; r, values[j] != target
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>Case 2: target does not occur
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    r = -1
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    for every j with 0 &lt;= j &lt; n, values[j] != target
+</code></pre></div>
+<p>This form is precise about the meaning of the result. It says little about how the result is found.</p>
+<p>That is useful because specification and implementation have different roles:</p>
+<ul>
+<li>the specification defines correctness;</li>
+<li>the algorithm provides a method;</li>
+<li>the program makes the method executable.</li>
+</ul>
+<hr />
+<h2 id="9-the-same-algorithm-viewed-side-by-side">9. The same algorithm viewed side by side<a class="headerlink" href="#9-the-same-algorithm-viewed-side-by-side" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>Main strength</th>
+<th>Main limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structured prose</td>
+<td>motivation and accessibility</td>
+<td>may be ambiguous</td>
+</tr>
+<tr>
+<td>Trace table</td>
+<td>concrete state evolution</td>
+<td>describes one execution only</td>
+</tr>
+<tr>
+<td>Flowchart</td>
+<td>visible control flow</td>
+<td>scales poorly and may hide meaning</td>
+</tr>
+<tr>
+<td>Pseudocode</td>
+<td>precise and language-independent</td>
+<td>requires agreed conventions</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>executable and readable</td>
+<td>introduces Python-specific details</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>executable with explicit types and memory-related choices</td>
+<td>more implementation detail</td>
+</tr>
+<tr>
+<td>Mathematical specification</td>
+<td>exact required relationship</td>
+<td>does not provide the method</td>
+</tr>
+</tbody>
+</table>
+<p>No single representation is always best.</p>
+<p>A complete learning text often uses several:</p>
+<ol>
+<li>prose to explain the idea;</li>
+<li>a contract to state the requirement;</li>
+<li>pseudocode to expose the method;</li>
+<li>a trace table to show one execution;</li>
+<li>Python to make it executable;</li>
+<li>a correctness argument to connect the method to the specification.</li>
+</ol>
+<hr />
+<h2 id="10-representation-changes-the-questions-we-can-ask">10. Representation changes the questions we can ask<a class="headerlink" href="#10-representation-changes-the-questions-we-can-ask" title="Permanent link">&para;</a></h2>
+<h3 id="with-prose">With prose<a class="headerlink" href="#with-prose" title="Permanent link">&para;</a></h3>
+<p>We ask:</p>
+<ul>
+<li>Is the idea understandable?</li>
+<li>Are the assumptions visible?</li>
+<li>Is any phrase ambiguous?</li>
+</ul>
+<h3 id="with-a-diagram">With a diagram<a class="headerlink" href="#with-a-diagram" title="Permanent link">&para;</a></h3>
+<p>We ask:</p>
+<ul>
+<li>Which branch is taken?</li>
+<li>Where does repetition return?</li>
+<li>Which paths terminate?</li>
+</ul>
+<h3 id="with-pseudocode">With pseudocode<a class="headerlink" href="#with-pseudocode" title="Permanent link">&para;</a></h3>
+<p>We ask:</p>
+<ul>
+<li>Is the algorithm precise?</li>
+<li>What state is updated?</li>
+<li>Which conditions control execution?</li>
+</ul>
+<h3 id="with-source-code">With source code<a class="headerlink" href="#with-source-code" title="Permanent link">&para;</a></h3>
+<p>We ask:</p>
+<ul>
+<li>Does the program compile or run?</li>
+<li>Are the types appropriate?</li>
+<li>Are the language operations used correctly?</li>
+<li>What implementation-specific costs occur?</li>
+</ul>
+<h3 id="with-a-trace">With a trace<a class="headerlink" href="#with-a-trace" title="Permanent link">&para;</a></h3>
+<p>We ask:</p>
+<ul>
+<li>What happens for this instance?</li>
+<li>Which variables change?</li>
+<li>Which branch is selected?</li>
+</ul>
+<h3 id="with-a-specification">With a specification<a class="headerlink" href="#with-a-specification" title="Permanent link">&para;</a></h3>
+<p>We ask:</p>
+<ul>
+<li>What must be true before execution?</li>
+<li>What must be true afterward?</li>
+<li>What exactly counts as a correct result?</li>
+</ul>
+<p>Representation is therefore not merely presentation. It affects reasoning.</p>
+<hr />
+<h2 id="11-common-representation-mistakes">11. Common representation mistakes<a class="headerlink" href="#11-common-representation-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-1-treating-one-example-as-the-algorithm">Mistake 1: treating one example as the algorithm<a class="headerlink" href="#mistake-1-treating-one-example-as-the-algorithm" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[4, 7, 2, 7, 9] -&gt; 1
+</code></pre></div>
+<p>This is an example, not a general method.</p>
+<h3 id="mistake-2-writing-prose-that-hides-control-flow">Mistake 2: writing prose that hides control flow<a class="headerlink" href="#mistake-2-writing-prose-that-hides-control-flow" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Check the values and return the position.</p>
+</blockquote>
+<p>This does not explain order, stopping, failure, or first occurrence.</p>
+<h3 id="mistake-3-writing-source-code-before-the-specification">Mistake 3: writing source code before the specification<a class="headerlink" href="#mistake-3-writing-source-code-before-the-specification" title="Permanent link">&para;</a></h3>
+<p>The implementation may work, but no one can judge whether it solves the intended problem if the requirement is vague.</p>
+<h3 id="mistake-4-writing-pseudocode-tied-to-one-language">Mistake 4: writing pseudocode tied to one language<a class="headerlink" href="#mistake-4-writing-pseudocode-tied-to-one-language" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>for i in range(len(values)):
+</code></pre></div>
+<p>This is Python-like code, not language-independent pseudocode.</p>
+<h3 id="mistake-5-assuming-visual-means-clear">Mistake 5: assuming visual means clear<a class="headerlink" href="#mistake-5-assuming-visual-means-clear" title="Permanent link">&para;</a></h3>
+<p>A complicated flowchart with many crossing arrows can be harder to understand than structured text.</p>
+<h3 id="mistake-6-omitting-failure-behaviour">Mistake 6: omitting failure behaviour<a class="headerlink" href="#mistake-6-omitting-failure-behaviour" title="Permanent link">&para;</a></h3>
+<p>A representation that explains the successful case but not the “not found” case is incomplete.</p>
+<hr />
+<h2 id="12-a-practical-representation-workflow">12. A practical representation workflow<a class="headerlink" href="#12-a-practical-representation-workflow" title="Permanent link">&para;</a></h2>
+<p>For a new problem, use this order:</p>
+<ol>
+<li>state the problem in one precise sentence;</li>
+<li>write input, output, precondition, postcondition, and failure behaviour;</li>
+<li>explain the central idea in structured prose;</li>
+<li>write pseudocode;</li>
+<li>trace one ordinary case and one boundary case;</li>
+<li>implement in Python;</li>
+<li>compare implementation behaviour with the specification;</li>
+<li>add a diagram only when it clarifies control flow or structure;</li>
+<li>translate to C++ when language-specific issues matter.</li>
+</ol>
+<p>This order prevents source code from becoming the only place where design decisions exist.</p>
+<hr />
+<h2 id="13-what-you-must-be-able-to-explain">13. What you must be able to explain<a class="headerlink" href="#13-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>After this chapter, you should be able to explain:</p>
+<ul>
+<li>why an algorithm is not identical to its source code;</li>
+<li>how structured prose differs from pseudocode;</li>
+<li>why a trace is not a general algorithm;</li>
+<li>what a flowchart reveals and hides;</li>
+<li>why pseudocode requires conventions;</li>
+<li>which language-specific details appear in Python and C++;</li>
+<li>why a mathematical specification defines a result without prescribing a method;</li>
+<li>how several representations can support different stages of reasoning.</li>
+</ul>
+<hr />
+<h2 id="14-practice">14. Practice<a class="headerlink" href="#14-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-represent-one-algorithm-four-ways">Exercise 1 — Represent one algorithm four ways<a class="headerlink" href="#exercise-1-represent-one-algorithm-four-ways" title="Permanent link">&para;</a></h3>
+<p>For the problem “count the negative values in a sequence”, prepare:</p>
+<ol>
+<li>structured natural language;</li>
+<li>pseudocode;</li>
+<li>a Python implementation;</li>
+<li>a trace table for <code>[4, -2, 0, -7]</code>.</li>
+</ol>
+<p>Explain what each representation makes easiest to understand.</p>
+<h3 id="exercise-2-diagnose-ambiguity">Exercise 2 — Diagnose ambiguity<a class="headerlink" href="#exercise-2-diagnose-ambiguity" title="Permanent link">&para;</a></h3>
+<p>Improve this description:</p>
+<blockquote>
+<p>Go through the list and return the number when it matches.</p>
+</blockquote>
+<p>List every ambiguity you find before rewriting it.</p>
+<h3 id="exercise-3-diagram-a-branch">Exercise 3 — Diagram a branch<a class="headerlink" href="#exercise-3-diagram-a-branch" title="Permanent link">&para;</a></h3>
+<p>Create a small flowchart for returning the greater of two numbers. Include the equal case and explain whether it needs a separate branch.</p>
+<h3 id="exercise-4-separate-specification-from-implementation">Exercise 4 — Separate specification from implementation<a class="headerlink" href="#exercise-4-separate-specification-from-implementation" title="Permanent link">&para;</a></h3>
+<p>Write a postcondition for a function that returns the first even index in a sequence. Then give two different Python implementations that satisfy the same postcondition.</p>
+<h3 id="exercise-5-trace-versus-proof">Exercise 5 — Trace versus proof<a class="headerlink" href="#exercise-5-trace-versus-proof" title="Permanent link">&para;</a></h3>
+<p>Explain why a correct trace for five inputs does not prove that the algorithm is correct for every valid input.</p>
+<h3 id="exercise-6-compare-languages">Exercise 6 — Compare languages<a class="headerlink" href="#exercise-6-compare-languages" title="Permanent link">&para;</a></h3>
+<p>Write linear search in Python and C++. Identify which lines express the shared algorithm and which exist only because of language-specific syntax or types.</p>
+<hr />
+<h2 id="15-summary">15. Summary<a class="headerlink" href="#15-summary" title="Permanent link">&para;</a></h2>
+<p>An algorithm can be represented in prose, diagrams, pseudocode, source code, tables, and formal specifications. These forms are not interchangeable in purpose.</p>
+<p>A good explanation uses representation deliberately:</p>
+<ul>
+<li>prose builds intuition;</li>
+<li>contracts define requirements;</li>
+<li>pseudocode exposes the method;</li>
+<li>diagrams clarify control flow;</li>
+<li>traces show concrete execution;</li>
+<li>Python and C++ make the method executable;</li>
+<li>correctness arguments connect the algorithm to the specification.</li>
+</ul>
+<p>The next chapter asks a deeper question: what properties must a procedure have before we are justified in calling it an algorithm?</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
