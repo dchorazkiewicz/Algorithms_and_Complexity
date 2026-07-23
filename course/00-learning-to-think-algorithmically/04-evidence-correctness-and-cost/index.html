@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/">
       
       
+        <link rel="prev" href="../03-designing-a-solution/">
+      
+      
+        <link rel="next" href="../05-how-to-study-algorithms/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Evidence That an Algorithm Works - Algorithms and Complexity</title>
+        <title>Evidence that an algorithm works - Algorithms and Complexity</title>
       
     
     
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Evidence That an Algorithm Works
+              Evidence that an algorithm works
             
           </span>
         </div>
@@ -284,6 +288,786 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course contents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 00 — Learning to Think Algorithmically
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 00 — Learning to Think Algorithmically
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-problems-algorithms-programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problems, algorithms, programs, and executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-reading-python-as-an-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading Python as an algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-designing-a-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing a solution step by step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence that an algorithm works
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence that an algorithm works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-correct-looking-output-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A correct-looking output is not enough
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-tests-are-chosen-from-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Good tests are chosen from the specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-counterexamples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Counterexamples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Correctness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-correctness-argument-for-counting-positives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. A correctness argument for counting positives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. A correctness argument for counting positives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Termination
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Termination">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-non-terminating-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A non-terminating version
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-define-input-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Define input size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-compare-two-correct-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Compare two correct approaches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Compare two correct approaches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct scan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-a-filtered-list-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build a filtered list first
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-testing-proof-and-analysis-answer-different-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Testing, proof, and analysis answer different questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common misconceptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Common misconceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-tests-passed-so-the-program-is-proven-correct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “All tests passed, so the program is proven correct”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-loop-has-a-condition-so-it-terminates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “The loop has a condition, so it terminates”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-function-is-on-because-it-contains-one-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “The function is O(n) because it contains one loop”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-tells-us-the-exact-number-of-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “O(n) tells us the exact number of operations”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-faster-algorithm-is-better-even-if-it-is-harder-to-understand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “A faster algorithm is better even if it is harder to understand”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-a-complete-evidence-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. A complete evidence checklist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. A complete evidence checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-and-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples and tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-counterexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Counterexample
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-correctness-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Correctness claim
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-how-to-study-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to study algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     
     
     
@@ -298,10 +1082,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -319,8 +1103,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -413,10 +1197,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -434,8 +1218,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1376,6 +2160,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../03-designing-a-solution/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Designing a solution step by step">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Designing a solution step by step
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05-how-to-study-algorithms/" class="md-footer__link md-footer__link--next" aria-label="Next: How to study algorithms">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                How to study algorithms
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
