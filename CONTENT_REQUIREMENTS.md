@@ -50,7 +50,9 @@ Efekty te nie mogą istnieć wyłącznie jako lista na stronie głównej. Muszą
 
 ## 5. Kolejność kursu
 
-Materiały są rozwijane dokładnie w kolejności dziesięciu bloków sylabusa:
+Przed oficjalnymi blokami sylabusa powstaje **Moduł 00 — Learning to Think Algorithmically**. Jest to moduł przygotowawczy wynikający z celów i efektów uczenia się, a nie dodatkowy blok zastępujący treść sylabusa. Uczy sposobu czytania, projektowania, uzasadniania i analizowania algorytmów.
+
+Następnie materiały są rozwijane dokładnie w kolejności dziesięciu bloków sylabusa:
 
 1. przetwarzanie imperatywne, preconditions, postconditions, reprezentacje algorytmu, cechy algorytmów, pseudokod i strukturalizacja;
 2. iteracja, warunki stopu, rekurencja, konstruowanie poprawnego algorytmu, typy proste i złożone;
@@ -82,7 +84,7 @@ Każdy ważny temat powinien zawierać, zależnie od charakteru zagadnienia:
 13. argument zakończenia, jeżeli występuje iteracja lub rekurencja;
 14. analizę złożoności czasowej i pamięciowej;
 15. implementację w Pythonie;
-16. implementację w C++;
+16. implementację w C++ tam, gdzie porównanie języków wnosi istotną wiedzę;
 17. wyjaśnienie różnic między implementacjami;
 18. przypadki brzegowe;
 19. typowe błędy i błędne intuicje;
@@ -97,7 +99,9 @@ Kod nie może zastępować teorii. Zadania nie mogą zastępować wyjaśnienia. 
 Publiczna nawigacja strony powinna prowadzić przez materiał do nauki:
 
 - strona główna kursu;
-- moduły w kolejności sylabusa;
+- spis treści i ścieżka nauki;
+- Moduł 00;
+- moduły 01–10 w kolejności sylabusa;
 - strony tematyczne;
 - przykłady;
 - problemy;
@@ -115,12 +119,15 @@ Publiczna nawigacja nie powinna eksponować:
 
 Dokumenty źródłowe sylabusa mogą pozostać dostępne na końcu nawigacji jako materiały referencyjne, ale nie jako główna ścieżka uczenia się.
 
-## 8. Zasady językowe
+## 8. Zasady językowe i przykłady programistyczne
 
 - Materiały dydaktyczne są tworzone po angielsku zgodnie z zatwierdzonym kierunkiem projektu.
 - Terminologia ma odpowiadać standardowemu językowi Computer Science.
 - Polski sylabus kontroluje znaczenie i zakres.
 - Niejasności źródłowe należy jawnie omówić, a nie cicho poprawiać.
+- Narracyjne przykłady są domyślnie pisane w Pythonie, aby nie przesłaniać idei algorytmicznej składnią i mechaniką języka.
+- C++ jest wprowadzany w dedykowanych porównaniach, gdy istotne są typy, reprezentacja pamięci, semantyka wartości, referencje, wskaźniki, własność zasobów, kontenery lub koszty operacji.
+- Nie należy przeplatać każdego akapitu równoległym kodem Python/C++, jeżeli utrudnia to czytanie wykładu.
 
 ## 9. Kryterium ukończenia modułu
 
@@ -130,7 +137,8 @@ Moduł jest ukończony dopiero wtedy, gdy:
 - wszystkie istotne definicje są jawne;
 - student może nauczyć się tematu bez zewnętrznego wykładu;
 - ważne algorytmy mają kontrakt, pseudokod, śledzenie, poprawność, zakończenie i złożoność;
-- przykłady Python i C++ wyjaśniają ten sam algorytm;
+- przykłady programistyczne wspierają teorię zamiast ją zastępować;
+- porównania Python/C++ wyjaśniają ten sam algorytm i realne różnice językowe;
 - istnieją problemy wymagające rozumowania, a nie tylko kopiowania kodu;
 - strona zawiera powtórzenie i pytania kontrolne;
 - wykonano audyt względem `SYLABUS.md` i `SYLLABUS_EN.md`;
@@ -148,3 +156,20 @@ Pracujemy iteracyjnie:
 6. dopiero potem następne zagadnienie.
 
 Priorytetem jest jakość i kompletność materiału do nauki, nie liczba utworzonych plików.
+
+## 11. Reguła narracji książkowej
+
+Każda publiczna strona ma być czytelnym fragmentem książki lub wykładu, a nie opisem katalogu, planem pracy autora ani techniczną checklistą.
+
+Rozdział powinien:
+
+- zaczynać się od problemu, pytania lub motywacji;
+- prowadzić czytelnika od intuicji do definicji i modelu;
+- wyjaśniać, dlaczego kolejne pojęcie jest potrzebne;
+- rozwijać jeden spójny tok rozumowania;
+- używać kodu dopiero po wyjaśnieniu idei;
+- komentować decyzje w przykładach, a nie tylko prezentować wynik;
+- budować przejście do następnego zagadnienia;
+- kończyć się jasnym zestawem rzeczy, które student musi umieć wyjaśnić.
+
+Strony startowe modułów mają pełnić rolę wstępu do części książki: przedstawiać sens modułu, zależności między rozdziałami, wymagane kompetencje i kolejność nauki. Nie mogą zawierać statusów developmentu ani checklist autora.
