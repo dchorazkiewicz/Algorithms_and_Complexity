@@ -1,117 +1,189 @@
 # Designing a Solution Step by Step
 
-## 1. Programming should not be the first step
+## Why good programmers do not begin with code
 
-When students receive a programming task, many immediately begin typing. That can work for very small exercises, but it becomes unreliable as soon as the problem contains non-trivial assumptions, boundary cases, or data-structure choices.
+A programming exercise often creates a misleading sense of urgency. The task appears on the screen, an editor is already open, and the first instinct is to start typing. For very small exercises, this sometimes works. For anything more subtle, it usually means that important decisions are being made accidentally inside the code.
 
-A better process separates understanding from implementation.
+The code then becomes a place where several different questions are mixed together:
 
-This chapter develops a repeatable method:
+- What exactly is the problem?
+- Which inputs are valid?
+- What should happen in boundary cases?
+- What information must be remembered during execution?
+- Which comparison expresses the requirement correctly?
+- Why should the algorithm work for every valid input?
+- How expensive is the chosen method?
 
-1. restate the problem precisely;
-2. identify the input and required output;
-3. list assumptions and invalid cases;
-4. construct small examples and boundary cases;
-5. decide what information must be remembered during execution;
-6. describe the algorithm in words;
-7. write a clear Python implementation;
-8. trace and test the implementation;
-9. explain correctness and estimate cost;
-10. revise the solution when weaknesses are discovered.
+When these questions are answered implicitly, mistakes are difficult to diagnose. A wrong result may come from a misunderstanding of the requirement, a poor state representation, an incorrect initial value, a missing case, or a syntactic bug. If the design process is explicit, the location of the problem becomes much easier to identify.
 
-We will use one problem throughout.
+This chapter develops a repeatable method for moving from an informal task to a justified Python solution. We will not jump between unrelated mini-examples. Instead, we will follow one problem from the first sentence to the final correctness and complexity discussion.
 
-## 2. The problem
+The problem is simple enough that the mechanics do not obscure the reasoning:
 
 > Given a non-empty list of integers, return the index of the first occurrence of the greatest value.
 
-Examples:
+The objective is not merely to obtain working code. The objective is to understand how each design decision follows from the requirement.
+
+!!! note "What you should learn from this chapter"
+    By the end of the chapter, you should be able to turn an informal problem statement into explicit input and output requirements, identify assumptions and edge cases, choose state variables with precise meanings, derive a Python implementation from those meanings, and explain correctness, termination, and complexity.
+
+---
+
+## 1. First understand what is being asked
+
+Consider the input:
 
 ```text
-[4, 9, 2, 9, 5]  →  1
-[-3, -7, -1]      →  2
-[8]                →  0
+[4, 9, 2, 9, 5]
 ```
 
-The phrase **first occurrence** matters. In the first list, the greatest value `9` appears at indices `1` and `3`, but the required result is `1`.
+The greatest value is `9`, but that value appears twice. The problem does not ask us to return the greatest value itself. It asks us to return the index of its **first occurrence**.
 
-## 3. Step 1 — Restate the task
+Using zero-based indexing, the two occurrences are at indices `1` and `3`, so the required result is:
+
+```text
+1
+```
+
+That small phrase—*first occurrence*—changes the algorithm. A solution that returns index `3` does identify a maximum, but it solves a different problem.
+
+This is the first design habit:
+
+> Read every requirement as a constraint on the final behaviour of the algorithm.
+
+Words such as *first*, *last*, *any*, *all*, *distinct*, *sorted*, *non-empty*, or *without modifying the input* are not decorative. They determine which solutions are correct.
+
+### Restating the problem in your own words
 
 A useful restatement is:
 
-> Scan the list, keep the best value found so far and the index where it first appeared, and return that index after the scan finishes.
+> Scan the list from left to right. Remember the index of the greatest value encountered so far. Replace that remembered index only when a strictly greater value appears. Return the remembered index after the scan.
 
-This restatement begins to suggest an algorithm, but it still leaves questions open:
+This is not yet code. It is a design sketch. It already reveals several likely ingredients:
 
-- Is the list allowed to be empty?
-- Are indices zero-based?
-- What happens when the maximum appears several times?
-- May the list be modified?
+- a left-to-right scan;
+- a remembered index;
+- a comparison with the best value seen so far;
+- a strict comparison so that equal values do not replace an earlier occurrence.
 
-Good design begins by answering those questions explicitly.
+A good restatement should expose the logical structure without committing prematurely to language syntax.
 
-## 4. Step 2 — Define input and output
+---
+
+## 2. Separate the problem from the implementation
+
+Before writing a function, define the required relationship between input and output.
 
 ```text
 Input:
-    A non-empty list of integers named values.
+    A non-empty list of integers called values.
 
 Output:
-    An integer index.
+    The smallest index i such that values[i] is greater than or equal
+    to every element of values.
 
-Indexing convention:
-    Zero-based indexing.
-
-Required result:
-    The smallest index i such that values[i] is greater than or equal to every element of values.
+Indexing:
+    Zero-based.
 
 Side effects:
     The input list is not modified.
 ```
 
-This description is already more precise than the original sentence.
+This formulation is stronger than the original sentence because it removes ambiguity.
 
-## 5. Step 3 — Identify assumptions and invalid cases
+The phrase:
 
-The main assumption is:
+```text
+the smallest index i
+```
+
+captures the requirement that the first maximum must be returned.
+
+The condition:
+
+```text
+values[i] is greater than or equal to every element
+```
+
+captures what it means for the value at that index to be a maximum.
+
+The statement about side effects makes clear that the algorithm should inspect the input, not reorder or overwrite it.
+
+### Why this separation matters
+
+Many different implementations could satisfy this specification:
+
+- a direct left-to-right scan;
+- a scan using `enumerate`;
+- a library-based solution;
+- a solution in C++ or another language.
+
+The specification remains the same. It tells us what must be true when the algorithm finishes, independently of how the code is written.
+
+This becomes especially important later in the course. Two algorithms may solve the same problem with different costs. Two programs may look different while implementing the same algorithm. A program may also run successfully while violating a hidden part of the specification.
+
+---
+
+## 3. Make assumptions visible
+
+The list is required to be non-empty.
+
+Why?
+
+Because an empty list has no greatest element and therefore no valid index of a greatest element. Without a separate convention, the problem is undefined for empty input.
+
+The essential precondition is:
 
 ```text
 len(values) > 0
 ```
 
-Without this assumption, there is no greatest element and no valid index.
+At this stage we have two reasonable design choices.
 
-We have two possible interface designs:
+### Choice A: document the precondition
 
-1. document non-emptiness as a precondition and assume the caller obeys it;
-2. validate the input and raise an exception when the list is empty.
+We may state that callers are responsible for providing a non-empty list. The function assumes valid input.
 
-For an introductory Python implementation, explicit validation is helpful:
+### Choice B: validate the input
+
+We may check the condition and report failure explicitly:
 
 ```python
 if not values:
     raise ValueError("values must not be empty")
 ```
 
-The detailed theory of preconditions, postconditions, and failure behaviour belongs to Module 01. Here we simply establish the habit of making the decision visible.
+For educational code, explicit validation is useful because it makes the boundary of the problem visible. It prevents an accidental `IndexError` from hiding the real issue.
 
-## 6. Step 4 — Build examples before coding
+The important point is not that one choice is always superior. The important point is that the behaviour is deliberate.
 
-Examples reveal requirements that prose may hide.
+> Invalid input should be handled by a conscious interface decision, not by accident.
 
-### Ordinary case
+Module 01 will formalise preconditions and postconditions. Here we are establishing the habit of asking what must be true before the algorithm starts.
+
+---
+
+## 4. Construct examples before writing the algorithm
+
+Examples are part of design, not merely part of testing after the code exists.
+
+A useful set should expose different aspects of the requirement.
+
+### Ordinary input
 
 ```text
 [4, 9, 2, 7] → 1
 ```
 
-### Maximum repeated
+This checks the basic behaviour.
+
+### Repeated maximum
 
 ```text
 [4, 9, 2, 9] → 1
 ```
 
-This checks the word “first”.
+This checks the word *first*.
 
 ### All values equal
 
@@ -119,11 +191,15 @@ This checks the word “first”.
 [5, 5, 5] → 0
 ```
 
-### One element
+Every position contains a maximum, so the smallest valid index is `0`.
+
+### One-element list
 
 ```text
 [8] → 0
 ```
+
+This is the smallest valid input. No comparison is needed.
 
 ### All values negative
 
@@ -131,59 +207,153 @@ This checks the word “first”.
 [-3, -7, -1] → 2
 ```
 
-### Invalid case
+This checks whether the design incorrectly assumes that the maximum must be non-negative.
+
+### Invalid input
 
 ```text
-[] → error
+[] → ValueError
 ```
 
-These examples should exist before implementation because they influence the design.
+This checks the chosen failure behaviour.
 
-## 7. Step 5 — Decide what state is needed
+These examples do more than confirm expected outputs. They help shape the algorithm itself. In particular, repeated maxima tell us that equality must not replace the earlier index.
 
-While scanning the list, the algorithm must remember:
+---
 
-- the index of the best value seen so far;
-- the best value itself, or enough information to retrieve it;
-- the current index.
+## 5. Decide what information the algorithm must remember
 
-We can store only the best index and use it to access the best value:
+The input may contain many values, but the algorithm does not need to remember everything it has seen.
+
+While scanning the list, it only needs enough information to answer this question:
+
+> Where is the first greatest value among the elements processed so far?
+
+That suggests one state variable:
 
 ```text
-best_index = index of the first maximum among processed elements
+best_index = the index of the first greatest value among processed elements
 ```
 
-Initially, only the first element has been processed, so:
+This sentence is the meaning of the variable. The variable is not merely “an integer.” It represents a fact about the portion of the list already examined.
 
-```text
+Once we know `best_index`, we can obtain the corresponding value as:
+
+```python
+values[best_index]
+```
+
+Therefore we do not need a separate `best_value` variable.
+
+### Why good state design matters
+
+An algorithm is often determined by the information it preserves.
+
+If we store too little, we may be unable to make the next decision. If we store irrelevant information, the solution becomes harder to understand or more expensive. Here, one index is sufficient because it gives us both the position and access to the current best value.
+
+This idea will return throughout the course:
+
+- counters store how many matching elements have been seen;
+- accumulators store a partial sum;
+- a stack stores unfinished work;
+- a visited set stores which graph vertices have already been explored;
+- a tree node stores structural relationships;
+- a loop invariant describes the meaning of the current state.
+
+The problem is simple, but the design question is fundamental:
+
+> What is the smallest meaningful state that allows the computation to continue correctly?
+
+---
+
+## 6. Choose an initial state that is already true
+
+Before scanning the remaining elements, we initialise:
+
+```python
 best_index = 0
 ```
 
-This initial state is valid because the first element is trivially the maximum of the one-element prefix.
+Why is this valid?
 
-## 8. Step 6 — Describe the algorithm in words
+Because before the loop begins, we can regard the first element as the only processed element. Among a one-element prefix, index `0` is trivially the index of the first greatest value.
 
-1. Reject an empty list.
-2. Set `best_index` to `0`.
-3. Examine each index from `1` to the final index.
-4. If the current value is strictly greater than the value at `best_index`, replace `best_index` with the current index.
-5. Return `best_index`.
+The intended meaning of `best_index` is therefore true immediately after initialisation.
 
-The comparison must be strict:
+This is not a minor coding convention. It is the foundation of the later correctness argument.
 
-```text
-current value > best value
+A bad initialisation would create a false statement about the processed data. For example, storing an arbitrary value such as `-1` would not identify a valid element. Storing a separate maximum value of `0` would be wrong for lists containing only negative values.
+
+> A good initial value is not chosen because it is common or convenient. It is chosen because it makes the state meaning true before repeated processing begins.
+
+---
+
+## 7. Derive the update rule from the requirement
+
+Assume `best_index` correctly identifies the first greatest value among the elements already processed.
+
+Now we inspect a new element at position `index`.
+
+There are three logical possibilities.
+
+### The current value is greater
+
+```python
+values[index] > values[best_index]
+```
+
+Then the old candidate is no longer greatest. The new element must become the best candidate:
+
+```python
+best_index = index
+```
+
+### The current value is smaller
+
+Then the old candidate remains greatest, so no update is needed.
+
+### The current value is equal
+
+The current element is also a maximum, but it appears later. Because the problem asks for the **first** occurrence, the old index must be preserved.
+
+This is why the comparison must be strict:
+
+```python
+>
 ```
 
 not:
 
-```text
-current value >= best value
+```python
+>=
 ```
 
-Using `>=` would replace the earlier index when an equal maximum appears later, producing the last occurrence instead of the first.
+One symbol expresses an important semantic choice.
 
-## 9. Step 7 — Implement in Python
+Using `>=` would solve a related problem:
+
+> Return the index of the last occurrence of the greatest value.
+
+The code difference is tiny. The problem difference is real.
+
+---
+
+## 8. Write the algorithm in structured language
+
+Before Python, we can describe the complete method clearly.
+
+1. Reject the input if the list is empty.
+2. Treat index `0` as the first greatest index among the processed elements.
+3. Examine the remaining indices from left to right.
+4. When the current value is strictly greater than the value at the remembered index, replace the remembered index.
+5. When the current value is equal or smaller, keep the remembered index unchanged.
+6. After all elements have been examined, return the remembered index.
+
+This description already contains the algorithm. Python will only make it executable.
+
+---
+
+## 9. Translate the design into Python
 
 ```python
 def first_index_of_maximum(values: list[int]) -> int:
@@ -200,81 +370,186 @@ def first_index_of_maximum(values: list[int]) -> int:
     return best_index
 ```
 
-The implementation follows the design directly:
+Each line corresponds to a previous design decision.
 
-- validation handles the invalid domain;
-- `best_index = 0` establishes the initial fact;
-- the loop processes every remaining element;
-- the strict comparison preserves the first occurrence;
-- the return statement produces the required index.
+The validation:
 
-## 10. Step 8 — Trace the algorithm
+```python
+if not values:
+    raise ValueError("values must not be empty")
+```
 
-Input:
+implements the chosen failure behaviour.
+
+The initialisation:
+
+```python
+best_index = 0
+```
+
+establishes the state meaning for the first element.
+
+The loop:
+
+```python
+for index in range(1, len(values)):
+```
+
+starts at `1` because index `0` has already been incorporated into the initial state.
+
+The strict comparison:
+
+```python
+values[index] > values[best_index]
+```
+
+preserves the earliest occurrence when equal maxima appear.
+
+The return statement:
+
+```python
+return best_index
+```
+
+produces the required output once every element has been processed.
+
+The code is short because the reasoning has already been done.
+
+---
+
+## 10. Trace the algorithm by hand
+
+Use:
 
 ```text
 values = [4, 9, 2, 9, 5]
 ```
 
-| Index | Current value | Best index before | Best value before | Update? | Best index after |
-|---:|---:|---:|---:|:---:|---:|
-| Initial | 4 | — | — | initialise | 0 |
-| 1 | 9 | 0 | 4 | Yes | 1 |
-| 2 | 2 | 1 | 9 | No | 1 |
-| 3 | 9 | 1 | 9 | No, values are equal | 1 |
-| 4 | 5 | 1 | 9 | No | 1 |
+| Stage | Current index | Current value | `best_index` before | Best value before | Decision | `best_index` after |
+|---|---:|---:|---:|---:|---|---:|
+| Initialisation | 0 | 4 | — | — | first element establishes initial state | 0 |
+| Iteration 1 | 1 | 9 | 0 | 4 | `9 > 4`, update | 1 |
+| Iteration 2 | 2 | 2 | 1 | 9 | `2 > 9` is false | 1 |
+| Iteration 3 | 3 | 9 | 1 | 9 | equality, preserve first occurrence | 1 |
+| Iteration 4 | 4 | 5 | 1 | 9 | `5 > 9` is false | 1 |
 
-The function returns `1`.
+The function returns:
 
-The trace explains the effect of the strict comparison at index `3`.
+```text
+1
+```
 
-## 11. Step 9 — Test deliberately
+The trace is valuable because it makes the effect of equality visible. At index `3`, the current value equals the best value, but `best_index` remains `1`.
+
+### Trace the boundary case
+
+For:
+
+```text
+values = [8]
+```
+
+`best_index` becomes `0`, and the loop has no iterations because:
 
 ```python
-def _test_first_index_of_maximum() -> None:
+range(1, 1)
+```
+
+is empty. The function returns `0`, which is correct.
+
+The absence of loop iterations is not a special failure. It is the natural behaviour for the smallest valid input.
+
+---
+
+## 11. Build tests from the requirements
+
+The earlier examples now become deliberate tests.
+
+```python
+def test_first_index_of_maximum() -> None:
     assert first_index_of_maximum([4, 9, 2, 7]) == 1
     assert first_index_of_maximum([4, 9, 2, 9]) == 1
     assert first_index_of_maximum([5, 5, 5]) == 0
     assert first_index_of_maximum([8]) == 0
     assert first_index_of_maximum([-3, -7, -1]) == 2
-
-    try:
-        first_index_of_maximum([])
-    except ValueError:
-        pass
-    else:
-        raise AssertionError("empty input should be rejected")
 ```
 
-These tests were selected from the examples and boundary cases identified before implementation.
+We also test invalid input:
 
-A large number of random tests may be useful later, but thoughtful tests are more valuable than many redundant tests.
+```python
+try:
+    first_index_of_maximum([])
+except ValueError:
+    pass
+else:
+    raise AssertionError("empty input should be rejected")
+```
 
-## 12. Step 10 — Explain correctness
+Each test has a purpose:
 
-A concise correctness argument uses the meaning of `best_index`:
+- ordinary behaviour;
+- repeated maximum;
+- complete equality;
+- smallest valid input;
+- negative values;
+- invalid input.
 
-> Before each loop iteration, `best_index` is the index of the first greatest value among all elements processed so far.
+A long random test suite can be useful, but a small set of well-chosen tests often reveals more about the intended behaviour than many repetitive cases.
+
+Testing does not prove correctness. It checks selected executions. The next step explains why the method works for every valid input.
+
+---
+
+## 12. Explain correctness using the meaning of the state
+
+The central claim is:
+
+> After processing the prefix ending just before the current iteration, `best_index` is the index of the first greatest value in that processed prefix.
+
+This claim connects the changing program state to the final requirement.
 
 ### Initialisation
 
-Before the loop, only `values[0]` is considered processed. Index `0` is therefore the first greatest index of that one-element prefix.
+Before the loop, only `values[0]` is treated as processed.
+
+A one-element prefix has one greatest value, located at index `0`. Therefore:
+
+```python
+best_index = 0
+```
+
+makes the claim true.
 
 ### Preservation
 
-Suppose the claim is true before processing `values[index]`.
+Assume the claim is true before processing `values[index]`.
 
-- If `values[index]` is strictly greater than the previous best value, the current index becomes the unique first index of the new greatest value.
-- If it is smaller, the previous best remains correct.
-- If it is equal, keeping the previous index preserves the first occurrence.
+There are three cases.
 
-Therefore the claim remains true after the iteration.
+1. **The current value is greater than the previous best.**  
+   Then the current value becomes the unique greatest value in the larger prefix, so assigning `best_index = index` makes the claim true again.
+
+2. **The current value is smaller.**  
+   The previous greatest value remains greatest, so leaving `best_index` unchanged preserves the claim.
+
+3. **The current value is equal to the previous best.**  
+   The current value is also greatest, but it appears later. Keeping the previous index preserves the first occurrence.
+
+Therefore the claim remains true after every iteration.
 
 ### Completion
 
-When the loop ends, every element has been processed. The claim therefore applies to the entire list, so the returned index is correct.
+When the loop finishes, the processed prefix is the entire list.
 
-## 13. Explain termination
+The claim therefore tells us that `best_index` is the index of the first greatest value in the complete input. Returning it satisfies the specification.
+
+This is an informal loop-invariant argument. Later modules will formalise this style of reasoning.
+
+---
+
+## 13. Explain why the algorithm terminates
+
+Correctness and termination are different obligations.
 
 The loop iterates over:
 
@@ -282,11 +557,15 @@ The loop iterates over:
 range(1, len(values))
 ```
 
-For a finite list, this range contains a finite number of indices. Each iteration consumes one index, and no index is revisited. Therefore the loop terminates.
+The list is finite, so this range contains a finite number of indices. Each iteration processes exactly one new index, and no index is repeated.
 
-This may seem obvious, but termination must become an explicit part of reasoning before we study more complicated loops and recursion.
+Therefore the loop eventually exhausts the range and terminates.
 
-## 14. Estimate complexity
+For this example the argument is simple. The habit is still important. In later chapters, especially with `while` loops, recursion, graph traversal, and backtracking, termination may require a more careful measure of progress.
+
+---
+
+## 14. Analyse the cost
 
 Let:
 
@@ -294,23 +573,51 @@ Let:
 n = len(values)
 ```
 
-The loop examines `n - 1` elements. Each iteration performs constant-time indexing and comparison under the introductory model.
+The algorithm inspects the first element during initialisation and then examines the remaining `n - 1` elements in the loop.
+
+Under the introductory cost model:
+
+- indexing a Python list is treated as constant time;
+- comparing two integers is treated as constant time;
+- assigning an integer index is treated as constant time.
+
+The total number of loop iterations grows proportionally to `n`, so:
+
+```text
+Time complexity: O(n)
+```
+
+The algorithm stores only a small fixed amount of additional information:
+
+- `best_index`;
+- `index`;
+- temporary values used by evaluation.
 
 Therefore:
 
 ```text
-Time complexity: O(n)
 Auxiliary space: O(1)
 ```
 
-The input list is not copied or modified.
+The input list is neither copied nor modified.
 
-## 15. Diagnose a plausible wrong solution
+### Can we do asymptotically better?
+
+For unrestricted input, every element may need to be inspected. An unexamined final element could be larger than all previous values. Therefore a correct general algorithm cannot safely stop before obtaining enough information about the entire list.
+
+This observation does not yet constitute a formal lower-bound proof, but it explains why linear scanning is the natural optimal strategy for this problem.
+
+---
+
+## 15. Diagnose a solution that almost works
 
 Consider:
 
 ```python
 def first_index_of_maximum(values: list[int]) -> int:
+    if not values:
+        raise ValueError("values must not be empty")
+
     best_index = 0
 
     for index in range(1, len(values)):
@@ -328,91 +635,170 @@ For:
 
 this function returns `3`.
 
-The algorithm does find an index containing a maximum, but it violates the stronger requirement that the first maximum be returned.
+It does not fail to find a maximum. It fails to preserve the first occurrence.
 
-This example illustrates an important lesson:
+The implementation is correct for a different specification:
 
-> A solution can be correct for a similar problem and still be incorrect for the stated problem.
+> Return the index of the last occurrence of the greatest value.
 
-The difference may be one symbol, but the underlying specification is different.
+This illustrates a general lesson:
 
-## 16. A reusable design template
+> A program may be internally consistent and still be wrong because it solves a nearby problem rather than the stated one.
 
-For small algorithmic problems, use the following template.
+When diagnosing an algorithm, do not ask only whether the output “looks reasonable.” Ask whether it satisfies every part of the specification.
 
-### Problem
+---
 
-What must be computed?
+## 16. Improve the design after feedback
 
-### Input
+Suppose a reviewer says:
 
-What data is supplied, and what values are valid?
+> The function works, but the requirement has changed. We now need both the first maximum index and the number of times the maximum occurs.
 
-### Output
+The original state is no longer sufficient. `best_index` tells us where the first maximum occurs, but not how many times it appears.
 
-What exact result must be returned or produced?
+We must extend the state:
 
-### Examples
+```text
+best_index = index of the first greatest value among processed elements
+count = number of occurrences of that greatest value among processed elements
+```
 
-What ordinary and boundary cases reveal the intended behaviour?
+The update logic now has two important cases:
 
-### State
+- when a strictly greater value appears, set `best_index` to the new index and reset `count` to `1`;
+- when an equal value appears, keep `best_index` and increase `count`.
 
-What information must be remembered while processing the input?
+This example shows what it means to improve a solution based on changed requirements or feedback. We do not patch the code blindly. We reconsider the state meaning and derive new updates from the revised specification.
 
-### Initialisation
+That skill is explicitly important in the course: a good algorithm designer must be able to explain what changed, why the previous state was insufficient, and how the new design restores correctness.
 
-What initial values make the intended state meanings true?
+---
 
-### Update
+## 17. A reusable workflow for small algorithmic problems
 
-How does each step extend the processed part of the input while preserving those meanings?
+The exact details vary, but the following sequence is reliable.
 
-### Completion
+### 1. Clarify the task
 
-Why does the final state imply the required output?
+Rewrite the problem in your own words. Identify words that constrain the result: first, last, all, any, sorted, distinct, non-empty, stable, in place.
 
-### Termination
+### 2. Define the interface
 
-Why can the process not continue forever?
+State the input, valid domain, output, indexing convention, side effects, and failure behaviour.
 
-### Complexity
+### 3. Build examples
 
-How many times are the important operations executed, and how much additional memory is used?
+Include ordinary cases, smallest valid cases, repeated values, negative values where relevant, and invalid input.
 
-This template is an introductory form of the more formal design methods developed later in the course.
+### 4. Choose the state
 
-## 17. What you must be able to explain
+Write a sentence describing the meaning of every important variable.
 
-After this chapter, you should be able to:
+### 5. Justify initialisation
 
-- delay coding until the task and boundary cases are clear;
-- turn an informal statement into explicit input and output requirements;
-- choose state variables with precise meanings;
-- justify an initial value;
-- explain why a comparison uses `>` rather than `>=`;
-- build tests from requirements;
-- give an informal correctness and termination argument;
-- estimate linear time and constant auxiliary space;
-- diagnose an implementation that solves a slightly different problem.
+Explain why the state meaning is already true before repeated processing begins.
 
-## 18. Practice
+### 6. Derive updates
+
+For each possible case, explain how the update preserves the intended meaning.
+
+### 7. Describe the algorithm before coding
+
+Use structured natural language or pseudocode.
+
+### 8. Implement in Python
+
+Translate the existing design. Do not let syntax make new hidden decisions.
+
+### 9. Trace and test
+
+Follow the changing state manually and test cases chosen from the specification.
+
+### 10. Explain correctness and termination
+
+Show why the state meaning leads to the required result and why the process cannot continue forever.
+
+### 11. Analyse complexity
+
+Define the input size, identify repeated operations, and estimate time and auxiliary memory.
+
+### 12. Revise when requirements change
+
+Update the specification and state meaning first, then update the code.
+
+This workflow is intentionally more disciplined than immediate coding. With practice, many of its steps become faster, but they should not disappear from your reasoning.
+
+---
+
+## 18. What you must be able to explain
+
+After studying this chapter, you should be able to explain:
+
+1. why coding should not be the first step in solving a non-trivial problem;
+2. how the phrase *first occurrence* changes the comparison used by the algorithm;
+3. why empty input must be excluded or handled explicitly;
+4. why examples should be selected before implementation;
+5. what `best_index` means during execution;
+6. why `best_index = 0` is a valid initialisation;
+7. why `>` preserves the first maximum while `>=` selects the last;
+8. how the loop invariant connects intermediate states to the final result;
+9. why the algorithm terminates;
+10. why the running time is `O(n)` and auxiliary space is `O(1)`;
+11. how a changed requirement may force a change in the stored state;
+12. how to separate a specification error, design error, and syntax error.
+
+---
+
+## 19. Practice
 
 ### Exercise 1 — First minimum
 
-Design a function that returns the index of the first smallest value in a non-empty list.
+Design a function that returns the index of the first occurrence of the smallest value in a non-empty list.
 
-Follow all ten design steps. Do not begin with code.
+Do not begin with code. Write:
+
+- the input and output specification;
+- boundary cases;
+- the state meaning;
+- initialisation;
+- update cases;
+- Python implementation;
+- correctness argument;
+- termination argument;
+- complexity analysis.
 
 ### Exercise 2 — Last maximum
 
-Modify the problem so that the last occurrence of the maximum is required. Explain exactly which comparison changes and why.
+Change the original requirement so that the last occurrence of the maximum is returned.
 
-### Exercise 3 — Count the maximum
+Explain exactly:
 
-Design a function that returns how many times the greatest value occurs. Identify the additional state that is needed when a new maximum is discovered.
+- which comparison changes;
+- why equality must now trigger an update;
+- how the state meaning should be stated.
 
-### Exercise 4 — Improve a broken design
+### Exercise 3 — Count maximum occurrences
+
+Design a function returning the number of occurrences of the greatest value.
+
+Identify what must happen when:
+
+- a new greater value appears;
+- an equal value appears;
+- a smaller value appears.
+
+### Exercise 4 — Return both index and value
+
+Design a function returning a pair:
+
+```text
+(first maximum index, maximum value)
+```
+
+Decide whether both pieces of information must be stored explicitly during the scan.
+
+### Exercise 5 — Diagnose an invalid initial state
 
 A student proposes:
 
@@ -429,24 +815,44 @@ def index_of_maximum(values: list[int]) -> int:
     return maximum_index
 ```
 
-Find an input that exposes the error, explain why the initial state is invalid, and repair the solution.
+Provide a counterexample, explain why the initial state is invalid, and repair the algorithm.
 
-## 19. Summary
+### Exercise 6 — Requirement change
 
-Designing an algorithm is a sequence of decisions, not an act of immediate coding.
+The function must now return `None` for an empty list instead of raising an exception.
 
-A disciplined solution process:
+Explain which parts of the following must change:
 
-- clarifies the general problem;
-- states the input and output;
-- exposes assumptions and invalid cases;
-- uses examples to reveal hidden requirements;
-- gives every state variable a meaning;
-- chooses initial values that make those meanings true;
-- preserves the meanings during updates;
-- validates the result through tracing and tests;
-- explains correctness and termination;
-- estimates cost;
-- revises the solution when a counterexample appears.
+- interface;
+- output type;
+- examples;
+- implementation;
+- correctness statement.
 
-The next chapter asks what kind of evidence supports the claim that an algorithm really works.
+### Exercise 7 — Explain before coding
+
+For the task “return the first index of a negative value, or `-1` if none exists,” write a complete design using the workflow from this chapter.
+
+Pay particular attention to the meaning of the sentinel value `-1`.
+
+---
+
+## 20. Summary
+
+Designing an algorithm is a sequence of explicit decisions.
+
+We began with an informal task and made it precise. We identified the non-empty input requirement, the zero-based indexing convention, the absence of side effects, and the importance of the word *first*. We selected examples that exposed repeated maxima, equal values, negative numbers, the smallest valid input, and invalid input.
+
+We then chose a state variable whose meaning directly matched the problem:
+
+```text
+best_index = the index of the first greatest value among processed elements
+```
+
+That meaning determined the initial value, the strict comparison, the update rule, the correctness argument, and the final result. Python was the final expression of the design, not the source of the design.
+
+The central habit is this:
+
+> Make the reasoning visible before asking the code to carry it.
+
+The next chapter asks a different question. Even after an algorithm has been designed and tested, what evidence do we have that it really works, terminates, and uses acceptable resources?
