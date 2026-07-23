@@ -1,48 +1,86 @@
-# Algorithms and Complexity
+<section class="course-hero">
+  <p class="course-hero__eyebrow">A complete learning path</p>
+  <h1>Algorithms and Complexity</h1>
+  <p class="course-hero__lead">
+    Learn how to turn a problem into a precise algorithm, choose a useful data representation,
+    explain why the solution works, and analyse how its cost grows. The course is written as a
+    connected book, with Python examples supporting the theory rather than replacing it.
+  </p>
+  <div class="course-actions">
+    <a class="course-button course-button--primary" href="course/00-learning-to-think-algorithmically/">Start learning</a>
+    <a class="course-button" href="course/">See the complete course map</a>
+  </div>
+</section>
 
-This course is written as a book for learning how algorithms are designed, represented, implemented, justified, and analysed.
+## What this course teaches
 
-The central objective is not to memorise code. It is to understand how a problem becomes a precise specification, how a representation and data structure are chosen, how an algorithm changes state, why the algorithm works, why it terminates, and how its cost grows with the input.
+The objective is not to memorise isolated code fragments. The objective is to understand the complete chain from a problem statement to a justified and efficient implementation.
 
-Python is used as the primary language inside the explanations because it keeps the algorithmic idea visible. C++ is introduced in dedicated comparisons when type systems, memory representation, ownership, containers, or operation costs materially change the discussion.
+<div class="course-grid">
+  <article class="course-card">
+    <div class="course-card__label">Design</div>
+    <h3>Formulate algorithms precisely</h3>
+    <p>Identify inputs, outputs, assumptions, preconditions, postconditions, state, and failure behaviour.</p>
+  </article>
+  <article class="course-card">
+    <div class="course-card__label">Reason</div>
+    <h3>Explain correctness and termination</h3>
+    <p>Move beyond testing examples and learn how to justify that an algorithm works for every valid input.</p>
+  </article>
+  <article class="course-card">
+    <div class="course-card__label">Represent</div>
+    <h3>Understand data structures</h3>
+    <p>Study arrays, linked lists, stacks, queues, trees, heaps, and graphs as models with invariants and operation costs.</p>
+  </article>
+  <article class="course-card">
+    <div class="course-card__label">Analyse</div>
+    <h3>Estimate computational cost</h3>
+    <p>Define input size, identify dominant operations, and analyse time and auxiliary-space complexity using Big O.</p>
+  </article>
+</div>
 
-## What the course develops
+## The course begins before the first formal algorithm
 
-By working through the complete material, you should develop the ability to:
+The official syllabus sequence starts with imperative computation, algorithm contracts, representations, properties, pseudocode, and structuring techniques. Before that formal sequence, **Module 00** establishes the reading and reasoning habits needed to study the course effectively.
 
-1. solve technical problems by designing correct algorithms;
-2. describe algorithms using explicit assumptions, preconditions, and postconditions;
-3. use arrays, linked lists, stacks, queues, trees, heaps, and graphs as conceptual models and practical structures;
-4. compare iterative and recursive solutions;
-5. explain correctness and termination;
-6. estimate time and auxiliary-space complexity;
-7. compare alternative solutions and improve them after feedback;
-8. communicate technical difficulties precisely.
+It explains the difference between a problem, a problem instance, an algorithm, a program, and an execution. It then shows how to read Python as a state-changing process, how to design a solution step by step, and how examples, tests, correctness arguments, termination arguments, and complexity analysis play different roles.
 
-## How the book begins
-
-The official syllabus sequence begins with imperative computation, algorithm contracts, representations, properties, pseudocode, and structuring techniques.
-
-Before that formal sequence, **Module 00** establishes the reading and reasoning habits needed to study the course effectively. It explains the difference between a problem, an instance, an algorithm, a program, and an execution; shows how to read Python as a state-changing process; develops a step-by-step design method; and distinguishes examples, tests, correctness arguments, termination arguments, and complexity analysis.
-
-[Start Module 00 — Learning to Think Algorithmically](course/00-learning-to-think-algorithmically/index.md)
+<div class="course-callout">
+  <strong>Recommended first step:</strong>
+  begin with <a href="course/00-learning-to-think-algorithmically/">Module 00 — Learning to Think Algorithmically</a>.
+  It prepares the vocabulary and habits used throughout the rest of the book.
+</div>
 
 ## Book structure
 
+<div class="course-grid">
+  <article class="course-card">
+    <div class="course-card__label">Module 00</div>
+    <h3>Learning to Think Algorithmically</h3>
+    <p>Problems, algorithms, programs, executions, Python reading, design workflow, evidence, and study method.</p>
+    <a href="course/00-learning-to-think-algorithmically/" aria-label="Open Module 00">Open Module 00</a>
+  </article>
+  <article class="course-card">
+    <div class="course-card__label">Module 01</div>
+    <h3>Foundations of Algorithm Design</h3>
+    <p>Imperative computation, contracts, representations, algorithm properties, pseudocode, and structuring.</p>
+    <a href="course/01-foundations-of-algorithm-design/" aria-label="Open Module 01">Open Module 01</a>
+  </article>
+  <article class="course-card">
+    <div class="course-card__label">Modules 02–05</div>
+    <h3>Control, Data, Search, and Recursion</h3>
+    <p>Iteration, recursion, types, memory, arrays, searching, sorting, functions, and the call stack.</p>
+    <a href="course/#module-02-iteration-recursion-and-data-types" aria-label="View Modules 02 to 05">View the course map</a>
+  </article>
+  <article class="course-card">
+    <div class="course-card__label">Modules 06–10</div>
+    <h3>Advanced Structures and Complexity</h3>
+    <p>Backtracking, lists, queues, trees, AVL, heaps, graphs, DFS, complexity, and hard problems.</p>
+    <a href="course/#module-06-backtracking-greedy-methods-and-dynamic-structures" aria-label="View Modules 06 to 10">View the course map</a>
+  </article>
+</div>
+
 The complete [Course Contents and Learning Path](course/index.md) explains what each module teaches and how the modules depend on one another.
-
-The modules follow the syllabus order:
-
-1. foundations of algorithm design;
-2. iteration, recursion, and data types;
-3. arrays, records, and memory representation;
-4. searching, sorting, and divide and conquer;
-5. functions, the call stack, and recursion;
-6. backtracking, greedy methods, and dynamic structures;
-7. linked lists, stacks, queues, and priority queues;
-8. binary trees, AVL trees, and heaps;
-9. graphs and depth-first search;
-10. computational complexity and hard problems.
 
 ## How to read a chapter
 
