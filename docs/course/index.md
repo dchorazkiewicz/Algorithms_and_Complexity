@@ -45,14 +45,14 @@ Choose a module from the dashboard. The course map is the only page that shows t
     </span>
   </a>
 
-  <div class="module-tile module-tile--planned">
+  <a class="module-tile module-tile--available" href="04-searching-sorting-and-divide-and-conquer/">
     <span class="module-tile__number">04</span>
     <span class="module-tile__body">
       <strong>Searching, Sorting, and Divide and Conquer</strong>
       <small>Linear and binary search, sorting properties, Quicksort, and index arrays.</small>
-      <em>Planned</em>
+      <em>Available</em>
     </span>
-  </div>
+  </a>
 
   <div class="module-tile module-tile--planned">
     <span class="module-tile__number">05</span>
