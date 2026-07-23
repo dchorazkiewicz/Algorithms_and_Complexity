@@ -1,0 +1,3088 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/imperative-computation/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Imperative computation - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#imperative-computation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Imperative computation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source syllabus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Source syllabus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish source
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English version
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imperative computation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imperative computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-this-topic-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why this topic matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Core definitions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Core definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-computational-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Computational problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-problem-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Problem instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-imperative-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The imperative model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The imperative model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-program-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Program state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-state-is-an-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 State is an abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-values-variables-and-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Values, variables, and expressions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Values, variables, and expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Variable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Expression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Statement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Assignment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-meaning-of-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Meaning of assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-assignment-is-not-mathematical-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Assignment is not mathematical equality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-assignment-as-a-state-transition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Assignment as a state transition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-destructive-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Destructive update
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sequential-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Sequential composition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Control flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Control flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-function-and-procedure-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Function and procedure calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-input-output-and-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Input, output, and side effects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Input, output, and side effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-side-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Side effect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-execution-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Execution traces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Execution traces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-purpose-of-a-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Purpose of a trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example-maximum-of-two-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example: maximum of two values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-trace-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Trace granularity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Determinism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-abstraction-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Abstraction levels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Abstraction levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-problem-level-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Problem-level description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-algorithm-level-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Algorithm-level description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-python-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Python implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-c-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 C++ implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-machine-level-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 Machine-level execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-equivalent-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Equivalent implementations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-a-complete-introductory-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. A complete introductory example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. A complete introductory example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-state-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 State design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 C++
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#137-important-observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.7 Important observation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-relation-to-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Relation to correctness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-relation-to-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Relation to complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-common-misconceptions-and-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Common misconceptions and errors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Common misconceptions and errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-confusing-an-algorithm-with-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Confusing an algorithm with source code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-confusing-assignment-with-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Confusing assignment with equality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-ignoring-statement-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Ignoring statement order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-losing-an-overwritten-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Losing an overwritten value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-treating-input-as-keyboard-input-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 Treating input as keyboard input only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#166-ignoring-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.6 Ignoring side effects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#167-tracing-only-the-final-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.7 Tracing only the final value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#168-solving-only-one-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.8 Solving only one instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Self-check questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Problems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-1-trace-an-assignment-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 1 — Trace an assignment sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-2-find-the-error-in-a-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 2 — Find the error in a swap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-3-identify-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 3 — Identify state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-4-rewrite-at-another-abstraction-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 4 — Rewrite at another abstraction level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-5-manual-loop-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 5 — Manual loop trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-6-boundary-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 6 — Boundary cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-7-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 7 — Side effects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-this-topic-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why this topic matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Core definitions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Core definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-computational-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Computational problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-problem-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Problem instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-imperative-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The imperative model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The imperative model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-program-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Program state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-state-is-an-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 State is an abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-values-variables-and-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Values, variables, and expressions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Values, variables, and expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Variable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Expression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Statement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Assignment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-meaning-of-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Meaning of assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-assignment-is-not-mathematical-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Assignment is not mathematical equality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-assignment-as-a-state-transition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Assignment as a state transition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-destructive-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Destructive update
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sequential-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Sequential composition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Control flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Control flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-function-and-procedure-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Function and procedure calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-input-output-and-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Input, output, and side effects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Input, output, and side effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-side-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Side effect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-execution-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Execution traces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Execution traces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-purpose-of-a-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Purpose of a trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example-maximum-of-two-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example: maximum of two values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-trace-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Trace granularity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Determinism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-abstraction-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Abstraction levels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Abstraction levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-problem-level-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Problem-level description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-algorithm-level-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Algorithm-level description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-python-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Python implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-c-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 C++ implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-machine-level-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 Machine-level execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-equivalent-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Equivalent implementations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-a-complete-introductory-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. A complete introductory example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. A complete introductory example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-state-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 State design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 C++
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#137-important-observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.7 Important observation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-relation-to-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Relation to correctness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-relation-to-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Relation to complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-common-misconceptions-and-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Common misconceptions and errors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Common misconceptions and errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-confusing-an-algorithm-with-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Confusing an algorithm with source code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-confusing-assignment-with-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Confusing assignment with equality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-ignoring-statement-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Ignoring statement order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-losing-an-overwritten-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Losing an overwritten value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-treating-input-as-keyboard-input-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 Treating input as keyboard input only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#166-ignoring-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.6 Ignoring side effects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#167-tracing-only-the-final-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.7 Tracing only the final value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#168-solving-only-one-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.8 Solving only one instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-self-check-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Self-check questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Problems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-1-trace-an-assignment-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 1 — Trace an assignment sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-2-find-the-error-in-a-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 2 — Find the error in a swap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-3-identify-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 3 — Identify state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-4-rewrite-at-another-abstraction-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 4 — Rewrite at another abstraction level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-5-manual-loop-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 5 — Manual loop trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-6-boundary-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 6 — Boundary cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-7-side-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 7 — Side effects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="imperative-computation">Imperative Computation<a class="headerlink" href="#imperative-computation" title="Permanent link">&para;</a></h1>
+<h2 id="1-why-this-topic-matters">1. Why this topic matters<a class="headerlink" href="#1-why-this-topic-matters" title="Permanent link">&para;</a></h2>
+<p>An algorithm is not only a final formula or a block of source code. In the imperative model, it is a controlled sequence of operations that transforms one program state into another.</p>
+<p>Understanding that transformation is fundamental because later course topics depend on it:</p>
+<ul>
+<li>a loop repeatedly changes state;</li>
+<li>a recursive call creates a new execution context;</li>
+<li>a sorting algorithm rearranges a data structure through a sequence of updates;</li>
+<li>a graph traversal maintains a set of visited vertices;</li>
+<li>a complexity analysis counts how often relevant operations are executed.</li>
+</ul>
+<p>The imperative model therefore provides the operational foundation for the rest of the course.</p>
+<h2 id="2-core-definitions">2. Core definitions<a class="headerlink" href="#2-core-definitions" title="Permanent link">&para;</a></h2>
+<h3 id="21-computational-problem">2.1 Computational problem<a class="headerlink" href="#21-computational-problem" title="Permanent link">&para;</a></h3>
+<p>A <strong>computational problem</strong> describes a class of inputs and the result required for every valid input.</p>
+<p>Example:</p>
+<blockquote>
+<p>Given two integers, return the greater value.</p>
+</blockquote>
+<p>The problem does not yet specify whether the solution should use a conditional statement, a library function, arithmetic manipulation, or another method.</p>
+<p>A complete problem description should identify:</p>
+<ul>
+<li>the input domain;</li>
+<li>the required output;</li>
+<li>relevant constraints;</li>
+<li>invalid cases;</li>
+<li>whether the input may be modified.</li>
+</ul>
+<h3 id="22-problem-instance">2.2 Problem instance<a class="headerlink" href="#22-problem-instance" title="Permanent link">&para;</a></h3>
+<p>A <strong>problem instance</strong> is one concrete input belonging to the problem domain.</p>
+<p>For the maximum-of-two problem, the following are different instances:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>(8, 3)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>(-4, 12)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>(5, 5)
+</code></pre></div>
+<p>The algorithm should solve every valid instance, not only one selected example.</p>
+<h3 id="23-algorithm">2.3 Algorithm<a class="headerlink" href="#23-algorithm" title="Permanent link">&para;</a></h3>
+<p>An <strong>algorithm</strong> is a finite and sufficiently precise procedure for transforming valid input into the required output.</p>
+<p>An algorithm is more general than one program because the same algorithmic idea may be implemented in different programming languages.</p>
+<h3 id="24-program">2.4 Program<a class="headerlink" href="#24-program" title="Permanent link">&para;</a></h3>
+<p>A <strong>program</strong> is an implementation of one or more algorithms in a programming language.</p>
+<p>A program includes details that are not necessarily part of the abstract algorithm:</p>
+<ul>
+<li>concrete data types;</li>
+<li>syntax;</li>
+<li>library interfaces;</li>
+<li>error-handling mechanisms;</li>
+<li>input and output operations;</li>
+<li>memory-management rules;</li>
+<li>compiler or interpreter behaviour.</li>
+</ul>
+<h3 id="25-execution">2.5 Execution<a class="headerlink" href="#25-execution" title="Permanent link">&para;</a></h3>
+<p>An <strong>execution</strong> is one concrete run of a program for a particular input.</p>
+<p>The distinction is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>problem        — what must be solved
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>algorithm      — the method of solution
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>program        — an implementation of the method
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>execution      — one run for one concrete input
+</code></pre></div>
+<h2 id="3-the-imperative-model">3. The imperative model<a class="headerlink" href="#3-the-imperative-model" title="Permanent link">&para;</a></h2>
+<h3 id="31-definition">3.1 Definition<a class="headerlink" href="#31-definition" title="Permanent link">&para;</a></h3>
+<p>In <strong>imperative computation</strong>, a solution is expressed as a sequence of commands that inspect or modify program state.</p>
+<p>The model focuses on two questions:</p>
+<ol>
+<li>What is the current state?</li>
+<li>Which command determines the next state?</li>
+</ol>
+<p>An imperative computation can be viewed as a sequence of state transitions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>state_0 → state_1 → state_2 → ... → state_final
+</code></pre></div>
+<h3 id="32-program-state">3.2 Program state<a class="headerlink" href="#32-program-state" title="Permanent link">&para;</a></h3>
+<p>The <strong>program state</strong> is the collection of values relevant to the computation at a particular moment.</p>
+<p>For a simple algorithm, state may consist of variable-value bindings:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>first = 8
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>second = 3
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>maximum = undefined
+</code></pre></div>
+<p>After executing an assignment, the state changes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>maximum = 8
+</code></pre></div>
+<p>For more advanced algorithms, state may include:</p>
+<ul>
+<li>the contents of an array;</li>
+<li>the current node of a linked list;</li>
+<li>the call stack;</li>
+<li>a queue of pending vertices;</li>
+<li>a set of visited vertices;</li>
+<li>the structure of a tree;</li>
+<li>values stored in files or external systems.</li>
+</ul>
+<h3 id="33-state-is-an-abstraction">3.3 State is an abstraction<a class="headerlink" href="#33-state-is-an-abstraction" title="Permanent link">&para;</a></h3>
+<p>The complete physical state of a computer is enormous. Algorithm analysis normally ignores details that are irrelevant to the problem.</p>
+<p>For example, when tracing a maximum-finding algorithm, the useful state may be only:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>current_index
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>current_maximum
+</code></pre></div>
+<p>A good trace records enough information to explain the algorithm, but not every machine-level detail.</p>
+<h2 id="4-values-variables-and-expressions">4. Values, variables, and expressions<a class="headerlink" href="#4-values-variables-and-expressions" title="Permanent link">&para;</a></h2>
+<h3 id="41-value">4.1 Value<a class="headerlink" href="#41-value" title="Permanent link">&para;</a></h3>
+<p>A <strong>value</strong> is a piece of data, such as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>7
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>-3
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>TRUE
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>&quot;algorithm&quot;
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>[4, 8, 1]
+</code></pre></div>
+<p>Values may be classified by data type. The detailed distinction between primitive and compound data types is developed in Module 02.</p>
+<h3 id="42-variable">4.2 Variable<a class="headerlink" href="#42-variable" title="Permanent link">&para;</a></h3>
+<p>A <strong>variable</strong> is a named component of program state.</p>
+<p>At a conceptual level, a variable associates a name with a current value:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>count = 4
+</code></pre></div>
+<p>The value associated with the variable may change during execution.</p>
+<h3 id="43-expression">4.3 Expression<a class="headerlink" href="#43-expression" title="Permanent link">&para;</a></h3>
+<p>An <strong>expression</strong> is evaluated to produce a value.</p>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>left + right
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>count + 1
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>value &gt; maximum
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>length(values)
+</code></pre></div>
+<p>Expressions do not necessarily modify state. Their evaluation supplies values used by statements.</p>
+<h3 id="44-statement">4.4 Statement<a class="headerlink" href="#44-statement" title="Permanent link">&para;</a></h3>
+<p>A <strong>statement</strong> is an instruction that participates in computation.</p>
+<p>Examples include:</p>
+<ul>
+<li>assignment;</li>
+<li>conditional selection;</li>
+<li>loop control;</li>
+<li>function call;</li>
+<li>return;</li>
+<li>input or output;</li>
+<li>explicit failure.</li>
+</ul>
+<p>Some statements modify state directly. Others determine which statement executes next.</p>
+<h2 id="5-assignment">5. Assignment<a class="headerlink" href="#5-assignment" title="Permanent link">&para;</a></h2>
+<h3 id="51-meaning-of-assignment">5.1 Meaning of assignment<a class="headerlink" href="#51-meaning-of-assignment" title="Permanent link">&para;</a></h3>
+<p>Assignment evaluates an expression and stores the resulting value in a variable or data-structure component.</p>
+<p>Repository pseudocode uses <code>←</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>maximum ← first
+</code></pre></div>
+<p>This means:</p>
+<ol>
+<li>read the current value of <code>first</code>;</li>
+<li>store that value as the new value of <code>maximum</code>.</li>
+</ol>
+<h3 id="52-assignment-is-not-mathematical-equality">5.2 Assignment is not mathematical equality<a class="headerlink" href="#52-assignment-is-not-mathematical-equality" title="Permanent link">&para;</a></h3>
+<p>The statement</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>count ← count + 1
+</code></pre></div>
+<p>is valid imperative pseudocode.</p>
+<p>It does not claim that a number equals itself plus one. It means:</p>
+<ol>
+<li>read the old value of <code>count</code>;</li>
+<li>add one;</li>
+<li>replace the old stored value with the result.</li>
+</ol>
+<p>If <code>count</code> was <code>4</code>, then the new state contains:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>count = 5
+</code></pre></div>
+<h3 id="53-assignment-as-a-state-transition">5.3 Assignment as a state transition<a class="headerlink" href="#53-assignment-as-a-state-transition" title="Permanent link">&para;</a></h3>
+<p>Suppose the initial state is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>x = 2
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>y = 7
+</code></pre></div>
+<p>After:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>x ← y + 1
+</code></pre></div>
+<p>we obtain:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>x = 8
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>y = 7
+</code></pre></div>
+<p>The value of <code>y</code> was read but not modified.</p>
+<h3 id="54-destructive-update">5.4 Destructive update<a class="headerlink" href="#54-destructive-update" title="Permanent link">&para;</a></h3>
+<p>Assignment usually replaces the previous value associated with a variable.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>x ← 10
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>x ← 20
+</code></pre></div>
+<p>After the second assignment, the current value of <code>x</code> is <code>20</code>. The previous value <code>10</code> is unavailable unless it was copied elsewhere.</p>
+<p>This is why swapping two variables requires care.</p>
+<p>Incorrect attempt:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>a ← b
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>b ← a
+</code></pre></div>
+<p>For initial state <code>a = 3</code>, <code>b = 9</code>, the first assignment destroys the original value of <code>a</code>. The final state becomes <code>a = 9</code>, <code>b = 9</code>.</p>
+<p>Correct version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>temporary ← a
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>a ← b
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>b ← temporary
+</code></pre></div>
+<h2 id="6-sequential-composition">6. Sequential composition<a class="headerlink" href="#6-sequential-composition" title="Permanent link">&para;</a></h2>
+<p>A <strong>sequence</strong> executes statements in order.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>width ← 5
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>height ← 4
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>area ← width * height
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>RETURN area
+</code></pre></div>
+<p>The order matters because later statements may depend on earlier state changes.</p>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>x ← 2
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>y ← x + 1
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>x ← 10
+</code></pre></div>
+<p>The final state is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>x = 10
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>y = 3
+</code></pre></div>
+<p>The assignment to <code>y</code> used the value of <code>x</code> that existed at that moment.</p>
+<p>Changing the order changes the result:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>x ← 2
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>x ← 10
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>y ← x + 1
+</code></pre></div>
+<p>Now the final value of <code>y</code> is <code>11</code>.</p>
+<h2 id="7-control-flow">7. Control flow<a class="headerlink" href="#7-control-flow" title="Permanent link">&para;</a></h2>
+<p><strong>Control flow</strong> determines the order in which statements are executed.</p>
+<p>The basic structured forms are:</p>
+<ol>
+<li>sequence;</li>
+<li>selection;</li>
+<li>iteration;</li>
+<li>function or procedure call.</li>
+</ol>
+<p>This page introduces them as elements of imperative computation. Their systematic use is developed later in this module.</p>
+<h3 id="71-selection">7.1 Selection<a class="headerlink" href="#71-selection" title="Permanent link">&para;</a></h3>
+<p>Selection chooses a path based on a boolean condition.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>IF first ≥ second THEN
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    maximum ← first
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>ELSE
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    maximum ← second
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>END IF
+</code></pre></div>
+<p>Only one branch is executed.</p>
+<h3 id="72-iteration">7.2 Iteration<a class="headerlink" href="#72-iteration" title="Permanent link">&para;</a></h3>
+<p>Iteration repeats a block while a condition holds or for each element in a collection.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>total ← 0
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>FOR EACH value IN values DO
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    total ← total + value
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>END FOR
+</code></pre></div>
+<p>The loop repeatedly changes the state of <code>total</code>.</p>
+<h3 id="73-function-and-procedure-calls">7.3 Function and procedure calls<a class="headerlink" href="#73-function-and-procedure-calls" title="Permanent link">&para;</a></h3>
+<p>A function call transfers control to another named computation and later returns a result.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>maximum ← maximum_of_two(first, second)
+</code></pre></div>
+<p>Decomposition into functions allows a complex algorithm to be built from smaller operations with explicit responsibilities.</p>
+<h2 id="8-input-output-and-side-effects">8. Input, output, and side effects<a class="headerlink" href="#8-input-output-and-side-effects" title="Permanent link">&para;</a></h2>
+<h3 id="81-input">8.1 Input<a class="headerlink" href="#81-input" title="Permanent link">&para;</a></h3>
+<p>The <strong>input</strong> is the data supplied to an algorithm.</p>
+<p>Input is a logical concept. It does not need to come from a keyboard. It may be supplied through:</p>
+<ul>
+<li>function parameters;</li>
+<li>a file;</li>
+<li>a network message;</li>
+<li>an existing data structure;</li>
+<li>another algorithm.</li>
+</ul>
+<h3 id="82-output">8.2 Output<a class="headerlink" href="#82-output" title="Permanent link">&para;</a></h3>
+<p>The <strong>output</strong> is the result produced by the algorithm.</p>
+<p>It may be:</p>
+<ul>
+<li>a returned scalar value;</li>
+<li>an index;</li>
+<li>a boolean decision;</li>
+<li>a new data structure;</li>
+<li>a modified input structure;</li>
+<li>an explicitly reported failure.</li>
+</ul>
+<h3 id="83-side-effect">8.3 Side effect<a class="headerlink" href="#83-side-effect" title="Permanent link">&para;</a></h3>
+<p>A <strong>side effect</strong> is an observable change beyond returning a value.</p>
+<p>Examples:</p>
+<ul>
+<li>modifying an input list;</li>
+<li>changing a global variable;</li>
+<li>printing text;</li>
+<li>writing to a file;</li>
+<li>updating an external service.</li>
+</ul>
+<p>Side effects are part of state transformation and must be documented when they affect the algorithm contract.</p>
+<p>Detailed analysis of function interaction with external state belongs to Module 05.</p>
+<h2 id="9-execution-traces">9. Execution traces<a class="headerlink" href="#9-execution-traces" title="Permanent link">&para;</a></h2>
+<h3 id="91-purpose-of-a-trace">9.1 Purpose of a trace<a class="headerlink" href="#91-purpose-of-a-trace" title="Permanent link">&para;</a></h3>
+<p>A <strong>manual execution trace</strong> records the important state after each relevant step.</p>
+<p>Tracing helps to:</p>
+<ul>
+<li>understand the algorithm;</li>
+<li>verify examples;</li>
+<li>detect incorrect assignments;</li>
+<li>identify missing branches;</li>
+<li>reason about loops;</li>
+<li>discover boundary cases;</li>
+<li>prepare for correctness analysis.</li>
+</ul>
+<h3 id="92-example-maximum-of-two-values">9.2 Example: maximum of two values<a class="headerlink" href="#92-example-maximum-of-two-values" title="Permanent link">&para;</a></h3>
+<p>Pseudocode:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ALGORITHM maximum_of_two(first, second)
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    maximum ← first
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    IF second &gt; maximum THEN
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>        maximum ← second
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>    END IF
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    RETURN maximum
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>END ALGORITHM
+</code></pre></div>
+<p>Trace for <code>first = 8</code>, <code>second = 3</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Step</th>
+<th style="text-align: right;"><code>first</code></th>
+<th style="text-align: right;"><code>second</code></th>
+<th style="text-align: right;"><code>maximum</code></th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">Initial</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">undefined</td>
+<td>input is available</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td>assign <code>first</code> to <code>maximum</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td>test <code>3 &gt; 8</code>, false</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td>return <code>maximum</code></td>
+</tr>
+</tbody>
+</table>
+<p>Trace for <code>first = -4</code>, <code>second = 12</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Step</th>
+<th style="text-align: right;"><code>first</code></th>
+<th style="text-align: right;"><code>second</code></th>
+<th style="text-align: right;"><code>maximum</code></th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">Initial</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">undefined</td>
+<td>input is available</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">-4</td>
+<td>initialise <code>maximum</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">-4</td>
+<td>test <code>12 &gt; -4</code>, true</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td>update <code>maximum</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td>return <code>maximum</code></td>
+</tr>
+</tbody>
+</table>
+<p>The two executions follow the same algorithm but take different branches.</p>
+<h3 id="93-trace-granularity">9.3 Trace granularity<a class="headerlink" href="#93-trace-granularity" title="Permanent link">&para;</a></h3>
+<p>A trace should record state at meaningful steps. Excessively detailed traces become unreadable; traces that omit changed variables fail to explain the algorithm.</p>
+<p>For a loop, a useful table normally includes:</p>
+<ul>
+<li>iteration number;</li>
+<li>current element or index;</li>
+<li>relevant state before the body;</li>
+<li>relevant state after the body;</li>
+<li>result of the loop condition.</li>
+</ul>
+<h2 id="10-determinism">10. Determinism<a class="headerlink" href="#10-determinism" title="Permanent link">&para;</a></h2>
+<p>A deterministic algorithm produces the same observable result and follows the same logical choices whenever it starts from the same relevant state.</p>
+<p>Most introductory algorithms in this course are deterministic.</p>
+<p>Randomised algorithms, concurrent programs, external input, or unspecified iteration order may produce different executions. Such behaviour must be stated explicitly when introduced.</p>
+<p>Determinism does not mean that all valid inputs produce the same output. It means that a fixed input and fixed relevant environment determine the execution.</p>
+<h2 id="11-abstraction-levels">11. Abstraction levels<a class="headerlink" href="#11-abstraction-levels" title="Permanent link">&para;</a></h2>
+<p>The same computation can be described at different levels.</p>
+<h3 id="111-problem-level-description">11.1 Problem-level description<a class="headerlink" href="#111-problem-level-description" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Return the greater of two values.</p>
+</blockquote>
+<h3 id="112-algorithm-level-description">11.2 Algorithm-level description<a class="headerlink" href="#112-algorithm-level-description" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>IF first ≥ second THEN
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    RETURN first
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>ELSE
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    RETURN second
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>END IF
+</code></pre></div>
+<h3 id="113-python-implementation">11.3 Python implementation<a class="headerlink" href="#113-python-implementation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maximum_of_two</span><span class="p">(</span><span class="n">first</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">second</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="k">if</span> <span class="n">first</span> <span class="o">&gt;=</span> <span class="n">second</span><span class="p">:</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>        <span class="k">return</span> <span class="n">first</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="k">return</span> <span class="n">second</span>
+</code></pre></div>
+<h3 id="114-c-implementation">11.4 C++ implementation<a class="headerlink" href="#114-c-implementation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">maximum_of_two</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">second</span><span class="p">;</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="115-machine-level-execution">11.5 Machine-level execution<a class="headerlink" href="#115-machine-level-execution" title="Permanent link">&para;</a></h3>
+<p>The processor executes lower-level instructions generated or interpreted from the source code.</p>
+<p>The course primarily reasons at the algorithm and source-code levels. Machine-level details are introduced only when they materially affect memory representation or efficiency.</p>
+<h2 id="12-equivalent-implementations">12. Equivalent implementations<a class="headerlink" href="#12-equivalent-implementations" title="Permanent link">&para;</a></h2>
+<p>Two programs may implement the same algorithm even when their syntax differs.</p>
+<p>Python:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="k">return</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div>
+<p>C++:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>Both implement the same mapping from an integer input to an output one greater than the input.</p>
+<p>However, language semantics can matter. Python integers are not bounded like ordinary fixed-width C++ integer types. If overflow is relevant, the implementations may not have identical behaviour over all mathematical integers. A precise contract must define the intended domain.</p>
+<h2 id="13-a-complete-introductory-example">13. A complete introductory example<a class="headerlink" href="#13-a-complete-introductory-example" title="Permanent link">&para;</a></h2>
+<h3 id="131-problem">13.1 Problem<a class="headerlink" href="#131-problem" title="Permanent link">&para;</a></h3>
+<p>Given a finite sequence of integers, calculate its sum.</p>
+<h3 id="132-state-design">13.2 State design<a class="headerlink" href="#132-state-design" title="Permanent link">&para;</a></h3>
+<p>The algorithm needs:</p>
+<ul>
+<li>the input sequence <code>values</code>;</li>
+<li>an accumulator <code>total</code>;</li>
+<li>the current element during traversal.</li>
+</ul>
+<h3 id="133-pseudocode">13.3 Pseudocode<a class="headerlink" href="#133-pseudocode" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>ALGORITHM sum_sequence(values)
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    total ← 0
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    FOR EACH value IN values DO
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>        total ← total + value
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    END FOR
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    RETURN total
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>END ALGORITHM
+</code></pre></div>
+<h3 id="134-trace">13.4 Trace<a class="headerlink" href="#134-trace" title="Permanent link">&para;</a></h3>
+<p>Input:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>values = [4, -2, 7, 1]
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Iteration</th>
+<th style="text-align: right;">Current <code>value</code></th>
+<th style="text-align: right;"><code>total</code> before</th>
+<th style="text-align: right;"><code>total</code> after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">Initial</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>Final result: <code>10</code>.</p>
+<h3 id="135-python">13.5 Python<a class="headerlink" href="#135-python" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">sum_sequence</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">value</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="k">return</span> <span class="n">total</span>
+</code></pre></div>
+<h3 id="136-c">13.6 C++<a class="headerlink" href="#136-c" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">sum_sequence</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">values</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">values</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="137-important-observation">13.7 Important observation<a class="headerlink" href="#137-important-observation" title="Permanent link">&para;</a></h3>
+<p>The algorithm is not the Python <code>for</code> syntax or the C++ range-based <code>for</code> syntax. The algorithmic idea is:</p>
+<ol>
+<li>initialise an accumulator to the additive identity;</li>
+<li>process every element exactly once;</li>
+<li>add the current element to the accumulator;</li>
+<li>return the accumulated sum.</li>
+</ol>
+<h2 id="14-relation-to-correctness">14. Relation to correctness<a class="headerlink" href="#14-relation-to-correctness" title="Permanent link">&para;</a></h2>
+<p>Imperative computation explains how state changes. Correctness asks whether those state changes satisfy the problem specification.</p>
+<p>For the sum algorithm, an important claim is:</p>
+<blockquote>
+<p>After processing the first <code>k</code> elements, <code>total</code> equals the sum of those <code>k</code> elements.</p>
+</blockquote>
+<p>This is a loop invariant. It connects intermediate states with the final required result.</p>
+<p>Preconditions, postconditions, invariants, and termination arguments are developed systematically on later pages.</p>
+<h2 id="15-relation-to-complexity">15. Relation to complexity<a class="headerlink" href="#15-relation-to-complexity" title="Permanent link">&para;</a></h2>
+<p>Complexity analysis counts or bounds the resources used by the state-transition process.</p>
+<p>For <code>sum_sequence</code> with <code>n</code> elements:</p>
+<ul>
+<li>the loop body executes <code>n</code> times;</li>
+<li>each iteration performs constant-time work under the chosen arithmetic model;</li>
+<li>time complexity is <code>O(n)</code>;</li>
+<li>auxiliary space is <code>O(1)</code>.</li>
+</ul>
+<p>This statement depends on assumptions. For example, arithmetic on arbitrarily large integers may not remain constant time as the numbers grow. Introductory analysis normally states the adopted cost model.</p>
+<h2 id="16-common-misconceptions-and-errors">16. Common misconceptions and errors<a class="headerlink" href="#16-common-misconceptions-and-errors" title="Permanent link">&para;</a></h2>
+<h3 id="161-confusing-an-algorithm-with-source-code">16.1 Confusing an algorithm with source code<a class="headerlink" href="#161-confusing-an-algorithm-with-source-code" title="Permanent link">&para;</a></h3>
+<p>Python or C++ syntax is one representation of an algorithm, not the algorithm itself.</p>
+<h3 id="162-confusing-assignment-with-equality">16.2 Confusing assignment with equality<a class="headerlink" href="#162-confusing-assignment-with-equality" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>x ← x + 1
+</code></pre></div>
+<p>is a state update, not a mathematical equation.</p>
+<h3 id="163-ignoring-statement-order">16.3 Ignoring statement order<a class="headerlink" href="#163-ignoring-statement-order" title="Permanent link">&para;</a></h3>
+<p>Imperative statements execute in an order, and changing that order may change the result.</p>
+<h3 id="164-losing-an-overwritten-value">16.4 Losing an overwritten value<a class="headerlink" href="#164-losing-an-overwritten-value" title="Permanent link">&para;</a></h3>
+<p>A value must be preserved before destructive update when it is needed later.</p>
+<h3 id="165-treating-input-as-keyboard-input-only">16.5 Treating input as keyboard input only<a class="headerlink" href="#165-treating-input-as-keyboard-input-only" title="Permanent link">&para;</a></h3>
+<p>Function parameters and existing structures are also input.</p>
+<h3 id="166-ignoring-side-effects">16.6 Ignoring side effects<a class="headerlink" href="#166-ignoring-side-effects" title="Permanent link">&para;</a></h3>
+<p>A function that returns the correct value but unexpectedly modifies its input does not satisfy a side-effect-free contract.</p>
+<h3 id="167-tracing-only-the-final-value">16.7 Tracing only the final value<a class="headerlink" href="#167-tracing-only-the-final-value" title="Permanent link">&para;</a></h3>
+<p>A trace should show the intermediate state changes that explain how the result was obtained.</p>
+<h3 id="168-solving-only-one-instance">16.8 Solving only one instance<a class="headerlink" href="#168-solving-only-one-instance" title="Permanent link">&para;</a></h3>
+<p>Hard-coding a result for one example is not a general algorithm.</p>
+<h2 id="17-self-check-questions">17. Self-check questions<a class="headerlink" href="#17-self-check-questions" title="Permanent link">&para;</a></h2>
+<ol>
+<li>What is the difference between a computational problem and a problem instance?</li>
+<li>How does an algorithm differ from a program?</li>
+<li>What does program state contain?</li>
+<li>Why is assignment not mathematical equality?</li>
+<li>What is destructive update?</li>
+<li>Why does the order of imperative statements matter?</li>
+<li>What is control flow?</li>
+<li>Which basic control-flow forms appear in structured algorithms?</li>
+<li>What is the difference between output and a side effect?</li>
+<li>What information should a useful execution trace contain?</li>
+<li>Can two different programs implement the same algorithm? Explain.</li>
+<li>Which assumptions are needed to classify the sum algorithm as <code>O(n)</code> time and <code>O(1)</code> auxiliary space?</li>
+</ol>
+<h2 id="18-problems">18. Problems<a class="headerlink" href="#18-problems" title="Permanent link">&para;</a></h2>
+<h3 id="problem-1-trace-an-assignment-sequence">Problem 1 — Trace an assignment sequence<a class="headerlink" href="#problem-1-trace-an-assignment-sequence" title="Permanent link">&para;</a></h3>
+<p>Trace the following program state:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>x ← 4
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>y ← x + 3
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>x ← y * 2
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>y ← x - y
+</code></pre></div>
+<p>Record the values of <code>x</code> and <code>y</code> after each statement.</p>
+<h3 id="problem-2-find-the-error-in-a-swap">Problem 2 — Find the error in a swap<a class="headerlink" href="#problem-2-find-the-error-in-a-swap" title="Permanent link">&para;</a></h3>
+<p>Explain why the following sequence does not correctly swap two values:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>left ← right
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>right ← left
+</code></pre></div>
+<p>Provide a correct imperative version.</p>
+<h3 id="problem-3-identify-state">Problem 3 — Identify state<a class="headerlink" href="#problem-3-identify-state" title="Permanent link">&para;</a></h3>
+<p>For an algorithm that counts negative values in a sequence, identify:</p>
+<ul>
+<li>input;</li>
+<li>output;</li>
+<li>changing state;</li>
+<li>control flow;</li>
+<li>possible side effects.</li>
+</ul>
+<h3 id="problem-4-rewrite-at-another-abstraction-level">Problem 4 — Rewrite at another abstraction level<a class="headerlink" href="#problem-4-rewrite-at-another-abstraction-level" title="Permanent link">&para;</a></h3>
+<p>Express the problem “return the absolute value of an integer” as:</p>
+<ol>
+<li>structured natural language;</li>
+<li>pseudocode;</li>
+<li>Python;</li>
+<li>C++.</li>
+</ol>
+<h3 id="problem-5-manual-loop-trace">Problem 5 — Manual loop trace<a class="headerlink" href="#problem-5-manual-loop-trace" title="Permanent link">&para;</a></h3>
+<p>Trace the accumulator state for:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>values = [3, 1, 4, 1, 5]
+</code></pre></div>
+<p>using <code>sum_sequence</code>.</p>
+<h3 id="problem-6-boundary-cases">Problem 6 — Boundary cases<a class="headerlink" href="#problem-6-boundary-cases" title="Permanent link">&para;</a></h3>
+<p>List useful test cases for an algorithm that returns the greater of two integers. Explain what each test checks.</p>
+<h3 id="problem-7-side-effects">Problem 7 — Side effects<a class="headerlink" href="#problem-7-side-effects" title="Permanent link">&para;</a></h3>
+<p>Compare these two interfaces conceptually:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>result ← sorted_copy(values)
+</code></pre></div>
+<p>and</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>sort_in_place(values)
+</code></pre></div>
+<p>Describe the difference in output and side effects.</p>
+<h2 id="19-summary">19. Summary<a class="headerlink" href="#19-summary" title="Permanent link">&para;</a></h2>
+<p>Imperative computation represents an algorithm as an ordered process that reads and changes state.</p>
+<p>The essential ideas are:</p>
+<ul>
+<li>a problem defines what must be solved;</li>
+<li>an algorithm defines a general method;</li>
+<li>a program implements the method;</li>
+<li>an execution applies the program to a concrete input;</li>
+<li>state records the information relevant at a moment of execution;</li>
+<li>expressions produce values;</li>
+<li>statements perform actions or direct control flow;</li>
+<li>assignment updates state and is not equality;</li>
+<li>sequence order matters;</li>
+<li>selection and iteration choose or repeat state transitions;</li>
+<li>input, output, and side effects must be distinguished;</li>
+<li>manual traces expose intermediate states;</li>
+<li>correctness and complexity are analyses of the resulting computation process.</li>
+</ul>
+<p>The next topic formalises the expected relationship between the initial and final state using <strong>preconditions and postconditions</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Module overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Module overview
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

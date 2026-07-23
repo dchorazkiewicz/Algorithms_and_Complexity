@@ -1,0 +1,1653 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/development-plan/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../source/syllabus-pl/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Development plan - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plan-budowy-penych-materiaow-wykadowych" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Development plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development plan
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status-projektu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status projektu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-nowy-cel-repozytorium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nowy cel repozytorium
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-nienegocjowalne-zasady" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Nienegocjowalne zasady
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Nienegocjowalne zasady">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sylabus-wyznacza-zakres-i-kolejnosc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Sylabus wyznacza zakres i kolejność
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-pene-opracowanie-zamiast-streszczenia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Pełne opracowanie zamiast streszczenia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jezyk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Język
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-rozszerzenia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Rozszerzenia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-niejednoznacznosci-zroda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Niejednoznaczności źródła
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architektura-strony" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Architektura strony
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-standard-pojedynczego-moduu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Standard pojedynczego modułu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Standard pojedynczego modułu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indexmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        index.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strony-tematyczne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strony tematyczne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-examplesmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        worked-examples.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-and-cppmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        python-and-cpp.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problemsmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        problems.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviewmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        review.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source syllabus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Source syllabus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish source
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English version
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 01 — Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course/01-foundations-of-algorithm-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course/01-foundations-of-algorithm-design/imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imperative computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status-projektu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status projektu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-nowy-cel-repozytorium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nowy cel repozytorium
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-nienegocjowalne-zasady" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Nienegocjowalne zasady
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Nienegocjowalne zasady">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sylabus-wyznacza-zakres-i-kolejnosc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Sylabus wyznacza zakres i kolejność
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-pene-opracowanie-zamiast-streszczenia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Pełne opracowanie zamiast streszczenia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jezyk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Język
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-rozszerzenia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Rozszerzenia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-niejednoznacznosci-zroda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Niejednoznaczności źródła
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architektura-strony" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Architektura strony
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-standard-pojedynczego-moduu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Standard pojedynczego modułu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Standard pojedynczego modułu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indexmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        index.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strony-tematyczne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strony tematyczne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-examplesmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        worked-examples.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-and-cppmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        python-and-cpp.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problemsmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        problems.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviewmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        review.md
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="plan-budowy-penych-materiaow-wykadowych">Plan budowy pełnych materiałów wykładowych<a class="headerlink" href="#plan-budowy-penych-materiaow-wykadowych" title="Permanent link">&para;</a></h1>
+<h2 id="status-projektu">Status projektu<a class="headerlink" href="#status-projektu" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[x] Zachowano polską i angielską wersję sylabusa jako dokumenty źródłowe.</li>
+<li>[x] Usunięto poprzednią strukturę nastawioną na krótkie materiały do ćwiczeń.</li>
+<li>[x] Utworzono podstawową konfigurację MkDocs Material.</li>
+<li>[x] Utworzono automatyczny proces budowania strony.</li>
+<li>[ ] Zatwierdzono niniejszy plan treści.</li>
+<li>[ ] Rozpoczęto opracowanie Modułu 01.</li>
+</ul>
+<hr />
+<h2 id="1-nowy-cel-repozytorium">1. Nowy cel repozytorium<a class="headerlink" href="#1-nowy-cel-repozytorium" title="Permanent link">&para;</a></h2>
+<p>Repozytorium ma zawierać <strong>pełne, samodzielne materiały do nauki przedmiotu Algorithms and Complexity</strong> dostępne jako strona internetowa w GitHub Pages.</p>
+<p>Materiały mają być użyteczne zarówno dla:</p>
+<ul>
+<li>studenta uczącego się samodzielnie;</li>
+<li>wykładowcy przygotowującego wykład;</li>
+<li>prowadzącego ćwiczenia potrzebującego teorii, przykładów i problemów;</li>
+<li>osoby powtarzającej materiał przed kolokwium lub egzaminem.</li>
+</ul>
+<p>Nie tworzymy skrótu sylabusa ani samego zbioru zadań. Każdy temat ma zostać opracowany jako pełny rozdział dydaktyczny.</p>
+<hr />
+<h2 id="2-nienegocjowalne-zasady">2. Nienegocjowalne zasady<a class="headerlink" href="#2-nienegocjowalne-zasady" title="Permanent link">&para;</a></h2>
+<h3 id="21-sylabus-wyznacza-zakres-i-kolejnosc">2.1. Sylabus wyznacza zakres i kolejność<a class="headerlink" href="#21-sylabus-wyznacza-zakres-i-kolejnosc" title="Permanent link">&para;</a></h3>
+<p>Treści są rozwijane w kolejności dziesięciu tematów z sekcji <strong>Course content / Treści kształcenia</strong>.</p>
+<p>Nie wolno:</p>
+<ul>
+<li>pominąć punktu źródłowego;</li>
+<li>zastąpić punktu innym, wygodniejszym tematem;</li>
+<li>scalić tematów w sposób ukrywający wymagania źródłowe;</li>
+<li>cicho poprawić niejednoznacznego sformułowania źródłowego;</li>
+<li>oznaczyć materiału jako zakończony bez porównania z oboma sylabusami.</li>
+</ul>
+<h3 id="22-pene-opracowanie-zamiast-streszczenia">2.2. Pełne opracowanie zamiast streszczenia<a class="headerlink" href="#22-pene-opracowanie-zamiast-streszczenia" title="Permanent link">&para;</a></h3>
+<p>Każde zagadnienie powinno, stosownie do jego charakteru, zawierać:</p>
+<ol>
+<li>motywację i kontekst;</li>
+<li>precyzyjne definicje;</li>
+<li>notację i terminologię;</li>
+<li>pełne wyjaśnienie teorii;</li>
+<li>własności i zależności;</li>
+<li>kontrakt problemu lub algorytmu;</li>
+<li>pseudokod;</li>
+<li>ręczne prześledzenie wykonania;</li>
+<li>przykłady rozwiązane krok po kroku;</li>
+<li>implementację w Pythonie;</li>
+<li>implementację w C++;</li>
+<li>porównanie implementacji;</li>
+<li>argument poprawności;</li>
+<li>warunki zakończenia;</li>
+<li>analizę złożoności czasowej;</li>
+<li>analizę pamięci pomocniczej;</li>
+<li>przypadki brzegowe;</li>
+<li>typowe błędy i błędne intuicje;</li>
+<li>pytania kontrolne;</li>
+<li>problemy i zadania do samodzielnego rozwiązania;</li>
+<li>podsumowanie pojęć.</li>
+</ol>
+<p>Nie każdy punkt jest stosowalny do każdej strony. Przykładowo strona z samymi definicjami nie potrzebuje implementacji, ale żaden ważny algorytm nie może pozostać bez pseudokodu, przykładów, poprawności i złożoności.</p>
+<h3 id="23-jezyk">2.3. Język<a class="headerlink" href="#23-jezyk" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Docelowe materiały dydaktyczne są pisane po angielsku.</li>
+<li>Polski sylabus pozostaje źródłem kontroli znaczenia.</li>
+<li>Angielski sylabus pozostaje źródłem terminologii IT.</li>
+<li>Plan projektu i techniczne checklisty mogą pozostać po polsku.</li>
+</ul>
+<h3 id="24-rozszerzenia">2.4. Rozszerzenia<a class="headerlink" href="#24-rozszerzenia" title="Permanent link">&para;</a></h3>
+<p>Materiały wykraczające poza sylabus są dozwolone wyłącznie wtedy, gdy:</p>
+<ul>
+<li>pomagają wyjaśnić wymagane zagadnienie;</li>
+<li>są wyraźnie oznaczone jako <strong>Further reading</strong> lub <strong>Extension</strong>;</li>
+<li>nie zastępują treści wymaganej;</li>
+<li>nie przesuwają obowiązkowego materiału na drugi plan.</li>
+</ul>
+<h3 id="25-niejednoznacznosci-zroda">2.5. Niejednoznaczności źródła<a class="headerlink" href="#25-niejednoznacznosci-zroda" title="Permanent link">&para;</a></h3>
+<p>Sformułowania takie jak:</p>
+<ul>
+<li><code>lista incydencji</code>;</li>
+<li><code>problemy N- i NP-zupełne</code>;</li>
+<li><code>metody usprawniania algorytmów zachłannych: systematyczne, heurystyczne</code>;</li>
+</ul>
+<p>muszą zostać zachowane w informacji o zakresie źródłowym. Standardowa terminologia Computer Science może zostać wyjaśniona obok, ale nie może być wprowadzona jako cicha zamiana treści.</p>
+<hr />
+<h2 id="3-architektura-strony">3. Architektura strony<a class="headerlink" href="#3-architektura-strony" title="Permanent link">&para;</a></h2>
+<p>Docelowa struktura:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docs/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── index.md
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── development-plan.md
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── source/
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── syllabus-pl.md
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   └── syllabus-en.md
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── course/
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── 01-foundations-of-algorithm-design/
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── 02-iteration-recursion-and-data-types/
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── 03-arrays-records-and-memory/
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   ├── 04-searching-sorting-and-divide-conquer/
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   ├── 05-functions-call-stack-and-recursion/
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── 06-backtracking-greedy-methods-and-dynamic-structures/
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   ├── 07-linked-lists-stacks-and-queues/
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── 08-binary-trees-avl-trees-and-heaps/
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   ├── 09-graphs-and-depth-first-search/
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   └── 10-computational-complexity-and-hard-problems/
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>└── appendices/
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    ├── mathematical-notation.md
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    ├── pseudocode-reference.md
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    ├── python-cpp-reference.md
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    ├── complexity-cheat-sheet.md
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    └── glossary.md
+</code></pre></div>
+<p>Każdy moduł będzie widoczny w bocznej nawigacji MkDocs w tej samej kolejności co sylabus.</p>
+<hr />
+<h2 id="4-standard-pojedynczego-moduu">4. Standard pojedynczego modułu<a class="headerlink" href="#4-standard-pojedynczego-moduu" title="Permanent link">&para;</a></h2>
+<p>Każdy moduł otrzyma własny katalog i stronę startową.</p>
+<p>Minimalna struktura:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>XX-module-name/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── index.md
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── 01-first-source-topic.md
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── 02-second-source-topic.md
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── ...
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── worked-examples.md
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── python-and-cpp.md
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>├── problems.md
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>├── review.md
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>└── references.md
+</code></pre></div>
+<h3 id="indexmd"><code>index.md</code><a class="headerlink" href="#indexmd" title="Permanent link">&para;</a></h3>
+<p>Zawiera:</p>
+<ul>
+<li>zakres dokładnie przepisany z sylabusa;</li>
+<li>cele nauki;</li>
+<li>wymagania wstępne;</li>
+<li>mapę rozdziału;</li>
+<li>szacowany czas nauki;</li>
+<li>checklistę opanowania materiału.</li>
+</ul>
+<h3 id="strony-tematyczne">Strony tematyczne<a class="headerlink" href="#strony-tematyczne" title="Permanent link">&para;</a></h3>
+<p>Każda strona tematyczna odpowiada jednemu punktowi lub jednej spójnej grupie punktów źródłowych. Strona ma być czytelnym rozdziałem, a nie notatką roboczą.</p>
+<h3 id="worked-examplesmd"><code>worked-examples.md</code><a class="headerlink" href="#worked-examplesmd" title="Permanent link">&para;</a></h3>
+<p>Zawiera pełne rozwiązania i przejścia krok po kroku. Przykład powinien wyjaśniać decyzje, a nie tylko prezentować wynik.</p>
+<h3 id="python-and-cppmd"><code>python-and-cpp.md</code><a class="headerlink" href="#python-and-cppmd" title="Permanent link">&para;</a></h3>
+<p>Zawiera równoległe implementacje, ale nie mechaniczne tłumaczenia linia po linii. Obie implementacje mają realizować ten sam algorytm i ten sam kontrakt.</p>
+<h3 id="problemsmd"><code>problems.md</code><a class="headerlink" href="#problemsmd" title="Permanent link">&para;</a></h3>
+<p>Zawiera:</p>
+<ul>
+<li>pytania definicyjne;</li>
+<li>problemy koncepcyjne;</li>
+<li>ręczne śledzenie algorytmów;</li>
+<li>analizę błędnych rozwiązań;</li>
+<li>zadania implementacyjne;</li>
+<li>zadania z poprawności;</li>
+<li>zadania ze złożoności;</li>
+<li>zadania rozszerzające oznaczone oddzielnie.</li>
+</ul>
+<h3 id="reviewmd"><code>review.md</code><a class="headerlink" href="#reviewmd" title="Permanent link">&para;</a></h3>
+<p>Zawiera:</p>
+<ul>
+<li>podsumowanie definicji;</li>
+<li>listę twierdzeń i własności;</li>
+<li>zestaw pytań do samokontroli;</li>
+<li>checklistę osiągnięć studenta;</li>
+<li>powiązanie z efektami uczenia się.</li>
+</ul>
+<hr />
+<h1 id="5-szczegoowy-plan-moduow">5. Szczegółowy plan modułów<a class="headerlink" href="#5-szczegoowy-plan-moduow" title="Permanent link">&para;</a></h1>
+<h2 id="module-01-foundations-of-algorithm-design">Module 01 — Foundations of Algorithm Design<a class="headerlink" href="#module-01-foundations-of-algorithm-design" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>imperative computation;</li>
+<li>algorithm preconditions and postconditions;</li>
+<li>forms of algorithm representation;</li>
+<li>properties of algorithms;</li>
+<li>pseudocode;</li>
+<li>basic techniques for structuring algorithms.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 1 godzina wykładu, 2 godziny ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code> — zakres, cele i mapa modułu;</li>
+<li>[ ] <code>imperative-computation.md</code> — stan, instrukcja, przypisanie i przebieg wykonania;</li>
+<li>[ ] <code>preconditions-and-postconditions.md</code> — asercje początkowe i końcowe, kontrakty;</li>
+<li>[ ] <code>algorithm-representations.md</code> — opis słowny, schemat, pseudokod i program;</li>
+<li>[ ] <code>properties-of-algorithms.md</code> — określoność, skończoność, wykonalność, poprawność i ogólność;</li>
+<li>[ ] <code>pseudocode.md</code> — pełna konwencja zapisu używana na stronie;</li>
+<li>[ ] <code>structuring-algorithms.md</code> — sekwencja, wybór, iteracja i dekompozycja;</li>
+<li>[ ] <code>worked-examples.md</code> — podstawowe algorytmy z pełnym śledzeniem;</li>
+<li>[ ] <code>python-and-cpp.md</code> — implementacja tych samych przykładów;</li>
+<li>[ ] <code>problems.md</code> — problemy i ćwiczenia;</li>
+<li>[ ] <code>review.md</code> — powtórzenie i samokontrola;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h2 id="module-02-iteration-recursion-and-data-types">Module 02 — Iteration, Recursion, and Data Types<a class="headerlink" href="#module-02-iteration-recursion-and-data-types" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>iterative loops;</li>
+<li>loop termination conditions;</li>
+<li>recursion;</li>
+<li>a method for constructing a correct algorithm;</li>
+<li>primitive and compound data types.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 1 godzina wykładu, 4 godziny ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>iterative-loops.md</code> — modele pętli, sterowanie i stan;</li>
+<li>[ ] <code>termination-conditions.md</code> — warunek stopu, postęp i pętle nieskończone;</li>
+<li>[ ] <code>introduction-to-recursion.md</code> — definicja, przypadek bazowy i redukcja problemu;</li>
+<li>[ ] <code>constructing-a-correct-algorithm.md</code> — specyfikacja, niezmienniki, postęp i walidacja;</li>
+<li>[ ] <code>primitive-and-compound-data-types.md</code> — pojęciowa klasyfikacja typów;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>python-and-cpp.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Moduł 02 wprowadza rekurencję. Moduł 05 rozwija ją szczegółowo przez model stosu wywołań, rekurencję pośrednią i zagnieżdżoną oraz transformację do wersji iteracyjnej.</p>
+</div>
+<hr />
+<h2 id="module-03-arrays-records-and-in-memory-representation">Module 03 — Arrays, Records, and In-Memory Representation<a class="headerlink" href="#module-03-arrays-records-and-in-memory-representation" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>arrays and records as aggregate data types;</li>
+<li>in-memory representation of different data types;</li>
+<li>direct access to components;</li>
+<li>basic array operations.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 2 godziny wykładu, 3 godziny ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>aggregate-data-types.md</code> — agregaty jednorodne i niejednorodne;</li>
+<li>[ ] <code>arrays.md</code> — indeksowanie, rozmiar, układ i własności;</li>
+<li>[ ] <code>records.md</code> — pola, rekordy, struktury i obiekty danych;</li>
+<li>[ ] <code>in-memory-representation.md</code> — wartości, adresy, referencje, ciągłość i ograniczenia modelu;</li>
+<li>[ ] <code>direct-access.md</code> — dostęp indeksowy i dostęp do pól;</li>
+<li>[ ] <code>basic-array-operations.md</code> — przejście, odczyt, zapis, wstawianie, usuwanie i kopiowanie;</li>
+<li>[ ] <code>python-list-versus-cpp-arrays.md</code> — różnice bez fałszywego utożsamiania struktur;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h2 id="module-04-searching-sorting-and-divide-and-conquer">Module 04 — Searching, Sorting, and Divide and Conquer<a class="headerlink" href="#module-04-searching-sorting-and-divide-and-conquer" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>linear and binary search;</li>
+<li>sorting methods;</li>
+<li>properties of sorting algorithms;</li>
+<li>computational complexity of algorithms;</li>
+<li>divide-and-conquer;</li>
+<li>the outline of QuickSort;</li>
+<li>index arrays;</li>
+<li>recursive algorithms.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 2 godziny wykładu, 4 godziny ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>linear-search.md</code>;</li>
+<li>[ ] <code>binary-search.md</code>;</li>
+<li>[ ] <code>sorting-problem-and-order-relations.md</code>;</li>
+<li>[ ] <code>elementary-sorting-methods.md</code>;</li>
+<li>[ ] <code>properties-of-sorting-algorithms.md</code> — stabilność, in-place, adaptacyjność i przypadki;</li>
+<li>[ ] <code>divide-and-conquer.md</code>;</li>
+<li>[ ] <code>quicksort.md</code> — partycjonowanie, rekurencja i przypadki złożoności;</li>
+<li>[ ] <code>index-arrays.md</code> — porządek pośredni przez tablicę indeksów;</li>
+<li>[ ] <code>recursive-searching-and-sorting.md</code>;</li>
+<li>[ ] <code>comparative-complexity-analysis.md</code>;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>python-and-cpp.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h2 id="module-05-functions-the-call-stack-and-recursion">Module 05 — Functions, the Call Stack, and Recursion<a class="headerlink" href="#module-05-functions-the-call-stack-and-recursion" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>function interaction with its environment;</li>
+<li>side effects;</li>
+<li>variable behavior on the stack;</li>
+<li>recursive functions;</li>
+<li>anatomy of a recursive call;</li>
+<li>indirect and nested recursion;</li>
+<li>stack-based implementation of recursion;</li>
+<li>problems with recursion;</li>
+<li>recursion versus iteration.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 5 godzin wykładu, 8 godzin ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>functions-and-environment.md</code> — parametry, wynik i stan otoczenia;</li>
+<li>[ ] <code>side-effects.md</code> — mutacja, I/O, globalny stan i funkcje czyste;</li>
+<li>[ ] <code>call-stack.md</code> — ramki aktywacji, zmienne lokalne i powroty;</li>
+<li>[ ] <code>recursive-functions.md</code>;</li>
+<li>[ ] <code>anatomy-of-a-recursive-call.md</code>;</li>
+<li>[ ] <code>indirect-recursion.md</code>;</li>
+<li>[ ] <code>nested-recursion.md</code>;</li>
+<li>[ ] <code>explicit-stack-simulation.md</code>;</li>
+<li>[ ] <code>recursion-failure-modes.md</code> — brak przypadku bazowego, głębokość i powtórna praca;</li>
+<li>[ ] <code>recursion-versus-iteration.md</code>;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>python-and-cpp.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h2 id="module-06-backtracking-greedy-methods-and-dynamic-data-structures">Module 06 — Backtracking, Greedy Methods, and Dynamic Data Structures<a class="headerlink" href="#module-06-backtracking-greedy-methods-and-dynamic-data-structures" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>backtracking algorithms;</li>
+<li>methods for improving greedy algorithms: systematic and heuristic;</li>
+<li>dynamic data structures.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 1 godzina wykładu, 4 godziny ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>state-space-search.md</code> — przestrzeń stanów i drzewo decyzji;</li>
+<li>[ ] <code>backtracking.md</code> — wybór, ograniczenie, powrót i kompletność;</li>
+<li>[ ] <code>greedy-algorithms.md</code> — decyzje lokalne, własność zachłanna i kontrprzykłady;</li>
+<li>[ ] <code>systematic-improvement-methods.md</code> — rozwinięcie dokładnie powiązane ze sformułowaniem źródłowym;</li>
+<li>[ ] <code>heuristic-improvement-methods.md</code> — heurystyki, brak gwarancji i ocena wyników;</li>
+<li>[ ] <code>dynamic-data-structures.md</code> — struktury zmieniające rozmiar i kształt w czasie wykonania;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>python-and-cpp.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>Dynamic data structures</code> nie zostaną automatycznie zastąpione przez <code>dynamic programming</code>. Programowanie dynamiczne może pojawić się wyłącznie jako jawne rozszerzenie, jeśli zostanie później zaakceptowane.</p>
+</div>
+<hr />
+<h2 id="module-07-linked-lists-stacks-and-queues">Module 07 — Linked Lists, Stacks, and Queues<a class="headerlink" href="#module-07-linked-lists-stacks-and-queues" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>linear lists;</li>
+<li>LIFO stacks and FIFO queues;</li>
+<li>priority queues;</li>
+<li>doubly linked and circular lists;</li>
+<li>self-organizing lists;</li>
+<li>skip lists;</li>
+<li>selected list-processing algorithms.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 2 godziny wykładu, 5 godzin ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>linear-and-linked-lists.md</code>;</li>
+<li>[ ] <code>singly-linked-lists.md</code>;</li>
+<li>[ ] <code>doubly-linked-lists.md</code>;</li>
+<li>[ ] <code>circular-lists.md</code>;</li>
+<li>[ ] <code>stacks.md</code>;</li>
+<li>[ ] <code>queues.md</code>;</li>
+<li>[ ] <code>priority-queues.md</code>;</li>
+<li>[ ] <code>self-organizing-lists.md</code>;</li>
+<li>[ ] <code>skip-lists.md</code>;</li>
+<li>[ ] <code>list-processing-algorithms.md</code>;</li>
+<li>[ ] <code>manual-versus-library-implementations.md</code>;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>python-and-cpp.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h2 id="module-08-binary-trees-avl-trees-and-heaps">Module 08 — Binary Trees, AVL Trees, and Heaps<a class="headerlink" href="#module-08-binary-trees-avl-trees-and-heaps" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>fundamental tree concepts;</li>
+<li>binary trees;</li>
+<li>binary-tree traversal;</li>
+<li>binary search trees;</li>
+<li>trees used to implement dictionaries;</li>
+<li>tree balancing;</li>
+<li>AVL trees;</li>
+<li>heaps.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 5 godzin wykładu, 6 godzin ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>tree-terminology.md</code>;</li>
+<li>[ ] <code>binary-trees.md</code>;</li>
+<li>[ ] <code>tree-representations.md</code>;</li>
+<li>[ ] <code>binary-tree-traversal.md</code> — preorder, inorder, postorder i level-order;</li>
+<li>[ ] <code>binary-search-trees.md</code> — wyszukiwanie, wstawianie, usuwanie i degeneracja;</li>
+<li>[ ] <code>tree-based-dictionaries.md</code>;</li>
+<li>[ ] <code>tree-balancing.md</code>;</li>
+<li>[ ] <code>avl-trees.md</code> — wysokość, balance factor i rotacje;</li>
+<li>[ ] <code>heaps.md</code> — własność sterty, reprezentacja tablicowa i operacje;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>python-and-cpp.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h2 id="module-09-graphs-and-depth-first-search">Module 09 — Graphs and Depth-First Search<a class="headerlink" href="#module-09-graphs-and-depth-first-search" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>graphs;</li>
+<li>graph representation methods;</li>
+<li>analysis of properties of example graphs;</li>
+<li>basic graph operations;</li>
+<li>graph implementation in the form described in the source as an incidence list;</li>
+<li>depth-first search as exhaustive search and its applications;</li>
+<li>examples of DFS applications.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 6 godzin wykładu, 7 godzin ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>graph-definitions.md</code>;</li>
+<li>[ ] <code>graph-types-and-properties.md</code>;</li>
+<li>[ ] <code>graph-representations.md</code> — macierz sąsiedztwa, lista sąsiedztwa i lista krawędzi;</li>
+<li>[ ] <code>incidence-list-source-terminology.md</code> — zachowanie i wyjaśnienie terminu źródłowego;</li>
+<li>[ ] <code>basic-graph-operations.md</code>;</li>
+<li>[ ] <code>depth-first-search.md</code> — wersja rekurencyjna i iteracyjna;</li>
+<li>[ ] <code>dfs-as-exhaustive-search.md</code>;</li>
+<li>[ ] <code>dfs-applications.md</code> — osiągalność, składowe, cykle, ścieżki i labirynty;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>python-and-cpp.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h2 id="module-10-computational-complexity-and-hard-problems">Module 10 — Computational Complexity and Hard Problems<a class="headerlink" href="#module-10-computational-complexity-and-hard-problems" title="Permanent link">&para;</a></h2>
+<p><strong>Zakres źródłowy:</strong></p>
+<ul>
+<li>analysis of algorithmic time complexity;</li>
+<li>computational complexity;</li>
+<li>Big O notation;</li>
+<li>examples of complexity calculations;</li>
+<li>computationally hard problems;</li>
+<li>source wording: N- and NP-complete problems.</li>
+</ul>
+<p><strong>Godziny źródłowe, studia stacjonarne:</strong> 6 godzin wykładu, 2 godziny ćwiczeń.</p>
+<p><strong>Planowane strony:</strong></p>
+<ul>
+<li>[ ] <code>index.md</code>;</li>
+<li>[ ] <code>cost-model-and-input-size.md</code>;</li>
+<li>[ ] <code>time-complexity.md</code>;</li>
+<li>[ ] <code>space-complexity.md</code>;</li>
+<li>[ ] <code>big-o-notation.md</code> — definicja, intuicja i reguły rachunkowe;</li>
+<li>[ ] <code>complexity-of-iterative-code.md</code>;</li>
+<li>[ ] <code>complexity-of-recursive-code.md</code>;</li>
+<li>[ ] <code>complexity-calculation-examples.md</code>;</li>
+<li>[ ] <code>comparing-algorithms.md</code>;</li>
+<li>[ ] <code>computationally-hard-problems.md</code>;</li>
+<li>[ ] <code>complexity-classes-and-source-terminology.md</code> — wyjaśnienie P, NP, NP-hard i NP-complete przy zachowaniu zapisu źródłowego;</li>
+<li>[ ] <code>worked-examples.md</code>;</li>
+<li>[ ] <code>problems.md</code>;</li>
+<li>[ ] <code>review.md</code>;</li>
+<li>[ ] audyt względem obu sylabusów.</li>
+</ul>
+<hr />
+<h1 id="6-dodatki-przekrojowe">6. Dodatki przekrojowe<a class="headerlink" href="#6-dodatki-przekrojowe" title="Permanent link">&para;</a></h1>
+<p>Dodatki powstają wtedy, gdy pierwszy moduł rzeczywiście ich potrzebuje. Nie są pisane z wyprzedzeniem jako oderwane dokumenty.</p>
+<ul>
+<li>[ ] <code>mathematical-notation.md</code> — zbiory, sekwencje, sumy, logarytmy i relacje;</li>
+<li>[ ] <code>pseudocode-reference.md</code> — spójna składnia używana we wszystkich rozdziałach;</li>
+<li>[ ] <code>python-cpp-reference.md</code> — znaczące różnice językowe;</li>
+<li>[ ] <code>complexity-cheat-sheet.md</code> — powstanie po pełnym opracowaniu Modułu 10;</li>
+<li>[ ] <code>glossary.md</code> — słownik budowany przyrostowo z opracowanych modułów.</li>
+</ul>
+<hr />
+<h1 id="7-proces-iteracyjny-dla-kazdego-zagadnienia">7. Proces iteracyjny dla każdego zagadnienia<a class="headerlink" href="#7-proces-iteracyjny-dla-kazdego-zagadnienia" title="Permanent link">&para;</a></h1>
+<p>Dla każdej strony tematycznej wykonujemy kolejno:</p>
+<ol>
+<li>[ ] odczyt dokładnego fragmentu polskiego sylabusa;</li>
+<li>[ ] porównanie z wersją angielską;</li>
+<li>[ ] zapis zakresu, którego nie wolno pominąć;</li>
+<li>[ ] plan nagłówków strony;</li>
+<li>[ ] definicje;</li>
+<li>[ ] pełna teoria;</li>
+<li>[ ] przykłady elementarne;</li>
+<li>[ ] przykłady bardziej złożone;</li>
+<li>[ ] pseudokod, jeśli dotyczy;</li>
+<li>[ ] ręczne śledzenie, jeśli dotyczy;</li>
+<li>[ ] Python, jeśli dotyczy;</li>
+<li>[ ] C++, jeśli dotyczy;</li>
+<li>[ ] poprawność i warunki zakończenia, jeśli dotyczy;</li>
+<li>[ ] złożoność, jeśli dotyczy;</li>
+<li>[ ] przypadki brzegowe i błędy;</li>
+<li>[ ] problemy do nauki;</li>
+<li>[ ] redakcja dydaktyczna;</li>
+<li>[ ] kontrola kompletności ze źródłem;</li>
+<li>[ ] kontrola terminologii IT;</li>
+<li>[ ] budowa strony przez <code>mkdocs build --strict</code>.</li>
+</ol>
+<p>Nie przechodzimy do następnego zagadnienia tylko dlatego, że istnieje szkic. Zagadnienie musi stanowić samodzielny materiał do nauki.</p>
+<hr />
+<h1 id="8-definition-of-done-dla-moduu">8. Definition of Done dla modułu<a class="headerlink" href="#8-definition-of-done-dla-moduu" title="Permanent link">&para;</a></h1>
+<p>Moduł można uznać za zakończony tylko wtedy, gdy:</p>
+<ul>
+<li>[ ] wszystkie punkty źródłowe mają jawne miejsce na stronie;</li>
+<li>[ ] wszystkie używane pojęcia mają definicje;</li>
+<li>[ ] teoria jest wystarczająca do samodzielnej nauki;</li>
+<li>[ ] kluczowe algorytmy mają kontrakty i pseudokod;</li>
+<li>[ ] kluczowe algorytmy mają ręczne przykłady;</li>
+<li>[ ] istnieją poprawne implementacje Python i C++, gdy są merytorycznie uzasadnione;</li>
+<li>[ ] opisano poprawność i zakończenie;</li>
+<li>[ ] opisano czas i pamięć;</li>
+<li>[ ] opisano przypadki brzegowe;</li>
+<li>[ ] opisano typowe błędy;</li>
+<li>[ ] istnieją problemy teoretyczne i implementacyjne;</li>
+<li>[ ] istnieje strona powtórzeniowa;</li>
+<li>[ ] terminologia została sprawdzona;</li>
+<li>[ ] treść została porównana z polskim sylabusem;</li>
+<li>[ ] treść została porównana z angielskim sylabusem;</li>
+<li>[ ] <code>mkdocs build --strict</code> kończy się powodzeniem;</li>
+<li>[ ] nawigacja i odnośniki działają;</li>
+<li>[ ] moduł został jawnie zatwierdzony przed rozpoczęciem następnego.</li>
+</ul>
+<hr />
+<h1 id="9-najblizsza-iteracja">9. Najbliższa iteracja<a class="headerlink" href="#9-najblizsza-iteracja" title="Permanent link">&para;</a></h1>
+<p>Po zatwierdzeniu tego planu:</p>
+<ol>
+<li>[ ] opublikować dokładne kopie obu sylabusów w sekcji <code>Source syllabus</code>;</li>
+<li>[ ] utworzyć strukturę nawigacji dla Modułu 01;</li>
+<li>[ ] przygotować szczegółowy outline strony <code>imperative-computation.md</code>;</li>
+<li>[ ] napisać pełną pierwszą stronę dydaktyczną;</li>
+<li>[ ] zweryfikować jej jakość przed kontynuacją kolejnych zagadnień.</li>
+</ol>
+<p>Pierwszym właściwym materiałem będzie <strong>Imperative Computation</strong>, a nie ponowne tworzenie ogólnego zbioru zadań.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../source/syllabus-pl/" class="md-footer__link md-footer__link--next" aria-label="Next: Polish source">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Polish source
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.sections", "navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
