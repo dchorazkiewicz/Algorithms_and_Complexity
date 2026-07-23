@@ -8,11 +8,21 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   language: en
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
     - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
     - navigation.top
     - navigation.footer
+    - toc.follow
     - search.highlight
     - search.suggest
     - content.code.copy
@@ -20,11 +30,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -49,24 +63,28 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+extra_css:
+  - stylesheets/extra.css
+
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - Course home: index.md
-  - Course contents: course/index.md
+  - Start here:
+      - Course home: index.md
+      - Course contents and learning path: course/index.md
   - Module 00 — Learning to Think Algorithmically:
-      - Module introduction: course/00-learning-to-think-algorithmically/index.md
-      - Problems, algorithms, programs, and executions: course/00-learning-to-think-algorithmically/01-problems-algorithms-programs.md
-      - Reading Python as an algorithm: course/00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm.md
-      - Designing a solution step by step: course/00-learning-to-think-algorithmically/03-designing-a-solution.md
-      - Evidence that an algorithm works: course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost.md
-      - How to study algorithms: course/00-learning-to-think-algorithmically/05-how-to-study-algorithms.md
-      - Review: course/00-learning-to-think-algorithmically/review.md
+      - course/00-learning-to-think-algorithmically/index.md
+      - 1. Problems, algorithms, programs, and executions: course/00-learning-to-think-algorithmically/01-problems-algorithms-programs.md
+      - 2. Reading Python as an algorithm: course/00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm.md
+      - 3. Designing a solution step by step: course/00-learning-to-think-algorithmically/03-designing-a-solution.md
+      - 4. Evidence that an algorithm works: course/00-learning-to-think-algorithmically/04-evidence-correctness-and-cost.md
+      - 5. How to study algorithms: course/00-learning-to-think-algorithmically/05-how-to-study-algorithms.md
+      - 6. Review: course/00-learning-to-think-algorithmically/review.md
   - Module 01 — Foundations of Algorithm Design:
-      - Module overview: course/01-foundations-of-algorithm-design/index.md
-      - Imperative computation: course/01-foundations-of-algorithm-design/imperative-computation.md
+      - course/01-foundations-of-algorithm-design/index.md
+      - 1. Imperative computation: course/01-foundations-of-algorithm-design/imperative-computation.md
   - Course sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
