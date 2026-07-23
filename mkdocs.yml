@@ -129,6 +129,19 @@ nav:
           - 8. Index Arrays: course/04-searching-sorting-and-divide-and-conquer/08-index-arrays.md
           - 9. Worked Examples: course/04-searching-sorting-and-divide-and-conquer/09-worked-examples.md
           - 10. Module 04 Review: course/04-searching-sorting-and-divide-and-conquer/review.md
+      - 05 · Functions, the Call Stack, and Recursion:
+          - Module introduction: course/05-functions-call-stack-and-recursion/index.md
+          - 1. Functions and Their Environment: course/05-functions-call-stack-and-recursion/01-functions-and-their-environment.md
+          - 2. Side Effects and Interface Design: course/05-functions-call-stack-and-recursion/02-side-effects-and-interface-design.md
+          - 3. The Call Stack and Stack Frames: course/05-functions-call-stack-and-recursion/03-call-stack-and-stack-frames.md
+          - 4. Anatomy of a Recursive Call: course/05-functions-call-stack-and-recursion/04-anatomy-of-a-recursive-call.md
+          - 5. Tracing Recursive Execution: course/05-functions-call-stack-and-recursion/05-tracing-recursive-execution.md
+          - 6. Indirect and Nested Recursion: course/05-functions-call-stack-and-recursion/06-indirect-and-nested-recursion.md
+          - 7. Explicit Stack Simulation: course/05-functions-call-stack-and-recursion/07-explicit-stack-simulation.md
+          - 8. Recursion Problems and Failure Modes: course/05-functions-call-stack-and-recursion/08-recursion-problems-and-failure-modes.md
+          - 9. Recursion versus Iteration Revisited: course/05-functions-call-stack-and-recursion/09-recursion-versus-iteration.md
+          - 10. Worked Examples: course/05-functions-call-stack-and-recursion/10-worked-examples.md
+          - 11. Module 05 Review: course/05-functions-call-stack-and-recursion/review.md
   - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
