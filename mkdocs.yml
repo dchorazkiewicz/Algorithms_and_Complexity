@@ -164,6 +164,18 @@ nav:
           - 8. Selected List Algorithms: course/07-lists-stacks-queues-and-priority-queues/08-selected-list-algorithms.md
           - 9. Worked Examples: course/07-lists-stacks-queues-and-priority-queues/09-worked-examples.md
           - 10. Module 07 Review: course/07-lists-stacks-queues-and-priority-queues/review.md
+      - 08 · Binary Trees, AVL Trees, and Heaps:
+          - Module introduction: course/08-binary-trees-avl-and-heaps/index.md
+          - 1. Tree Vocabulary and Recursive Structure: course/08-binary-trees-avl-and-heaps/01-tree-vocabulary-and-structure.md
+          - 2. Binary Trees and Their Representations: course/08-binary-trees-avl-and-heaps/02-binary-trees-and-representations.md
+          - 3. Traversing a Binary Tree: course/08-binary-trees-avl-and-heaps/03-tree-traversals.md
+          - 4. Binary Search Trees: course/08-binary-trees-avl-and-heaps/04-binary-search-trees.md
+          - 5. Dictionaries with Binary Search Trees: course/08-binary-trees-avl-and-heaps/05-dictionaries-with-bsts.md
+          - 6. Height, Degeneration, and Balancing: course/08-binary-trees-avl-and-heaps/06-height-and-balancing.md
+          - 7. AVL Trees and Rotations: course/08-binary-trees-avl-and-heaps/07-avl-trees-and-rotations.md
+          - 8. Heaps and Priority Queues: course/08-binary-trees-avl-and-heaps/08-heaps-and-priority-queues.md
+          - 9. Worked Examples: course/08-binary-trees-avl-and-heaps/09-worked-examples.md
+          - 10. Module 08 Review: course/08-binary-trees-avl-and-heaps/review.md
   - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
