@@ -1,204 +1,113 @@
-# Algorytmy i złożoność — wymagania i zakres materiału
+# Algorytmy i złożoność
 
-## Charakter przedmiotu
+## Forma zajęć
 
-Przedmiot dotyczy praktycznego rozwiązywania problemów za pomocą algorytmizacji, stosowania struktur danych oraz oceny efektywności algorytmów.
+**ECTS:** 6
 
-## Cele kształcenia
+| Forma zajęć | Liczba godzin — studia stacjonarne | Liczba godzin — studia niestacjonarne | Forma zaliczenia | Waga |
+|---|---:|---:|---|---:|
+| Wykłady | 30 | 16 | Egzamin | 40 |
+| Ćwiczenia | 45 | 24 | Zaliczenie z oceną | 60 |
+| Konwersatoria | - | - |  |  |
+| Razem za zajęcia dydaktyczne | 75 | 40 |  |  |
+| Konsultacje, egzaminy i zaliczenia | 25 | 25 |  |  |
+| Razem z udziałem nauczyciela | 100 | 65 |  |  |
+| Praca własna studenta | 50 | 85 |  |  |
+| Ogółem | 150 | 150 |  |  |
 
-1. Nabycie umiejętności rozwiązywania problemów poprzez poprawną algorytmizację.
+## Cele kształcenia dla przedmiotu
+
+1. Nabycie umiejętności rozwiązywanie problemów poprzez poprawną algorytmizację.
 2. Nabycie teoretycznej i praktycznej umiejętności posługiwania się złożonymi strukturami danych.
-3. Nabycie umiejętności oceny klasy algorytmów oraz podstaw szacowania ich złożoności obliczeniowej.
+3. Nabycie umiejętności oceny klasy algorytmów z podstawami szacowania ich złożoności obliczeniowej.
 
-## Oczekiwana wiedza studenta
+## Efekty uczenia się
 
-Student zna i rozumie:
+### WIEDZA
 
-- różnice we własnościach, budowie, działaniu i efektywności algorytmów iteracyjnych i rekurencyjnych;
-- zasady poprawnego wykorzystywania w algorytmizacji złożonych struktur danych, w szczególności tablic, list liniowych, drzew i grafów;
-- podstawowe metody szacowania złożoności obliczeniowej algorytmów.
+| L.p. | Efekty przedmiotowe (Student zna i rozumie) | Metody weryfikacji efektów uczenia się |
+|---|---|---|
+| W1 | Student zna i rozumie jakie są różnice we własnościach, budowie, działaniu i efektywności algorytmów iteracyjnych i rekurencyjnych.<br><br>Zna i rozumie jak poprawnie wykorzystać w algorytmizacji złożone struktury danych: tablice, listy liniowe, drzewa i grafy.<br><br>Zna i rozumie jak szacować złożoność obliczeniową algorytmów. | Egzamin |
 
-## Oczekiwane umiejętności studenta
+### UMIEJĘTNOŚCI
 
-Student potrafi:
+| L.p. | Efekty przedmiotowe (Student potrafi) | Metody weryfikacji efektów uczenia się |
+|---|---|---|
+| U1 | Student potrafi zapisać rozwiązanie złożonego problemu w postaci algorytmu z uwzględnieniem asercji początkowej i końcowej.<br><br>Potrafi wykorzystać w konstrukcji algorytmu proste i złożone typy danych: tablice, listy liniowe jedno- i dwukierunkowe, LIFO-stosy i FIFO-kolejki, drzewa binarne, sterty i grafy.<br><br>Potrafi szacować w O-notacji złożoność obliczeniową prostych algorytmów iteracyjnych. | Kolokwia ćwiczeniowe.<br><br>Udział w dyskusji w trakcie ćwiczeń i wykładu. |
+| U2 | Posiada umiejętność usprawniania opracowanych rozwiązań w oparciu o konstruktywną informację zwrotną. | Dyskusja poza zajęciami w formie stacjonarnej.<br><br>Dyskusja poza zajęciami w formie zdalnej.<br><br>Demonstracja postępu prac w formie zdalnej. |
 
-- zapisać rozwiązanie złożonego problemu w postaci algorytmu z uwzględnieniem asercji początkowej i końcowej;
-- wykorzystywać w konstrukcji algorytmów proste i złożone typy danych;
-- stosować tablice i rekordy;
-- stosować listy liniowe jednokierunkowe i dwukierunkowe;
-- stosować stosy LIFO i kolejki FIFO;
-- stosować kolejki priorytetowe;
-- stosować drzewa binarne, drzewa binarnych poszukiwań, drzewa AVL oraz sterty;
-- dobierać reprezentację grafu i wykonywać podstawowe operacje na grafach;
-- stosować algorytmy iteracyjne i rekurencyjne;
-- szacować złożoność obliczeniową prostych algorytmów iteracyjnych w notacji O;
-- usprawniać opracowane rozwiązania na podstawie konstruktywnej informacji zwrotnej;
-- precyzyjnie komunikować trudności występujące podczas tworzenia rozwiązań informatycznych.
+### KOMPETENCJE SPOŁECZNE
 
-## Oczekiwane kompetencje
+| L.p. | Efekty przedmiotowe (Student jest gotów do) | Metody weryfikacji efektów uczenia się |
+|---|---|---|
+| K1 | Student jest gotowy do rozwiązywania szeroko pojętych problemów technicznych metodą algorytmizacji. | Dyskusja w trakcie ćwiczeń. |
+| K2 | Potrafi precyzyjnie komunikować trudności w trakcie procesu wytwarzania rozwiązań informatycznych. | Dyskusja poza zajęciami w formie stacjonarnej.<br><br>Dyskusja poza zajęciami w formie zdalnej. |
 
-Student jest przygotowany do:
+## Treści kształcenia
 
-- rozwiązywania problemów technicznych metodą algorytmizacji;
-- świadomego doboru algorytmu i struktury danych do charakteru problemu;
-- analizowania poprawności i efektywności proponowanego rozwiązania;
-- przedstawiania problemów, ograniczeń i postępów prac w sposób precyzyjny.
+| L.p. | Treść kształcenia (tematyka zajęć) | Wykład — studia stacjonarne | Wykład — studia niestacjonarne | Ćwiczenia — studia stacjonarne | Ćwiczenia — studia niestacjonarne |
+|---:|---|---:|---:|---:|---:|
+| 1 | Przetwarzanie imperatywne. Asercja początkowa i końcowa algorytmu. Postacie algorytmu. Cechy algorytmów. Pseudokod. Podstawowe metody strukturalizacji algorytmów. | 1 | 1 | 2 | 1 |
+| 2 | Pętle iteracyjne, warunek stopu pętli iteracyjnej. Rekurencja. Schemat konstruowania poprawnego algorytmu. Typy pierwotne i złożone. | 1 | 1 | 4 | 1 |
+| 3 | Tablica i rekord jako agregaty danych. Reprezentacja danych różnych typów w pamięci. Bezpośredni dostęp do składowych. Podstawowe operacje na tablicach. | 2 | 1 | 3 | 1 |
+| 4 | Wyszukiwanie liniowe i binarne. Metody sortowania. Cechy algorytmów sortowania. Złożoność obliczeniowa algorytmów. Metoda „dziel i zwyciężaj”. Schemat algorytmu Quick-Sort. Tablica indeksowa. Algorytmy rekurencyjne. | 2 | 2 | 4 | 1 |
+| 5 | Komunikacja funkcji z otoczeniem, efekty uboczne. Zjawiska na stosie dla zmiennych. Funkcje rekurencyjne. Anatomia wywołania rekurencyjnego. Rekurencja pośrednia i zagnieżdżona. Implementacja stosowa rekurencji. Kłopoty z rekurencją. Rekurencja a iteracja. | 5 | 2 | 8 | 4 |
+| 6 | Algorytmy z powrotami. Metody usprawniania algorytmów zachłannych: systematyczne, heurystyczne. Dynamiczne struktury danych. | 1 | 1 | 4 | 2 |
+| 7 | Listy liniowe. LIFO-stosy i FIFO-kolejki, kolejki z priorytetem, listy dwukierunkowe i cykliczne. Samoorganizujące się listy. Listy z przeskokami. Niektóre algorytmy obsługi list. | 2 | 2 | 5 | 2 |
+| 8 | Drzewa binarne. Podstawowe pojęcia dotyczące drzew. Drzewa binarne. Przechodzenie po drzewie binarnym. Drzewo binarnych poszukiwań. Wykorzystanie drzew do budowy słownika. Równoważenie drzew. Drzewo AVL. Sterty. | 5 | 2 | 6 | 2 |
+| 9 | Grafy. Metody reprezentacji grafu. Analiza własności przykładowych grafów. Podstawowe operacje na grafach. Implementacja grafu w postaci listy incydencji. Algorytm szukania w głąb dla grafu jako przykład wyszukiwania wyczerpującego i jego zastosowania. Przykłady wykorzystania algorytmu szukania w głąb dla grafu. | 6 | 2 | 7 | 1 |
+| 10 | Analiza złożoności czasowej algorytmów. Złożoność obliczeniowa. O-notacja. Przykłady obliczeń złożoności. Problemy algorytmicznie trudne. Problemy N- i NP-zupełne. | 6 | 2 | 2 | 1 |
+|  | **Razem** | **30** | **16** | **45** | **16** |
 
-# Zakres materiału
+## Metody kształcenia
 
-## 1. Podstawy algorytmizacji
+| Metoda kształcenia | Wykłady | Ćwiczenia | Konwersatoria | Inne |
+|---|:---:|:---:|:---:|:---:|
+| Wykład informacyjny i/lub problemowy z prezentacją multimedialną | X |  |  |  |
+| Wykład konwersatoryjny |  |  |  |  |
+| Analiza przypadków i przykładów | X | X |  |  |
+| Dyskusja, debata, burza mózgów, grywalizacja |  | X |  |  |
+| Rozwiązywanie zadań, ćwiczenia zespołowe, ćwiczenia laboratoryjne |  | X |  |  |
+| Projektowanie, programowanie, symulacje | X | X |  |  |
+| Zadania programistyczne |  | X |  |  |
+| Praca grupowa |  |  |  |  |
 
-- przetwarzanie imperatywne;
-- asercja początkowa i końcowa algorytmu;
-- postacie algorytmu;
-- cechy algorytmów;
-- pseudokod;
-- podstawowe metody strukturalizacji algorytmów;
-- schemat konstruowania poprawnego algorytmu.
+## Warunki zaliczenia
 
-## 2. Iteracja i rekurencja
+| Sposób zaliczenia | Laboratoria | Wykład |
+|---|---:|---:|
+| Egzamin ustny |  |  |
+| Egzamin pisemny |  | 90% |
+| Kolokwium | 80% |  |
+| Przygotowanie i przedstawienie eseju / referatu / innej formy wypowiedzi pisemnej |  |  |
+| Wykonanie zadań / ćwiczeń / projektu podczas zajęć | 20% |  |
+| Wykonanie zadań / ćwiczeń / projektu poza zajęciami |  |  |
+| Wypowiedzi ustne podczas zajęć (np. w trakcie dyskusji, debaty) |  | 10% |
+| Inny obecność na zajęciach |  |  |
+| **Razem** | **100%** | **100%** |
 
-- pętle iteracyjne;
-- warunek stopu pętli;
-- rekurencja;
-- funkcje rekurencyjne;
-- anatomia wywołania rekurencyjnego;
-- rekurencja pośrednia i zagnieżdżona;
-- implementacja stosowa rekurencji;
-- problemy i ograniczenia związane z rekurencją;
-- porównanie rekurencji i iteracji.
+## Rozliczenie pracy własnej studenta
 
-## 3. Typy danych i reprezentacja danych
+| L.p. | Czynności w ramach pracy własnej | Szacowana liczba godzin — studia stacjonarne | Szacowana liczba godzin — studia niestacjonarne |
+|---:|---|---:|---:|
+| 1 | Przygotowanie do udziału w zajęciach (np. wstępna lektura, przygotowanie lub zgromadzenie materiałów, pomocy, przygotowanie referatu lub prezentacji na zajęcia itp.) |  |  |
+| 2 | Wykonanie ćwiczeń lub zadań po zajęciach (jako utrwalenie lub rozszerzenie treści z odbytych zajęć) | 15 | 25 |
+| 3 | Realizacja zadania projektowego poza zajęciami |  |  |
+| 4 | Przygotowanie pracy pisemnej poza zajęciami |  |  |
+| 5 | Lektura obowiązkowa |  |  |
+| 6 | Obowiązkowe zapoznanie się z innymi materiałami lub treściami (np. materiałami audio, wideo, narzędziami, pomocami, oprogramowaniem, sprzętem, aktami prawnymi, dokumentacją, warunkami miejsca pracy itp.) |  |  |
+| 6 | Przygotowanie do kolokwium | 25 | 40 |
+| 7 | Przygotowanie do egzaminu | 10 | 20 |
+| 8 | Inne … |  |  |
+|  | **Razem** | **50** | **85** |
 
-- typy pierwotne i złożone;
-- tablice i rekordy jako agregaty danych;
-- reprezentacja danych różnych typów w pamięci;
-- bezpośredni dostęp do składowych;
-- podstawowe operacje na tablicach;
-- tablice indeksowe.
+## Literatura obowiązkowa
 
-## 4. Wyszukiwanie i sortowanie
+1. *Zrozum struktury danych. Algorytmy i praca na danych w Javie*, Wyd. Helion.
+2. *Algorytmy struktury danych i techniki programowania*, Wydanie V, Helion.
+3. *Struktury danych i algorytmy w języku Java. Przewodnik dla początkujących*, Wyd. Helion.
 
-- wyszukiwanie liniowe;
-- wyszukiwanie binarne;
-- podstawowe metody sortowania;
-- cechy algorytmów sortowania;
-- analiza złożoności algorytmów wyszukiwania i sortowania;
-- metoda „dziel i zwyciężaj”;
-- schemat algorytmu QuickSort;
-- rekurencyjne algorytmy sortowania i wyszukiwania.
+## Literatura uzupełniająca
 
-## 5. Funkcje, stos i efekty uboczne
-
-- komunikacja funkcji z otoczeniem;
-- efekty uboczne;
-- zachowanie zmiennych na stosie;
-- zależność między stosem wywołań a rekurencją.
-
-## 6. Strategie projektowania algorytmów
-
-- algorytmy z powrotami;
-- algorytmy zachłanne;
-- systematyczne i heurystyczne metody usprawniania algorytmów;
-- dynamiczne struktury danych.
-
-## 7. Listy, stosy i kolejki
-
-- listy liniowe;
-- listy jednokierunkowe i dwukierunkowe;
-- listy cykliczne;
-- stosy LIFO;
-- kolejki FIFO;
-- kolejki priorytetowe;
-- samoorganizujące się listy;
-- listy z przeskokami;
-- podstawowe algorytmy obsługi list.
-
-## 8. Drzewa i sterty
-
-- podstawowe pojęcia dotyczące drzew;
-- drzewa binarne;
-- przechodzenie po drzewie binarnym;
-- drzewa binarnych poszukiwań;
-- wykorzystanie drzew do budowy słownika;
-- równoważenie drzew;
-- drzewa AVL;
-- sterty.
-
-## 9. Grafy
-
-- podstawowe pojęcia dotyczące grafów;
-- metody reprezentacji grafu;
-- analiza własności przykładowych grafów;
-- podstawowe operacje na grafach;
-- implementacja grafu za pomocą list incydencji;
-- algorytm przeszukiwania w głąb DFS;
-- DFS jako przykład wyszukiwania wyczerpującego;
-- przykładowe zastosowania DFS.
-
-## 10. Złożoność obliczeniowa
-
-- analiza złożoności czasowej algorytmów;
-- złożoność obliczeniowa;
-- notacja O;
-- przykłady obliczania złożoności;
-- porównywanie efektywności algorytmów;
-- problemy algorytmicznie trudne;
-- problemy klasy N i NP-zupełne.
-
-# Sposób pracy
-
-W ramach przedmiotu przewidziane są w szczególności:
-
-- analiza przypadków i przykładów;
-- rozwiązywanie zadań;
-- ćwiczenia zespołowe i laboratoryjne;
-- projektowanie i programowanie rozwiązań;
-- symulacje;
-- zadania programistyczne;
-- dyskusja nad poprawnością, ograniczeniami i efektywnością rozwiązań.
-
-# Weryfikacja osiągnięć
-
-Ocena osiągnięć studenta obejmuje:
-
-- egzamin pisemny;
-- kolokwia;
-- wykonanie zadań, ćwiczeń lub projektu podczas zajęć;
-- aktywny udział w dyskusji;
-- prezentowanie postępów prac i analizę problemów napotkanych podczas realizacji zadań.
-
-## Wagi ocen
-
-### Zajęcia praktyczne
-
-- kolokwia: 80%;
-- wykonanie zadań, ćwiczeń lub projektu podczas zajęć: 20%.
-
-### Wykład
-
-- egzamin pisemny: 90%;
-- wypowiedzi ustne i udział w dyskusji: 10%.
-
-# Praca własna studenta
-
-Student powinien przeznaczyć czas na:
-
-- utrwalanie i rozszerzanie materiału poprzez wykonywanie ćwiczeń po zajęciach;
-- przygotowanie do kolokwiów;
-- przygotowanie do egzaminu;
-- analizowanie i poprawianie opracowanych rozwiązań;
-- konsultowanie problemów, kompletności funkcjonalnej oraz postępów prac.
-
-# Minimalny rezultat kształcenia
-
-Po zakończeniu przedmiotu student powinien umieć samodzielnie:
-
-1. sformułować problem algorytmiczny;
-2. określić dane wejściowe, wynik oraz warunki początkowe i końcowe;
-3. zaprojektować rozwiązanie iteracyjne lub rekurencyjne;
-4. dobrać odpowiednią strukturę danych;
-5. zapisać rozwiązanie w pseudokodzie lub w postaci programu;
-6. uzasadnić poprawność przyjętego podejścia;
-7. oszacować złożoność czasową rozwiązania w notacji O;
-8. wskazać ograniczenia rozwiązania oraz możliwe kierunki jego usprawnienia.
+1. *C++ Algorytmy i struktury danych*, Helion.
+2. *Projektowanie i analiza algorytmów*, Helion.
