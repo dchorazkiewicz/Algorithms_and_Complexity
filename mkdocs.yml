@@ -117,6 +117,18 @@ nav:
           - 6. Copying, Aliasing, and Mutation: course/03-arrays-records-and-memory/06-copying-aliasing-and-mutation.md
           - 7. Worked Examples: course/03-arrays-records-and-memory/07-worked-examples.md
           - 8. Module 03 Review: course/03-arrays-records-and-memory/review.md
+      - 04 · Searching, Sorting, and Divide and Conquer:
+          - Module introduction: course/04-searching-sorting-and-divide-and-conquer/index.md
+          - 1. Searching as a Computational Problem: course/04-searching-sorting-and-divide-and-conquer/01-searching-as-a-computational-problem.md
+          - 2. Linear Search: course/04-searching-sorting-and-divide-and-conquer/02-linear-search.md
+          - 3. Binary Search: course/04-searching-sorting-and-divide-and-conquer/03-binary-search.md
+          - 4. Sorting Problems and Properties: course/04-searching-sorting-and-divide-and-conquer/04-sorting-problems-and-properties.md
+          - 5. Elementary Sorting Algorithms: course/04-searching-sorting-and-divide-and-conquer/05-elementary-sorting-algorithms.md
+          - 6. Divide and Conquer: course/04-searching-sorting-and-divide-and-conquer/06-divide-and-conquer.md
+          - 7. Quicksort: course/04-searching-sorting-and-divide-and-conquer/07-quicksort.md
+          - 8. Index Arrays: course/04-searching-sorting-and-divide-and-conquer/08-index-arrays.md
+          - 9. Worked Examples: course/04-searching-sorting-and-divide-and-conquer/09-worked-examples.md
+          - 10. Module 04 Review: course/04-searching-sorting-and-divide-and-conquer/review.md
   - Sources:
       - Polish syllabus: source/syllabus-pl.md
       - English syllabus: source/syllabus-en.md
