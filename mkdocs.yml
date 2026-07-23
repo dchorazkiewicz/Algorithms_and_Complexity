@@ -59,5 +59,8 @@ nav:
   - Source syllabus:
       - Polish source: source/syllabus-pl.md
       - English version: source/syllabus-en.md
+  - Module 01 — Foundations of Algorithm Design:
+      - Module overview: course/01-foundations-of-algorithm-design/index.md
+      - Imperative computation: course/01-foundations-of-algorithm-design/imperative-computation.md
 
 strict: true
