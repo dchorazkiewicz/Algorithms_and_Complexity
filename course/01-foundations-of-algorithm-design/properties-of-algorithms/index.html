@@ -1,0 +1,2154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/01-foundations-of-algorithm-design/properties-of-algorithms/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Properties of Algorithms - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/layout-fixes.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#properties-of-algorithms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Properties of Algorithms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../00-learning-to-think-algorithmically/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 · Learning to Think Algorithmically
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 · Learning to Think Algorithmically
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Problems, Algorithms, Programs, and Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reading Python as an Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Designing a Solution Step by Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Evidence That an Algorithm Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. How to Study Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Module 00 Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Imperative Computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preconditions-and-postconditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-every-procedure-deserves-to-be-called-an-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not every procedure deserves to be called an algorithm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-a-motivating-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A motivating example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-input-the-data-on-which-the-algorithm-operates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Input: the data on which the algorithm operates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Input: the data on which the algorithm operates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-is-not-only-keyboard-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input is not only keyboard data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hidden-input-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hidden input assumptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-output-the-required-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Output: the required result
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Output: the required result">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returned-result-versus-modified-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Returned result versus modified state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-definiteness-every-step-must-be-unambiguous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Definiteness: every step must be unambiguous
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Definiteness: every step must be unambiguous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definiteness-does-not-require-machine-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definiteness does not require machine code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources-of-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sources of ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-effectiveness-each-operation-must-be-executable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Effectiveness: each operation must be executable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Effectiveness: each operation must be executable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effectiveness-depends-on-the-abstraction-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effectiveness depends on the abstraction level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-calls-are-not-automatically-constant-time-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library calls are not automatically constant-time primitives
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-finiteness-the-algorithm-must-terminate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Finiteness: the algorithm must terminate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Finiteness: the algorithm must terminate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#termination-belongs-to-the-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Termination belongs to the contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-and-boundedness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progress and boundedness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-generality-the-method-solves-a-class-of-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Generality: the method solves a class of instances
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Generality: the method solves a class of instances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generality-is-controlled-by-the-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generality is controlled by the domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overfitting-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overfitting examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-correctness-the-result-must-satisfy-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Correctness: the result must satisfy the specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Correctness: the result must satisfy the specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#partial-and-total-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partial and total correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-is-not-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing is not correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-first-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: first maximum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-efficiency-correctness-is-necessary-but-not-sufficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Efficiency: correctness is necessary but not sufficient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Efficiency: correctness is necessary but not sufficient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-and-auxiliary-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time and auxiliary space
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efficiency-is-model-dependent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficiency is model-dependent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-not-optimise-an-incorrect-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do not optimise an incorrect algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-determinism-and-nondeterminism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Determinism and nondeterminism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-robustness-and-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Robustness and failure behaviour
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-the-properties-are-connected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. The properties are connected
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. The properties are connected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definiteness-supports-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definiteness supports correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effectiveness-supports-executability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effectiveness supports executability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finiteness-supports-total-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finiteness supports total correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generality-connects-examples-to-the-problem-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generality connects examples to the problem class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efficiency-depends-on-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficiency depends on representation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contracts-organise-the-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contracts organise the properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-diagnosing-failed-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Diagnosing failed procedures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Diagnosing failed procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedure-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure C
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure E
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-a-review-checklist-for-a-proposed-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. A review checklist for a proposed algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. A review checklist for a proposed algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-and-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem and domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Result
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Precision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-diagnose-the-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Diagnose the property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-repair-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Repair termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-hidden-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Hidden assumptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-correct-but-inefficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Correct but inefficient
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-partial-versus-total-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Partial versus total correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-effective-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Effective primitives
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="properties-of-algorithms">Properties of Algorithms<a class="headerlink" href="#properties-of-algorithms" title="Permanent link">&para;</a></h1>
+<h2 id="why-not-every-procedure-deserves-to-be-called-an-algorithm">Why not every procedure deserves to be called an algorithm<a class="headerlink" href="#why-not-every-procedure-deserves-to-be-called-an-algorithm" title="Permanent link">&para;</a></h2>
+<p>A list of instructions can look algorithmic and still fail in an important way. It may be ambiguous. It may never terminate. It may use an operation that cannot actually be carried out. It may work only for one example. It may terminate and still return the wrong result.</p>
+<p>For this reason, algorithmics does not treat every procedure as equally acceptable. We need criteria that allow us to ask whether a proposed method is sufficiently precise, executable, general, terminating, and correct.</p>
+<p>The traditional properties of algorithms are not merely vocabulary to memorise. Each property corresponds to a practical question that appears during design and review:</p>
+<ul>
+<li>What data does the method accept?</li>
+<li>What result does it produce?</li>
+<li>Is every step unambiguous?</li>
+<li>Can every step actually be performed?</li>
+<li>Does execution stop?</li>
+<li>Does the method solve a whole problem class?</li>
+<li>Does the result satisfy the specification?</li>
+<li>How much time and memory are required?</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">What you should learn from this chapter</p>
+<p>By the end of the chapter, you should be able to explain input, output, definiteness, effectiveness, finiteness, generality, correctness, and efficiency; distinguish properties of a problem, an algorithm, and an implementation; and diagnose which property is violated by an incomplete or faulty procedure.</p>
+</div>
+<hr />
+<h2 id="1-a-motivating-example">1. A motivating example<a class="headerlink" href="#1-a-motivating-example" title="Permanent link">&para;</a></h2>
+<p>Suppose we write:</p>
+<blockquote>
+<p>Keep looking through the list until you find a large value, then return it.</p>
+</blockquote>
+<p>This sounds like a procedure, but it is not yet a usable algorithm.</p>
+<p>Several questions remain unanswered:</p>
+<ul>
+<li>What counts as “large”?</li>
+<li>What happens if no value is large?</li>
+<li>In what order are elements examined?</li>
+<li>Does the method return a value or an index?</li>
+<li>Can the same element be examined repeatedly?</li>
+<li>How do we know the procedure stops?</li>
+</ul>
+<p>The example reveals that an algorithm must do more than suggest an idea. It must make enough commitments that execution and reasoning become possible.</p>
+<hr />
+<h2 id="2-input-the-data-on-which-the-algorithm-operates">2. Input: the data on which the algorithm operates<a class="headerlink" href="#2-input-the-data-on-which-the-algorithm-operates" title="Permanent link">&para;</a></h2>
+<p>An algorithm solves a class of instances. Its <strong>input</strong> identifies the information supplied for one instance.</p>
+<p>For linear search:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Input:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    values — a finite sequence
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    target — a value comparable with the sequence elements
+</code></pre></div>
+<p>The input description should expose the domain:</p>
+<ul>
+<li>Is the sequence finite?</li>
+<li>May it be empty?</li>
+<li>What types of elements are allowed?</li>
+<li>Must the elements already satisfy an ordering?</li>
+<li>May the algorithm modify the input?</li>
+</ul>
+<h3 id="input-is-not-only-keyboard-data">Input is not only keyboard data<a class="headerlink" href="#input-is-not-only-keyboard-data" title="Permanent link">&para;</a></h3>
+<p>In algorithm analysis, input is logical rather than physical. It may arrive through:</p>
+<ul>
+<li>function parameters;</li>
+<li>an array already stored in memory;</li>
+<li>a file;</li>
+<li>a network message;</li>
+<li>another algorithm;</li>
+<li>a sensor;</li>
+<li>a graph data structure.</li>
+</ul>
+<p>The source of data does not define the computational problem. The relevant issue is what information the algorithm receives.</p>
+<h3 id="hidden-input-assumptions">Hidden input assumptions<a class="headerlink" href="#hidden-input-assumptions" title="Permanent link">&para;</a></h3>
+<p>Consider binary search. Its visible input may be a sequence and a target, but the method also relies on a structural assumption:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>values is sorted in non-decreasing order
+</code></pre></div>
+<p>If that condition is omitted, the algorithm description is incomplete. The method may execute, but correctness is no longer guaranteed.</p>
+<hr />
+<h2 id="3-output-the-required-result">3. Output: the required result<a class="headerlink" href="#3-output-the-required-result" title="Permanent link">&para;</a></h2>
+<p>The <strong>output</strong> is the result the algorithm must produce for a valid input.</p>
+<p>For search, several outputs are possible depending on the specification:</p>
+<ul>
+<li>a Boolean value indicating whether the target exists;</li>
+<li>the first matching index;</li>
+<li>the last matching index;</li>
+<li>every matching index;</li>
+<li>the matching element;</li>
+<li>a distinguished failure result.</li>
+</ul>
+<p>These are different problems.</p>
+<p>A precise output description therefore matters. Compare:</p>
+<blockquote>
+<p>Return the target if it is found.</p>
+</blockquote>
+<p>with:</p>
+<blockquote>
+<p>Return the smallest index <code>i</code> such that <code>values[i] = target</code>; return <code>-1</code> if no such index exists.</p>
+</blockquote>
+<p>The second statement is testable and suitable for correctness reasoning.</p>
+<h3 id="returned-result-versus-modified-state">Returned result versus modified state<a class="headerlink" href="#returned-result-versus-modified-state" title="Permanent link">&para;</a></h3>
+<p>Some algorithms return a new object. Others modify an existing structure.</p>
+<p>For example, an in-place sorting algorithm may have:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Returned result:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    none
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Post-state:
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    the input sequence contains the original elements in non-decreasing order
+</code></pre></div>
+<p>Output must therefore be interpreted broadly enough to include required state changes, not only function return values.</p>
+<hr />
+<h2 id="4-definiteness-every-step-must-be-unambiguous">4. Definiteness: every step must be unambiguous<a class="headerlink" href="#4-definiteness-every-step-must-be-unambiguous" title="Permanent link">&para;</a></h2>
+<p>An algorithm has <strong>definiteness</strong> when every step is specified precisely enough that the next action is determined.</p>
+<p>Ambiguous instruction:</p>
+<blockquote>
+<p>If the value is quite large, remember it.</p>
+</blockquote>
+<p>Questions immediately arise:</p>
+<ul>
+<li>How large is “quite large”?</li>
+<li>Compared with what?</li>
+<li>What exactly is remembered?</li>
+</ul>
+<p>Definite instruction:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>IF value &gt; current_maximum THEN
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    current_maximum ← value
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>END IF
+</code></pre></div>
+<p>The condition and update are explicit.</p>
+<h3 id="definiteness-does-not-require-machine-code">Definiteness does not require machine code<a class="headerlink" href="#definiteness-does-not-require-machine-code" title="Permanent link">&para;</a></h3>
+<p>An algorithm may be written in natural language and still be definite, provided the terms are defined precisely. Conversely, source code may compile while implementing the wrong or underspecified behaviour.</p>
+<p>Definiteness concerns the method's meaning, not merely its syntax.</p>
+<h3 id="sources-of-ambiguity">Sources of ambiguity<a class="headerlink" href="#sources-of-ambiguity" title="Permanent link">&para;</a></h3>
+<p>Common sources include:</p>
+<ul>
+<li>undefined terms such as “large”, “close”, or “suitable”;</li>
+<li>omitted tie-breaking rules;</li>
+<li>unclear iteration order;</li>
+<li>unstated handling of empty input;</li>
+<li>unspecified failure behaviour;</li>
+<li>inconsistent index conventions;</li>
+<li>instructions that depend on intuition rather than a rule.</li>
+</ul>
+<hr />
+<h2 id="5-effectiveness-each-operation-must-be-executable">5. Effectiveness: each operation must be executable<a class="headerlink" href="#5-effectiveness-each-operation-must-be-executable" title="Permanent link">&para;</a></h2>
+<p>An algorithm is <strong>effective</strong> when its primitive operations are simple enough to be carried out in a finite and understood way within the chosen model of computation.</p>
+<p>Instruction:</p>
+<blockquote>
+<p>Determine instantly whether this arbitrary program will ever terminate.</p>
+</blockquote>
+<p>This is not an effective primitive operation for a general algorithm. It hides a difficult or impossible subproblem behind one sentence.</p>
+<p>Instruction:</p>
+<blockquote>
+<p>Compare two integers.</p>
+</blockquote>
+<p>This is normally treated as effective under the standard computational model.</p>
+<h3 id="effectiveness-depends-on-the-abstraction-level">Effectiveness depends on the abstraction level<a class="headerlink" href="#effectiveness-depends-on-the-abstraction-level" title="Permanent link">&para;</a></h3>
+<p>In a high-level algorithm, we may treat <code>append</code> to a dynamic sequence as one operation. At a lower level, that operation may involve capacity checks, allocation, and copying.</p>
+<p>The operation can still be effective, but its actual cost depends on the implementation.</p>
+<h3 id="library-calls-are-not-automatically-constant-time-primitives">Library calls are not automatically constant-time primitives<a class="headerlink" href="#library-calls-are-not-automatically-constant-time-primitives" title="Permanent link">&para;</a></h3>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">values</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</code></pre></div>
+<p>The operation is executable, but it represents a substantial algorithm. Treating it as a single line does not make its cost constant.</p>
+<p>Effectiveness asks whether the step can be performed. Complexity asks how expensive it is.</p>
+<hr />
+<h2 id="6-finiteness-the-algorithm-must-terminate">6. Finiteness: the algorithm must terminate<a class="headerlink" href="#6-finiteness-the-algorithm-must-terminate" title="Permanent link">&para;</a></h2>
+<p>An algorithm has <strong>finiteness</strong> when it stops after a finite number of steps for every input covered by its specification.</p>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">countdown</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="k">while</span> <span class="n">number</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="n">number</span> <span class="o">-=</span> <span class="mi">2</span>
+</code></pre></div>
+<p>For an even positive input such as <code>6</code>, the values are:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>6, 4, 2, 0
+</code></pre></div>
+<p>The loop terminates.</p>
+<p>For an odd positive input such as <code>5</code>, the values are:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>5, 3, 1, -1, -3, -5, ...
+</code></pre></div>
+<p>The loop never reaches zero.</p>
+<p>The procedure is not terminating for the entire apparent input domain.</p>
+<h3 id="termination-belongs-to-the-contract">Termination belongs to the contract<a class="headerlink" href="#termination-belongs-to-the-contract" title="Permanent link">&para;</a></h3>
+<p>There are two possible repairs.</p>
+<p>We may restrict the precondition:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>number is a non-negative even integer
+</code></pre></div>
+<p>or change the algorithm:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">countdown</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="n">number</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>The correct choice depends on the intended problem.</p>
+<h3 id="progress-and-boundedness">Progress and boundedness<a class="headerlink" href="#progress-and-boundedness" title="Permanent link">&para;</a></h3>
+<p>A termination argument usually identifies:</p>
+<ol>
+<li>a quantity that changes in a consistent direction;</li>
+<li>a bound that prevents unlimited change;</li>
+<li>a stopping condition reached when progress is complete.</li>
+</ol>
+<p>For linear search, the current index increases and cannot exceed the finite sequence length.</p>
+<p>For recursion, the argument usually shows that recursive calls receive smaller instances until a base case is reached.</p>
+<hr />
+<h2 id="7-generality-the-method-solves-a-class-of-instances">7. Generality: the method solves a class of instances<a class="headerlink" href="#7-generality-the-method-solves-a-class-of-instances" title="Permanent link">&para;</a></h2>
+<p>An algorithm should solve the general problem described by its domain, not one memorised example.</p>
+<p>Incorrect “solution”:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maximum_value</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="k">return</span> <span class="mi">24</span>
+</code></pre></div>
+<p>This works for one test input whose maximum happens to be <code>24</code>. It does not solve the general maximum problem.</p>
+<h3 id="generality-is-controlled-by-the-domain">Generality is controlled by the domain<a class="headerlink" href="#generality-is-controlled-by-the-domain" title="Permanent link">&para;</a></h3>
+<p>An algorithm does not need to work for every conceivable object. It must work for every input satisfying its precondition.</p>
+<p>For example, an algorithm may be correctly designed for:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>finite non-empty lists of integers
+</code></pre></div>
+<p>It is not a defect that it does not accept arbitrary graphs, strings, or infinite streams. The domain defines the required generality.</p>
+<h3 id="overfitting-examples">Overfitting examples<a class="headerlink" href="#overfitting-examples" title="Permanent link">&para;</a></h3>
+<p>A proposed method may accidentally depend on:</p>
+<ul>
+<li>positive values only;</li>
+<li>a fixed input length;</li>
+<li>unique elements;</li>
+<li>sorted input;</li>
+<li>the target being present;</li>
+<li>one particular ordering.</li>
+</ul>
+<p>Good boundary cases expose these hidden restrictions.</p>
+<hr />
+<h2 id="8-correctness-the-result-must-satisfy-the-specification">8. Correctness: the result must satisfy the specification<a class="headerlink" href="#8-correctness-the-result-must-satisfy-the-specification" title="Permanent link">&para;</a></h2>
+<p>An algorithm is <strong>correct</strong> when, for every valid input satisfying the precondition, it terminates and produces a state satisfying the postcondition.</p>
+<p>Correctness therefore connects three elements:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>precondition
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    + algorithm
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    + termination
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        =&gt; postcondition
+</code></pre></div>
+<h3 id="partial-and-total-correctness">Partial and total correctness<a class="headerlink" href="#partial-and-total-correctness" title="Permanent link">&para;</a></h3>
+<p>It is useful to distinguish:</p>
+<ul>
+<li><strong>partial correctness</strong> — if the algorithm terminates, the result is correct;</li>
+<li><strong>total correctness</strong> — the algorithm terminates and the result is correct.</li>
+</ul>
+<p>A method that computes the right answer only if it happens to stop is not fully satisfactory.</p>
+<h3 id="testing-is-not-correctness">Testing is not correctness<a class="headerlink" href="#testing-is-not-correctness" title="Permanent link">&para;</a></h3>
+<p>Tests examine selected instances. Correctness concerns all valid instances.</p>
+<p>A test can:</p>
+<ul>
+<li>reveal an error;</li>
+<li>confirm behaviour for one case;</li>
+<li>check a boundary case;</li>
+<li>support confidence.</li>
+</ul>
+<p>A finite test set cannot by itself prove a universal claim over an unbounded domain.</p>
+<h3 id="example-first-maximum">Example: first maximum<a class="headerlink" href="#example-first-maximum" title="Permanent link">&para;</a></h3>
+<p>Suppose <code>best_index</code> means:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>best_index is the first index of the greatest value among processed elements
+</code></pre></div>
+<p>A correctness argument explains:</p>
+<ul>
+<li>why initialisation makes this statement true;</li>
+<li>why each update preserves it;</li>
+<li>why the statement implies the required result at completion.</li>
+</ul>
+<p>The reasoning is tied to the meaning of state, not merely to the visual appearance of code.</p>
+<hr />
+<h2 id="9-efficiency-correctness-is-necessary-but-not-sufficient">9. Efficiency: correctness is necessary but not sufficient<a class="headerlink" href="#9-efficiency-correctness-is-necessary-but-not-sufficient" title="Permanent link">&para;</a></h2>
+<p>Two correct algorithms may use very different resources.</p>
+<p>To find whether a target occurs in an unsorted sequence, linear search uses at most <code>n</code> comparisons:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>O(n)
+</code></pre></div>
+<p>If the sequence is sorted, binary search can reduce the search interval by half each step:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>O(log n)
+</code></pre></div>
+<p>Both may be correct under their respective preconditions. Their efficiency differs.</p>
+<h3 id="time-and-auxiliary-space">Time and auxiliary space<a class="headerlink" href="#time-and-auxiliary-space" title="Permanent link">&para;</a></h3>
+<p>The two main introductory resource measures are:</p>
+<ul>
+<li><strong>time complexity</strong> — how the number of relevant operations grows with input size;</li>
+<li><strong>auxiliary-space complexity</strong> — how additional memory use grows beyond the input itself.</li>
+</ul>
+<h3 id="efficiency-is-model-dependent">Efficiency is model-dependent<a class="headerlink" href="#efficiency-is-model-dependent" title="Permanent link">&para;</a></h3>
+<p>The cost of an operation depends on representation and implementation.</p>
+<p>Examples:</p>
+<ul>
+<li>indexing a Python list is normally treated as <code>O(1)</code>;</li>
+<li>inserting at the beginning of a Python list is <code>O(n)</code>;</li>
+<li>following a linked-list pointer is <code>O(1)</code>;</li>
+<li>finding the <code>i</code>-th linked-list element is <code>O(n)</code>.</li>
+</ul>
+<p>Efficiency cannot be analysed independently of data representation.</p>
+<h3 id="do-not-optimise-an-incorrect-algorithm">Do not optimise an incorrect algorithm<a class="headerlink" href="#do-not-optimise-an-incorrect-algorithm" title="Permanent link">&para;</a></h3>
+<p>The order of reasoning matters:</p>
+<ol>
+<li>define the problem;</li>
+<li>establish correctness;</li>
+<li>analyse cost;</li>
+<li>improve the solution while preserving correctness.</li>
+</ol>
+<p>A fast wrong answer is still wrong.</p>
+<hr />
+<h2 id="10-determinism-and-nondeterminism">10. Determinism and nondeterminism<a class="headerlink" href="#10-determinism-and-nondeterminism" title="Permanent link">&para;</a></h2>
+<p>Many introductory algorithms are <strong>deterministic</strong>: the same input and initial state lead to the same sequence of relevant steps and the same result.</p>
+<p>Some valid algorithms use randomness, concurrency, or unspecified choice. They may follow different executions while still satisfying the same postcondition.</p>
+<p>For example, a randomized algorithm may choose a pivot randomly. Different runs may take different paths, but every valid result must still satisfy the required specification.</p>
+<p>Determinism is therefore common but not a universal requirement for every algorithm. The essential requirement is that allowed behaviour is specified and correct.</p>
+<hr />
+<h2 id="11-robustness-and-failure-behaviour">11. Robustness and failure behaviour<a class="headerlink" href="#11-robustness-and-failure-behaviour" title="Permanent link">&para;</a></h2>
+<p>Robustness is not always listed among the classical defining properties, but it matters in practical implementations.</p>
+<p>A robust interface makes invalid situations explicit:</p>
+<ul>
+<li>empty input;</li>
+<li>missing target;</li>
+<li>division by zero;</li>
+<li>malformed graph data;</li>
+<li>index outside a valid range.</li>
+</ul>
+<p>Possible responses include:</p>
+<ul>
+<li>a documented sentinel;</li>
+<li>an exception;</li>
+<li>a result type indicating success or failure;</li>
+<li>a precondition placing responsibility on the caller.</li>
+</ul>
+<p>The choice must be consistent with the contract.</p>
+<p>Robustness should not be confused with changing the problem silently. If empty input is invalid, returning an invented maximum such as zero is not robust; it is incorrect.</p>
+<hr />
+<h2 id="12-the-properties-are-connected">12. The properties are connected<a class="headerlink" href="#12-the-properties-are-connected" title="Permanent link">&para;</a></h2>
+<p>The properties do not exist independently.</p>
+<h3 id="definiteness-supports-correctness">Definiteness supports correctness<a class="headerlink" href="#definiteness-supports-correctness" title="Permanent link">&para;</a></h3>
+<p>If steps are ambiguous, we cannot establish what executions are possible.</p>
+<h3 id="effectiveness-supports-executability">Effectiveness supports executability<a class="headerlink" href="#effectiveness-supports-executability" title="Permanent link">&para;</a></h3>
+<p>If an instruction hides an impossible operation, the procedure cannot be realised.</p>
+<h3 id="finiteness-supports-total-correctness">Finiteness supports total correctness<a class="headerlink" href="#finiteness-supports-total-correctness" title="Permanent link">&para;</a></h3>
+<p>A correct final state is irrelevant if execution never reaches it.</p>
+<h3 id="generality-connects-examples-to-the-problem-class">Generality connects examples to the problem class<a class="headerlink" href="#generality-connects-examples-to-the-problem-class" title="Permanent link">&para;</a></h3>
+<p>A method that works only for selected cases is not a solution to the stated problem.</p>
+<h3 id="efficiency-depends-on-representation">Efficiency depends on representation<a class="headerlink" href="#efficiency-depends-on-representation" title="Permanent link">&para;</a></h3>
+<p>The same high-level task can have different costs under arrays, linked lists, trees, or graphs.</p>
+<h3 id="contracts-organise-the-properties">Contracts organise the properties<a class="headerlink" href="#contracts-organise-the-properties" title="Permanent link">&para;</a></h3>
+<p>The precondition defines the domain. The postcondition defines correctness. The algorithm must be definite, effective, and terminating on that domain.</p>
+<hr />
+<h2 id="13-diagnosing-failed-procedures">13. Diagnosing failed procedures<a class="headerlink" href="#13-diagnosing-failed-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="procedure-a">Procedure A<a class="headerlink" href="#procedure-a" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Repeatedly subtract two from a positive integer until it becomes zero.</p>
+</blockquote>
+<p>Problem: it does not terminate for positive odd integers.</p>
+<p>Violated property: finiteness over the stated domain.</p>
+<h3 id="procedure-b">Procedure B<a class="headerlink" href="#procedure-b" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Choose a reasonably central element of the list.</p>
+</blockquote>
+<p>Problem: “reasonably central” is undefined.</p>
+<p>Violated property: definiteness.</p>
+<h3 id="procedure-c">Procedure C<a class="headerlink" href="#procedure-c" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span>
+</code></pre></div>
+<p>Problem: it checks only one position.</p>
+<p>Violated property: general correctness for arbitrary list length.</p>
+<h3 id="procedure-d">Procedure D<a class="headerlink" href="#procedure-d" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Sort the data instantly, then return the first element.</p>
+</blockquote>
+<p>Problem: “sort instantly” hides a non-trivial operation and cost.</p>
+<p>Violated issue: effectiveness or an invalid cost model, depending on interpretation.</p>
+<h3 id="procedure-e">Procedure E<a class="headerlink" href="#procedure-e" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+<p>Problem: the implementation fails on empty input unless non-emptiness is a precondition.</p>
+<p>Missing element: explicit domain or failure behaviour.</p>
+<hr />
+<h2 id="14-a-review-checklist-for-a-proposed-algorithm">14. A review checklist for a proposed algorithm<a class="headerlink" href="#14-a-review-checklist-for-a-proposed-algorithm" title="Permanent link">&para;</a></h2>
+<p>When evaluating a method, ask:</p>
+<h3 id="problem-and-domain">Problem and domain<a class="headerlink" href="#problem-and-domain" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What problem is being solved?</li>
+<li>What are the valid inputs?</li>
+<li>What assumptions are required?</li>
+</ul>
+<h3 id="result">Result<a class="headerlink" href="#result" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What exact output or final state is required?</li>
+<li>How is failure represented?</li>
+</ul>
+<h3 id="precision">Precision<a class="headerlink" href="#precision" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Is every step unambiguous?</li>
+<li>Are tie cases and boundary cases specified?</li>
+</ul>
+<h3 id="executability">Executability<a class="headerlink" href="#executability" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Can each primitive operation be carried out?</li>
+<li>Does any “simple” line hide a major subproblem?</li>
+</ul>
+<h3 id="termination">Termination<a class="headerlink" href="#termination" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What quantity makes progress?</li>
+<li>What bound prevents infinite execution?</li>
+</ul>
+<h3 id="correctness">Correctness<a class="headerlink" href="#correctness" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What does the important state mean?</li>
+<li>Why is that meaning established and preserved?</li>
+<li>Why does the final state imply the postcondition?</li>
+</ul>
+<h3 id="generality">Generality<a class="headerlink" href="#generality" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Does the method handle every input in the domain?</li>
+<li>Which examples could expose hidden assumptions?</li>
+</ul>
+<h3 id="efficiency">Efficiency<a class="headerlink" href="#efficiency" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What is the input size?</li>
+<li>Which operations dominate time?</li>
+<li>What additional memory is used?</li>
+</ul>
+<hr />
+<h2 id="15-what-you-must-be-able-to-explain">15. What you must be able to explain<a class="headerlink" href="#15-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>After this chapter, you should be able to:</p>
+<ul>
+<li>define the principal properties of algorithms;</li>
+<li>distinguish input assumptions from output guarantees;</li>
+<li>identify ambiguous instructions;</li>
+<li>explain effectiveness at a chosen abstraction level;</li>
+<li>give a simple termination argument;</li>
+<li>distinguish one successful example from general correctness;</li>
+<li>explain partial and total correctness;</li>
+<li>separate correctness from efficiency;</li>
+<li>diagnose which property a faulty procedure violates.</li>
+</ul>
+<hr />
+<h2 id="16-practice">16. Practice<a class="headerlink" href="#16-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-diagnose-the-property">Exercise 1 — Diagnose the property<a class="headerlink" href="#exercise-1-diagnose-the-property" title="Permanent link">&para;</a></h3>
+<p>For each instruction, identify the main problem:</p>
+<ol>
+<li>“Continue until the result looks good.”</li>
+<li>“Return the middle value” for an even-length sequence.</li>
+<li>“Try random values until the exact optimum is found.”</li>
+<li>“Return <code>0</code> as the maximum of an empty list.”</li>
+<li>“Check only the first three elements” for an arbitrary-length sequence.</li>
+</ol>
+<h3 id="exercise-2-repair-termination">Exercise 2 — Repair termination<a class="headerlink" href="#exercise-2-repair-termination" title="Permanent link">&para;</a></h3>
+<p>Analyse:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">reduce_to_zero</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="k">while</span> <span class="n">value</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>        <span class="n">value</span> <span class="o">-=</span> <span class="mi">3</span>
+</code></pre></div>
+<p>Find inputs for which it terminates and inputs for which it does not. Propose one repaired contract and one repaired algorithm.</p>
+<h3 id="exercise-3-hidden-assumptions">Exercise 3 — Hidden assumptions<a class="headerlink" href="#exercise-3-hidden-assumptions" title="Permanent link">&para;</a></h3>
+<p>The following function finds a maximum:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maximum</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">result</span><span class="p">:</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>            <span class="n">result</span> <span class="o">=</span> <span class="n">value</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>State the domain on which it is correct. Then redesign it for all non-empty integer lists.</p>
+<h3 id="exercise-4-correct-but-inefficient">Exercise 4 — Correct but inefficient<a class="headerlink" href="#exercise-4-correct-but-inefficient" title="Permanent link">&para;</a></h3>
+<p>Give two correct algorithms for detecting duplicates in a list. Explain why both are correct and compare their likely time and memory costs.</p>
+<h3 id="exercise-5-partial-versus-total-correctness">Exercise 5 — Partial versus total correctness<a class="headerlink" href="#exercise-5-partial-versus-total-correctness" title="Permanent link">&para;</a></h3>
+<p>Describe a procedure that would return the correct answer if it terminated but may fail to terminate. Explain why this establishes at most partial correctness.</p>
+<h3 id="exercise-6-effective-primitives">Exercise 6 — Effective primitives<a class="headerlink" href="#exercise-6-effective-primitives" title="Permanent link">&para;</a></h3>
+<p>For each operation, explain whether you would treat it as primitive in an introductory algorithm and what cost may be hidden:</p>
+<ul>
+<li>integer comparison;</li>
+<li>list indexing;</li>
+<li>sorting a list;</li>
+<li>searching a database;</li>
+<li>asking whether an arbitrary program terminates.</li>
+</ul>
+<hr />
+<h2 id="17-summary">17. Summary<a class="headerlink" href="#17-summary" title="Permanent link">&para;</a></h2>
+<p>A valid algorithm is more than a sequence of plausible instructions. It has a defined input and required output. Its steps are definite and effective. It terminates on every valid input. It solves the full problem class described by its domain. Its result satisfies the specification. Its resource use can be analysed.</p>
+<p>These properties provide a disciplined way to evaluate algorithms before becoming attached to a particular implementation.</p>
+<p>The next chapter develops pseudocode as a representation designed to express these properties clearly while remaining independent of Python and C++ syntax.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
