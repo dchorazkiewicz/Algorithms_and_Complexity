@@ -1,0 +1,1912 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete lecture notes, worked examples, and study problems aligned with the course syllabus.">
+      
+      
+      
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/02-iteration-recursion-and-data-types/08-constructing-a-correct-algorithm/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Constructing a Correct Algorithm - Algorithms and Complexity</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/layout-fixes.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#constructing-a-correct-algorithm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Algorithms and Complexity
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Constructing a Correct Algorithm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Algorithms and Complexity
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dchorazkiewicz/Algorithms_and_Complexity" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dchorazkiewicz/Algorithms_and_Complexity
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../00-learning-to-think-algorithmically/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 · Learning to Think Algorithmically
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 · Learning to Think Algorithmically
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Problems, Algorithms, Programs, and Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Reading Python as an Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Designing a Solution Step by Step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Evidence That an Algorithm Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. How to Study Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-learning-to-think-algorithmically/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Module 00 Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../01-foundations-of-algorithm-design/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Foundations of Algorithm Design
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · Foundations of Algorithm Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/imperative-computation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Imperative Computation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/preconditions-and-postconditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Preconditions and Postconditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/algorithm-representations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Forms of Algorithm Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/properties-of-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Properties of Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/pseudocode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Pseudocode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/structuring-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Structuring Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/worked-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Worked Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-foundations-of-algorithm-design/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Module 01 Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course sources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course sources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polish syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../source/syllabus-en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English syllabus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#correctness-is-designed-not-added-at-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correctness is designed, not added at the end
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-running-problem-count-decimal-digits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Running problem: count decimal digits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-write-the-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Write the contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-study-representative-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Study representative cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Study representative cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smallest-valid-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smallest valid input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-digit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One digit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exact-power-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exact power boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal zero
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid input
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-choose-the-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Choose the state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-design-the-iterative-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Design the iterative solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-explain-the-invariant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Explain the invariant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-explain-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Explain termination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-explain-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Explain completion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-recursive-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Recursive design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-compare-the-two-designs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Compare the two designs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-a-reusable-construction-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. A reusable construction workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. A reusable construction workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-state-the-problem-precisely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — State the problem precisely
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-write-the-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Write the contract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-build-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Build examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-choose-a-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Choose a representation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-choose-iteration-or-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Choose iteration or recursion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-state-the-meaning-of-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — State the meaning of state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-establish-the-base-or-initial-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Establish the base or initial case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-define-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8 — Define progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-justify-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9 — Justify correctness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-10-justify-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 10 — Justify termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-11-analyse-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 11 — Analyse complexity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-test-against-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 12 — Test against the specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-diagnosing-design-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Diagnosing design errors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Diagnosing design errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wrong-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrong domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrong-base-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrong base case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrong-update-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrong update order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hidden-mutation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hidden mutation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vague-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vague termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-stated-in-the-wrong-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity stated in the wrong variable
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-correctness-and-testing-cooperate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Correctness and testing cooperate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-what-you-must-be-able-to-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. What you must be able to explain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-sum-of-digits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Sum of digits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-count-occurrences-of-a-digit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Count occurrences of a digit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-integer-exponentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Integer exponentiation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-palindrome-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Palindrome sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-first-divisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — First divisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="constructing-a-correct-algorithm">Constructing a Correct Algorithm<a class="headerlink" href="#constructing-a-correct-algorithm" title="Permanent link">&para;</a></h1>
+<h2 id="correctness-is-designed-not-added-at-the-end">Correctness is designed, not added at the end<a class="headerlink" href="#correctness-is-designed-not-added-at-the-end" title="Permanent link">&para;</a></h2>
+<p>A common workflow is:</p>
+<ol>
+<li>write code quickly;</li>
+<li>run several examples;</li>
+<li>fix visible errors;</li>
+<li>assume the algorithm is correct.</li>
+</ol>
+<p>This process may produce working programs, but it gives weak control over hidden assumptions, boundary cases, termination, and complexity.</p>
+<p>A stronger workflow makes correctness part of the design. The specification determines the state. The state meaning determines the update. The update determines the invariant. The termination argument determines whether repetition can finish. Tests then challenge the design rather than replacing reasoning.</p>
+<div class="admonition note">
+<p class="admonition-title">What you should learn from this chapter</p>
+<p>By the end of the chapter, you should be able to move from a problem statement to a contract, choose iterative or recursive state, justify progress, implement the method in Python, and evaluate correctness and cost.</p>
+</div>
+<hr />
+<h2 id="1-running-problem-count-decimal-digits">1. Running problem: count decimal digits<a class="headerlink" href="#1-running-problem-count-decimal-digits" title="Permanent link">&para;</a></h2>
+<p>We will design an algorithm for:</p>
+<blockquote>
+<p>Given a non-negative integer, return the number of digits in its decimal representation.</p>
+</blockquote>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>0      → 1
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>7      → 1
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>42     → 2
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>1050   → 4
+</code></pre></div>
+<p>The input <code>0</code> immediately reveals an important boundary case. A repeated-division loop naturally performs zero iterations for zero, but the decimal representation still has one digit.</p>
+<hr />
+<h2 id="2-write-the-contract">2. Write the contract<a class="headerlink" href="#2-write-the-contract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Input:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    integer number
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Precondition:
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    number ≥ 0
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Postcondition:
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    result equals the number of decimal digits in number
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>Side effects:
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    none
+</code></pre></div>
+<p>We choose to reject negative input explicitly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be non-negative&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The contract separates semantic requirements from implementation details.</p>
+<hr />
+<h2 id="3-study-representative-cases">3. Study representative cases<a class="headerlink" href="#3-study-representative-cases" title="Permanent link">&para;</a></h2>
+<h3 id="smallest-valid-input">Smallest valid input<a class="headerlink" href="#smallest-valid-input" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>0 → 1
+</code></pre></div>
+<h3 id="one-digit">One digit<a class="headerlink" href="#one-digit" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>7 → 1
+</code></pre></div>
+<h3 id="exact-power-boundary">Exact power boundary<a class="headerlink" href="#exact-power-boundary" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>10 → 2
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>100 → 3
+</code></pre></div>
+<h3 id="internal-zero">Internal zero<a class="headerlink" href="#internal-zero" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>1050 → 4
+</code></pre></div>
+<h3 id="invalid-input">Invalid input<a class="headerlink" href="#invalid-input" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>-8 → ValueError
+</code></pre></div>
+<p>These cases reveal that counting divisions until zero works for positive values, while zero needs deliberate handling.</p>
+<hr />
+<h2 id="4-choose-the-state">4. Choose the state<a class="headerlink" href="#4-choose-the-state" title="Permanent link">&para;</a></h2>
+<p>For positive input, repeatedly removing the final decimal digit by integer division is natural:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">number</span> <span class="o">//=</span> <span class="mi">10</span>
+</code></pre></div>
+<p>State meanings:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>remaining = the portion of the original number not yet removed
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>count = the number of digits already removed
+</code></pre></div>
+<p>We may modify a local copy so the original parameter meaning remains conceptually available:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">remaining</span> <span class="o">=</span> <span class="n">number</span>
+</code></pre></div>
+<hr />
+<h2 id="5-design-the-iterative-solution">5. Design the iterative solution<a class="headerlink" href="#5-design-the-iterative-solution" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">digit_count_iterative</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="k">return</span> <span class="mi">1</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="n">remaining</span> <span class="o">=</span> <span class="n">number</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="k">while</span> <span class="n">remaining</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>        <span class="n">remaining</span> <span class="o">//=</span> <span class="mi">10</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div>
+<p>The special case is part of the specification, not an arbitrary patch.</p>
+<hr />
+<h2 id="6-explain-the-invariant">6. Explain the invariant<a class="headerlink" href="#6-explain-the-invariant" title="Permanent link">&para;</a></h2>
+<p>For positive input, after each iteration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>count digits have been removed from the right,
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>and remaining is the original number with those digits removed
+</code></pre></div>
+<p>A numerical relationship is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>original number = remaining · 10^count + removed suffix
+</code></pre></div>
+<p>where the removed suffix has fewer than <code>10^count</code> possible values.</p>
+<p>For introductory reasoning, the verbal invariant is sufficient to explain that each iteration accounts for exactly one decimal digit.</p>
+<hr />
+<h2 id="7-explain-termination">7. Explain termination<a class="headerlink" href="#7-explain-termination" title="Permanent link">&para;</a></h2>
+<p>Use the measure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>remaining
+</code></pre></div>
+<p>For every positive integer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>0 ≤ remaining // 10 &lt; remaining
+</code></pre></div>
+<p>Thus the non-negative measure strictly decreases. It eventually becomes zero.</p>
+<p>The loop cannot continue forever.</p>
+<hr />
+<h2 id="8-explain-completion">8. Explain completion<a class="headerlink" href="#8-explain-completion" title="Permanent link">&para;</a></h2>
+<p>When the loop stops:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>remaining == 0
+</code></pre></div>
+<p>No decimal digits remain unprocessed. Since each iteration removed and counted one digit, <code>count</code> is the number of digits in the original positive input.</p>
+<p>The special branch establishes the same postcondition for zero.</p>
+<hr />
+<h2 id="9-complexity">9. Complexity<a class="headerlink" href="#9-complexity" title="Permanent link">&para;</a></h2>
+<p>For a positive number with <code>d</code> decimal digits, the loop executes <code>d</code> times.</p>
+<p>Because:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>d = floor(log10(number)) + 1
+</code></pre></div>
+<p>we may state:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Time: O(d), equivalently O(log number)
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Auxiliary space: O(1)
+</code></pre></div>
+<p>The input model matters. Complexity in terms of numeric magnitude differs from complexity in terms of the number of digits used to represent the input.</p>
+<hr />
+<h2 id="10-recursive-design">10. Recursive design<a class="headerlink" href="#10-recursive-design" title="Permanent link">&para;</a></h2>
+<p>The same reduction can be recursive.</p>
+<p>For positive <code>number</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>digits(number) = 1 + digits(number // 10)
+</code></pre></div>
+<p>A convenient base case is any one-digit non-negative number:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>0 ≤ number &lt; 10
+</code></pre></div>
+<p>Implementation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">digit_count_recursive</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>        <span class="k">return</span> <span class="mi">1</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">digit_count_recursive</span><span class="p">(</span><span class="n">number</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p>The recursive argument strictly decreases by decimal division.</p>
+<p>Time is <code>O(d)</code> and call-stack space is <code>O(d)</code>.</p>
+<hr />
+<h2 id="11-compare-the-two-designs">11. Compare the two designs<a class="headerlink" href="#11-compare-the-two-designs" title="Permanent link">&para;</a></h2>
+<p>Both versions use the same conceptual reduction: remove one decimal digit.</p>
+<p>The iterative version stores progress in:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>remaining, count
+</code></pre></div>
+<p>The recursive version stores pending additions in the call stack.</p>
+<p>For this linear reduction, the iterative version is usually operationally preferable in Python because it uses constant auxiliary space. The recursive version makes the recurrence especially visible.</p>
+<hr />
+<h2 id="12-a-reusable-construction-workflow">12. A reusable construction workflow<a class="headerlink" href="#12-a-reusable-construction-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-state-the-problem-precisely">Step 1 — State the problem precisely<a class="headerlink" href="#step-1-state-the-problem-precisely" title="Permanent link">&para;</a></h3>
+<p>Identify valid inputs and required outputs.</p>
+<h3 id="step-2-write-the-contract">Step 2 — Write the contract<a class="headerlink" href="#step-2-write-the-contract" title="Permanent link">&para;</a></h3>
+<p>Include preconditions, postconditions, side effects, and failure behaviour.</p>
+<h3 id="step-3-build-examples">Step 3 — Build examples<a class="headerlink" href="#step-3-build-examples" title="Permanent link">&para;</a></h3>
+<p>Include ordinary, smallest, repeated, extreme, and invalid cases.</p>
+<h3 id="step-4-choose-a-representation">Step 4 — Choose a representation<a class="headerlink" href="#step-4-choose-a-representation" title="Permanent link">&para;</a></h3>
+<p>Decide which primitive or compound values will represent the state.</p>
+<h3 id="step-5-choose-iteration-or-recursion">Step 5 — Choose iteration or recursion<a class="headerlink" href="#step-5-choose-iteration-or-recursion" title="Permanent link">&para;</a></h3>
+<p>Match the control structure to the problem shape.</p>
+<h3 id="step-6-state-the-meaning-of-state">Step 6 — State the meaning of state<a class="headerlink" href="#step-6-state-the-meaning-of-state" title="Permanent link">&para;</a></h3>
+<p>For loops, define accumulators, counters, indices, and processed regions. For recursion, define what each call returns for its subproblem.</p>
+<h3 id="step-7-establish-the-base-or-initial-case">Step 7 — Establish the base or initial case<a class="headerlink" href="#step-7-establish-the-base-or-initial-case" title="Permanent link">&para;</a></h3>
+<p>The state meaning must be true before repetition.</p>
+<h3 id="step-8-define-progress">Step 8 — Define progress<a class="headerlink" href="#step-8-define-progress" title="Permanent link">&para;</a></h3>
+<p>A loop update or recursive argument must move toward completion.</p>
+<h3 id="step-9-justify-correctness">Step 9 — Justify correctness<a class="headerlink" href="#step-9-justify-correctness" title="Permanent link">&para;</a></h3>
+<p>Use invariant preservation or correctness of smaller instances.</p>
+<h3 id="step-10-justify-termination">Step 10 — Justify termination<a class="headerlink" href="#step-10-justify-termination" title="Permanent link">&para;</a></h3>
+<p>Use a bounded decreasing measure.</p>
+<h3 id="step-11-analyse-complexity">Step 11 — Analyse complexity<a class="headerlink" href="#step-11-analyse-complexity" title="Permanent link">&para;</a></h3>
+<p>Count iterations, calls, operations, and auxiliary storage.</p>
+<h3 id="step-12-test-against-the-specification">Step 12 — Test against the specification<a class="headerlink" href="#step-12-test-against-the-specification" title="Permanent link">&para;</a></h3>
+<p>Use examples to expose defects and validate the implementation.</p>
+<hr />
+<h2 id="13-diagnosing-design-errors">13. Diagnosing design errors<a class="headerlink" href="#13-diagnosing-design-errors" title="Permanent link">&para;</a></h2>
+<h3 id="wrong-domain">Wrong domain<a class="headerlink" href="#wrong-domain" title="Permanent link">&para;</a></h3>
+<p>If negative integers are accepted unintentionally, integer division behaviour may not approach zero as expected.</p>
+<h3 id="wrong-base-case">Wrong base case<a class="headerlink" href="#wrong-base-case" title="Permanent link">&para;</a></h3>
+<p>A recursive base case <code>number == 0</code> with <code>1 + recurse(number // 10)</code> gives the wrong count structure unless handled carefully.</p>
+<h3 id="wrong-update-order">Wrong update order<a class="headerlink" href="#wrong-update-order" title="Permanent link">&para;</a></h3>
+<p>Counting before deciding whether a valid digit remains can create off-by-one errors.</p>
+<h3 id="hidden-mutation">Hidden mutation<a class="headerlink" href="#hidden-mutation" title="Permanent link">&para;</a></h3>
+<p>Destroying the only copy of the original input may prevent later validation or reporting.</p>
+<h3 id="vague-termination">Vague termination<a class="headerlink" href="#vague-termination" title="Permanent link">&para;</a></h3>
+<p>“The number gets smaller” should be replaced by a precise strict inequality in a bounded domain.</p>
+<h3 id="complexity-stated-in-the-wrong-variable">Complexity stated in the wrong variable<a class="headerlink" href="#complexity-stated-in-the-wrong-variable" title="Permanent link">&para;</a></h3>
+<p><code>O(number)</code> is not the cost of repeated division by ten. The number of iterations is logarithmic in the magnitude.</p>
+<hr />
+<h2 id="14-correctness-and-testing-cooperate">14. Correctness and testing cooperate<a class="headerlink" href="#14-correctness-and-testing-cooperate" title="Permanent link">&para;</a></h2>
+<p>Reasoning covers the general class of valid inputs. Tests target likely weaknesses.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_test_digit_count</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="k">assert</span> <span class="n">digit_count_iterative</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="k">assert</span> <span class="n">digit_count_iterative</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="k">assert</span> <span class="n">digit_count_iterative</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="k">assert</span> <span class="n">digit_count_iterative</span><span class="p">(</span><span class="mi">1050</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>        <span class="n">digit_count_iterative</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>        <span class="k">pass</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;negative input should be rejected&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Testing does not prove the invariant or termination. It checks whether the implementation agrees with selected consequences of the specification.</p>
+<hr />
+<h2 id="15-what-you-must-be-able-to-explain">15. What you must be able to explain<a class="headerlink" href="#15-what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
+<p>After this chapter, you should be able to:</p>
+<ul>
+<li>derive an algorithm from a contract;</li>
+<li>use examples before implementation;</li>
+<li>choose iterative and recursive state;</li>
+<li>justify a special boundary case;</li>
+<li>state an invariant or recursive meaning;</li>
+<li>identify a termination measure;</li>
+<li>compare time and auxiliary space;</li>
+<li>explain the role of tests without confusing them with proof.</li>
+</ul>
+<h2 id="16-practice">16. Practice<a class="headerlink" href="#16-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-sum-of-digits">Exercise 1 — Sum of digits<a class="headerlink" href="#exercise-1-sum-of-digits" title="Permanent link">&para;</a></h3>
+<p>Design iterative and recursive functions returning the sum of decimal digits of a non-negative integer.</p>
+<h3 id="exercise-2-count-occurrences-of-a-digit">Exercise 2 — Count occurrences of a digit<a class="headerlink" href="#exercise-2-count-occurrences-of-a-digit" title="Permanent link">&para;</a></h3>
+<p>Given <code>number</code> and <code>digit</code>, count how many decimal positions equal <code>digit</code>. Handle <code>number == 0</code> carefully.</p>
+<h3 id="exercise-3-integer-exponentiation">Exercise 3 — Integer exponentiation<a class="headerlink" href="#exercise-3-integer-exponentiation" title="Permanent link">&para;</a></h3>
+<p>Construct iterative and recursive algorithms for a non-negative exponent. Then improve the recursive version using exponentiation by squaring.</p>
+<h3 id="exercise-4-palindrome-sequence">Exercise 4 — Palindrome sequence<a class="headerlink" href="#exercise-4-palindrome-sequence" title="Permanent link">&para;</a></h3>
+<p>Design an iterative algorithm that checks whether a list reads the same forward and backward. State the invariant and shrinking-interval measure.</p>
+<h3 id="exercise-5-first-divisor">Exercise 5 — First divisor<a class="headerlink" href="#exercise-5-first-divisor" title="Permanent link">&para;</a></h3>
+<p>Return the smallest divisor greater than one of an integer <code>n &gt; 1</code>. State the stopping boundary and complexity.</p>
+<h2 id="17-summary">17. Summary<a class="headerlink" href="#17-summary" title="Permanent link">&para;</a></h2>
+<p>A correct algorithm is built by connecting specification, state, progress, and completion. Iteration and recursion are not isolated syntax patterns; they are control models whose correctness must be derived from explicit meanings and termination arguments.</p>
+<p>The next chapter applies the module's ideas in several complete worked examples.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
