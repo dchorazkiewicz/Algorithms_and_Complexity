@@ -2,7 +2,7 @@
 
 @media screen and (min-width: 76.25em) {
   :root {
-    --md-sidebar-width: 17.5rem;
+    --md-sidebar-width: 16.5rem;
   }
 
   .md-sidebar--primary {
@@ -10,11 +10,36 @@
   }
 
   .md-sidebar--secondary {
-    width: 12.5rem;
+    width: 11.5rem;
   }
 
   .md-content {
     margin-left: 0.8rem;
+  }
+
+  /*
+   * Module-focused navigation.
+   * Keep global entry points visible, but show chapter links only for the
+   * module that contains the current page. This prevents the sidebar from
+   * growing indefinitely as later modules are added.
+   */
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item {
+    display: none;
+  }
+
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item:nth-child(1),
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item:nth-child(2),
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--active {
+    display: block;
+  }
+
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--active.md-nav__item--nested {
+    margin-top: 1rem;
+  }
+
+  /* On the course map, keep the sidebar deliberately minimal. */
+  body[data-md-url="course/"] .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item:nth-child(n + 3) {
+    display: none;
   }
 }
 
@@ -88,6 +113,16 @@
 .md-sidebar--primary .md-nav__link:hover {
   transform: none;
   background: rgba(91, 75, 219, 0.07);
+}
+
+/* Keep the right table of contents calm: only primary page sections are listed. */
+.md-sidebar--secondary .md-nav__list .md-nav__list {
+  display: none;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  font-size: 0.73rem;
+  line-height: 1.35;
 }
 
 /* Reduce the visual noise of many glossary-style subheadings. */
