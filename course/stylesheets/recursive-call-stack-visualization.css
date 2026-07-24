@@ -1,0 +1,92 @@
+.recursion-viz__layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.9fr) minmax(17rem, 1.1fr);
+  gap: 1rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.recursion-viz__layout > section {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--course-border);
+  border-radius: 0.8rem;
+  background: rgba(91, 75, 219, 0.035);
+}
+
+.recursion-viz__label {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0.65rem;
+  color: var(--course-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recursion-viz__stack {
+  display: flex;
+  min-height: 18rem;
+  flex-direction: column;
+  gap: 0.45rem;
+  justify-content: flex-end;
+}
+
+.recursion-viz__frame {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto;
+  gap: 0.25rem 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid var(--course-border);
+  border-radius: 0.7rem;
+  background: var(--course-panel-strong);
+  box-shadow: 0 5px 14px rgba(17, 24, 39, 0.07);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.recursion-viz__frame > div { display: grid; }
+.recursion-viz__frame small,
+.recursion-viz__frame span { color: var(--course-muted); font-size: 0.68rem; }
+.recursion-viz__frame code { align-self: start; white-space: nowrap; }
+.recursion-viz__frame > span { grid-column: 1 / -1; }
+.recursion-viz__frame.is-active { border-color: var(--course-cyan); box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.12); transform: translateY(-2px); }
+.recursion-viz__frame.is-waiting { border-left-color: var(--course-amber); }
+.recursion-viz__frame.is-returning { border-color: var(--course-emerald); box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.12); }
+
+.recursion-viz__empty {
+  display: grid;
+  min-height: 18rem;
+  place-items: center;
+  border: 2px dashed var(--course-border);
+  border-radius: 0.75rem;
+  color: var(--course-muted);
+  font-weight: 750;
+}
+
+.recursion-viz__code {
+  overflow: hidden;
+  border: 1px solid var(--course-border);
+  border-radius: 0.7rem;
+  background: var(--course-panel-strong);
+}
+
+.recursion-viz__code > div {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  align-items: center;
+  min-height: 2.35rem;
+  border-bottom: 1px solid var(--course-border);
+  transition: background 160ms ease, box-shadow 160ms ease;
+}
+
+.recursion-viz__code > div:last-child { border-bottom: 0; }
+.recursion-viz__code > div > span { color: var(--course-muted); text-align: center; font-size: 0.68rem; font-weight: 700; }
+.recursion-viz__code code { padding: 0.4rem 0.7rem; background: transparent; white-space: pre-wrap; }
+.recursion-viz__code > div.is-current { background: var(--course-active); box-shadow: inset 4px 0 0 var(--md-accent-fg-color); }
+.recursion-viz__return { margin-top: 0.75rem; padding: 0.7rem 0.8rem; border-radius: 0.6rem; color: var(--md-default-fg-color); background: rgba(5, 150, 105, 0.09); font-weight: 800; }
+
+@media (max-width: 780px) {
+  .recursion-viz__layout { grid-template-columns: 1fr; }
+  .recursion-viz__stack,
+  .recursion-viz__empty { min-height: 12rem; }
+}
