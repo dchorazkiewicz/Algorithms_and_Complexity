@@ -1,0 +1,181 @@
+.ds-viz {
+  margin: 1.5rem 0 2rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--course-border);
+  border-radius: 1rem;
+  background: var(--course-panel);
+  box-shadow: var(--course-shadow);
+}
+
+.ds-viz__header,
+.ds-viz__controls,
+.ds-viz__metrics {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ds-viz__header {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.ds-viz__header h3,
+.ds-viz__eyebrow {
+  margin: 0;
+}
+
+.ds-viz__eyebrow {
+  color: var(--md-accent-fg-color);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ds-viz__complexity {
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  background: var(--course-active);
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.ds-viz__controls {
+  align-items: end;
+  padding: 0.85rem;
+  border-radius: 0.8rem;
+  background: rgba(91, 75, 219, 0.06);
+}
+
+.ds-viz__controls label {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--course-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.ds-viz__controls input,
+.ds-viz__controls select,
+.ds-viz__controls button {
+  min-height: 2rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--course-border);
+  border-radius: 0.5rem;
+  color: var(--md-default-fg-color);
+  background: var(--course-panel-strong);
+  font: inherit;
+}
+
+.ds-viz__controls input {
+  width: 5.2rem;
+}
+
+.ds-viz__controls button {
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 140ms ease, border-color 140ms ease;
+}
+
+.ds-viz__controls button:hover {
+  border-color: var(--md-accent-fg-color);
+  transform: translateY(-1px);
+}
+
+.ds-viz__controls [data-action="prepare"] {
+  color: white;
+  border-color: transparent;
+  background: linear-gradient(100deg, var(--course-violet), var(--course-cyan));
+}
+
+.ds-viz__stage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(4.2rem, 1fr));
+  gap: 0.55rem;
+  margin: 1.4rem 0 1rem;
+}
+
+.ds-viz__cell {
+  position: relative;
+  display: grid;
+  min-height: 4.6rem;
+  place-items: center;
+  border: 2px solid var(--course-border);
+  border-radius: 0.75rem;
+  background: var(--course-panel-strong);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.ds-viz__cell.is-source {
+  border-color: var(--course-amber);
+  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.12);
+}
+
+.ds-viz__cell.is-target,
+.ds-viz__cell.is-active {
+  border-color: var(--course-cyan);
+  box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.14);
+  transform: translateY(-4px);
+}
+
+.ds-viz__index {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.42rem;
+  color: var(--course-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.ds-viz__value {
+  font-size: 1.25rem;
+  font-weight: 850;
+}
+
+.ds-viz__status {
+  display: grid;
+  gap: 0.2rem;
+  min-height: 3.2rem;
+  padding: 0.8rem 0.95rem;
+  border-left: 0.25rem solid var(--md-accent-fg-color);
+  border-radius: 0.5rem;
+  background: rgba(8, 145, 178, 0.07);
+}
+
+.ds-viz__status span {
+  color: var(--course-muted);
+}
+
+.ds-viz__status .is-error {
+  color: var(--course-rose);
+  font-weight: 700;
+}
+
+.ds-viz__metrics {
+  margin-top: 0.8rem;
+  color: var(--course-muted);
+  font-size: 0.72rem;
+}
+
+.ds-viz__metrics span {
+  padding-right: 0.8rem;
+  border-right: 1px solid var(--course-border);
+}
+
+@media (max-width: 600px) {
+  .ds-viz__controls {
+    align-items: stretch;
+  }
+
+  .ds-viz__controls label,
+  .ds-viz__controls button {
+    width: 100%;
+  }
+
+  .ds-viz__controls input,
+  .ds-viz__controls select {
+    width: 100%;
+  }
+}
