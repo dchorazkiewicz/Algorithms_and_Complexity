@@ -11,6 +11,10 @@ A **queue** is governed by FIFO order: the first item inserted is the first item
 
 Queues model waiting lines, breadth-first exploration, event processing, buffering, and fair scheduling.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/queue-fifo-visualization.css">
+<script defer src="/Algorithms_and_Complexity/javascripts/queue-fifo-visualization.js"></script>
+<div data-queue-fifo-viz></div>
+
 ## Why removing from the front of a Python list is a poor default
 
 ```python
