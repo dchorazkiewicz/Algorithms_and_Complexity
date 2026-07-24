@@ -6,6 +6,10 @@ Linear search treats every unexamined position as a possible answer. A sorted se
 
 Binary search is therefore not merely “a faster search loop”. It is an algorithm built on a stronger precondition.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/binary-search-visualization.css">
+<div data-binary-search-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/binary-search-visualization.js"></script>
+
 ## 1. Contract
 
 ```text
