@@ -1,10 +1,15 @@
 # Iterative DFS and Exhaustive Search
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/iterative-dfs-visualization.css">
+<script defer src="/Algorithms_and_Complexity/javascripts/iterative-dfs-visualization.js"></script>
+
 ## Making unfinished work explicit
 
 Recursive DFS stores unfinished calls on the language's call stack. Iterative DFS stores the same kind of pending work in an explicit stack.
 
 This change does not alter the abstract search strategy. It changes where the continuation state is represented.
+
+<div data-iterative-dfs-viz></div>
 
 ## Simple iterative DFS
 
