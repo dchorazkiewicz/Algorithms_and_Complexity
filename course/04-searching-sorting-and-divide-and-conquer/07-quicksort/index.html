@@ -4969,6 +4969,10 @@
 <h2 id="sorting-by-partitioning-around-a-pivot">Sorting by partitioning around a pivot<a class="headerlink" href="#sorting-by-partitioning-around-a-pivot" title="Permanent link">&para;</a></h2>
 <p>Quicksort chooses a <strong>pivot</strong>, rearranges the active interval so that smaller elements lie on one side and larger elements on the other, then recursively sorts the two resulting regions.</p>
 <p>The key operation is not the recursive call. It is <strong>partitioning</strong>. If partitioning is understood precisely, the recursive structure becomes natural.</p>
+<p><link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/quicksort-visualization.css"></p>
+<div data-quicksort-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/quicksort-visualization.js"></script>
+
 <h2 id="1-partition-contract">1. Partition contract<a class="headerlink" href="#1-partition-contract" title="Permanent link">&para;</a></h2>
 <p>For an interval <code>values[left:right]</code>, a partition procedure should establish a boundary such that elements are grouped according to their relation to the pivot.</p>
 <p>One useful postcondition is:</p>
@@ -5029,7 +5033,7 @@
 <p>Use induction on interval length.</p>
 <ul>
 <li>Base case: intervals of length <code>0</code> or <code>1</code> are already sorted.</li>
-<li>Partition step: the pivot is placed between elements not greater than it and elements greater than it.</li>
+<li>Partition step: the pivot is placed between elements not greater than it and elements greater.</li>
 <li>Recursive assumption: the left and right smaller intervals are sorted correctly.</li>
 <li>Final conclusion: the entire interval is sorted because every left element is no greater than the pivot and every right element is greater.</li>
 </ul>
