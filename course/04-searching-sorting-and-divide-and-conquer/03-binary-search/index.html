@@ -4925,6 +4925,10 @@
 <h2 id="why-ordering-changes-the-problem">Why ordering changes the problem<a class="headerlink" href="#why-ordering-changes-the-problem" title="Permanent link">&para;</a></h2>
 <p>Linear search treats every unexamined position as a possible answer. A sorted sequence contains additional information: after comparing the target with one element, the algorithm can often eliminate an entire region.</p>
 <p>Binary search is therefore not merely “a faster search loop”. It is an algorithm built on a stronger precondition.</p>
+<p><link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/binary-search-visualization.css"></p>
+<div data-binary-search-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/binary-search-visualization.js"></script>
+
 <h2 id="1-contract">1. Contract<a class="headerlink" href="#1-contract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Function: binary_search(values, target)
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
