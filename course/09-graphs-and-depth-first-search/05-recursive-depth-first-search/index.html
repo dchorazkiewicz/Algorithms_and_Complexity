@@ -4881,6 +4881,10 @@
 <h2 id="exploration-before-memorisation">Exploration before memorisation<a class="headerlink" href="#exploration-before-memorisation" title="Permanent link">&para;</a></h2>
 <p>Depth-first search explores one unfinished route as far as possible before returning to an earlier branching point. The recursive formulation is compact because the call stack naturally stores those unfinished branching points.</p>
 <p>The essential state is not the recursion itself. It is the set of vertices already discovered.</p>
+<p><link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/dfs-visualization.css"></p>
+<div data-dfs-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/dfs-visualization.js"></script>
+
 <h2 id="basic-algorithm">Basic algorithm<a class="headerlink" href="#basic-algorithm" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">start</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
