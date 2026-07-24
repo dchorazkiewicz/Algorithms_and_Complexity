@@ -12,6 +12,10 @@ In a **max-heap**, the inequality is reversed.
 
 This does not sort siblings or complete subtrees. A heap is therefore not a search tree.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/heap-priority-queue-visualization.css">
+<div data-heap-priority-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/heap-priority-queue-visualization.js"></script>
+
 ## Shape invariant
 
 A binary heap is a **complete binary tree**. All levels are full except possibly the last, and the last level is filled from left to right.
