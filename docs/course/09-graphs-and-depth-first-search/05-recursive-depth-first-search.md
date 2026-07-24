@@ -6,6 +6,10 @@ Depth-first search explores one unfinished route as far as possible before retur
 
 The essential state is not the recursion itself. It is the set of vertices already discovered.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/dfs-visualization.css">
+<div data-dfs-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/dfs-visualization.js"></script>
+
 ## Basic algorithm
 
 ```python
