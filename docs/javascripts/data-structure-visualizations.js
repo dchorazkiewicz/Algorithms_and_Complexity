@@ -200,3 +200,15 @@
   if (typeof document$ !== 'undefined') document$.subscribe(initialiseVisualisations);
   else document.addEventListener('DOMContentLoaded', initialiseVisualisations);
 })();
+
+(() => {
+  if (document.querySelector('script[data-recursion-viz-loader]')) return;
+  const stylesheet = document.createElement('link');
+  stylesheet.rel = 'stylesheet';
+  stylesheet.href = `${window.location.origin}${window.location.pathname.split('/').slice(0, -3).join('/')}/stylesheets/recursive-call-stack-visualization.css`;
+  document.head.appendChild(stylesheet);
+  const script = document.createElement('script');
+  script.dataset.recursionVizLoader = 'true';
+  script.src = `${window.location.origin}${window.location.pathname.split('/').slice(0, -3).join('/')}/javascripts/recursive-call-stack-visualization.js`;
+  document.head.appendChild(script);
+})();
