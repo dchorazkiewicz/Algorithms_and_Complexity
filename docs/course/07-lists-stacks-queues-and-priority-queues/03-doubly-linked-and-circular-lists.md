@@ -4,6 +4,12 @@
 
 A singly linked list supports movement in one direction. A doubly linked list gives every node both a predecessor and a successor. This makes deletion of a known node and backward traversal convenient, but every update must preserve two directions of linkage.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/doubly-circular-list-visualization.css">
+
+<div data-doubly-circular-list-viz></div>
+
+<script src="/Algorithms_and_Complexity/javascripts/doubly-circular-list-visualization.js"></script>
+
 ```python
 from dataclasses import dataclass
 from typing import Generic, TypeVar
