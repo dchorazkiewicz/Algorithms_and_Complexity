@@ -1,5 +1,8 @@
 # Singly Linked Lists
 
+<link rel="stylesheet" href="../../../stylesheets/singly-linked-list-visualization.css">
+<script src="../../../javascripts/singly-linked-list-visualization.js" defer></script>
+
 ## One direction is enough for many algorithms
 
 A singly linked list stores a value and a reference to the next node. The list is reached through `head`; an optional `tail` supports constant-time appending.
