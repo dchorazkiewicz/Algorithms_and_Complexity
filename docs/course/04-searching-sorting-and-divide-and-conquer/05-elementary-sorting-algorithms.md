@@ -10,6 +10,10 @@ Elementary sorting algorithms are valuable because their state is visible. They 
 
 All three can take quadratic time, but they do not behave identically.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/elementary-sorts-visualization.css">
+<div data-elementary-sorts-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/elementary-sorts-visualization.js"></script>
+
 ## 1. Selection sort
 
 ```python
