@@ -1,0 +1,116 @@
+.stack-viz__layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, .85fr) minmax(17rem, 1.15fr);
+  gap: 1rem;
+  margin: 1.2rem 0 1rem;
+}
+
+.stack-viz__layout > section {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--course-border);
+  border-radius: .85rem;
+  background: rgba(91, 75, 219, .035);
+}
+
+.stack-viz__top-label,
+.stack-viz__base {
+  color: var(--course-muted);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.stack-viz__stack {
+  display: flex;
+  min-height: 18rem;
+  flex-direction: column;
+  gap: .45rem;
+  justify-content: flex-start;
+  margin: .6rem 0;
+  padding: .8rem;
+  border-right: 3px solid var(--course-border);
+  border-left: 3px solid var(--course-border);
+}
+
+.stack-viz__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3rem;
+  padding: .55rem .8rem;
+  border: 2px solid var(--course-border);
+  border-radius: .65rem;
+  background: var(--course-panel-strong);
+  box-shadow: 0 5px 14px rgba(17, 24, 39, .07);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.stack-viz__item.is-top {
+  border-color: var(--course-cyan);
+  box-shadow: 0 0 0 4px rgba(8, 145, 178, .12);
+  transform: translateY(-2px);
+}
+
+.stack-viz__item span {
+  font-size: 1.05rem;
+  font-weight: 850;
+}
+
+.stack-viz__item small {
+  color: var(--md-accent-fg-color);
+  font-size: .68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.stack-viz__empty {
+  display: grid;
+  min-height: 14rem;
+  place-items: center;
+  border: 2px dashed var(--course-border);
+  border-radius: .7rem;
+  color: var(--course-muted);
+  font-weight: 750;
+}
+
+.stack-viz__model h4 {
+  margin-top: 0;
+}
+
+.stack-viz__rule,
+.stack-viz__code,
+.stack-viz__result {
+  margin-bottom: .75rem;
+  padding: .8rem .9rem;
+  border-radius: .65rem;
+  background: var(--course-panel-strong);
+}
+
+.stack-viz__rule {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.stack-viz__rule strong {
+  padding: 0 .45rem;
+  color: var(--md-accent-fg-color);
+}
+
+.stack-viz__code {
+  overflow-x: auto;
+  border: 1px solid var(--course-border);
+  font-family: var(--md-code-font-family);
+}
+
+.stack-viz__result {
+  background: rgba(5, 150, 105, .09);
+  font-weight: 800;
+}
+
+@media (max-width: 780px) {
+  .stack-viz__layout { grid-template-columns: 1fr; }
+  .stack-viz__stack { min-height: 12rem; }
+}

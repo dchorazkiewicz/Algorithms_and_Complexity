@@ -4799,6 +4799,10 @@
 <li><code>is_empty()</code>.</li>
 </ul>
 <p>The interface deliberately hides arbitrary insertion and removal. That restriction is what gives the structure meaning.</p>
+<p><link rel="stylesheet" href="../../../stylesheets/stack-lifo-visualization.css"></p>
+<div data-stack-viz></div>
+<script src="../../../javascripts/stack-lifo-visualization.js"></script>
+
 <h2 id="representation-invariant">Representation invariant<a class="headerlink" href="#representation-invariant" title="Permanent link">&para;</a></h2>
 <p>The top identifies the most recently pushed item that has not yet been removed. If the stack is represented by a Python list, the final list position is a natural top:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="p">:</span>
@@ -4824,7 +4828,7 @@
 <p>The abstract behaviour is the same even though memory layout differs. This demonstrates why an ADT should be separated from its representation.</p>
 <h2 id="example-balanced-delimiters">Example: balanced delimiters<a class="headerlink" href="#example-balanced-delimiters" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">balanced</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">opening</span> <span class="o">=</span> <span class="s2">&quot;([{&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">opening</span> <span class="o">=</span> <span class="s2">&quot;([{&quot;</span> 
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">matching</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;)&quot;</span><span class="p">:</span> <span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;]&quot;</span><span class="p">:</span> <span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;}&quot;</span><span class="p">:</span> <span class="s2">&quot;{&quot;</span><span class="p">}</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">stack</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
