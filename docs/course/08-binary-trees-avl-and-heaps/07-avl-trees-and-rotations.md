@@ -6,6 +6,10 @@ An **AVL tree** is a binary search tree in which every node has balance factor `
 
 The condition is local, but its consequence is global: tree height remains `O(log n)`. Search, insertion, and deletion therefore have logarithmic worst-case path length.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/avl-rotations-visualization.css">
+<div data-avl-rotations-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/avl-rotations-visualization.js"></script>
+
 ## AVL node
 
 ```python
