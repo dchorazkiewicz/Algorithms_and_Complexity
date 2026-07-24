@@ -1,5 +1,8 @@
 # Binary Search Trees
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/binary-search-tree-visualization.css">
+<script defer src="/Algorithms_and_Complexity/javascripts/binary-search-tree-visualization.js"></script>
+
 ## Ordering turns structure into a search method
 
 A plain binary tree limits each node to two children but says nothing about where values belong. A **binary search tree** adds an ordering invariant that directs search.
@@ -10,6 +13,8 @@ For every node with key `k`:
 - every key in the right subtree is greater than `k`.
 
 This strict form assumes unique keys. If duplicates are allowed, the contract must specify whether equal keys are rejected, counted, stored in one node, or consistently sent to one side.
+
+<div data-bst-viz></div>
 
 ## Search
 
