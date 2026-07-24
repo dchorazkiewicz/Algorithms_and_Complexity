@@ -1,5 +1,8 @@
 # P, NP, Reductions, and NP-Completeness
 
+!!! note "Terminology used in this course"
+    The English syllabus contains the phrase **“N- and NP-complete problems”**, mirroring the wording of the source document. Standard complexity-theory terminology does not define a corresponding class `N` in this context. This course therefore interprets that syllabus item using the established concepts **P**, **NP**, **NP-hard**, and **NP-complete**.
+
 ## Certificates and verification
 
 A decision problem belongs to **NP** when every yes-instance has a certificate that can be verified in polynomial time by a deterministic algorithm.
@@ -97,6 +100,7 @@ It means that a polynomial-time algorithm for one NP-complete problem would yiel
 
 ## What you must be able to explain
 
+- How is the syllabus phrase “N- and NP-complete” interpreted in standard terminology?
 - What is a certificate?
 - Why is `P ⊆ NP`?
 - Why does NP not mean “not polynomial”?

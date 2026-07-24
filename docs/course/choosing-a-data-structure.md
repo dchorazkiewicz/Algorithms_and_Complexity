@@ -32,7 +32,30 @@ The table gives standard asymptotic costs under the assumptions stated in the co
 | AVL tree | `O(log n)` | `O(log n)` | `O(log n)` | `O(log n)` | rotations preserve balance |
 | Adjacency-list graph | `O(deg(v))` neighbours | traversal `O(V+E)` | representation-dependent | representation-dependent | sparse-graph friendly |
 
-These are not complete performance descriptions. Constants, cache locality, allocation cost, stability, resize policy, and expected input distribution may matter in practice.
+These are not complete performance descriptions. Constants, cache locality, allocation cost, stability, resize policy, duplicate-key policy, neighbour order, and expected input distribution may matter in practice.
+
+## Similar-looking trees provide different guarantees
+
+| Structure | What its invariant guarantees | What it does not guarantee |
+|---|---|---|
+| Ordinary BST | every left key is smaller and every right key is larger, under the stated duplicate policy | logarithmic height |
+| AVL tree | BST ordering plus a logarithmic height bound maintained by rotations | that rotations are unnecessary or that the tree is perfectly complete |
+| Binary heap | each parent has no lower priority than its children in a max-heap, or no higher priority in a min-heap | globally sorted inorder order or fast arbitrary-key search |
+| Sorted array | complete linear order and binary search | cheap insertion or deletion in the middle |
+
+A heap is not a sorted tree. A BST is not automatically balanced. An AVL tree is a BST with an additional balance invariant.
+
+## Contracts must settle duplicates and order
+
+Before selecting or implementing a structure, state:
+
+- whether equal keys are rejected, counted, updated, or stored separately;
+- whether search may return any match, the first match, or the last match;
+- whether graph-neighbour order is observable;
+- whether traversal order must be reproducible;
+- whether stable ordering among equal records matters.
+
+Changing one of these decisions can change both the implementation and the proof of correctness.
 
 ## Common decision patterns
 
@@ -64,6 +87,18 @@ Use a search tree when keys must support ordered search, predecessor/successor o
 
 Use a graph when an element may connect to many others without a simple linear or hierarchical arrangement. Choose adjacency lists for sparse graphs and when iterating over actual neighbours is central.
 
+## Counterexamples that expose bad assumptions
+
+- Inserting increasing keys into an ordinary BST produces a chain, so operations become `O(n)`.
+- A heap with root `1` in a min-heap does not imply that an inorder traversal is sorted.
+- DFS without a `visited` set can recurse forever on a cycle.
+- Binary search on unsorted input may return a plausible answer on one example while having no valid elimination argument.
+- Selection sort can move equal-key records past one another and destroy stability.
+- Implementing a queue with repeated `list.pop(0)` shifts the remaining Python-list references and makes each dequeue `O(n)`.
+- A linked-list deletion is not `O(1)` when the node must first be found by value.
+
+A useful test of understanding is to produce a small input that breaks an overgeneralised claim.
+
 ## Questions that prevent bad choices
 
 Before committing to a representation, ask:
@@ -76,6 +111,8 @@ Before committing to a representation, ask:
 6. Which invariant is most likely to be broken by updates?
 7. Is the worst case acceptable, or is expected performance sufficient?
 8. Will the algorithm traverse all elements anyway, making direct access irrelevant?
+9. Is iteration order part of the public contract?
+10. What counterexample would disprove the performance claim if an assumption were removed?
 
 ## Examples of complete choices
 
@@ -104,4 +141,4 @@ A good data-structure choice aligns four things:
 - the invariant that makes those operations correct;
 - the cost model used to evaluate them.
 
-Do not choose a structure because its name is familiar or because one operation has an attractive complexity. Choose it because the entire workload, including locating data, updating state, preserving invariants, and handling worst cases, is supported by the representation.
+Do not choose a structure because its name is familiar or because one operation has an attractive complexity. Choose it because the entire workload, including locating data, updating state, preserving invariants, handling duplicates, respecting observable order, and surviving worst cases, is supported by the representation.
