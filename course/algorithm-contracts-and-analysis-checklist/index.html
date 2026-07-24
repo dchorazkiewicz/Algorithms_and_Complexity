@@ -10,31 +10,27 @@
       
       
       
-        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/06-backtracking-greedy-and-dynamic-structures/05-improving-greedy-solutions/">
+        <link rel="canonical" href="https://dchorazkiewicz.github.io/Algorithms_and_Complexity/course/algorithm-contracts-and-analysis-checklist/">
       
       
-        <link rel="prev" href="../04-greedy-construction/">
-      
-      
-        <link rel="next" href="../06-dynamic-data-structures/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>5. Improving Greedy Solutions - Algorithms and Complexity</title>
+        <title>Algorithm Contracts and Analysis Checklist - Algorithms and Complexity</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,13 +49,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/layout-fixes.css">
+      <link rel="stylesheet" href="../../stylesheets/layout-fixes.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/data-structure-visualizations.css">
+      <link rel="stylesheet" href="../../stylesheets/data-structure-visualizations.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#improving-greedy-solutions" class="md-skip">
+        <a href="#algorithm-contracts-and-analysis-checklist" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +96,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+    <a href="../.." title="Algorithms and Complexity" class="md-header__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -120,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Improving Greedy Solutions
+              Algorithm Contracts and Analysis Checklist
             
           </span>
         </div>
@@ -227,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -244,13 +240,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -272,7 +266,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../source/syllabus-pl/" class="md-tabs__link">
+        <a href="../../source/syllabus-pl/" class="md-tabs__link">
           
   
   
@@ -314,7 +308,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
+    <a href="../.." title="Algorithms and Complexity" class="md-nav__button md-logo" aria-label="Algorithms and Complexity" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -344,7 +338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -368,8 +362,6 @@
       
   
   
-    
-  
   
   
     
@@ -405,23 +397,20 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -439,13 +428,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -489,13 +478,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -503,7 +489,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../00-learning-to-think-algorithmically/" class="md-nav__link ">
+            <a href="../00-learning-to-think-algorithmically/" class="md-nav__link ">
               
   
   
@@ -521,7 +507,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -547,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
+      <a href="../00-learning-to-think-algorithmically/01-problems-algorithms-programs/" class="md-nav__link">
         
   
   
@@ -575,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
+      <a href="../00-learning-to-think-algorithmically/02-reading-python-as-an-algorithm/" class="md-nav__link">
         
   
   
@@ -603,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
+      <a href="../00-learning-to-think-algorithmically/03-designing-a-solution/" class="md-nav__link">
         
   
   
@@ -631,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
+      <a href="../00-learning-to-think-algorithmically/04-evidence-correctness-and-cost/" class="md-nav__link">
         
   
   
@@ -659,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
+      <a href="../00-learning-to-think-algorithmically/05-how-to-study-algorithms/" class="md-nav__link">
         
   
   
@@ -687,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00-learning-to-think-algorithmically/review/" class="md-nav__link">
+      <a href="../00-learning-to-think-algorithmically/review/" class="md-nav__link">
         
   
   
@@ -751,13 +737,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -765,7 +748,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../01-foundations-of-algorithm-design/" class="md-nav__link ">
+            <a href="../01-foundations-of-algorithm-design/" class="md-nav__link ">
               
   
   
@@ -783,7 +766,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -809,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/imperative-computation/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/imperative-computation/" class="md-nav__link">
         
   
   
@@ -837,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/preconditions-and-postconditions/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/preconditions-and-postconditions/" class="md-nav__link">
         
   
   
@@ -865,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/algorithm-representations/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/algorithm-representations/" class="md-nav__link">
         
   
   
@@ -893,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/properties-of-algorithms/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/properties-of-algorithms/" class="md-nav__link">
         
   
   
@@ -921,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/pseudocode/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/pseudocode/" class="md-nav__link">
         
   
   
@@ -949,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/structuring-algorithms/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/structuring-algorithms/" class="md-nav__link">
         
   
   
@@ -977,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/worked-examples/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/worked-examples/" class="md-nav__link">
         
   
   
@@ -1005,7 +988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-foundations-of-algorithm-design/review/" class="md-nav__link">
+      <a href="../01-foundations-of-algorithm-design/review/" class="md-nav__link">
         
   
   
@@ -1073,13 +1056,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1087,7 +1067,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../02-iteration-recursion-and-data-types/" class="md-nav__link ">
+            <a href="../02-iteration-recursion-and-data-types/" class="md-nav__link ">
               
   
   
@@ -1105,7 +1085,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -1131,7 +1111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/01-iteration-as-state-transformation/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/01-iteration-as-state-transformation/" class="md-nav__link">
         
   
   
@@ -1159,7 +1139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/02-for-loops-and-definite-iteration/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/02-for-loops-and-definite-iteration/" class="md-nav__link">
         
   
   
@@ -1187,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/03-while-loops-and-condition-controlled-iteration/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/03-while-loops-and-condition-controlled-iteration/" class="md-nav__link">
         
   
   
@@ -1215,7 +1195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/04-loop-termination-and-correctness/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/04-loop-termination-and-correctness/" class="md-nav__link">
         
   
   
@@ -1243,7 +1223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/05-recursion/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/05-recursion/" class="md-nav__link">
         
   
   
@@ -1271,7 +1251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/06-iteration-versus-recursion/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/06-iteration-versus-recursion/" class="md-nav__link">
         
   
   
@@ -1299,7 +1279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/07-primitive-and-compound-data-types/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/07-primitive-and-compound-data-types/" class="md-nav__link">
         
   
   
@@ -1327,7 +1307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/08-constructing-a-correct-algorithm/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/08-constructing-a-correct-algorithm/" class="md-nav__link">
         
   
   
@@ -1355,7 +1335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/09-worked-examples/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/09-worked-examples/" class="md-nav__link">
         
   
   
@@ -1383,7 +1363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02-iteration-recursion-and-data-types/review/" class="md-nav__link">
+      <a href="../02-iteration-recursion-and-data-types/review/" class="md-nav__link">
         
   
   
@@ -1447,13 +1427,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1461,7 +1438,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../03-arrays-records-and-memory/" class="md-nav__link ">
+            <a href="../03-arrays-records-and-memory/" class="md-nav__link ">
               
   
   
@@ -1479,7 +1456,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -1505,7 +1482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/01-arrays-as-indexed-structures/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/01-arrays-as-indexed-structures/" class="md-nav__link">
         
   
   
@@ -1533,7 +1510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/02-memory-representation-and-direct-access/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/02-memory-representation-and-direct-access/" class="md-nav__link">
         
   
   
@@ -1561,7 +1538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/03-traversing-and-updating-arrays/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/03-traversing-and-updating-arrays/" class="md-nav__link">
         
   
   
@@ -1589,7 +1566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/04-insertion-deletion-and-shifting/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/04-insertion-deletion-and-shifting/" class="md-nav__link">
         
   
   
@@ -1617,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/05-records-and-structured-entities/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/05-records-and-structured-entities/" class="md-nav__link">
         
   
   
@@ -1645,7 +1622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/06-copying-aliasing-and-mutation/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/06-copying-aliasing-and-mutation/" class="md-nav__link">
         
   
   
@@ -1673,7 +1650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/07-worked-examples/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/07-worked-examples/" class="md-nav__link">
         
   
   
@@ -1701,7 +1678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03-arrays-records-and-memory/review/" class="md-nav__link">
+      <a href="../03-arrays-records-and-memory/review/" class="md-nav__link">
         
   
   
@@ -1769,13 +1746,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1783,7 +1757,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../04-searching-sorting-and-divide-and-conquer/" class="md-nav__link ">
+            <a href="../04-searching-sorting-and-divide-and-conquer/" class="md-nav__link ">
               
   
   
@@ -1801,7 +1775,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -1827,7 +1801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/01-searching-as-a-computational-problem/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/01-searching-as-a-computational-problem/" class="md-nav__link">
         
   
   
@@ -1855,7 +1829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/02-linear-search/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/02-linear-search/" class="md-nav__link">
         
   
   
@@ -1883,7 +1857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/03-binary-search/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/03-binary-search/" class="md-nav__link">
         
   
   
@@ -1911,7 +1885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/04-sorting-problems-and-properties/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/04-sorting-problems-and-properties/" class="md-nav__link">
         
   
   
@@ -1939,7 +1913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/05-elementary-sorting-algorithms/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/05-elementary-sorting-algorithms/" class="md-nav__link">
         
   
   
@@ -1967,7 +1941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/06-divide-and-conquer/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/06-divide-and-conquer/" class="md-nav__link">
         
   
   
@@ -1995,7 +1969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/07-quicksort/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/07-quicksort/" class="md-nav__link">
         
   
   
@@ -2023,7 +1997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/08-index-arrays/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/08-index-arrays/" class="md-nav__link">
         
   
   
@@ -2051,7 +2025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/09-worked-examples/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/09-worked-examples/" class="md-nav__link">
         
   
   
@@ -2079,7 +2053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-searching-sorting-and-divide-and-conquer/review/" class="md-nav__link">
+      <a href="../04-searching-sorting-and-divide-and-conquer/review/" class="md-nav__link">
         
   
   
@@ -2149,13 +2123,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -2163,7 +2134,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../05-functions-call-stack-and-recursion/" class="md-nav__link ">
+            <a href="../05-functions-call-stack-and-recursion/" class="md-nav__link ">
               
   
   
@@ -2181,7 +2152,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -2207,7 +2178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/01-functions-and-their-environment/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/01-functions-and-their-environment/" class="md-nav__link">
         
   
   
@@ -2235,7 +2206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/02-side-effects-and-interface-design/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/02-side-effects-and-interface-design/" class="md-nav__link">
         
   
   
@@ -2263,7 +2234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/03-call-stack-and-stack-frames/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/03-call-stack-and-stack-frames/" class="md-nav__link">
         
   
   
@@ -2291,7 +2262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/04-anatomy-of-a-recursive-call/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/04-anatomy-of-a-recursive-call/" class="md-nav__link">
         
   
   
@@ -2319,7 +2290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/05-tracing-recursive-execution/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/05-tracing-recursive-execution/" class="md-nav__link">
         
   
   
@@ -2347,7 +2318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/06-indirect-and-nested-recursion/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/06-indirect-and-nested-recursion/" class="md-nav__link">
         
   
   
@@ -2375,7 +2346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/07-explicit-stack-simulation/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/07-explicit-stack-simulation/" class="md-nav__link">
         
   
   
@@ -2403,7 +2374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/08-recursion-problems-and-failure-modes/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/08-recursion-problems-and-failure-modes/" class="md-nav__link">
         
   
   
@@ -2431,7 +2402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/09-recursion-versus-iteration/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/09-recursion-versus-iteration/" class="md-nav__link">
         
   
   
@@ -2459,7 +2430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/10-worked-examples/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/10-worked-examples/" class="md-nav__link">
         
   
   
@@ -2487,7 +2458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05-functions-call-stack-and-recursion/review/" class="md-nav__link">
+      <a href="../05-functions-call-stack-and-recursion/review/" class="md-nav__link">
         
   
   
@@ -2520,8 +2491,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2553,21 +2522,18 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../06-backtracking-greedy-and-dynamic-structures/" class="md-nav__link ">
               
   
   
@@ -2585,13 +2551,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2611,7 +2577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-search-spaces-and-partial-solutions/" class="md-nav__link">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/01-search-spaces-and-partial-solutions/" class="md-nav__link">
         
   
   
@@ -2639,7 +2605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-the-backtracking-pattern/" class="md-nav__link">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/02-the-backtracking-pattern/" class="md-nav__link">
         
   
   
@@ -2667,7 +2633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-pruning-and-constraint-propagation/" class="md-nav__link">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/03-pruning-and-constraint-propagation/" class="md-nav__link">
         
   
   
@@ -2695,7 +2661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-greedy-construction/" class="md-nav__link">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/04-greedy-construction/" class="md-nav__link">
         
   
   
@@ -2720,37 +2686,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5. Improving Greedy Solutions
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/05-improving-greedy-solutions/" class="md-nav__link">
         
   
   
@@ -2766,125 +2705,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-first-solution-is-not-the-end-of-the-design-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A first solution is not the end of the design process
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#systematic-improvement-of-an-existing-solution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Systematic improvement of an existing solution
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exact-alternatives-are-not-merely-greedy-improvements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exact alternatives are not merely greedy improvements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#heuristic-improvement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Heuristic improvement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-search-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local search example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-optima" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local optima
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#measuring-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Measuring progress
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluating-a-heuristic-honestly" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Evaluating a heuristic honestly
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-you-must-be-able-to-explain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What you must be able to explain
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2897,7 +2717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-dynamic-data-structures/" class="md-nav__link">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/06-dynamic-data-structures/" class="md-nav__link">
         
   
   
@@ -2925,7 +2745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-worked-examples/" class="md-nav__link">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/07-worked-examples/" class="md-nav__link">
         
   
   
@@ -2953,7 +2773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../review/" class="md-nav__link">
+      <a href="../06-backtracking-greedy-and-dynamic-structures/review/" class="md-nav__link">
         
   
   
@@ -3021,13 +2841,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3035,7 +2852,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../07-lists-stacks-queues-and-priority-queues/" class="md-nav__link ">
+            <a href="../07-lists-stacks-queues-and-priority-queues/" class="md-nav__link ">
               
   
   
@@ -3053,7 +2870,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -3079,7 +2896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/01-linear-lists-as-abstract-sequences/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/01-linear-lists-as-abstract-sequences/" class="md-nav__link">
         
   
   
@@ -3107,7 +2924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/02-singly-linked-lists/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/02-singly-linked-lists/" class="md-nav__link">
         
   
   
@@ -3135,7 +2952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/03-doubly-linked-and-circular-lists/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/03-doubly-linked-and-circular-lists/" class="md-nav__link">
         
   
   
@@ -3163,7 +2980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/04-stacks/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/04-stacks/" class="md-nav__link">
         
   
   
@@ -3191,7 +3008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/05-queues/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/05-queues/" class="md-nav__link">
         
   
   
@@ -3219,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/06-priority-queues/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/06-priority-queues/" class="md-nav__link">
         
   
   
@@ -3247,7 +3064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/07-self-organising-and-skip-lists/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/07-self-organising-and-skip-lists/" class="md-nav__link">
         
   
   
@@ -3275,7 +3092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/08-selected-list-algorithms/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/08-selected-list-algorithms/" class="md-nav__link">
         
   
   
@@ -3303,7 +3120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/09-worked-examples/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/09-worked-examples/" class="md-nav__link">
         
   
   
@@ -3331,7 +3148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07-lists-stacks-queues-and-priority-queues/review/" class="md-nav__link">
+      <a href="../07-lists-stacks-queues-and-priority-queues/review/" class="md-nav__link">
         
   
   
@@ -3399,13 +3216,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3413,7 +3227,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../08-binary-trees-avl-and-heaps/" class="md-nav__link ">
+            <a href="../08-binary-trees-avl-and-heaps/" class="md-nav__link ">
               
   
   
@@ -3431,7 +3245,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_10" id="__nav_2_10_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -3457,7 +3271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/01-tree-vocabulary-and-structure/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/01-tree-vocabulary-and-structure/" class="md-nav__link">
         
   
   
@@ -3485,7 +3299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/02-binary-trees-and-representations/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/02-binary-trees-and-representations/" class="md-nav__link">
         
   
   
@@ -3513,7 +3327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/03-tree-traversals/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/03-tree-traversals/" class="md-nav__link">
         
   
   
@@ -3541,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/04-binary-search-trees/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/04-binary-search-trees/" class="md-nav__link">
         
   
   
@@ -3569,7 +3383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/05-dictionaries-with-bsts/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/05-dictionaries-with-bsts/" class="md-nav__link">
         
   
   
@@ -3597,7 +3411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/06-height-and-balancing/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/06-height-and-balancing/" class="md-nav__link">
         
   
   
@@ -3625,7 +3439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/07-avl-trees-and-rotations/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/07-avl-trees-and-rotations/" class="md-nav__link">
         
   
   
@@ -3653,7 +3467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/08-heaps-and-priority-queues/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/08-heaps-and-priority-queues/" class="md-nav__link">
         
   
   
@@ -3681,7 +3495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/09-worked-examples/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/09-worked-examples/" class="md-nav__link">
         
   
   
@@ -3709,7 +3523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../08-binary-trees-avl-and-heaps/review/" class="md-nav__link">
+      <a href="../08-binary-trees-avl-and-heaps/review/" class="md-nav__link">
         
   
   
@@ -3777,13 +3591,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -3791,7 +3602,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../09-graphs-and-depth-first-search/" class="md-nav__link ">
+            <a href="../09-graphs-and-depth-first-search/" class="md-nav__link ">
               
   
   
@@ -3809,7 +3620,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_11" id="__nav_2_11_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -3835,7 +3646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/01-graph-models-and-vocabulary/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/01-graph-models-and-vocabulary/" class="md-nav__link">
         
   
   
@@ -3863,7 +3674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/02-graph-representations-and-costs/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/02-graph-representations-and-costs/" class="md-nav__link">
         
   
   
@@ -3891,7 +3702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/03-properties-and-basic-operations/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/03-properties-and-basic-operations/" class="md-nav__link">
         
   
   
@@ -3919,7 +3730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/04-adjacency-list-implementation/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/04-adjacency-list-implementation/" class="md-nav__link">
         
   
   
@@ -3947,7 +3758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/05-recursive-depth-first-search/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/05-recursive-depth-first-search/" class="md-nav__link">
         
   
   
@@ -3975,7 +3786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/06-iterative-dfs-and-exhaustive-search/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/06-iterative-dfs-and-exhaustive-search/" class="md-nav__link">
         
   
   
@@ -4003,7 +3814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/07-reachability-paths-and-components/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/07-reachability-paths-and-components/" class="md-nav__link">
         
   
   
@@ -4031,7 +3842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/08-cycles-and-ordering-applications/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/08-cycles-and-ordering-applications/" class="md-nav__link">
         
   
   
@@ -4059,7 +3870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/09-worked-examples/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/09-worked-examples/" class="md-nav__link">
         
   
   
@@ -4087,7 +3898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../09-graphs-and-depth-first-search/review/" class="md-nav__link">
+      <a href="../09-graphs-and-depth-first-search/review/" class="md-nav__link">
         
   
   
@@ -4155,13 +3966,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -4169,7 +3977,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../10-computational-complexity-and-hard-problems/" class="md-nav__link ">
+            <a href="../10-computational-complexity-and-hard-problems/" class="md-nav__link ">
               
   
   
@@ -4187,7 +3995,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_12" id="__nav_2_12_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -4213,7 +4021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/01-cost-models-and-input-size/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/01-cost-models-and-input-size/" class="md-nav__link">
         
   
   
@@ -4241,7 +4049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/02-asymptotic-notation/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/02-asymptotic-notation/" class="md-nav__link">
         
   
   
@@ -4269,7 +4077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/03-counting-iterative-algorithms/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/03-counting-iterative-algorithms/" class="md-nav__link">
         
   
   
@@ -4297,7 +4105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/04-recursive-complexity-and-recurrences/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/04-recursive-complexity-and-recurrences/" class="md-nav__link">
         
   
   
@@ -4325,7 +4133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/05-growth-classes-and-scalability/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/05-growth-classes-and-scalability/" class="md-nav__link">
         
   
   
@@ -4353,7 +4161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/06-cases-and-amortised-analysis/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/06-cases-and-amortised-analysis/" class="md-nav__link">
         
   
   
@@ -4381,7 +4189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/07-tractability-and-hard-problems/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/07-tractability-and-hard-problems/" class="md-nav__link">
         
   
   
@@ -4409,7 +4217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/08-p-np-reductions-and-completeness/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/08-p-np-reductions-and-completeness/" class="md-nav__link">
         
   
   
@@ -4437,7 +4245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/09-worked-examples/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/09-worked-examples/" class="md-nav__link">
         
   
   
@@ -4465,7 +4273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10-computational-complexity-and-hard-problems/review/" class="md-nav__link">
+      <a href="../10-computational-complexity-and-hard-problems/review/" class="md-nav__link">
         
   
   
@@ -4566,7 +4374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../source/syllabus-pl/" class="md-nav__link">
+      <a href="../../source/syllabus-pl/" class="md-nav__link">
         
   
   
@@ -4594,7 +4402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../source/syllabus-en/" class="md-nav__link">
+      <a href="../../source/syllabus-en/" class="md-nav__link">
         
   
   
@@ -4649,10 +4457,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-first-solution-is-not-the-end-of-the-design-process" class="md-nav__link">
+  <a href="#specification-is-not-a-runtime-assertion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A first solution is not the end of the design process
+        Specification is not a runtime assertion
       
     </span>
   </a>
@@ -4660,10 +4468,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#systematic-improvement-of-an-existing-solution" class="md-nav__link">
+  <a href="#standard-analysis-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Systematic improvement of an existing solution
+        Standard analysis template
       
     </span>
   </a>
@@ -4671,10 +4479,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exact-alternatives-are-not-merely-greedy-improvements" class="md-nav__link">
+  <a href="#counterexample-discipline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exact alternatives are not merely greedy improvements
+        Counterexample discipline
       
     </span>
   </a>
@@ -4682,65 +4490,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#heuristic-improvement" class="md-nav__link">
+  <a href="#completion-standard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Heuristic improvement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-search-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local search example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-optima" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local optima
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#measuring-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Measuring progress
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluating-a-heuristic-honestly" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Evaluating a heuristic honestly
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-you-must-be-able-to-explain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What you must be able to explain
+        Completion standard
       
     </span>
   </a>
@@ -4765,64 +4518,6 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Course
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    06 · Backtracking, Greedy Methods, and Dynamic Structures
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -4833,108 +4528,77 @@
   
 
 
-<h1 id="improving-greedy-solutions">Improving Greedy Solutions<a class="headerlink" href="#improving-greedy-solutions" title="Permanent link">&para;</a></h1>
-<h2 id="a-first-solution-is-not-the-end-of-the-design-process">A first solution is not the end of the design process<a class="headerlink" href="#a-first-solution-is-not-the-end-of-the-design-process" title="Permanent link">&para;</a></h2>
-<p>A greedy construction often gives a fast, feasible solution. Even when it is not guaranteed optimal, it can be a useful starting point. The next question is how to improve it or how to replace it with a method that provides a stronger guarantee.</p>
-<p>The syllabus distinguishes <strong>systematic</strong> and <strong>heuristic</strong> approaches. The distinction concerns how alternatives are examined and what can be concluded from the search.</p>
-<h2 id="systematic-improvement-of-an-existing-solution">Systematic improvement of an existing solution<a class="headerlink" href="#systematic-improvement-of-an-existing-solution" title="Permanent link">&para;</a></h2>
-<p>A systematic improvement method explores changes according to a complete rule within a precisely defined search region.</p>
-<p>Examples include:</p>
+<h1 id="algorithm-contracts-and-analysis-checklist">Algorithm Contracts and Analysis Checklist<a class="headerlink" href="#algorithm-contracts-and-analysis-checklist" title="Permanent link">&para;</a></h1>
+<h2 id="specification-is-not-a-runtime-assertion">Specification is not a runtime assertion<a class="headerlink" href="#specification-is-not-a-runtime-assertion" title="Permanent link">&para;</a></h2>
+<p>The course uses four related but distinct kinds of statements:</p>
 <ul>
-<li>testing every one-swap neighbour of a current ordering;</li>
-<li>testing every segment reversal in a route;</li>
-<li>exhaustive search around an initial solution;</li>
-<li>branch and bound that uses the greedy solution as the current incumbent.</li>
+<li>a <strong>precondition</strong> defines the initial states for which the algorithm promises its normal result;</li>
+<li>a <strong>postcondition</strong> defines what must hold after successful termination when the precondition held;</li>
+<li>an <strong>invariant</strong> describes a property preserved through a loop, recursive reduction, or representation update;</li>
+<li>a <strong>runtime assertion</strong> is an executable check performed by a particular implementation.</li>
 </ul>
-<p>A systematic procedure supports a precise statement such as:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>No one-swap neighbour is better than the current solution.
+<p>A Python statement such as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 </code></pre></div>
-<p>That is a guarantee relative to the chosen neighbourhood. It is not automatically a proof of global optimality.</p>
-<h3 id="branch-and-bound-and-the-role-of-a-greedy-incumbent">Branch and bound and the role of a greedy incumbent<a class="headerlink" href="#branch-and-bound-and-the-role-of-a-greedy-incumbent" title="Permanent link">&para;</a></h3>
-<p>A greedy solution can provide an initial bound for branch and bound. Any partial branch that cannot beat the current greedy solution may be pruned. The exact method is still branch and bound; the greedy solution supplies a useful incumbent rather than being gradually transformed into the exact answer.</p>
-<h2 id="exact-alternatives-are-not-merely-greedy-improvements">Exact alternatives are not merely greedy improvements<a class="headerlink" href="#exact-alternatives-are-not-merely-greedy-improvements" title="Permanent link">&para;</a></h2>
-<p>Some problems admit an exact method based on a different algorithmic structure.</p>
-<p><strong>Dynamic programming</strong> is the principal example. It solves and combines overlapping subproblems under an appropriate recurrence. It should not be described as a generic procedure that improves a greedy result. A greedy solution may be used as a comparison baseline or as a bound, but dynamic programming is a separate design paradigm with its own state definition, recurrence, and correctness argument.</p>
-<p>The same distinction applies to exhaustive search: it may start from a greedy bound, but its guarantee comes from systematic coverage of the relevant search space.</p>
-<h2 id="heuristic-improvement">Heuristic improvement<a class="headerlink" href="#heuristic-improvement" title="Permanent link">&para;</a></h2>
-<p>A heuristic uses practical guidance to find promising changes quickly. It may stop before all alternatives are checked and usually does not prove global optimality.</p>
-<p>Common heuristic choices include:</p>
-<ul>
-<li>examine promising candidates first;</li>
-<li>accept only improvements;</li>
-<li>allow occasional worsening moves to escape a local optimum;</li>
-<li>restart from several initial solutions;</li>
-<li>limit the number of iterations or elapsed time.</li>
-</ul>
-<h2 id="local-search-example">Local search example<a class="headerlink" href="#local-search-example" title="Permanent link">&para;</a></h2>
-<p>Suppose a route is represented by an ordering of points. A simple move reverses one segment when that shortens the route.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">improve_route</span><span class="p">(</span><span class="n">route</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">distance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">best</span> <span class="o">=</span> <span class="n">route</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">improved</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">while</span> <span class="n">improved</span><span class="p">:</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="n">improved</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="k">for</span> <span class="n">left</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">best</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>            <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">best</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>                <span class="n">candidate</span> <span class="o">=</span> <span class="n">best</span><span class="p">[:</span><span class="n">left</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">best</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]))</span> <span class="o">+</span> <span class="n">best</span><span class="p">[</span><span class="n">right</span><span class="p">:]</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                <span class="k">if</span> <span class="n">route_length</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">route_length</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                    <span class="n">best</span> <span class="o">=</span> <span class="n">candidate</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>                    <span class="n">improved</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>                    <span class="k">break</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>            <span class="k">if</span> <span class="n">improved</span><span class="p">:</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                <span class="k">break</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="k">return</span> <span class="n">best</span>
+<p>may help detect a violated assumption during development, but it is not the logical contract itself. The contract remains part of the algorithm specification even when no check is executed. Python assertions may also be disabled, so they must not be used as the only mechanism for validating untrusted external input.</p>
+<p>Validation and contracts answer different questions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>contract:   what must be true?
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>validation: who checks it, when, and with what failure behaviour?
 </code></pre></div>
-<p>The move set is systematic: candidate segment reversals are generated by a defined rule. The acceptance policy is <strong>first improvement</strong> because the scan stops after the first better candidate.</p>
-<p>A <strong>best-improvement</strong> variant would evaluate the complete neighbourhood, select the best improving move, and apply it only after the scan finishes. Best improvement usually performs more work per iteration and can follow a different path through the solution space.</p>
-<p>Both variants remain heuristic as global solvers. A route with no improving reversal may still be far from globally optimal.</p>
-<h2 id="local-optima">Local optima<a class="headerlink" href="#local-optima" title="Permanent link">&para;</a></h2>
-<p>A <strong>local optimum</strong> is no worse than its neighbours under a chosen move rule. Change the neighbourhood and the meaning of local optimum changes.</p>
-<p>An improvement algorithm must therefore state:</p>
+<h2 id="standard-analysis-template">Standard analysis template<a class="headerlink" href="#standard-analysis-template" title="Permanent link">&para;</a></h2>
+<p>For every important algorithm, state the following explicitly.</p>
+<h3 id="1-input-model">1. Input model<a class="headerlink" href="#1-input-model" title="Permanent link">&para;</a></h3>
+<p>Define the mathematical or structural form of the input. Distinguish, for example, a sorted sequence from an arbitrary sequence and a graph from its concrete adjacency representation.</p>
+<h3 id="2-precondition">2. Precondition<a class="headerlink" href="#2-precondition" title="Permanent link">&para;</a></h3>
+<p>State every assumption needed by the algorithm, including ordering, valid bounds, uniqueness, graph membership, or non-emptiness.</p>
+<h3 id="3-postcondition">3. Postcondition<a class="headerlink" href="#3-postcondition" title="Permanent link">&para;</a></h3>
+<p>State exactly what result is guaranteed. Resolve ambiguity such as:</p>
 <ul>
-<li>the representation of a solution;</li>
-<li>the neighbourhood relation;</li>
-<li>the order in which neighbours are examined;</li>
-<li>whether the policy is first improvement or best improvement;</li>
-<li>the evaluation function;</li>
-<li>the acceptance rule;</li>
-<li>the stopping condition.</li>
+<li>any matching index versus the first or last matching index;</li>
+<li>replacement versus insertion;</li>
+<li>mutation versus construction of a new object;</li>
+<li>failure value versus exception.</li>
 </ul>
-<h2 id="measuring-progress">Measuring progress<a class="headerlink" href="#measuring-progress" title="Permanent link">&para;</a></h2>
-<p>An improvement loop needs a progress argument. Common measures include:</p>
+<h3 id="4-invariant">4. Invariant<a class="headerlink" href="#4-invariant" title="Permanent link">&para;</a></h3>
+<p>State the meaning preserved during execution. Examples include an active binary-search interval, a sorted insertion-sort prefix, a valid heap order, or symmetric adjacency in an undirected graph.</p>
+<h3 id="5-progress-and-termination">5. Progress and termination<a class="headerlink" href="#5-progress-and-termination" title="Permanent link">&para;</a></h3>
+<p>Identify a well-founded measure that decreases, such as:</p>
 <ul>
-<li>strictly decreasing cost;</li>
-<li>strictly increasing score;</li>
-<li>a bounded iteration counter;</li>
-<li>a finite set of states combined with a rule that prevents revisiting.</li>
+<li>remaining interval length;</li>
+<li>number of unprocessed elements;</li>
+<li>recursive problem size;</li>
+<li>number of stack items still to process.</li>
 </ul>
-<p>Without such a condition, the procedure may oscillate.</p>
-<h2 id="evaluating-a-heuristic-honestly">Evaluating a heuristic honestly<a class="headerlink" href="#evaluating-a-heuristic-honestly" title="Permanent link">&para;</a></h2>
-<p>A heuristic should be assessed by:</p>
+<h3 id="6-preservation-and-correctness">6. Preservation and correctness<a class="headerlink" href="#6-preservation-and-correctness" title="Permanent link">&para;</a></h3>
+<p>Explain why each operation preserves the invariant and why termination together with the invariant establishes the postcondition.</p>
+<h3 id="7-complexity-under-an-explicit-cost-model">7. Complexity under an explicit cost model<a class="headerlink" href="#7-complexity-under-an-explicit-cost-model" title="Permanent link">&para;</a></h3>
+<p>State what is counted and what information is already available. <code>O(1)</code> insertion after a known linked-list node does not include searching for that node. <code>O(log n)</code> binary search assumes sorted input already exists.</p>
+<h3 id="8-edge-cases-and-policies">8. Edge cases and policies<a class="headerlink" href="#8-edge-cases-and-policies" title="Permanent link">&para;</a></h3>
+<p>State how the algorithm handles:</p>
 <ul>
-<li>solution quality;</li>
-<li>running time;</li>
-<li>memory use;</li>
-<li>sensitivity to the starting solution;</li>
-<li>consistency across test instances;</li>
-<li>comparison with known optimal answers on small inputs.</li>
+<li>empty input;</li>
+<li>one-element input;</li>
+<li>duplicate keys;</li>
+<li>absent targets;</li>
+<li>invalid indices;</li>
+<li>disconnected graphs;</li>
+<li>deterministic versus unspecified traversal order.</li>
 </ul>
-<p>The result should not be described as optimal unless a proof or exhaustive verification supports that claim.</p>
-<h2 id="what-you-must-be-able-to-explain">What you must be able to explain<a class="headerlink" href="#what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
-<ul>
-<li>What makes an improvement method systematic?</li>
-<li>Why is dynamic programming a separate exact paradigm rather than a generic greedy-improvement step?</li>
-<li>How can a greedy solution help branch and bound?</li>
-<li>What guarantee does local optimality provide?</li>
-<li>How do first improvement and best improvement differ?</li>
-<li>How does the neighbourhood determine the search?</li>
-<li>Why can strict improvement imply termination?</li>
-<li>How should heuristic quality be evaluated?</li>
-</ul>
+<h2 id="counterexample-discipline">Counterexample discipline<a class="headerlink" href="#counterexample-discipline" title="Permanent link">&para;</a></h2>
+<p>After proving the algorithm under its assumptions, remove one assumption and construct a small counterexample. Typical examples include binary search on unsorted data, DFS without a visited set on a cycle, an ordinary BST built from increasing keys, or a heap incorrectly treated as a globally sorted tree.</p>
+<p>A counterexample does not merely show that code fails. It identifies which proof step depended on the missing assumption.</p>
+<h2 id="completion-standard">Completion standard<a class="headerlink" href="#completion-standard" title="Permanent link">&para;</a></h2>
+<p>An explanation is complete when it connects:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>input model
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>→ contract
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>→ invariant
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>→ state changes
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>→ termination
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>→ postcondition
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>→ complexity
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>→ edge cases
+</code></pre></div>
+<p>This checklist should be reused across searching, sorting, recursion, linked structures, trees, heaps, graphs, and complexity analysis.</p>
 
 
 
@@ -4968,44 +4632,6 @@
         <footer class="md-footer">
   
     
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../04-greedy-construction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4. Greedy Construction">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                4. Greedy Construction
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../06-dynamic-data-structures/" class="md-footer__link md-footer__link--next" aria-label="Next: 6. Dynamic Data Structures">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                6. Dynamic Data Structures
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -5034,14 +4660,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
-        <script src="../../../javascripts/data-structure-visualizations.js"></script>
+        <script src="../../javascripts/data-structure-visualizations.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

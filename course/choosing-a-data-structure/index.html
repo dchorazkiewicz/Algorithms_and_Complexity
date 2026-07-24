@@ -4479,10 +4479,43 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#similar-looking-trees-provide-different-guarantees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Similar-looking trees provide different guarantees
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contracts-must-settle-duplicates-and-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contracts must settle duplicates and order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-decision-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
         Common decision patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counterexamples-that-expose-bad-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Counterexamples that expose bad assumptions
       
     </span>
   </a>
@@ -4652,7 +4685,50 @@
 </tr>
 </tbody>
 </table>
-<p>These are not complete performance descriptions. Constants, cache locality, allocation cost, stability, resize policy, and expected input distribution may matter in practice.</p>
+<p>These are not complete performance descriptions. Constants, cache locality, allocation cost, stability, resize policy, duplicate-key policy, neighbour order, and expected input distribution may matter in practice.</p>
+<h2 id="similar-looking-trees-provide-different-guarantees">Similar-looking trees provide different guarantees<a class="headerlink" href="#similar-looking-trees-provide-different-guarantees" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>What its invariant guarantees</th>
+<th>What it does not guarantee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ordinary BST</td>
+<td>every left key is smaller and every right key is larger, under the stated duplicate policy</td>
+<td>logarithmic height</td>
+</tr>
+<tr>
+<td>AVL tree</td>
+<td>BST ordering plus a logarithmic height bound maintained by rotations</td>
+<td>that rotations are unnecessary or that the tree is perfectly complete</td>
+</tr>
+<tr>
+<td>Binary heap</td>
+<td>each parent has no lower priority than its children in a max-heap, or no higher priority in a min-heap</td>
+<td>globally sorted inorder order or fast arbitrary-key search</td>
+</tr>
+<tr>
+<td>Sorted array</td>
+<td>complete linear order and binary search</td>
+<td>cheap insertion or deletion in the middle</td>
+</tr>
+</tbody>
+</table>
+<p>A heap is not a sorted tree. A BST is not automatically balanced. An AVL tree is a BST with an additional balance invariant.</p>
+<h2 id="contracts-must-settle-duplicates-and-order">Contracts must settle duplicates and order<a class="headerlink" href="#contracts-must-settle-duplicates-and-order" title="Permanent link">&para;</a></h2>
+<p>Before selecting or implementing a structure, state:</p>
+<ul>
+<li>whether equal keys are rejected, counted, updated, or stored separately;</li>
+<li>whether search may return any match, the first match, or the last match;</li>
+<li>whether graph-neighbour order is observable;</li>
+<li>whether traversal order must be reproducible;</li>
+<li>whether stable ordering among equal records matters.</li>
+</ul>
+<p>Changing one of these decisions can change both the implementation and the proof of correctness.</p>
 <h2 id="common-decision-patterns">Common decision patterns<a class="headerlink" href="#common-decision-patterns" title="Permanent link">&para;</a></h2>
 <h3 id="known-integer-position">Known integer position<a class="headerlink" href="#known-integer-position" title="Permanent link">&para;</a></h3>
 <p>Use an array or another indexed sequence when the main operation is reading or replacing <code>A[i]</code>. Direct indexing is the decisive advantage.</p>
@@ -4668,6 +4744,17 @@
 <p>Use a search tree when keys must support ordered search, predecessor/successor operations, or inorder traversal. Use a balanced tree when worst-case logarithmic height matters.</p>
 <h3 id="arbitrary-relationships">Arbitrary relationships<a class="headerlink" href="#arbitrary-relationships" title="Permanent link">&para;</a></h3>
 <p>Use a graph when an element may connect to many others without a simple linear or hierarchical arrangement. Choose adjacency lists for sparse graphs and when iterating over actual neighbours is central.</p>
+<h2 id="counterexamples-that-expose-bad-assumptions">Counterexamples that expose bad assumptions<a class="headerlink" href="#counterexamples-that-expose-bad-assumptions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Inserting increasing keys into an ordinary BST produces a chain, so operations become <code>O(n)</code>.</li>
+<li>A heap with root <code>1</code> in a min-heap does not imply that an inorder traversal is sorted.</li>
+<li>DFS without a <code>visited</code> set can recurse forever on a cycle.</li>
+<li>Binary search on unsorted input may return a plausible answer on one example while having no valid elimination argument.</li>
+<li>Selection sort can move equal-key records past one another and destroy stability.</li>
+<li>Implementing a queue with repeated <code>list.pop(0)</code> shifts the remaining Python-list references and makes each dequeue <code>O(n)</code>.</li>
+<li>A linked-list deletion is not <code>O(1)</code> when the node must first be found by value.</li>
+</ul>
+<p>A useful test of understanding is to produce a small input that breaks an overgeneralised claim.</p>
 <h2 id="questions-that-prevent-bad-choices">Questions that prevent bad choices<a class="headerlink" href="#questions-that-prevent-bad-choices" title="Permanent link">&para;</a></h2>
 <p>Before committing to a representation, ask:</p>
 <ol>
@@ -4679,6 +4766,8 @@
 <li>Which invariant is most likely to be broken by updates?</li>
 <li>Is the worst case acceptable, or is expected performance sufficient?</li>
 <li>Will the algorithm traverse all elements anyway, making direct access irrelevant?</li>
+<li>Is iteration order part of the public contract?</li>
+<li>What counterexample would disprove the performance claim if an assumption were removed?</li>
 </ol>
 <h2 id="examples-of-complete-choices">Examples of complete choices<a class="headerlink" href="#examples-of-complete-choices" title="Permanent link">&para;</a></h2>
 <h3 id="many-searches-over-a-fixed-sorted-collection">Many searches over a fixed sorted collection<a class="headerlink" href="#many-searches-over-a-fixed-sorted-collection" title="Permanent link">&para;</a></h3>
@@ -4697,7 +4786,7 @@
 <li>the invariant that makes those operations correct;</li>
 <li>the cost model used to evaluate them.</li>
 </ul>
-<p>Do not choose a structure because its name is familiar or because one operation has an attractive complexity. Choose it because the entire workload, including locating data, updating state, preserving invariants, and handling worst cases, is supported by the representation.</p>
+<p>Do not choose a structure because its name is familiar or because one operation has an attractive complexity. Choose it because the entire workload, including locating data, updating state, preserving invariants, handling duplicates, respecting observable order, and surviving worst cases, is supported by the representation.</p>
 
 
 
