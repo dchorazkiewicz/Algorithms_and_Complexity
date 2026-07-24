@@ -6,6 +6,10 @@ Quicksort chooses a **pivot**, rearranges the active interval so that smaller el
 
 The key operation is not the recursive call. It is **partitioning**. If partitioning is understood precisely, the recursive structure becomes natural.
 
+<link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/quicksort-visualization.css">
+<div data-quicksort-viz></div>
+<script src="/Algorithms_and_Complexity/javascripts/quicksort-visualization.js"></script>
+
 ## 1. Partition contract
 
 For an interval `values[left:right]`, a partition procedure should establish a boundary such that elements are grouped according to their relation to the pivot.
@@ -95,7 +99,7 @@ The pivot is excluded from both recursive calls because partitioning has already
 Use induction on interval length.
 
 - Base case: intervals of length `0` or `1` are already sorted.
-- Partition step: the pivot is placed between elements not greater than it and elements greater than it.
+- Partition step: the pivot is placed between elements not greater than it and elements greater.
 - Recursive assumption: the left and right smaller intervals are sorted correctly.
 - Final conclusion: the entire interval is sorted because every left element is no greater than the pivot and every right element is greater.
 
