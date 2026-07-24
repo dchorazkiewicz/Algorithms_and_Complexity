@@ -4834,9 +4834,14 @@
 
 
 <h1 id="iterative-dfs-and-exhaustive-search">Iterative DFS and Exhaustive Search<a class="headerlink" href="#iterative-dfs-and-exhaustive-search" title="Permanent link">&para;</a></h1>
+<p><link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/iterative-dfs-visualization.css"></p>
+<script defer src="/Algorithms_and_Complexity/javascripts/iterative-dfs-visualization.js"></script>
+
 <h2 id="making-unfinished-work-explicit">Making unfinished work explicit<a class="headerlink" href="#making-unfinished-work-explicit" title="Permanent link">&para;</a></h2>
 <p>Recursive DFS stores unfinished calls on the language's call stack. Iterative DFS stores the same kind of pending work in an explicit stack.</p>
 <p>This change does not alter the abstract search strategy. It changes where the continuation state is represented.</p>
+<div data-iterative-dfs-viz></div>
+
 <h2 id="simple-iterative-dfs">Simple iterative DFS<a class="headerlink" href="#simple-iterative-dfs" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">dfs_iterative</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">start</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
