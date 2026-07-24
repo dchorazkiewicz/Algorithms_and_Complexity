@@ -4856,6 +4856,9 @@
 
 
 <h1 id="binary-search-trees">Binary Search Trees<a class="headerlink" href="#binary-search-trees" title="Permanent link">&para;</a></h1>
+<p><link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/binary-search-tree-visualization.css"></p>
+<script defer src="/Algorithms_and_Complexity/javascripts/binary-search-tree-visualization.js"></script>
+
 <h2 id="ordering-turns-structure-into-a-search-method">Ordering turns structure into a search method<a class="headerlink" href="#ordering-turns-structure-into-a-search-method" title="Permanent link">&para;</a></h2>
 <p>A plain binary tree limits each node to two children but says nothing about where values belong. A <strong>binary search tree</strong> adds an ordering invariant that directs search.</p>
 <p>For every node with key <code>k</code>:</p>
@@ -4864,6 +4867,8 @@
 <li>every key in the right subtree is greater than <code>k</code>.</li>
 </ul>
 <p>This strict form assumes unique keys. If duplicates are allowed, the contract must specify whether equal keys are rejected, counted, stored in one node, or consistently sent to one side.</p>
+<div data-bst-viz></div>
+
 <h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">bst_search</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">current</span> <span class="o">=</span> <span class="n">root</span>
