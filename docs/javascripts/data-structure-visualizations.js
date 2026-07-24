@@ -212,3 +212,22 @@
   script.src = `${window.location.origin}${window.location.pathname.split('/').slice(0, -3).join('/')}/javascripts/recursive-call-stack-visualization.js`;
   document.head.appendChild(script);
 })();
+
+(() => {
+  const path = window.location.pathname.replace(/\/$/, '');
+  if (!path.endsWith('/05-queues')) return;
+  const base = `${window.location.origin}${window.location.pathname.split('/').slice(0, -3).join('/')}`;
+  if (!document.querySelector('link[data-queue-viz-loader]')) {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.dataset.queueVizLoader = 'true';
+    stylesheet.href = `${base}/stylesheets/queue-fifo-visualization.css`;
+    document.head.appendChild(stylesheet);
+  }
+  if (!document.querySelector('script[data-queue-viz-loader]')) {
+    const script = document.createElement('script');
+    script.dataset.queueVizLoader = 'true';
+    script.src = `${base}/javascripts/queue-fifo-visualization.js`;
+    document.head.appendChild(script);
+  }
+})();
