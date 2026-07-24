@@ -4836,6 +4836,11 @@
 <h1 id="doubly-linked-and-circular-lists">Doubly Linked and Circular Lists<a class="headerlink" href="#doubly-linked-and-circular-lists" title="Permanent link">&para;</a></h1>
 <h2 id="adding-structural-power-adds-obligations">Adding structural power adds obligations<a class="headerlink" href="#adding-structural-power-adds-obligations" title="Permanent link">&para;</a></h2>
 <p>A singly linked list supports movement in one direction. A doubly linked list gives every node both a predecessor and a successor. This makes deletion of a known node and backward traversal convenient, but every update must preserve two directions of linkage.</p>
+<p><link rel="stylesheet" href="/Algorithms_and_Complexity/stylesheets/doubly-circular-list-visualization.css"></p>
+<div data-doubly-circular-list-viz></div>
+
+<script src="/Algorithms_and_Complexity/javascripts/doubly-circular-list-visualization.js"></script>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
