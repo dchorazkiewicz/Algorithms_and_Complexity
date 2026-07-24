@@ -11,6 +11,10 @@ A **stack** is an abstract data type governed by the LIFO rule: the last item in
 
 The interface deliberately hides arbitrary insertion and removal. That restriction is what gives the structure meaning.
 
+<link rel="stylesheet" href="../../../stylesheets/stack-lifo-visualization.css">
+<div data-stack-viz></div>
+<script src="../../../javascripts/stack-lifo-visualization.js"></script>
+
 ## Representation invariant
 
 The top identifies the most recently pushed item that has not yet been removed. If the stack is represented by a Python list, the final list position is a natural top:
@@ -46,7 +50,7 @@ The abstract behaviour is the same even though memory layout differs. This demon
 
 ```python
 def balanced(text: str) -> bool:
-    opening = "([{"
+    opening = "([{" 
     matching = {")": "(", "]": "[", "}": "{"}
     stack: list[str] = []
 
