@@ -2788,24 +2788,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7. Worked Examples
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2822,91 +2804,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-1-generate-combinations-of-fixed-size" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 1 — Generate combinations of fixed size
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-2-find-one-path-through-a-maze" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 2 — Find one path through a maze
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-3-greedy-interval-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 3 — Greedy interval selection
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-4-greedy-bin-packing-as-a-heuristic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 4 — Greedy bin packing as a heuristic
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-5-systematic-one-swap-improvement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 5 — Systematic one-swap improvement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integrated-analysis-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integrated analysis questions
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -4609,80 +4506,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-1-generate-combinations-of-fixed-size" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 1 — Generate combinations of fixed size
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-2-find-one-path-through-a-maze" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 2 — Find one path through a maze
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-3-greedy-interval-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 3 — Greedy interval selection
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-4-greedy-bin-packing-as-a-heuristic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 4 — Greedy bin packing as a heuristic
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-5-systematic-one-swap-improvement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 5 — Systematic one-swap improvement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integrated-analysis-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integrated analysis questions
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -4768,130 +4591,439 @@
 
 
 <h1 id="worked-examples">Worked Examples<a class="headerlink" href="#worked-examples" title="Permanent link">&para;</a></h1>
-<h2 id="example-1-generate-combinations-of-fixed-size">Example 1 — Generate combinations of fixed size<a class="headerlink" href="#example-1-generate-combinations-of-fixed-size" title="Permanent link">&para;</a></h2>
-<p>Given <code>values</code> and integer <code>k</code>, generate every size-<code>k</code> combination.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">combinations</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">current</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="k">return</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">missing</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="n">last_start</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="n">missing</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">last_start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="n">current</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">build</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">current</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">build</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="k">return</span> <span class="n">results</span>
+<p>This chapter integrates the ideas of Module 06. Each example is analysed as an algorithm rather than presented only as code.</p>
+<p>For every case, identify:</p>
+<ul>
+<li>the problem and contract;</li>
+<li>the state representation;</li>
+<li>the choices or neighbourhood;</li>
+<li>the invariant;</li>
+<li>pruning or selection rules;</li>
+<li>the correctness or guarantee argument;</li>
+<li>termination;</li>
+<li>time and auxiliary-space cost.</li>
+</ul>
+<hr />
+<h1 id="example-1-generate-combinations-of-fixed-size">Example 1 — Generate combinations of fixed size<a class="headerlink" href="#example-1-generate-combinations-of-fixed-size" title="Permanent link">&para;</a></h1>
+<h2 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h2>
+<p>Given a list <code>values</code> and integer <code>k</code>, generate every size-<code>k</code> combination while preserving source order.</p>
+<p>For:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>values = [10, 20, 30, 40]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>k = 2
 </code></pre></div>
-<p><code>start</code> prevents reordering the same combination. The bound <code>last_start</code> prunes branches that do not contain enough remaining values.</p>
-<p>The invariant is that <code>current</code> contains increasing source indices, so duplicates caused by order cannot appear.</p>
-<h2 id="example-2-find-one-path-through-a-maze">Example 2 — Find one path through a maze<a class="headerlink" href="#example-2-find-one-path-through-a-maze" title="Permanent link">&para;</a></h2>
-<p>Represent open cells by <code>0</code> and blocked cells by <code>1</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maze_path</span><span class="p">(</span><span class="n">grid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">start</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">goal</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">visited</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span><span class="p">):</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>            <span class="k">return</span> <span class="kc">False</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>            <span class="k">return</span> <span class="kc">False</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="k">if</span> <span class="n">position</span> <span class="o">==</span> <span class="n">goal</span><span class="p">:</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>            <span class="k">return</span> <span class="kc">True</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        <span class="k">for</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="ow">in</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>            <span class="k">if</span> <span class="n">search</span><span class="p">(</span><span class="n">row</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">column</span> <span class="o">+</span> <span class="n">dc</span><span class="p">):</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>                <span class="k">return</span> <span class="kc">True</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        <span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        <span class="k">return</span> <span class="kc">False</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">search</span><span class="p">(</span><span class="o">*</span><span class="n">start</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+<p>the required outputs are:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[10,20] [10,30] [10,40] [20,30] [20,40] [30,40]
 </code></pre></div>
-<p>Here <code>visited</code> is deliberately not undone. The algorithm is searching a static maze, and revisiting a cell cannot reveal a new continuation that was not already explored from that cell. <code>path</code>, however, represents the current branch and must be restored.</p>
-<p>This example shows that undo decisions depend on the meaning of each piece of state.</p>
-<h2 id="example-3-greedy-interval-selection">Example 3 — Greedy interval selection<a class="headerlink" href="#example-3-greedy-interval-selection" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maximum_compatible</span><span class="p">(</span><span class="n">activities</span><span class="p">):</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">activities</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">finish</span><span class="p">)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">finish</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"-inf"</span><span class="p">)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">for</span> <span class="n">activity</span> <span class="ow">in</span> <span class="n">ordered</span><span class="p">:</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="k">if</span> <span class="n">activity</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="n">finish</span><span class="p">:</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            <span class="n">finish</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="n">finish</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="k">return</span> <span class="n">result</span>
+<p>The pair <code>[20,10]</code> is not a separate combination.</p>
+<h2 id="contract">Contract<a class="headerlink" href="#contract" title="Permanent link">&para;</a></h2>
+<p><strong>Input:</strong> list <code>values</code>, integer <code>k</code>.</p>
+<p><strong>Precondition:</strong> <code>0 &lt;= k &lt;= len(values)</code>.</p>
+<p><strong>Output:</strong> every subset of exactly <code>k</code> source positions, represented in increasing source-index order, exactly once.</p>
+<p><strong>Side effects:</strong> none outside the returned result.</p>
+<h2 id="state">State<a class="headerlink" href="#state" title="Permanent link">&para;</a></h2>
+<p>Maintain:</p>
+<ul>
+<li><code>current</code>: values selected so far;</li>
+<li><code>start</code>: smallest source index still allowed for the next choice.</li>
+</ul>
+<p>The invariant is:</p>
+<blockquote>
+<p><code>current</code> contains values selected from strictly increasing source indices, all smaller than <code>start</code>.</p>
+</blockquote>
+<p>This eliminates duplicate reorderings by construction.</p>
+<h2 id="backtracking-implementation">Backtracking implementation<a class="headerlink" href="#backtracking-implementation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">combinations</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"k must satisfy 0 &lt;= k &lt;= len(values)"</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">current</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="k">return</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="n">missing</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="n">last_start</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="n">missing</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">last_start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="n">current</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>            <span class="n">build</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="n">current</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="n">build</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="k">return</span> <span class="n">results</span>
 </code></pre></div>
-<p>The proof uses an exchange argument: an earliest-finishing first choice can replace the first activity in an optimal solution without reducing the number of later compatible activities.</p>
-<h2 id="example-4-greedy-bin-packing-as-a-heuristic">Example 4 — Greedy bin packing as a heuristic<a class="headerlink" href="#example-4-greedy-bin-packing-as-a-heuristic" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_fit_decreasing</span><span class="p">(</span><span class="n">weights</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">bins</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">remaining</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">free</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">remaining</span><span class="p">):</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>            <span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="n">free</span><span class="p">:</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                <span class="n">bins</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>                <span class="n">remaining</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">-=</span> <span class="n">weight</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>                <span class="k">break</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="n">bins</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">weight</span><span class="p">])</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="n">remaining</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">capacity</span> <span class="o">-</span> <span class="n">weight</span><span class="p">)</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">return</span> <span class="n">bins</span>
+<h2 id="why-last_start-is-safe-pruning">Why <code>last_start</code> is safe pruning<a class="headerlink" href="#why-last_start-is-safe-pruning" title="Permanent link">&para;</a></h2>
+<p>Suppose <code>missing</code> more values are required. If we choose an index larger than</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>len(values) - missing
 </code></pre></div>
-<p>The method is fast and often good, but this chapter does not claim that it always uses the minimum number of bins. It is a heuristic construction whose quality should be compared with optimal answers on small instances or with lower bounds.</p>
-<h2 id="example-5-systematic-one-swap-improvement">Example 5 — Systematic one-swap improvement<a class="headerlink" href="#example-5-systematic-one-swap-improvement" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">improve_order</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">cost</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">current</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="n">best</span> <span class="o">=</span> <span class="n">current</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="k">for</span> <span class="n">left</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)):</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>            <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)):</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>                <span class="n">candidate</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>                <span class="n">candidate</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="n">candidate</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="n">candidate</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>                <span class="n">candidate_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>                <span class="k">if</span> <span class="n">candidate_cost</span> <span class="o">&lt;</span> <span class="n">best_cost</span><span class="p">:</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>                    <span class="n">best</span> <span class="o">=</span> <span class="n">candidate</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>                    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">candidate_cost</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="k">if</span> <span class="n">best</span> <span class="o">==</span> <span class="n">current</span><span class="p">:</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="k">return</span> <span class="n">current</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="n">current</span> <span class="o">=</span> <span class="n">best</span>
+<p>then fewer than <code>missing - 1</code> positions remain afterward. Completion becomes impossible.</p>
+<p>Thus the loop does not merely improve performance; it removes branches that provably cannot reach size <code>k</code>.</p>
+<h2 id="trace-for-n-4-k-2">Trace for <code>n = 4</code>, <code>k = 2</code><a class="headerlink" href="#trace-for-n-4-k-2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[] start=0
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── [10] start=1
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   ├── [10,20] ✓
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│   ├── [10,30] ✓
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│   └── [10,40] ✓
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>├── [20] start=2
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│   ├── [20,30] ✓
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│   └── [20,40] ✓
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>└── [30] start=3
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    └── [30,40] ✓
 </code></pre></div>
-<p>Every iteration examines the complete one-swap neighbourhood. Cost strictly decreases when the state changes, so cycles are impossible if cost values come from a finite set over the finite set of permutations.</p>
-<h2 id="integrated-analysis-questions">Integrated analysis questions<a class="headerlink" href="#integrated-analysis-questions" title="Permanent link">&para;</a></h2>
-<p>For each example, identify:</p>
+<p>There is no top-level branch beginning with <code>40</code>: after choosing it, no second element would remain.</p>
+<h2 id="correctness">Correctness<a class="headerlink" href="#correctness" title="Permanent link">&para;</a></h2>
+<p><strong>Soundness:</strong> every recorded result has length <code>k</code>, and increasing indices prevent repeated source positions.</p>
+<p><strong>Completeness:</strong> every size-<code>k</code> subset has a unique increasing sequence of source indices. The recursion considers each such sequence unless a branch lacks enough remaining positions; but such a branch cannot correspond to a size-<code>k</code> subset.</p>
+<p><strong>Uniqueness:</strong> strictly increasing indices give one representation for each combination.</p>
+<h2 id="termination-and-cost">Termination and cost<a class="headerlink" href="#termination-and-cost" title="Permanent link">&para;</a></h2>
+<p>Every recursive child increases <code>len(current)</code> by one, so depth is at most <code>k</code>.</p>
+<p>There are</p>
+<div class="arithmatex">\[
+\binom{n}{k}
+\]</div>
+<p>outputs, each of length <code>k</code>. Returning explicit copies therefore requires at least</p>
+<div class="arithmatex">\[
+\Omega\left(k\binom{n}{k}\right)
+\]</div>
+<p>output work.</p>
+<p>Working recursion state is <code>O(k)</code> excluding the output list.</p>
+<hr />
+<h1 id="example-2-find-one-path-through-a-maze">Example 2 — Find one path through a maze<a class="headerlink" href="#example-2-find-one-path-through-a-maze" title="Permanent link">&para;</a></h1>
+<h2 id="problem_1">Problem<a class="headerlink" href="#problem_1" title="Permanent link">&para;</a></h2>
+<p>Given a rectangular grid where <code>0</code> means open and <code>1</code> means blocked, find one path from <code>start</code> to <code>goal</code> using four-directional movement.</p>
+<h2 id="contract_1">Contract<a class="headerlink" href="#contract_1" title="Permanent link">&para;</a></h2>
+<p><strong>Input:</strong> non-empty rectangular grid, valid start and goal coordinates.</p>
+<p><strong>Output:</strong> one simple path from start to goal, or <code>None</code> if none exists.</p>
+<p><strong>Postcondition when a path is returned:</strong></p>
+<ul>
+<li>first position is <code>start</code>;</li>
+<li>last position is <code>goal</code>;</li>
+<li>every consecutive pair is orthogonally adjacent;</li>
+<li>every position is open;</li>
+<li>no position is repeated.</li>
+</ul>
+<h2 id="state_1">State<a class="headerlink" href="#state_1" title="Permanent link">&para;</a></h2>
+<p>Two different state components have different meanings:</p>
+<ul>
+<li><code>path</code> — the current root-to-state branch;</li>
+<li><code>visited</code> — cells whose future continuations have already been explored.</li>
+</ul>
+<p>This distinction determines what must be undone.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maze_path</span><span class="p">(</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">grid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">start</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">goal</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">grid</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"grid must be non-empty"</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">!=</span> <span class="n">columns</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">):</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"grid must be rectangular"</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">path</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="n">visited</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>        <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span><span class="p">):</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>            <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>            <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>        <span class="k">if</span> <span class="n">position</span> <span class="o">==</span> <span class="n">goal</span><span class="p">:</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>            <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>        <span class="k">for</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="ow">in</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>            <span class="k">if</span> <span class="n">search</span><span class="p">(</span><span class="n">row</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">column</span> <span class="o">+</span> <span class="n">dc</span><span class="p">):</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>                <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>        <span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>    <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">search</span><span class="p">(</span><span class="o">*</span><span class="n">start</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+</code></pre></div>
+<h2 id="why-path-is-undone-but-visited-is-not">Why <code>path</code> is undone but <code>visited</code> is not<a class="headerlink" href="#why-path-is-undone-but-visited-is-not" title="Permanent link">&para;</a></h2>
+<p><code>path</code> means “the cells on the current candidate route”. When a branch fails, its final cells no longer belong to the next sibling route, so they must be removed.</p>
+<p><code>visited</code> means “this cell's reachable continuation has already been explored”. In a static maze, returning to the same cell later cannot reveal a new geometric continuation that was absent before. Retaining <code>visited</code> avoids repeated exploration.</p>
+<p>This example shows that the rule is not:</p>
+<blockquote>
+<p>undo every mutation.</p>
+</blockquote>
+<p>The rule is:</p>
+<blockquote>
+<p>undo every mutation whose meaning belongs only to the abandoned branch.</p>
+</blockquote>
+<h2 id="correctness-idea">Correctness idea<a class="headerlink" href="#correctness-idea" title="Permanent link">&para;</a></h2>
+<p>Every recursive transition moves to an adjacent open cell. A cell is added to the path only after bounds, obstacle, and visited checks.</p>
+<p>If the goal is reached, <code>path</code> therefore satisfies the required path postcondition.</p>
+<p>For completeness, from every reachable visited cell the algorithm examines all four possible outgoing moves. Since already visited cells need not be explored again, a reachable goal cannot remain behind an unexamined legal transition.</p>
+<h2 id="termination">Termination<a class="headerlink" href="#termination" title="Permanent link">&para;</a></h2>
+<p>A cell enters <code>visited</code> at most once. There are <code>R · C</code> cells, so at most that many successful state entries occur. Each considers at most four directions.</p>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>time:  O(R · C)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>space: O(R · C)
+</code></pre></div>
+<p>The recursion depth and path length can also reach <code>O(R · C)</code> in the worst case.</p>
+<p>This is a useful contrast with tree-like backtracking: memoising or marking equivalent states can transform repeated path exploration into graph exploration.</p>
+<hr />
+<h1 id="example-3-n-queens-pruning-and-state-restoration">Example 3 — N-Queens: pruning and state restoration<a class="headerlink" href="#example-3-n-queens-pruning-and-state-restoration" title="Permanent link">&para;</a></h1>
+<h2 id="problem_2">Problem<a class="headerlink" href="#problem_2" title="Permanent link">&para;</a></h2>
+<p>Find one placement of <code>n</code> queens with no attacks.</p>
+<p>The full implementation appears in the backtracking chapter. Here the focus is on the interaction between representation and pruning.</p>
+<h2 id="state-invariant">State invariant<a class="headerlink" href="#state-invariant" title="Permanent link">&para;</a></h2>
+<p>At entry to <code>search(row)</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>len(placement) = row
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>columns = exactly the used columns
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>diag_down = exactly the used row-column diagonals
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>diag_up = exactly the used row+column diagonals
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>placement is conflict-free
+</code></pre></div>
+<p>Each candidate column is tested against propagated occupancy state.</p>
+<h2 id="why-this-is-better-than-rescanning">Why this is better than rescanning<a class="headerlink" href="#why-this-is-better-than-rescanning" title="Permanent link">&para;</a></h2>
+<p>Without occupancy sets, testing <code>(row, column)</code> may scan up to <code>row</code> previous queens.</p>
+<p>With sets, each conflict test uses a constant number of expected-<code>O(1)</code> membership operations.</p>
+<p>The search remains exponential in the worst case, but the work per candidate is reduced.</p>
+<h2 id="pruning-argument">Pruning argument<a class="headerlink" href="#pruning-argument" title="Permanent link">&para;</a></h2>
+<p>A candidate conflicting with an already placed queen cannot belong to any valid extension because earlier queens remain fixed along the branch.</p>
+<p>Thus skipping that column preserves completeness.</p>
+<h2 id="failure-mode-exercise">Failure-mode exercise<a class="headerlink" href="#failure-mode-exercise" title="Permanent link">&para;</a></h2>
+<p>Suppose backtracking performs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">placement</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">columns</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># forgot to remove the two diagonal markers</span>
+</code></pre></div>
+<p>The resulting state may still generate only conflict-free placements, but valid columns in sibling branches can be incorrectly rejected. This is a completeness failure caused by stale propagated state.</p>
+<hr />
+<h1 id="example-4-greedy-interval-selection">Example 4 — Greedy interval selection<a class="headerlink" href="#example-4-greedy-interval-selection" title="Permanent link">&para;</a></h1>
+<h2 id="problem_3">Problem<a class="headerlink" href="#problem_3" title="Permanent link">&para;</a></h2>
+<p>Choose a maximum number of mutually compatible activities.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">maximum_compatible</span><span class="p">(</span><span class="n">activities</span><span class="p">):</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">activities</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">finish</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">finish</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"-inf"</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="k">for</span> <span class="n">activity</span> <span class="ow">in</span> <span class="n">ordered</span><span class="p">:</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="k">if</span> <span class="n">activity</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="n">finish</span><span class="p">:</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>            <span class="n">finish</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="n">finish</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<h2 id="why-the-result-is-exact">Why the result is exact<a class="headerlink" href="#why-the-result-is-exact" title="Permanent link">&para;</a></h2>
+<p>The selection rule chooses the compatible activity with earliest finish time.</p>
+<p>Let an optimal schedule begin with <code>A</code> and let greedy choose <code>G</code>. Since</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>finish(G) &lt;= finish(A)
+</code></pre></div>
+<p>replacing <code>A</code> by <code>G</code> leaves every later activity feasible. Therefore some optimum begins with the greedy choice.</p>
+<p>Applying the same argument to the remaining compatible activities establishes optimality recursively.</p>
+<h2 id="complexity_1">Complexity<a class="headerlink" href="#complexity_1" title="Permanent link">&para;</a></h2>
+<p>Sorting dominates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>O(n log n)
+</code></pre></div>
+<p>followed by a linear scan.</p>
+<h2 id="contrast-question">Contrast question<a class="headerlink" href="#contrast-question" title="Permanent link">&para;</a></h2>
+<p>If the objective changed from “maximum number of activities” to “maximum total activity value”, would the same greedy proof still hold?</p>
+<p>No conclusion follows automatically. The objective changed, so the exchange argument must be rebuilt or a counterexample may exist.</p>
+<hr />
+<h1 id="example-5-greedy-bin-packing-as-a-heuristic">Example 5 — Greedy bin packing as a heuristic<a class="headerlink" href="#example-5-greedy-bin-packing-as-a-heuristic" title="Permanent link">&para;</a></h1>
+<h2 id="problem_4">Problem<a class="headerlink" href="#problem_4" title="Permanent link">&para;</a></h2>
+<p>Pack item weights into capacity-limited bins while trying to minimise the number of bins.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_fit_decreasing</span><span class="p">(</span><span class="n">weights</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="k">if</span> <span class="n">capacity</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"capacity must be positive"</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">weight</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">weight</span> <span class="o">&gt;</span> <span class="n">capacity</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">):</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"every item must fit into one bin"</span><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">bins</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="n">remaining</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">free</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">remaining</span><span class="p">):</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>            <span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="n">free</span><span class="p">:</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>                <span class="n">bins</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>                <span class="n">remaining</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">-=</span> <span class="n">weight</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>                <span class="k">break</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>            <span class="n">bins</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">weight</span><span class="p">])</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>            <span class="n">remaining</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">capacity</span> <span class="o">-</span> <span class="n">weight</span><span class="p">)</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>    <span class="k">return</span> <span class="n">bins</span>
+</code></pre></div>
+<h2 id="guarantee">Guarantee<a class="headerlink" href="#guarantee" title="Permanent link">&para;</a></h2>
+<p>The procedure always returns a feasible packing under the precondition that each item individually fits.</p>
+<p>This chapter does <strong>not</strong> claim that it always minimises the number of bins.</p>
+<p>The precise result is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>feasible packing produced by a deterministic greedy heuristic
+</code></pre></div>
+<p>A claim of optimality would require a separate proof or exact verification.</p>
+<h2 id="lower-bound-comparison">Lower-bound comparison<a class="headerlink" href="#lower-bound-comparison" title="Permanent link">&para;</a></h2>
+<p>A simple lower bound on the number of bins is</p>
+<div class="arithmatex">\[
+\left\lceil \frac{\sum_i weight_i}{capacity} \right\rceil.
+\]</div>
+<p>If the heuristic uses exactly this many bins, the solution is proven optimal for that instance because no packing can use fewer.</p>
+<p>If it uses more, the lower bound alone does not tell us whether the heuristic is suboptimal; the true optimum may also be larger than the bound.</p>
+<p>This illustrates how bounds can evaluate heuristic quality without pretending to prove more than they do.</p>
+<hr />
+<h1 id="example-6-systematic-one-swap-improvement">Example 6 — Systematic one-swap improvement<a class="headerlink" href="#example-6-systematic-one-swap-improvement" title="Permanent link">&para;</a></h1>
+<h2 id="problem_5">Problem<a class="headerlink" href="#problem_5" title="Permanent link">&para;</a></h2>
+<p>Given a permutation and a cost function, repeatedly replace the current permutation by the best strictly better one-swap neighbour.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">improve_order</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">cost</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">current</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>        <span class="n">best</span> <span class="o">=</span> <span class="n">current</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>        <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>        <span class="k">for</span> <span class="n">left</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)):</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>            <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)):</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>                <span class="n">candidate</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>                <span class="n">candidate</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="n">candidate</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="n">candidate</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>                <span class="n">candidate_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>                <span class="k">if</span> <span class="n">candidate_cost</span> <span class="o">&lt;</span> <span class="n">best_cost</span><span class="p">:</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>                    <span class="n">best</span> <span class="o">=</span> <span class="n">candidate</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>                    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">candidate_cost</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>        <span class="k">if</span> <span class="n">best</span> <span class="o">==</span> <span class="n">current</span><span class="p">:</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>            <span class="k">return</span> <span class="n">current</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>        <span class="n">current</span> <span class="o">=</span> <span class="n">best</span>
+</code></pre></div>
+<h2 id="neighbourhood">Neighbourhood<a class="headerlink" href="#neighbourhood" title="Permanent link">&para;</a></h2>
+<p>For length <code>n</code>, the one-swap neighbourhood contains at most</p>
+<div class="arithmatex">\[
+\binom{n}{2}
+\]</div>
+<p>candidates.</p>
+<p>Every iteration examines all of them, so the returned solution has no strictly better one-swap neighbour.</p>
+<h2 id="what-is-guaranteed">What is guaranteed<a class="headerlink" href="#what-is-guaranteed" title="Permanent link">&para;</a></h2>
+<p>Guaranteed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>one-swap local optimality
+</code></pre></div>
+<p>Not guaranteed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>global optimality
+</code></pre></div>
+<p>unless a separate theorem about the particular objective proves that every one-swap local optimum is global.</p>
+<h2 id="termination_1">Termination<a class="headerlink" href="#termination_1" title="Permanent link">&para;</a></h2>
+<p>The number of permutations is finite. Every accepted update strictly reduces cost. Therefore the procedure cannot revisit an accepted state and must terminate.</p>
+<h2 id="cost">Cost<a class="headerlink" href="#cost" title="Permanent link">&para;</a></h2>
+<p>One neighbourhood scan creates <code>O(n²)</code> candidates.</p>
+<p>If copying and evaluating each candidate both cost <code>O(n)</code>, a scan can cost <code>O(n³)</code>.</p>
+<p>The total running time also depends on the number of accepted improvement iterations, which may be problem-specific.</p>
+<hr />
+<h1 id="example-7-dynamic-array-growth-as-sequence-analysis">Example 7 — Dynamic-array growth as sequence analysis<a class="headerlink" href="#example-7-dynamic-array-growth-as-sequence-analysis" title="Permanent link">&para;</a></h1>
+<h2 id="problem_6">Problem<a class="headerlink" href="#problem_6" title="Permanent link">&para;</a></h2>
+<p>Analyse <code>n</code> appends to a dynamic array whose capacity doubles whenever full.</p>
+<p>Suppose capacities grow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>1 → 2 → 4 → 8 → ...
+</code></pre></div>
+<p>At each resize, all current elements are copied or moved.</p>
+<h2 id="aggregate-analysis">Aggregate analysis<a class="headerlink" href="#aggregate-analysis" title="Permanent link">&para;</a></h2>
+<p>The resize-copy costs before reaching <code>n</code> elements are bounded by:</p>
+<div class="arithmatex">\[
+1 + 2 + 4 + \cdots &lt; 2n.
+\]</div>
+<p>The <code>n</code> insertions themselves add <code>n</code> more units of work.</p>
+<p>So total append work is <code>O(n)</code>, giving amortised <code>O(1)</code> per append.</p>
+<h2 id="contrast-growth-by-one">Contrast: growth by one<a class="headerlink" href="#contrast-growth-by-one" title="Permanent link">&para;</a></h2>
+<p>If capacity grew by one each time, total copying would be:</p>
+<div class="arithmatex">\[
+1 + 2 + \cdots + (n-1) = \Theta(n^2).
+\]</div>
+<p>Thus amortised append would become <code>Θ(n)</code>.</p>
+<p>The implementation policy changes the asymptotic sequence cost.</p>
+<hr />
+<h1 id="integrated-comparison">Integrated comparison<a class="headerlink" href="#integrated-comparison" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Search/decision style</th>
+<th>Exact?</th>
+<th>Main guarantee</th>
+<th>Characteristic cost issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>combinations</td>
+<td>backtracking</td>
+<td>yes</td>
+<td>all size-<code>k</code> combinations exactly once</td>
+<td>output-sensitive <code>C(n,k)</code></td>
+</tr>
+<tr>
+<td>maze path</td>
+<td>graph-style DFS/backtracking</td>
+<td>yes for reachability</td>
+<td>returns a valid path if one exists</td>
+<td>each cell explored once</td>
+</tr>
+<tr>
+<td>N-Queens</td>
+<td>constrained backtracking</td>
+<td>yes</td>
+<td>valid solution if one exists</td>
+<td>explored-state count</td>
+</tr>
+<tr>
+<td>interval scheduling</td>
+<td>greedy</td>
+<td>yes</td>
+<td>maximum number of compatible activities</td>
+<td>sorting dominates</td>
+</tr>
+<tr>
+<td>bin packing FFD</td>
+<td>greedy heuristic</td>
+<td>not generally exact</td>
+<td>feasible packing</td>
+<td>quality versus lower bound</td>
+</tr>
+<tr>
+<td>one-swap improvement</td>
+<td>systematic local search</td>
+<td>locally exact</td>
+<td>no better one-swap neighbour</td>
+<td>neighbourhood evaluation</td>
+</tr>
+<tr>
+<td>dynamic-array append</td>
+<td>dynamic representation</td>
+<td>not optimisation</td>
+<td>amortised constant append</td>
+<td>rare expensive resizes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="final-analysis-questions">Final analysis questions<a class="headerlink" href="#final-analysis-questions" title="Permanent link">&para;</a></h2>
+<p>For each example, be able to answer:</p>
 <ol>
-<li>the complete state;</li>
-<li>the choices or neighbours;</li>
-<li>the feasibility condition;</li>
-<li>what is undone and what is retained;</li>
-<li>the termination measure;</li>
-<li>the correctness guarantee;</li>
-<li>whether the result is exact or heuristic;</li>
-<li>the dominant time and auxiliary-space costs.</li>
+<li>What exactly is the complete algorithmic state?</li>
+<li>What is the representation invariant?</li>
+<li>Which choices or neighbours are generated?</li>
+<li>Which conditions reject a candidate?</li>
+<li>Is rejection pruning, constraint propagation, or ordinary feasibility checking?</li>
+<li>What is undone, and why?</li>
+<li>Which state is intentionally retained across branches?</li>
+<li>What proves termination?</li>
+<li>Is the result globally exact, locally optimal, heuristic, or merely feasible?</li>
+<li>What dominates running time?</li>
+<li>What dominates auxiliary memory?</li>
+<li>Does output size impose a lower bound?</li>
+<li>Which assumptions are required by the proof?</li>
+<li>How would changing one assumption invalidate or alter the argument?</li>
 </ol>
 
 
