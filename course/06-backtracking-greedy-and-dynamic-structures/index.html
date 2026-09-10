@@ -4568,6 +4568,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diagnostic-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostic questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mastery-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mastery checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4656,69 +4678,147 @@
 
 <h1 id="module-06-backtracking-greedy-methods-and-dynamic-structures">Module 06 — Backtracking, Greedy Methods, and Dynamic Structures<a class="headerlink" href="#module-06-backtracking-greedy-methods-and-dynamic-structures" title="Permanent link">&para;</a></h1>
 <h2 id="why-this-module-matters">Why this module matters<a class="headerlink" href="#why-this-module-matters" title="Permanent link">&para;</a></h2>
-<p>Some problems do not yield to a single direct scan, a fixed formula, or one obvious recursive decomposition. We may have to try a decision, observe its consequences, undo it when it leads nowhere, or choose a locally attractive move while accepting that the choice may later need improvement.</p>
-<p>This module studies three related ideas:</p>
+<p>Some problems do not yield to a single scan, a direct formula, or one obvious recursive decomposition. Instead, an algorithm may need to build a partial solution, try one possibility, reject it when it becomes impossible, restore the previous state, and continue with another choice. Other problems invite a locally attractive choice that must be justified, compared, or improved rather than trusted automatically.</p>
+<p>This module studies three connected ideas:</p>
 <ul>
-<li><strong>backtracking</strong>, where a partial solution is extended and abandoned when it can no longer lead to a valid result;</li>
-<li><strong>greedy construction and improvement</strong>, where decisions are made using local information and then evaluated or refined;</li>
-<li><strong>dynamic data structures</strong>, whose size or shape changes while the algorithm runs.</li>
+<li><strong>backtracking</strong>, where an algorithm explores a search space by choosing, exploring, and undoing;</li>
+<li><strong>greedy construction and improvement</strong>, where local decisions are evaluated against global goals and may be improved systematically or heuristically;</li>
+<li><strong>dynamic data structures</strong>, whose size or shape changes while an algorithm runs and whose costs must often be analysed over sequences of operations rather than one operation in isolation.</li>
 </ul>
-<p>The common theme is controlled change. The algorithm does not merely process a fixed sequence. It builds, revises, and explores a changing state.</p>
+<p>The common theme is controlled change. The algorithm builds and revises state while preserving explicit invariants and guarantees.</p>
 <h2 id="syllabus-scope">Syllabus scope<a class="headerlink" href="#syllabus-scope" title="Permanent link">&para;</a></h2>
 <p>This module develops the sixth course-content block:</p>
 <blockquote>
 <p>Backtracking algorithms. Systematic and heuristic methods for improving greedy algorithms. Dynamic data structures.</p>
 </blockquote>
-<p>The source syllabus names these topics but does not prescribe one specific set of example problems. The examples in this module are chosen to make the underlying mechanisms visible.</p>
+<p>The syllabus names the required ideas but leaves the example problems open. The examples in this module are therefore chosen to expose the mechanisms clearly: search-space modelling, partial solutions, pruning, exchange arguments, local improvement, dynamic growth, representation choices, and amortised cost.</p>
 <h2 id="what-you-should-be-able-to-do-after-this-module">What you should be able to do after this module<a class="headerlink" href="#what-you-should-be-able-to-do-after-this-module" title="Permanent link">&para;</a></h2>
 <p>After completing the module, you should be able to:</p>
 <ol>
-<li>describe a search space in terms of states, choices, and constraints;</li>
-<li>explain how backtracking extends and restores partial state;</li>
-<li>identify base cases, dead ends, and pruning conditions;</li>
-<li>distinguish exhaustive search from pruned search;</li>
-<li>formulate a greedy rule and state what it optimises locally;</li>
-<li>explain why a greedy rule needs a correctness argument rather than intuition alone;</li>
-<li>distinguish systematic improvement from heuristic improvement;</li>
-<li>recognise when a changing problem state requires a dynamic structure;</li>
-<li>trace recursive and iterative search procedures;</li>
-<li>analyse time, auxiliary space, and the effect of pruning.</li>
+<li>model a problem as a search space of states, choices, constraints, and goals;</li>
+<li>distinguish an ordinary exhaustive search from a backtracking search;</li>
+<li>identify branching factor, search depth, leaves, dead ends, and candidate states;</li>
+<li>write a backtracking procedure using the choose–explore–undo pattern;</li>
+<li>state and preserve an invariant connecting a partial solution with its bookkeeping state;</li>
+<li>justify that every recursive branch terminates;</li>
+<li>distinguish pruning from mere search-order heuristics;</li>
+<li>explain how an invalid pruning rule can destroy completeness;</li>
+<li>formulate a greedy rule and state precisely what it optimises locally;</li>
+<li>prove a simple greedy algorithm using an exchange argument;</li>
+<li>distinguish exact, greedy, local-search, and heuristic guarantees;</li>
+<li>define a neighbourhood and objective function for an improvement method;</li>
+<li>distinguish local optimum from global optimum;</li>
+<li>explain when a data structure must grow, shrink, or change shape during execution;</li>
+<li>compare contiguous and linked dynamic representations;</li>
+<li>distinguish worst-case, expected, and amortised operation costs;</li>
+<li>analyse branching algorithms in terms of depth, explored states, output size, and auxiliary memory;</li>
+<li>communicate honestly what an algorithm guarantees and what it does not guarantee.</li>
 </ol>
 <h2 id="concept-map">Concept map<a class="headerlink" href="#concept-map" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>search or construction problem
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ├── state
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── available choices
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ├── constraints
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    └── goal condition
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>            │
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            ├── explore alternatives → backtracking
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            │       ├── choose
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            │       ├── recurse
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            │       └── undo
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            │
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            ├── choose one local best option → greedy method
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            │       ├── justify
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            │       ├── evaluate
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            │       └── improve
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            │
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            └── changing state representation → dynamic structures
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>problem requiring construction or exploration
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        ├── search-space model
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        │       ├── state
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        │       ├── partial solution
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        │       ├── choices
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        │       ├── constraints
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        │       ├── goal
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        │       ├── branching factor
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        │       └── depth
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        │
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        ├── explore alternatives
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        │       └── backtracking
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        │              ├── choose
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        │              ├── explore
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        │              ├── undo
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        │              ├── invariant
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        │              └── pruning
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        │
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        ├── commit to local choices
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        │       └── greedy construction
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        │              ├── local rule
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        │              ├── exchange argument
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        │              └── counterexample analysis
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        │
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        ├── revise an existing solution
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        │       └── improvement methods
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        │              ├── neighbourhood
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        │              ├── evaluation function
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        │              ├── acceptance rule
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        │              └── stopping condition
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        │
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        └── changing representation
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>                └── dynamic data structures
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>                       ├── growth and shrinkage
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>                       ├── contiguous vs linked
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>                       ├── ownership and references
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>                       └── amortised cost
 </code></pre></div>
 <h2 id="learning-path">Learning path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Search spaces and partial solutions.</li>
-<li>The backtracking pattern.</li>
-<li>Pruning and constraint propagation.</li>
-<li>Greedy construction.</li>
-<li>Systematic and heuristic improvement.</li>
-<li>Dynamic data structures.</li>
-<li>Worked examples.</li>
-<li>Module review.</li>
-</ol>
+<h3 id="1-search-spaces-and-partial-solutions">1. Search spaces and partial solutions<a class="headerlink" href="#1-search-spaces-and-partial-solutions" title="Permanent link">&para;</a></h3>
+<p>Learn how to turn an informal construction problem into a precise state-space model. Identify candidate states, legal choices, constraints, goals, dead ends, branching factor, depth, and the difference between candidate generation and solution verification.</p>
+<h3 id="2-the-backtracking-pattern">2. The backtracking pattern<a class="headerlink" href="#2-the-backtracking-pattern" title="Permanent link">&para;</a></h3>
+<p>Develop choose–explore–undo as a disciplined state-transition pattern. Study permutations and N-Queens, including contracts, state invariants, traces, termination, output-sensitive cost, and the consequences of incorrect restoration.</p>
+<h3 id="3-pruning-and-constraint-propagation">3. Pruning and constraint propagation<a class="headerlink" href="#3-pruning-and-constraint-propagation" title="Permanent link">&para;</a></h3>
+<p>Study safe rejection rules, propagation of consequences, choice ordering, and the distinction between pruning and heuristics. Learn why every pruning rule requires an argument that no valid solution is discarded.</p>
+<h3 id="4-greedy-construction">4. Greedy construction<a class="headerlink" href="#4-greedy-construction" title="Permanent link">&para;</a></h3>
+<p>Learn how greedy algorithms commit to one locally preferred choice. Study interval scheduling as a complete example and use an exchange argument to justify correctness.</p>
+<h3 id="5-improving-greedy-solutions">5. Improving greedy solutions<a class="headerlink" href="#5-improving-greedy-solutions" title="Permanent link">&para;</a></h3>
+<p>Distinguish systematic neighbourhood search from heuristic improvement. Study objective functions, local optima, acceptance rules, stopping conditions, counterexamples, and the limits of heuristic guarantees.</p>
+<h3 id="6-dynamic-data-structures">6. Dynamic data structures<a class="headerlink" href="#6-dynamic-data-structures" title="Permanent link">&para;</a></h3>
+<p>Understand why changing problem state often requires changing representations. Compare dynamic arrays and linked structures, study resizing and capacity, and introduce amortised analysis through sequence-based reasoning.</p>
+<h3 id="7-worked-examples">7. Worked examples<a class="headerlink" href="#7-worked-examples" title="Permanent link">&para;</a></h3>
+<p>Integrate the module through complete case studies: constrained search, greedy scheduling, and local improvement. For each case, identify the contract, state, invariant, correctness or guarantee, termination, and cost.</p>
+<h3 id="8-module-review">8. Module review<a class="headerlink" href="#8-module-review" title="Permanent link">&para;</a></h3>
+<p>Test the ability to model, trace, debug, prove, compare, and redesign algorithms rather than merely reproduce code.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>You should already understand recursion, explicit stacks, lists, sets, dictionaries, correctness arguments, and Big O notation.</p>
+<p>You should already understand:</p>
+<ul>
+<li>recursion and explicit stacks;</li>
+<li>loop and recursive termination arguments;</li>
+<li>invariants and contracts;</li>
+<li>arrays, lists, sets, dictionaries, and mutation;</li>
+<li>aliasing and copying;</li>
+<li>Big O notation and auxiliary-space analysis.</li>
+</ul>
+<h2 id="diagnostic-questions">Diagnostic questions<a class="headerlink" href="#diagnostic-questions" title="Permanent link">&para;</a></h2>
+<p>Before beginning, try to answer:</p>
+<ol>
+<li>What is the difference between a complete solution and a partial solution?</li>
+<li>Why is a search tree a model of computation rather than necessarily a stored tree data structure?</li>
+<li>What must be true before a branch may be pruned safely?</li>
+<li>Why is trying a promising choice first not the same as pruning alternatives?</li>
+<li>What exactly must be restored after a backtracking branch returns?</li>
+<li>Why does a successful greedy example not prove that the greedy rule is correct?</li>
+<li>What does an exchange argument attempt to show?</li>
+<li>Why can a local optimum be globally poor?</li>
+<li>When is amortised analysis more informative than the worst-case cost of one operation?</li>
+<li>Why can the representation of changing state dominate algorithmic cost?</li>
+</ol>
+<p>Return to these questions after completing the module.</p>
+<h2 id="mastery-checklist">Mastery checklist<a class="headerlink" href="#mastery-checklist" title="Permanent link">&para;</a></h2>
+<p>You have mastered this module when you can honestly say:</p>
+<ul>
+<li>[ ] I can model a construction problem as a state space.</li>
+<li>[ ] I can define the partial state, choices, constraints, and goal condition.</li>
+<li>[ ] I can identify branching factor and maximum search depth.</li>
+<li>[ ] I can implement choose–explore–undo without corrupting sibling branches.</li>
+<li>[ ] I can state an invariant for a backtracking procedure.</li>
+<li>[ ] I can explain why every branch terminates.</li>
+<li>[ ] I can justify a pruning rule from explicit assumptions.</li>
+<li>[ ] I can distinguish pruning from search-order heuristics.</li>
+<li>[ ] I can formulate and justify a simple greedy rule.</li>
+<li>[ ] I can explain an exchange argument.</li>
+<li>[ ] I can construct a counterexample to an unjustified greedy claim.</li>
+<li>[ ] I can define a neighbourhood and objective for local improvement.</li>
+<li>[ ] I can distinguish local and global optimality.</li>
+<li>[ ] I can compare contiguous and linked dynamic representations.</li>
+<li>[ ] I can explain amortised cost over a sequence of operations.</li>
+<li>[ ] I can state precisely what guarantee an exact or heuristic method provides.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Central study question</p>
-<p>For every algorithm in this module, ask: what state is being built, which choices are still available, how do we recognise failure early, and what exactly is restored when we retreat?</p>
+<p>For every algorithm in this module, ask: what state is being built, which choices remain available, what information justifies rejecting a branch or accepting a move, what must remain invariant, and what guarantee is actually proved?</p>
 </div>
 
 
