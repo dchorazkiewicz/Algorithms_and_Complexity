@@ -2721,21 +2721,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-permutations" class="md-nav__link">
+  <a href="#example-1-permutations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: permutations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-copying-is-needed-at-the-goal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why copying is needed at the goal
+        Example 1: permutations
       
     </span>
   </a>
@@ -2754,10 +2743,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#why-undo-order-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why undo order matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-copying-is-needed-at-a-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why copying is needed at a solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-trace-for-1-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual trace for [1, 2, 3]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#termination" class="md-nav__link">
     <span class="md-ellipsis">
       
         Termination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correctness
       
     </span>
   </a>
@@ -2780,17 +2813,6 @@
     <span class="md-ellipsis">
       
         Common failure: incomplete undo
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-you-must-be-able-to-explain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What you must be able to explain
       
     </span>
   </a>
@@ -4671,21 +4693,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-permutations" class="md-nav__link">
+  <a href="#example-1-permutations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: permutations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-copying-is-needed-at-the-goal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why copying is needed at the goal
+        Example 1: permutations
       
     </span>
   </a>
@@ -4704,10 +4715,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#why-undo-order-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why undo order matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-copying-is-needed-at-a-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why copying is needed at a solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-trace-for-1-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual trace for [1, 2, 3]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#termination" class="md-nav__link">
     <span class="md-ellipsis">
       
         Termination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correctness
       
     </span>
   </a>
@@ -4730,17 +4785,6 @@
     <span class="md-ellipsis">
       
         Common failure: incomplete undo
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-you-must-be-able-to-explain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What you must be able to explain
       
     </span>
   </a>
@@ -4841,91 +4885,310 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>explore
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>undo
 </code></pre></div>
-<p>The final step is what distinguishes backtracking from ordinary recursion over immutable inputs. The algorithm modifies a shared or local state and must restore that state before trying the next alternative.</p>
-<h2 id="a-generic-template">A generic template<a class="headerlink" href="#a-generic-template" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">if</span> <span class="n">is_complete</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="n">record</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="k">return</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">available_choices</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="n">apply</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="k">if</span> <span class="n">remains_promising</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>            <span class="n">search</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="n">undo</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<p>The final step distinguishes mutable-state backtracking from ordinary recursion over immutable inputs. The algorithm changes state before a recursive call and must restore exactly the previous state before trying a sibling choice.</p>
+<p>A useful mental model is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>state before choice
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>      ↓ apply
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>state for child branch
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>      ↓ explore
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>state after child returns
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>      ↓ undo
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>state identical to state before choice
 </code></pre></div>
-<p>The template contains five design questions:</p>
+<p>If the final equality fails, sibling branches no longer represent independent alternatives.</p>
+<h2 id="a-generic-template">A generic template<a class="headerlink" href="#a-generic-template" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">if</span> <span class="n">is_complete</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="n">record</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="k">return</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">available_choices</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="n">apply</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="k">if</span> <span class="n">remains_promising</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="n">search</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="n">undo</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+</code></pre></div>
+<p>The template hides several obligations. Before implementing it, answer:</p>
 <ol>
 <li>What exactly is the state?</li>
-<li>When is it complete?</li>
-<li>Which choices are available?</li>
+<li>Which invariant must hold at entry to every recursive call?</li>
+<li>When is the state complete?</li>
+<li>Which choices are legal?</li>
 <li>Which states are promising?</li>
-<li>How is each choice undone exactly?</li>
+<li>How does every recursive call make progress?</li>
+<li>Which mutations must be undone?</li>
+<li>In what order must they be undone?</li>
+<li>Is the search looking for one solution or all solutions?</li>
+<li>How will the explored-state count be analysed?</li>
 </ol>
-<h2 id="example-permutations">Example: permutations<a class="headerlink" href="#example-permutations" title="Permanent link">&para;</a></h2>
-<p>To generate all permutations of distinct values, maintain:</p>
+<h2 id="example-1-permutations">Example 1: permutations<a class="headerlink" href="#example-1-permutations" title="Permanent link">&para;</a></h2>
+<p>Generate all permutations of distinct input values.</p>
+<h3 id="contract">Contract<a class="headerlink" href="#contract" title="Permanent link">&para;</a></h3>
+<p><strong>Input:</strong> a list <code>values</code> containing pairwise distinct values.</p>
+<p><strong>Output:</strong> every permutation of <code>values</code>, exactly once.</p>
+<p><strong>Postcondition:</strong> every result has the same length and elements as the input, with no repetition or omission.</p>
+<p><strong>Side effects:</strong> the input list is not modified.</p>
+<p>A useful mutable state contains:</p>
 <ul>
-<li>a current arrangement;</li>
-<li>a Boolean or set-based record of used elements.</li>
+<li><code>current</code>: the prefix already chosen;</li>
+<li><code>used[index]</code>: whether the input element at that index is already present in <code>current</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">permutations</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">current</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">used</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            <span class="k">return</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>            <span class="k">if</span> <span class="n">used</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>                <span class="k">continue</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            <span class="n">used</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>            <span class="n">current</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>            <span class="n">build</span><span class="p">()</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>            <span class="n">current</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>            <span class="n">used</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="n">build</span><span class="p">()</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="k">return</span> <span class="n">results</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">permutations</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">current</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">used</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>            <span class="k">return</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="k">if</span> <span class="n">used</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>                <span class="k">continue</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            <span class="n">used</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>            <span class="n">current</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            <span class="n">build</span><span class="p">()</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>            <span class="n">current</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>            <span class="n">used</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="n">build</span><span class="p">()</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="k">return</span> <span class="n">results</span>
 </code></pre></div>
-<p>The two undo operations must reverse the two apply operations in the opposite order.</p>
-<h2 id="why-copying-is-needed-at-the-goal">Why copying is needed at the goal<a class="headerlink" href="#why-copying-is-needed-at-the-goal" title="Permanent link">&para;</a></h2>
-<p><code>current</code> is mutated throughout the search. Appending the same list object to <code>results</code> would make every stored result refer to one later-mutated object.</p>
-<p>Therefore:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-</code></pre></div>
-<p>stores a snapshot.</p>
 <h2 id="state-invariant">State invariant<a class="headerlink" href="#state-invariant" title="Permanent link">&para;</a></h2>
-<p>At the start of every call to <code>build</code>:</p>
+<p>At the beginning of every call to <code>build</code>:</p>
 <ul>
-<li><code>current</code> contains exactly the values whose indices are marked in <code>used</code>;</li>
-<li>no index is represented more than once;</li>
-<li>the length of <code>current</code> equals the number of <code>True</code> entries in <code>used</code>.</li>
+<li><code>current</code> contains exactly the values whose indices are marked <code>True</code> in <code>used</code>;</li>
+<li>every marked index appears exactly once in <code>current</code>;</li>
+<li>every unmarked index remains available;</li>
+<li><code>len(current)</code> equals the number of <code>True</code> entries in <code>used</code>.</li>
 </ul>
-<p>Choosing preserves the invariant. Undoing restores the exact state that existed before the choice.</p>
-<h2 id="termination">Termination<a class="headerlink" href="#termination" title="Permanent link">&para;</a></h2>
-<p>Each recursive call increases <code>len(current)</code> by one. The length cannot exceed <code>len(values)</code>. Therefore every branch has finite depth.</p>
-<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h2>
-<p>There are <code>n!</code> complete permutations. Any algorithm that explicitly outputs all of them requires at least proportional output work. The recursion uses <code>O(n)</code> depth, excluding the output list.</p>
-<h2 id="common-failure-incomplete-undo">Common failure: incomplete undo<a class="headerlink" href="#common-failure-incomplete-undo" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">current</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># forgot: used[index] = False</span>
+<p>The choose operations preserve the invariant for the child call. The undo operations restore the invariant for the parent state.</p>
+<h2 id="why-undo-order-matters">Why undo order matters<a class="headerlink" href="#why-undo-order-matters" title="Permanent link">&para;</a></h2>
+<p>Suppose one choice performs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>1. mark index as used
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>2. append its value to current
 </code></pre></div>
-<p>The program then carries information from one branch into another. This is not a minor cleanup bug. It corrupts the meaning of the search state.</p>
+<p>The logical inverse should restore the state consistently. In this example either mutation can technically be reversed first because no code observes the intermediate state, but a safer general rule is:</p>
+<blockquote>
+<p>Undo compound changes in reverse order of application.</p>
+</blockquote>
+<p>This mirrors stack discipline and reduces the chance that one restoration step depends on information already destroyed by another.</p>
+<h2 id="why-copying-is-needed-at-a-solution">Why copying is needed at a solution<a class="headerlink" href="#why-copying-is-needed-at-a-solution" title="Permanent link">&para;</a></h2>
+<p><code>current</code> is one mutable working list reused by all branches. Storing it directly would store multiple references to the same object.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>       <span class="c1"># wrong for this design</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>  <span class="c1"># snapshot of the current solution</span>
+</code></pre></div>
+<p>Backtracking often reuses mutable state precisely to avoid copying at every branch. That makes snapshotting at the output boundary essential.</p>
+<h2 id="manual-trace-for-1-2-3">Manual trace for <code>[1, 2, 3]</code><a class="headerlink" href="#manual-trace-for-1-2-3" title="Permanent link">&para;</a></h2>
+<p>A shortened trace is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[]
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── choose 1 → [1]
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>│   ├── choose 2 → [1, 2]
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>│   │   └── choose 3 → [1, 2, 3] ✓
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>│   │       undo 3 → [1, 2]
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>│   └── undo 2 → [1]
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>│       choose 3 → [1, 3]
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>│       └── choose 2 → [1, 3, 2] ✓
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>└── undo 1 → []
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    choose 2 → ...
+</code></pre></div>
+<p>The important event is not only reaching a leaf. After each child returns, the parent state is exactly what it was before that child choice.</p>
+<h2 id="termination">Termination<a class="headerlink" href="#termination" title="Permanent link">&para;</a></h2>
+<p>Every recursive call increases <code>len(current)</code> by one. The length is bounded by <code>len(values)</code>. Therefore every branch has finite depth at most <code>n</code>.</p>
+<h2 id="correctness">Correctness<a class="headerlink" href="#correctness" title="Permanent link">&para;</a></h2>
+<h3 id="soundness">Soundness<a class="headerlink" href="#soundness" title="Permanent link">&para;</a></h3>
+<p>A result is recorded only when <code>len(current) == n</code>. The invariant guarantees that <code>current</code> contains distinct input elements. Therefore every result is a valid permutation.</p>
+<h3 id="completeness">Completeness<a class="headerlink" href="#completeness" title="Permanent link">&para;</a></h3>
+<p>Take any permutation <code>p</code> of the input. At depth <code>k</code>, the next value of <code>p</code> has not yet been used, so the corresponding branch is available. Following those branches reconstructs <code>p</code>. Because every unused index is considered, no permutation is omitted.</p>
+<h3 id="uniqueness">Uniqueness<a class="headerlink" href="#uniqueness" title="Permanent link">&para;</a></h3>
+<p>Because each input index can be chosen only once per path and every sequence of index choices is unique, no permutation is generated twice when the input elements are distinct.</p>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h2>
+<p>There are <code>n!</code> complete outputs. Writing each length-<code>n</code> permutation already requires <code>Ω(n · n!)</code> output work if full copies are returned.</p>
+<p>The recursion depth is <code>O(n)</code>. The working state uses <code>O(n)</code> space excluding output storage. This illustrates an important distinction:</p>
+<ul>
+<li>search overhead;</li>
+<li>recursion/working-state space;</li>
+<li>output cost.</li>
+</ul>
+<h2 id="common-failure-incomplete-undo">Common failure: incomplete undo<a class="headerlink" href="#common-failure-incomplete-undo" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">current</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># forgot: used[index] = False</span>
+</code></pre></div>
+<p>The next sibling branch sees an index incorrectly marked as unavailable. The algorithm may still output only valid permutations, but completeness is destroyed.</p>
+<p>That is a useful warning: a state-restoration bug does not always produce obviously invalid output. It may silently remove valid solutions.</p>
+<hr />
+<h1 id="example-2-n-queens">Example 2: N-Queens<a class="headerlink" href="#example-2-n-queens" title="Permanent link">&para;</a></h1>
+<p>The queens problem demonstrates backtracking with nontrivial constraints and explicit bookkeeping state.</p>
+<h2 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h2>
+<p>Place <code>n</code> queens on an <code>n × n</code> chessboard so that no two queens share:</p>
+<ul>
+<li>a row;</li>
+<li>a column;</li>
+<li>a descending diagonal;</li>
+<li>an ascending diagonal.</li>
+</ul>
+<p>We place exactly one queen per row, so row conflicts are eliminated by construction.</p>
+<h2 id="contract_1">Contract<a class="headerlink" href="#contract_1" title="Permanent link">&para;</a></h2>
+<p><strong>Input:</strong> integer <code>n</code>.</p>
+<p><strong>Precondition:</strong> <code>n &gt;= 0</code>.</p>
+<p><strong>Output:</strong> one valid placement represented as a list where <code>placement[row]</code> is the chosen column, or <code>None</code> if no placement exists.</p>
+<p><strong>Postcondition when a list is returned:</strong></p>
+<ul>
+<li>its length is <code>n</code>;</li>
+<li>all columns are distinct;</li>
+<li>all values <code>row - column</code> are distinct;</li>
+<li>all values <code>row + column</code> are distinct.</li>
+</ul>
+<p><strong>Side effects:</strong> none outside local working state.</p>
+<h2 id="state-representation">State representation<a class="headerlink" href="#state-representation" title="Permanent link">&para;</a></h2>
+<p>At recursive depth <code>row</code>, maintain:</p>
+<ul>
+<li><code>placement</code>: chosen columns for rows <code>0 .. row-1</code>;</li>
+<li><code>columns</code>: occupied columns;</li>
+<li><code>diag_down</code>: occupied values of <code>row - column</code>;</li>
+<li><code>diag_up</code>: occupied values of <code>row + column</code>.</li>
+</ul>
+<p>The diagonal identifiers work because squares on the same diagonal share one of these expressions.</p>
+<h2 id="pseudocode">Pseudocode<a class="headerlink" href="#pseudocode" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>SEARCH(row)
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    if row = n
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        return success
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    for each column from 0 to n-1
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        if column or either diagonal is occupied
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>            continue
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>        add queen at (row, column)
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>        mark column and diagonals
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        if SEARCH(row + 1) succeeds
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>            return success
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>        remove queen
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        unmark column and diagonals
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    return failure
+</code></pre></div>
+<h2 id="python-implementation">Python implementation<a class="headerlink" href="#python-implementation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">solve_queens</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"n must be non-negative"</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">placement</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">columns</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">diag_down</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">diag_up</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>            <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>            <span class="n">down</span> <span class="o">=</span> <span class="n">row</span> <span class="o">-</span> <span class="n">column</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>            <span class="n">up</span> <span class="o">=</span> <span class="n">row</span> <span class="o">+</span> <span class="n">column</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>            <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span> <span class="ow">or</span> <span class="n">down</span> <span class="ow">in</span> <span class="n">diag_down</span> <span class="ow">or</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">diag_up</span><span class="p">:</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>                <span class="k">continue</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>            <span class="n">placement</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>            <span class="n">columns</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>            <span class="n">diag_down</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">down</span><span class="p">)</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>            <span class="n">diag_up</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>            <span class="k">if</span> <span class="n">search</span><span class="p">(</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>                <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>            <span class="n">placement</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>            <span class="n">columns</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>            <span class="n">diag_down</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">down</span><span class="p">)</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>            <span class="n">diag_up</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>    <span class="k">return</span> <span class="n">placement</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">search</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+</code></pre></div>
+<h2 id="state-invariant_1">State invariant<a class="headerlink" href="#state-invariant_1" title="Permanent link">&para;</a></h2>
+<p>At entry to <code>search(row)</code>:</p>
+<ul>
+<li><code>len(placement) == row</code>;</li>
+<li>there is exactly one queen in every earlier row;</li>
+<li><code>columns</code> contains exactly the columns used by <code>placement</code>;</li>
+<li><code>diag_down</code> contains exactly the occupied descending-diagonal identifiers;</li>
+<li><code>diag_up</code> contains exactly the occupied ascending-diagonal identifiers;</li>
+<li>no two queens in <code>placement</code> attack each other.</li>
+</ul>
+<p>This invariant is stronger than “the code seems consistent”. It states what every state variable means.</p>
+<h2 id="trace-fragment-for-n-4">Trace fragment for <code>n = 4</code><a class="headerlink" href="#trace-fragment-for-n-4" title="Permanent link">&para;</a></h2>
+<p>One branch begins:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>row 0: choose column 0
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>placement = [0]
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>row 1:
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  column 0 blocked by column
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  column 1 blocked by diagonal
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>  choose column 2
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>placement = [0, 2]
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>row 2:
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  every column is blocked
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  dead end
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>undo row 1 choice
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>placement = [0]
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>row 1: choose column 3
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>placement = [0, 3]
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>...
+</code></pre></div>
+<p>The important observation is that after <code>[0, 2]</code> fails, the algorithm restores not only <code>placement</code> but also all three occupancy sets before trying column <code>3</code>.</p>
+<h2 id="correctness_1">Correctness<a class="headerlink" href="#correctness_1" title="Permanent link">&para;</a></h2>
+<h3 id="soundness_1">Soundness<a class="headerlink" href="#soundness_1" title="Permanent link">&para;</a></h3>
+<p>A queen is placed only when its column and both diagonals are unoccupied. The invariant therefore guarantees that every maintained partial placement is conflict-free. A solution is accepted only after all <code>n</code> rows have been processed, so any returned placement is valid.</p>
+<h3 id="completeness_1">Completeness<a class="headerlink" href="#completeness_1" title="Permanent link">&para;</a></h3>
+<p>For each row, the algorithm considers every column not excluded by already placed queens. Any valid full solution has one safe column in each row relative to its earlier rows. Therefore the path corresponding to any valid solution is never removed by the safety checks.</p>
+<p>If the procedure returns failure after trying every safe choice, no valid completion exists from that state.</p>
+<h2 id="termination_1">Termination<a class="headerlink" href="#termination_1" title="Permanent link">&para;</a></h2>
+<p>Every recursive call advances from <code>row</code> to <code>row + 1</code>. Since <code>row &lt;= n</code>, recursion depth is at most <code>n</code>. Every loop has exactly <code>n</code> candidate columns, so each finite call also finishes.</p>
+<h2 id="complexity_1">Complexity<a class="headerlink" href="#complexity_1" title="Permanent link">&para;</a></h2>
+<p>A coarse upper bound considers at most <code>n</code> choices at each of <code>n</code> levels, giving <code>O(n^n)</code> candidate paths. The actual space is much smaller because each column can be used only once and diagonal constraints prune many branches. A tighter simple bound based only on distinct columns is <code>O(n!)</code> candidate placements before considering diagonal pruning.</p>
+<p>Safety checks using sets are expected <code>O(1)</code> each. Working memory is <code>O(n)</code> for placement, occupancy sets, and recursion depth, excluding any stored outputs.</p>
+<p>The key lesson is that the complexity of backtracking is controlled by the number of states actually explored, not merely by the cost of one recursive call.</p>
+<h2 id="searching-for-one-solution-versus-all-solutions">Searching for one solution versus all solutions<a class="headerlink" href="#searching-for-one-solution-versus-all-solutions" title="Permanent link">&para;</a></h2>
+<p>The implementation above returns after the first solution. To enumerate all solutions:</p>
+<ul>
+<li>record a copy at <code>row == n</code>;</li>
+<li>do not return immediately after a successful child;</li>
+<li>continue restoring and exploring sibling branches.</li>
+</ul>
+<p>This changes output size and therefore changes the unavoidable running-time lower bound.</p>
+<h2 id="when-immutable-state-is-an-alternative">When immutable state is an alternative<a class="headerlink" href="#when-immutable-state-is-an-alternative" title="Permanent link">&para;</a></h2>
+<p>Backtracking does not require mutation. One could pass fresh copies:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">search</span><span class="p">(</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">placement</span> <span class="o">+</span> <span class="p">[</span><span class="n">column</span><span class="p">],</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">columns</span> <span class="o">|</span> <span class="p">{</span><span class="n">column</span><span class="p">},</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="n">diag_down</span> <span class="o">|</span> <span class="p">{</span><span class="n">down</span><span class="p">},</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">diag_up</span> <span class="o">|</span> <span class="p">{</span><span class="n">up</span><span class="p">},</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="p">)</span>
+</code></pre></div>
+<p>This makes sibling independence easier to reason about but allocates more objects. Mutable choose–undo style is often more efficient, while immutable style can be simpler and safer for small educational examples.</p>
+<p>The representation choice is part of algorithm design.</p>
 <h2 id="what-you-must-be-able-to-explain">What you must be able to explain<a class="headerlink" href="#what-you-must-be-able-to-explain" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Why is undo necessary?</li>
-<li>Which operations must be reversed?</li>
-<li>Why does the order of undo matter?</li>
-<li>What invariant connects <code>current</code> and <code>used</code>?</li>
-<li>Why is storing a copy different from storing the mutable working list?</li>
+<li>Why is undo necessary in mutable-state backtracking?</li>
+<li>What invariant connects the visible partial solution with bookkeeping state?</li>
+<li>Why can incomplete undo destroy completeness without producing invalid outputs?</li>
+<li>Why must a stored solution often be copied?</li>
+<li>How does a decreasing or increasing measure prove termination?</li>
+<li>Why is <code>O(number of explored states)</code> often a better starting point than guessing a polynomial expression?</li>
+<li>How do one-solution and all-solutions searches differ in control flow and output cost?</li>
+<li>What are the trade-offs between copying state and mutating then undoing it?</li>
 </ul>
 
 
