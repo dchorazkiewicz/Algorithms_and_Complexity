@@ -4525,10 +4525,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#learning-outcomes" class="md-nav__link">
+  <a href="#what-you-should-be-able-to-do-after-this-module" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Learning outcomes
+        What you should be able to do after this module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept map
       
     </span>
   </a>
@@ -4540,6 +4551,50 @@
     <span class="md-ellipsis">
       
         Learning path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-study-this-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to study this module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostic-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostic questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mastery-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mastery checklist
       
     </span>
   </a>
@@ -4634,44 +4689,186 @@
 
 <h1 id="module-10-computational-complexity-and-hard-problems">Module 10 — Computational Complexity and Hard Problems<a class="headerlink" href="#module-10-computational-complexity-and-hard-problems" title="Permanent link">&para;</a></h1>
 <h2 id="why-this-module-matters">Why this module matters<a class="headerlink" href="#why-this-module-matters" title="Permanent link">&para;</a></h2>
-<p>Correctness answers whether an algorithm solves the stated problem. Complexity asks how the required resources grow as the input grows. This distinction becomes decisive when two correct algorithms behave very differently beyond small examples.</p>
-<p>The module also introduces a second level of reasoning. Sometimes the difficulty is not choosing among known implementations, but understanding whether an entire problem family appears to resist efficient exact solution.</p>
+<p>Correctness answers whether an algorithm solves the stated problem. Complexity asks how the resources required by that algorithm grow as the input grows. Two algorithms may be equally correct and still differ so strongly in growth that one remains useful at scale while the other becomes infeasible.</p>
+<p>This module develops complexity at two levels.</p>
+<p>The first level is <strong>algorithm analysis</strong>. We define input size, choose a cost model, count operations, simplify the resulting functions asymptotically, and distinguish time, auxiliary space, output cost, best case, worst case, expected cost, and amortised cost.</p>
+<p>The second level is <strong>problem complexity</strong>. Instead of asking only whether one implementation is fast, we ask whether an entire family of problems appears to resist efficient exact solution. This leads to decision problems, polynomial verification, polynomial-time reductions, and the classes P, NP, NP-hard, and NP-complete.</p>
+<p>The transition between the two levels is essential:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>program execution
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>      ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>operation count
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      ↓
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>growth function
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      ↓
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>asymptotic class
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>      ↓
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>comparison of algorithms
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>      ↓
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>tractability of problem families
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>      ↓
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>verification and reductions
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>      ↓
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>P, NP, NP-hard, NP-complete
+</code></pre></div>
 <h2 id="syllabus-scope">Syllabus scope<a class="headerlink" href="#syllabus-scope" title="Permanent link">&para;</a></h2>
 <p>This module develops the tenth course-content block:</p>
 <blockquote>
 <p>Time-complexity analysis. Computational complexity. Big O notation. Examples of complexity calculations. Algorithmically difficult problems. N- and NP-complete problems.</p>
 </blockquote>
-<p>The syllabus uses the phrase “N- and NP-complete problems”. In standard complexity terminology the relevant classes are <strong>P</strong>, <strong>NP</strong>, <strong>NP-hard</strong>, and <strong>NP-complete</strong>. This module explains those terms while preserving the syllabus emphasis on hard problems.</p>
-<h2 id="learning-outcomes">Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permanent link">&para;</a></h2>
+<p>The source syllabus uses the phrase <strong>“N- and NP-complete problems”</strong>. Standard complexity theory does not use a class <code>N</code> in this context. The course therefore treats that phrase through the established terminology <strong>P</strong>, <strong>NP</strong>, <strong>NP-hard</strong>, and <strong>NP-complete</strong>, while preserving the intended syllabus emphasis on computationally hard problems.</p>
+<h2 id="what-you-should-be-able-to-do-after-this-module">What you should be able to do after this module<a class="headerlink" href="#what-you-should-be-able-to-do-after-this-module" title="Permanent link">&para;</a></h2>
 <p>After completing the module, you should be able to:</p>
 <ol>
-<li>define input size explicitly;</li>
-<li>distinguish time, auxiliary space, and output cost;</li>
-<li>count dominant operations in loops and recursive algorithms;</li>
-<li>use Big O, Big Omega, and Big Theta correctly;</li>
-<li>compare common growth classes;</li>
-<li>analyse sequential, nested, logarithmic, and divide-and-conquer patterns;</li>
-<li>distinguish best, worst, average, and amortised analysis;</li>
-<li>explain tractability as a growth-rate question;</li>
+<li>define input size explicitly for arrays, numbers, matrices, graphs, and output-generating problems;</li>
+<li>distinguish numeric magnitude from representation length, especially for integer inputs;</li>
+<li>state a cost model before claiming that an operation is constant time;</li>
+<li>distinguish time complexity, auxiliary space, total memory, and output-sensitive cost;</li>
+<li>derive operation-count functions for sequential, nested, triangular, logarithmic, and input-dependent loops;</li>
+<li>use summations to justify non-trivial loop counts;</li>
+<li>use Big O, Big Omega, and Big Theta as asymptotic bounds rather than informal labels;</li>
+<li>prove simple asymptotic relations by choosing suitable constants and thresholds;</li>
+<li>distinguish tight bounds from valid but loose upper bounds;</li>
+<li>derive recurrences from recursive code;</li>
+<li>solve standard recurrences by expansion and recursion-tree reasoning;</li>
+<li>use the Master-Theorem pattern when its assumptions are satisfied and recognise when it does not apply;</li>
+<li>separate total recursive work from recursion depth and stack-space cost;</li>
+<li>compare constant, logarithmic, linear, linearithmic, polynomial, exponential, and factorial growth;</li>
+<li>explain crossover points and why asymptotic superiority does not imply superiority for every practical input size;</li>
+<li>distinguish best-case, worst-case, average-case, expected, and amortised analyses;</li>
+<li>prove constant amortised append for geometric dynamic-array growth and analyse a multipop stack sequence;</li>
+<li>distinguish polynomial from pseudopolynomial time;</li>
 <li>distinguish decision, search, and optimisation formulations;</li>
-<li>explain P, NP, polynomial verification, reductions, NP-hardness, and NP-completeness at an introductory level.</li>
+<li>explain why a large candidate space does not by itself prove computational hardness;</li>
+<li>define P and NP through polynomial-time solution and verification;</li>
+<li>define polynomial-time many-one reduction and read its direction correctly;</li>
+<li>distinguish NP-hardness from NP-completeness;</li>
+<li>audit a proposed NP-completeness proof for membership, construction, polynomial cost, and both directions of correctness;</li>
+<li>carry out complete introductory reductions rather than only naming source and target problems;</li>
+<li>state precisely what an NP-completeness result does and does not prove.</li>
 </ol>
+<h2 id="concept-map">Concept map<a class="headerlink" href="#concept-map" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>algorithm analysis
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── input model
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── input size
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── representation length
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   └── cost model
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── resource functions
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── time
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── auxiliary space
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   └── output cost
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>├── asymptotic notation
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   ├── O  : upper bound
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   ├── Ω  : lower bound
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   └── Θ  : tight bound
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>├── execution patterns
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│   ├── iteration
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   ├── summations
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   ├── logarithmic progress
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│   └── recursion / recurrences
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>└── analysis regimes
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    ├── best / worst
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    ├── average / expected
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    └── amortised
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>problem complexity
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>├── polynomial tractability
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>├── decision / search / optimisation
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>├── certificates and verification
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>├── P and NP
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>├── polynomial reductions
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>├── NP-hard
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>└── NP-complete
+</code></pre></div>
 <h2 id="learning-path">Learning path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h2>
+<h3 id="1-cost-models-and-input-size">1. Cost models and input size<a class="headerlink" href="#1-cost-models-and-input-size" title="Permanent link">&para;</a></h3>
+<p>Before counting anything, define what the input size means and which operations are treated as elementary. Learn why bit length matters for numeric problems and why output size can impose an unavoidable lower bound.</p>
+<h3 id="2-asymptotic-notation">2. Asymptotic notation<a class="headerlink" href="#2-asymptotic-notation" title="Permanent link">&para;</a></h3>
+<p>Study <code>O</code>, <code>Ω</code>, and <code>Θ</code> formally enough to prove simple bounds. Learn the difference between a tight description and a merely valid upper bound, and separate asymptotic reasoning from engineering constants.</p>
+<h3 id="3-counting-iterative-algorithms">3. Counting iterative algorithms<a class="headerlink" href="#3-counting-iterative-algorithms" title="Permanent link">&para;</a></h3>
+<p>Translate loop structure into exact or summation-based counts. Work with scans, consecutive loops, rectangular and triangular nests, logarithmic loops, mixed patterns, and adjacency-list traversals.</p>
+<h3 id="4-recursive-complexity-and-recurrences">4. Recursive complexity and recurrences<a class="headerlink" href="#4-recursive-complexity-and-recurrences" title="Permanent link">&para;</a></h3>
+<p>Derive recurrence equations from code and solve representative forms by expansion, level-cost reasoning, recursion trees, and the Master-Theorem pattern where appropriate.</p>
+<h3 id="5-growth-classes-and-practical-scalability">5. Growth classes and practical scalability<a class="headerlink" href="#5-growth-classes-and-practical-scalability" title="Permanent link">&para;</a></h3>
+<p>Compare common growth rates, doubling behaviour, constants, crossover points, multidimensional input parameters, and the practical meaning of polynomial versus exponential growth.</p>
+<h3 id="6-best-worst-average-expected-and-amortised-analysis">6. Best, worst, average, expected, and amortised analysis<a class="headerlink" href="#6-best-worst-average-expected-and-amortised-analysis" title="Permanent link">&para;</a></h3>
+<p>Separate input-case analysis from probabilistic expectation and from deterministic amortised guarantees. Use dynamic arrays and multipop stacks as complete amortised examples.</p>
+<h3 id="7-tractability-and-hard-problems">7. Tractability and hard problems<a class="headerlink" href="#7-tractability-and-hard-problems" title="Permanent link">&para;</a></h3>
+<p>Move from the cost of one algorithm to the complexity of problem families. Distinguish decision, search, and optimisation formulations; exact, approximation, parameterised, and heuristic approaches; and polynomial from pseudopolynomial time.</p>
+<h3 id="8-p-np-reductions-and-np-completeness">8. P, NP, reductions, and NP-completeness<a class="headerlink" href="#8-p-np-reductions-and-np-completeness" title="Permanent link">&para;</a></h3>
+<p>Study certificates, verification, P, NP, polynomial reductions, NP-hardness, and NP-completeness. Practise reduction direction and complete the proof obligations on concrete examples.</p>
+<h3 id="9-worked-examples">9. Worked examples<a class="headerlink" href="#9-worked-examples" title="Permanent link">&para;</a></h3>
+<p>Integrate operation counting, summations, recurrence solving, output lower bounds, amortised analysis, verification, and reductions in complete analyses.</p>
+<h3 id="10-module-review">10. Module review<a class="headerlink" href="#10-module-review" title="Permanent link">&para;</a></h3>
+<p>Finish with calculation exercises, proof tasks, false-claim diagnosis, verifier design, reduction audits, and an end-of-course mastery checklist.</p>
+<h2 id="how-to-study-this-module">How to study this module<a class="headerlink" href="#how-to-study-this-module" title="Permanent link">&para;</a></h2>
+<p>For every complexity problem, use the following discipline:</p>
 <ol>
-<li>Cost models and input size.</li>
-<li>Asymptotic notation.</li>
-<li>Counting iterative algorithms.</li>
-<li>Recursive complexity and recurrences.</li>
-<li>Growth classes and practical scalability.</li>
-<li>Best, worst, average, and amortised analysis.</li>
-<li>Tractable and intractable problem families.</li>
-<li>P, NP, reductions, and NP-completeness.</li>
-<li>Worked examples.</li>
-<li>Module review.</li>
+<li>define the input-size variable or variables;</li>
+<li>state the representation assumptions;</li>
+<li>choose the operation or resource being counted;</li>
+<li>identify the execution pattern;</li>
+<li>derive a count, sum, or recurrence before simplifying it;</li>
+<li>distinguish the case or expectation being analysed;</li>
+<li>state time and space separately;</li>
+<li>use the tightest justified asymptotic class;</li>
+<li>identify output lower bounds where relevant;</li>
+<li>state what assumptions would invalidate the analysis.</li>
 </ol>
+<p>For every hardness or reduction problem:</p>
+<ol>
+<li>state the decision problem precisely;</li>
+<li>define what a certificate contains if NP membership is claimed;</li>
+<li>count verification work;</li>
+<li>choose the reduction direction deliberately;</li>
+<li>describe the instance transformation explicitly;</li>
+<li>bound the transformation time and output size polynomially;</li>
+<li>prove yes-to-yes;</li>
+<li>prove no-to-no, or equivalently the reverse implication needed for the iff statement;</li>
+<li>distinguish the conclusion “NP-hard” from “NP-complete”.</li>
+</ol>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>You should already be able to trace loops and recursion, reason about arrays, linked structures, trees, heaps, and graphs, and read basic Python. Earlier modules have used complexity informally; this module makes that reasoning systematic.</p>
+<h2 id="diagnostic-questions">Diagnostic questions<a class="headerlink" href="#diagnostic-questions" title="Permanent link">&para;</a></h2>
+<p>Before beginning, try to answer these questions:</p>
+<ol>
+<li>If an algorithm receives an integer <code>N</code>, is the input size necessarily <code>N</code>?</li>
+<li>Why is <code>3n + 7 ∈ O(n²)</code> true but usually unhelpful?</li>
+<li>How would you prove <code>3n + 7 ∈ O(n)</code> from the definition?</li>
+<li>Why does a triangular nested loop execute about half as many iterations as an <code>n × n</code> loop yet remain quadratic?</li>
+<li>Why can two recursive calls still lead to linear total time?</li>
+<li>What is the difference between recursion-tree size and maximum recursion depth?</li>
+<li>Why is <code>O(nB)</code> not necessarily polynomial in the encoded input size?</li>
+<li>Why is average-case analysis impossible without a probability model?</li>
+<li>Why is amortised <code>O(1)</code> not the same as expected <code>O(1)</code>?</li>
+<li>Why does <code>2^n</code> possible candidates not prove NP-hardness?</li>
+<li>What is the difference between solving a decision problem and verifying a proposed yes-answer?</li>
+<li>If <code>A ≤p B</code>, which problem is being shown to be at least as hard?</li>
+<li>What two obligations distinguish an NP-completeness proof from an NP-hardness proof?</li>
+</ol>
+<p>Return to these questions after completing the module.</p>
+<h2 id="mastery-checklist">Mastery checklist<a class="headerlink" href="#mastery-checklist" title="Permanent link">&para;</a></h2>
+<p>You have mastered this module when you can honestly say:</p>
+<ul>
+<li>[ ] I define input size before writing a complexity class.</li>
+<li>[ ] I can explain when a unit-cost assumption is and is not reasonable.</li>
+<li>[ ] I can derive loop counts rather than guessing from indentation depth.</li>
+<li>[ ] I can prove simple <code>O</code>, <code>Ω</code>, and <code>Θ</code> relations from their definitions.</li>
+<li>[ ] I can distinguish a tight bound from a loose bound.</li>
+<li>[ ] I can derive and solve standard recurrences.</li>
+<li>[ ] I can separate total work from recursion depth and stack space.</li>
+<li>[ ] I can explain practical crossover points without confusing them with asymptotic classes.</li>
+<li>[ ] I can distinguish best, worst, average, expected, and amortised cost.</li>
+<li>[ ] I can prove a basic amortised result over a sequence of operations.</li>
+<li>[ ] I can explain polynomial versus pseudopolynomial time.</li>
+<li>[ ] I can distinguish decision, search, and optimisation problems.</li>
+<li>[ ] I can define P, NP, NP-hard, and NP-complete precisely at the course level.</li>
+<li>[ ] I can read a polynomial reduction in the correct direction.</li>
+<li>[ ] I can verify every obligation in a complete reduction proof.</li>
+<li>[ ] I can state what remains unknown about <code>P</code> versus <code>NP</code> without overstating current results.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Central discipline</p>
-<p>Never write a complexity class before stating what the input size means and which operation is being counted.</p>
+<p>Never write a complexity class before stating what the input size means and which resource is being counted. Never claim NP-hardness before checking the direction and correctness of the reduction.</p>
 </div>
 
 
