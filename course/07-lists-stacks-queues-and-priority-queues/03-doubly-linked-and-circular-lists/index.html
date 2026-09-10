@@ -4844,13 +4844,13 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">"T"</span><span class="p">)</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nd">@dataclass</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">DNode</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">value</span><span class="p">:</span> <span class="n">T</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">previous</span><span class="p">:</span> <span class="s2">&quot;DNode[T] | None&quot;</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="nb">next</span><span class="p">:</span> <span class="s2">&quot;DNode[T] | None&quot;</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">previous</span><span class="p">:</span> <span class="s2">"DNode[T] | None"</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="nb">next</span><span class="p">:</span> <span class="s2">"DNode[T] | None"</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
 <h2 id="core-invariant">Core invariant<a class="headerlink" href="#core-invariant" title="Permanent link">&para;</a></h2>
 <p>For every adjacent pair <code>a</code> and <code>b</code>:</p>

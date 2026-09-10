@@ -5164,7 +5164,7 @@
 <p>The remainder operator is especially important in algorithms:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>      <span class="c1"># even</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">value</span> <span class="o">%</span> <span class="mi">10</span>          <span class="c1"># final decimal digit</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">first</span> <span class="o">%</span> <span class="n">second</span>      <span class="c1"># Euclid&#39;s algorithm</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">first</span> <span class="o">%</span> <span class="n">second</span>      <span class="c1"># Euclid's algorithm</span>
 </code></pre></div>
 <h3 id="python-and-mathematical-integers">Python and mathematical integers<a class="headerlink" href="#python-and-mathematical-integers" title="Permanent link">&para;</a></h3>
 <p>Python integers grow as needed, limited by available memory. In C++, a fixed-width integer type has bounded range and may overflow.</p>
@@ -5214,10 +5214,10 @@
 <hr />
 <h2 id="6-characters-and-strings">6. Characters and strings<a class="headerlink" href="#6-characters-and-strings" title="Permanent link">&para;</a></h2>
 <p>A character represents one textual symbol conceptually. Python uses strings of length one rather than a separate character type:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">letter</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">letter</span> <span class="o">=</span> <span class="s2">"A"</span>
 </code></pre></div>
 <p>A string is a sequence of characters:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;algorithm&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">word</span> <span class="o">=</span> <span class="s2">"algorithm"</span>
 </code></pre></div>
 <p>This makes strings compound at the algorithmic level because they contain ordered components.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count_letter</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -5298,15 +5298,15 @@
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="n">passed</span><span class="p">:</span> <span class="nb">bool</span>
 </code></pre></div>
 <p>An instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;Ada&quot;</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">"Ada"</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Named fields express meaning better than positional indices such as:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">[</span><span class="s2">&quot;Ada&quot;</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">[</span><span class="s2">"Ada"</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
 </code></pre></div>
 <p>Algorithms over records often select, filter, aggregate, or sort by one field.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">highest_score</span><span class="p">(</span><span class="n">students</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Student</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Student</span><span class="p">:</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">students</span><span class="p">:</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;students must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"students must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="n">best</span> <span class="o">=</span> <span class="n">students</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>

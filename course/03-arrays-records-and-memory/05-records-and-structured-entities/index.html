@@ -4976,7 +4976,7 @@
 <hr />
 <h2 id="1-positional-representation-can-hide-meaning">1. Positional representation can hide meaning<a class="headerlink" href="#1-positional-representation-can-hide-meaning" title="Permanent link">&para;</a></h2>
 <p>A student represented as a tuple:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">student</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1042</span><span class="p">,</span> <span class="s2">&quot;Marta&quot;</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">student</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1042</span><span class="p">,</span> <span class="s2">"Marta"</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">)</span>
 </code></pre></div>
 <p>requires the reader to remember:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>position 0 = identifier
@@ -5017,7 +5017,7 @@
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
 </code></pre></div>
 <p>Creating a value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="mi">1042</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Marta&quot;</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">87.5</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="mi">1042</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Marta"</span><span class="p">,</span> <span class="n">score</span><span class="o">=</span><span class="mf">87.5</span><span class="p">)</span>
 </code></pre></div>
 <p>Accessing fields:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -5035,7 +5035,7 @@
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">};</span>
 </code></pre></div>
 <p>Usage:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">{</span><span class="mi">1042</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Marta&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">87.5</span><span class="p">};</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">{</span><span class="mi">1042</span><span class="p">,</span><span class="w"> </span><span class="s">"Marta"</span><span class="p">,</span><span class="w"> </span><span class="mf">87.5</span><span class="p">};</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">student</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">90.0</span><span class="p">;</span>
 </code></pre></div>
 <p>The abstract record idea is the same. Concrete copying, memory layout, construction, and ownership rules depend on the language and field types.</p>
@@ -5060,27 +5060,27 @@
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;identifier must be positive&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"identifier must be positive"</span><span class="p">)</span>
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;name must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"name must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;score must be between 0 and 100&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"score must be between 0 and 100"</span><span class="p">)</span>
 </code></pre></div>
 <p>The invariant is stronger than the separate type annotations.</p>
 <hr />
 <h2 id="6-arrays-of-records">6. Arrays of records<a class="headerlink" href="#6-arrays-of-records" title="Permanent link">&para;</a></h2>
 <p>Records and arrays are often combined:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">students</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">Student</span><span class="p">(</span><span class="mi">1042</span><span class="p">,</span> <span class="s2">&quot;Marta&quot;</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">),</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">Student</span><span class="p">(</span><span class="mi">1057</span><span class="p">,</span> <span class="s2">&quot;Piotr&quot;</span><span class="p">,</span> <span class="mf">72.0</span><span class="p">),</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">Student</span><span class="p">(</span><span class="mi">1081</span><span class="p">,</span> <span class="s2">&quot;Alicja&quot;</span><span class="p">,</span> <span class="mf">91.0</span><span class="p">),</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">Student</span><span class="p">(</span><span class="mi">1042</span><span class="p">,</span> <span class="s2">"Marta"</span><span class="p">,</span> <span class="mf">87.5</span><span class="p">),</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">Student</span><span class="p">(</span><span class="mi">1057</span><span class="p">,</span> <span class="s2">"Piotr"</span><span class="p">,</span> <span class="mf">72.0</span><span class="p">),</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">Student</span><span class="p">(</span><span class="mi">1081</span><span class="p">,</span> <span class="s2">"Alicja"</span><span class="p">,</span> <span class="mf">91.0</span><span class="p">),</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">]</span>
 </code></pre></div>
 <p>The array gives ordered access to many students. Each record gives named access to one student's fields.</p>
 <p>Example: average score.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">average_score</span><span class="p">(</span><span class="n">students</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Student</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">students</span><span class="p">:</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;students must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"students must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
@@ -5111,7 +5111,7 @@
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">new_score</span> <span class="o">=</span> <span class="n">student</span><span class="o">.</span><span class="n">score</span> <span class="o">+</span> <span class="n">bonus</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">new_score</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;updated score would be invalid&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"updated score would be invalid"</span><span class="p">)</span>
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="n">student</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">new_score</span>
 </code></pre></div>
@@ -5129,7 +5129,7 @@
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">summarise</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">RangeSummary</span><span class="p">:</span>
 <a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"values must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
 <a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="n">minimum</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    <span class="n">maximum</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -5166,9 +5166,9 @@
 <h2 id="11-records-versus-dictionaries">11. Records versus dictionaries<a class="headerlink" href="#11-records-versus-dictionaries" title="Permanent link">&para;</a></h2>
 <p>Python dictionaries can also represent named data:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">student</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="mi">1042</span><span class="p">,</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Marta&quot;</span><span class="p">,</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="mf">87.5</span><span class="p">,</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="s2">"identifier"</span><span class="p">:</span> <span class="mi">1042</span><span class="p">,</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Marta"</span><span class="p">,</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="s2">"score"</span><span class="p">:</span> <span class="mf">87.5</span><span class="p">,</span>
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="p">}</span>
 </code></pre></div>
 <p>This is flexible, but field names are ordinary runtime keys. A <code>dataclass</code> gives a more explicit fixed structure, clearer type annotations, and better support for tooling.</p>

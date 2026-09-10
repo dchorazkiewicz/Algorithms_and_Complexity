@@ -5262,7 +5262,7 @@ P \;\Rightarrow\; \text{algorithm} \;\Rightarrow\; Q,
 <p>Consider:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"values must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 </code></pre></div>
@@ -5424,7 +5424,7 @@ P \;\Rightarrow\; \text{algorithm} \;\Rightarrow\; Q,
 <h3 id="python-implementation-with-validation">Python implementation with validation<a class="headerlink" href="#python-implementation-with-validation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">numerator</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="k">if</span> <span class="n">denominator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;denominator must not be zero&quot;</span><span class="p">)</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"denominator must not be zero"</span><span class="p">)</span>
 <a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
 </code></pre></div>
@@ -5440,7 +5440,7 @@ P \;\Rightarrow\; \text{algorithm} \;\Rightarrow\; Q,
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="k">pass</span>
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;division by zero should be rejected&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"division by zero should be rejected"</span><span class="p">)</span>
 </code></pre></div>
 <p>The tests are not arbitrary examples. They correspond to ordinary values, signs, zero numerator, and violation of the precondition.</p>
 <hr />
@@ -5448,7 +5448,7 @@ P \;\Rightarrow\; \text{algorithm} \;\Rightarrow\; Q,
 <p>Consider:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_index_of_maximum</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"values must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="n">best_index</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>

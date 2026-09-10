@@ -5798,7 +5798,7 @@
 <p>These cases test different assumptions. They help clarify that the function counts occurrences, not distinct values, and that zero is not considered positive.</p>
 <h3 id="invalid-or-unexpected-input">Invalid or unexpected input<a class="headerlink" href="#invalid-or-unexpected-input" title="Permanent link">&para;</a></h3>
 <p>What should happen for:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="n">count_positive</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="n">count_positive</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
 <p>The source function does not define a custom response. Python will eventually fail when comparing the string with zero.</p>
 <p>That behaviour may be acceptable in an introductory example, but a production contract may require explicit validation or a different type design.</p>

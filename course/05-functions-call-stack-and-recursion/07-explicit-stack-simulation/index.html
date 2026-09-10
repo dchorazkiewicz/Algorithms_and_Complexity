@@ -4917,7 +4917,7 @@
 <h2 id="factorial-with-an-explicit-stack">Factorial with an explicit stack<a class="headerlink" href="#factorial-with-an-explicit-stack" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">factorial_with_stack</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"number must be non-negative"</span><span class="p">)</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">pending</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
@@ -4941,7 +4941,7 @@
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nd">@dataclass</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">value</span><span class="p">:</span> <span class="nb">int</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Node&quot;</span><span class="p">]</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s2">"Node"</span><span class="p">]</span>
 </code></pre></div>
 <p>Recursive preorder:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">preorder</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>

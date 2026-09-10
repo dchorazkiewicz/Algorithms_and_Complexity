@@ -5191,11 +5191,11 @@
 <p>A value may be both positive and even, so two independent <code>if</code> statements are appropriate.</p>
 <p>By contrast:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;negative&quot;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">"negative"</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;zero&quot;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">"zero"</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;positive&quot;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">"positive"</span>
 </code></pre></div>
 <p>Only one category applies, so an exclusive chain is appropriate.</p>
 <p>Using <code>elif</code> where conditions are not exclusive can silently skip required actions.</p>
@@ -5263,7 +5263,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">halving_steps</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be positive&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"number must be positive"</span><span class="p">)</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
@@ -5345,11 +5345,11 @@
 <p>Monolithic version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_summary</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">scores</span><span class="p">:</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;scores must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"scores must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
 <a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>        <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;score out of range&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"score out of range"</span><span class="p">)</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
 <a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
@@ -5362,17 +5362,17 @@
 <a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>        <span class="n">passed</span> <span class="o">=</span> <span class="kc">False</span>
 <a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>
-<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;average&quot;</span><span class="p">:</span> <span class="n">average</span><span class="p">,</span> <span class="s2">&quot;passed&quot;</span><span class="p">:</span> <span class="n">passed</span><span class="p">}</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"average"</span><span class="p">:</span> <span class="n">average</span><span class="p">,</span> <span class="s2">"passed"</span><span class="p">:</span> <span class="n">passed</span><span class="p">}</span>
 </code></pre></div>
 <p>This is understandable, but several responsibilities are mixed.</p>
 <p>Decomposed version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">validate_scores</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">scores</span><span class="p">:</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;scores must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"scores must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">:</span>
 <a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>        <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;score out of range&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"score out of range"</span><span class="p">)</span>
 <a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
 <a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
 <a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -5391,8 +5391,8 @@
 <a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>    <span class="n">average_score</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
 <a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>
 <a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>    <span class="k">return</span> <span class="p">{</span>
-<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>        <span class="s2">&quot;average&quot;</span><span class="p">:</span> <span class="n">average_score</span><span class="p">,</span>
-<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>        <span class="s2">&quot;passed&quot;</span><span class="p">:</span> <span class="n">has_passed</span><span class="p">(</span><span class="n">average_score</span><span class="p">),</span>
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>        <span class="s2">"average"</span><span class="p">:</span> <span class="n">average_score</span><span class="p">,</span>
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>        <span class="s2">"passed"</span><span class="p">:</span> <span class="n">has_passed</span><span class="p">(</span><span class="n">average_score</span><span class="p">),</span>
 <a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>    <span class="p">}</span>
 </code></pre></div>
 <h3 id="benefits-of-decomposition">Benefits of decomposition<a class="headerlink" href="#benefits-of-decomposition" title="Permanent link">&para;</a></h3>
@@ -5438,11 +5438,11 @@
 <p>Duplication creates multiple places where the same rule must remain consistent.</p>
 <p>Bad example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pass&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"pass"</span><span class="p">)</span>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># later</span>
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">save_result</span><span class="p">(</span><span class="s2">&quot;pass&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">save_result</span><span class="p">(</span><span class="s2">"pass"</span><span class="p">)</span>
 </code></pre></div>
 <p>The two conditions differ. One treats <code>50</code> as passing, the other does not.</p>
 <p>Better:</p>
@@ -5461,12 +5461,12 @@
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="k">if</span> <span class="n">values</span><span class="p">:</span>
 <a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>        <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"values must not be empty"</span><span class="p">)</span>
 </code></pre></div>
 <p>Guard-clause version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_value</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"values must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div>

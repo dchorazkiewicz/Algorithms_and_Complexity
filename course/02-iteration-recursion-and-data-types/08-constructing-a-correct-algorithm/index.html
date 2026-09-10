@@ -5075,7 +5075,7 @@
 </code></pre></div>
 <p>We choose to reject negative input explicitly:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"number must be non-negative"</span><span class="p">)</span>
 </code></pre></div>
 <p>The contract separates semantic requirements from implementation details.</p>
 <hr />
@@ -5113,7 +5113,7 @@
 <h2 id="5-design-the-iterative-solution">5. Design the iterative solution<a class="headerlink" href="#5-design-the-iterative-solution" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">digit_count_iterative</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"number must be non-negative"</span><span class="p">)</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="k">return</span> <span class="mi">1</span>
@@ -5179,7 +5179,7 @@
 <p>Implementation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">digit_count_recursive</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number must be non-negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"number must be non-negative"</span><span class="p">)</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
 <a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>        <span class="k">return</span> <span class="mi">1</span>
@@ -5250,7 +5250,7 @@
 <a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
 <a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>        <span class="k">pass</span>
 <a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;negative input should be rejected&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"negative input should be rejected"</span><span class="p">)</span>
 </code></pre></div>
 <p>Testing does not prove the invariant or termination. It checks whether the implementation agrees with selected consequences of the specification.</p>
 <hr />

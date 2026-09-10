@@ -5301,13 +5301,13 @@
 <p>Exactly one branch executes.</p>
 <h3 id="multi-way-selection">Multi-way selection<a class="headerlink" href="#multi-way-selection" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>IF score ≥ 90 THEN
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    grade ← &quot;A&quot;
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    grade ← "A"
 <a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>ELSE IF score ≥ 80 THEN
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    grade ← &quot;B&quot;
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    grade ← "B"
 <a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>ELSE IF score ≥ 70 THEN
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    grade ← &quot;C&quot;
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    grade ← "C"
 <a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>ELSE
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    grade ← &quot;D&quot;
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    grade ← "D"
 <a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>END IF
 </code></pre></div>
 <p>The conditions are checked in order. The ordering matters because earlier branches may make later checks unnecessary.</p>
@@ -5315,11 +5315,11 @@
 <p>Suppose the specification distinguishes negative, zero, and positive values.</p>
 <p>Clear version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>IF value &lt; 0 THEN
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    category ← &quot;negative&quot;
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    category ← "negative"
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>ELSE IF value = 0 THEN
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    category ← &quot;zero&quot;
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    category ← "zero"
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>ELSE
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    category ← &quot;positive&quot;
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    category ← "positive"
 <a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>END IF
 </code></pre></div>
 <p>The cases are mutually exclusive and exhaustive.</p>
@@ -5504,7 +5504,7 @@
 <h3 id="python-translation">Python translation<a class="headerlink" href="#python-translation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">first_index_of_minimum</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;values must not be empty&quot;</span><span class="p">)</span>
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"values must not be empty"</span><span class="p">)</span>
 <a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>
 <a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>    <span class="n">best_index</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>
