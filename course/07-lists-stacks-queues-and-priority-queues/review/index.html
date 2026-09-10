@@ -3266,61 +3266,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#tracing-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tracing tasks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debugging-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debugging tasks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#design-problems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Design problems
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mastery-checklist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mastery checklist
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-to-module-08" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Connection to Module 08
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4648,61 +4593,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#tracing-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tracing tasks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debugging-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debugging tasks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#design-problems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Design problems
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mastery-checklist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mastery checklist
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-to-module-08" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Connection to Module 08
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4790,104 +4680,477 @@
 
 
 <h1 id="module-07-review">Module 07 Review<a class="headerlink" href="#module-07-review" title="Permanent link">&para;</a></h1>
+<p>This review checks whether you can reason about linear dynamic structures from their contracts and representations rather than reproduce container APIs from memory.</p>
 <h2 id="core-vocabulary">Core vocabulary<a class="headerlink" href="#core-vocabulary" title="Permanent link">&para;</a></h2>
-<p>Explain each term in your own words:</p>
+<p>Explain each term precisely and give one example where appropriate:</p>
 <ul>
 <li>linear list;</li>
 <li>abstract data type;</li>
+<li>concrete representation;</li>
+<li>logical position;</li>
+<li>node identity;</li>
 <li>node;</li>
 <li>link;</li>
-<li>head and tail;</li>
+<li>head;</li>
+<li>tail;</li>
 <li>sentinel node;</li>
+<li>representation invariant;</li>
+<li>ownership;</li>
+<li>non-owning reference or pointer;</li>
+<li>aliasing;</li>
 <li>singly linked list;</li>
 <li>doubly linked list;</li>
 <li>circular list;</li>
-<li>stack and LIFO;</li>
-<li>queue and FIFO;</li>
+<li>stack;</li>
+<li>LIFO;</li>
+<li>queue;</li>
+<li>FIFO;</li>
+<li>deque;</li>
+<li>circular buffer;</li>
 <li>priority queue;</li>
+<li>heap;</li>
+<li>stable priority tie rule;</li>
 <li>self-organising list;</li>
+<li>move-to-front;</li>
+<li>transpose;</li>
+<li>count/frequency ordering;</li>
 <li>skip list;</li>
-<li>representation invariant;</li>
+<li>expected complexity;</li>
+<li>amortised complexity;</li>
 <li>underflow;</li>
-<li>amortised cost.</li>
+<li>overflow.</li>
 </ul>
 <h2 id="conceptual-questions">Conceptual questions<a class="headerlink" href="#conceptual-questions" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Why is a linked list not automatically faster than an array?</li>
-<li>What does “delete in <code>O(1)</code>” assume about access to the node?</li>
-<li>Why must a doubly linked list update both directions?</li>
-<li>How does a circular list detect the end of one traversal?</li>
-<li>Why does a stack fit nested structure?</li>
-<li>Why does a queue fit breadth-first processing?</li>
-<li>How does a priority queue differ from sorting everything once?</li>
-<li>When may a self-organising list change order legally?</li>
-<li>Why is skip-list performance usually stated as expected complexity?</li>
-<li>How can repeated indexed access make a linked-list algorithm quadratic?</li>
+<li>Why is a linear list an abstract object rather than a synonym for a linked list?</li>
+<li>Why can two representations implement the same ADT with different operation costs?</li>
+<li>Why is "delete in <code>O(1)</code>" incomplete without saying how the node is located?</li>
+<li>Why does a linked list not provide array-style direct indexed access?</li>
+<li>Why can dynamic arrays have better real traversal performance even when both representations are <code>O(n)</code>?</li>
+<li>What invariant must <code>head</code>, <code>tail</code>, and <code>size</code> satisfy in an empty linked list?</li>
+<li>Why can changing <code>current.next</code> before saving its old value make an entire suffix unreachable?</li>
+<li>What is the difference between node membership in a Python list structure and Python object lifetime?</li>
+<li>What is the difference between an owning C++ smart pointer and a raw non-owning node pointer?</li>
+<li>Why are doubly linked lists structurally more powerful and structurally more fragile than singly linked lists?</li>
+<li>Why must <code>a.next is b</code> and <code>b.previous is a</code> agree?</li>
+<li>How does a sentinel reduce endpoint case analysis?</li>
+<li>Why does a circular list terminate traversal by identity or step count rather than by reaching <code>None</code>?</li>
+<li>Why is a Python list a natural stack representation?</li>
+<li>Why is <code>list.pop(0)</code> a poor default queue operation?</li>
+<li>How can a circular buffer represent logical FIFO order after physical wraparound?</li>
+<li>Why can <code>front == rear</code> be ambiguous in a ring buffer?</li>
+<li>Why is a priority queue not the same thing as a binary heap?</li>
+<li>Why is a valid heap array not necessarily globally sorted?</li>
+<li>Why must equal-priority behaviour be part of a priority-queue contract?</li>
+<li>Why can changing an arbitrary heap priority require an auxiliary index map?</li>
+<li>What invariant makes lazy deletion in a priority queue correct?</li>
+<li>Under what abstract contract may move-to-front legally reorder a list?</li>
+<li>Why should a self-organising list be evaluated over a sequence of accesses rather than one search?</li>
+<li>How do move-to-front, transpose, and count ordering respond to different workload signals?</li>
+<li>Why does a skip list normally have expected <code>O(log n)</code> rather than deterministic worst-case <code>O(log n)</code> search?</li>
+<li>Why is expected skip-list storage still <code>O(n)</code>?</li>
+<li>What is the difference between expected complexity and amortised complexity?</li>
+<li>Why does Floyd cycle detection compare node identity rather than value equality?</li>
+<li>How can repeated <code>node_at(head, i)</code> calls turn an apparent single loop into quadratic work?</li>
 </ol>
-<h2 id="tracing-tasks">Tracing tasks<a class="headerlink" href="#tracing-tasks" title="Permanent link">&para;</a></h2>
-<h3 id="reversal">Reversal<a class="headerlink" href="#reversal" title="Permanent link">&para;</a></h3>
-<p>Trace reversal of:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>A → B → C → None
+<hr />
+<h1 id="tracing-tasks">Tracing tasks<a class="headerlink" href="#tracing-tasks" title="Permanent link">&para;</a></h1>
+<h2 id="trace-1-singly-linked-reversal">Trace 1 — Singly linked reversal<a class="headerlink" href="#trace-1-singly-linked-reversal" title="Permanent link">&para;</a></h2>
+<p>Reverse:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>A → B → C → D → None
 </code></pre></div>
-<p>After each iteration record <code>previous</code>, <code>current</code>, <code>successor</code>, and all changed links.</p>
-<h3 id="doubly-linked-deletion">Doubly linked deletion<a class="headerlink" href="#doubly-linked-deletion" title="Permanent link">&para;</a></h3>
-<p>Remove the middle node from:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>A ⇄ B ⇄ C
-</code></pre></div>
-<p>List every assignment needed to preserve both directions.</p>
-<h3 id="stack">Stack<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h3>
-<p>Trace postfix evaluation of:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>5 2 3 * +
-</code></pre></div>
-<p>Record the complete stack after every token.</p>
-<h3 id="queue">Queue<a class="headerlink" href="#queue" title="Permanent link">&para;</a></h3>
-<p>Trace round-robin execution for tasks <code>A:5</code>, <code>B:2</code>, <code>C:4</code> with quantum <code>2</code>.</p>
-<h2 id="debugging-tasks">Debugging tasks<a class="headerlink" href="#debugging-tasks" title="Permanent link">&para;</a></h2>
-<h3 id="lost-suffix">Lost suffix<a class="headerlink" href="#lost-suffix" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">previous</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
-</code></pre></div>
-<p>Explain why traversal information is lost and repair the update order.</p>
-<h3 id="broken-doubly-linked-invariant">Broken doubly linked invariant<a class="headerlink" href="#broken-doubly-linked-invariant" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">node</span><span class="o">.</span><span class="n">previous</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># missing reverse update</span>
-</code></pre></div>
-<p>State the exact invariant that fails.</p>
-<h3 id="queue-endpoint-bug">Queue endpoint bug<a class="headerlink" href="#queue-endpoint-bug" title="Permanent link">&para;</a></h3>
-<p>A linked queue removes its only node but leaves <code>tail</code> pointing to the removed node. Explain the first later operation that can misbehave.</p>
-<h3 id="wrong-priority-claim">Wrong priority claim<a class="headerlink" href="#wrong-priority-claim" title="Permanent link">&para;</a></h3>
-<p>A scheduler calls <code>heapq</code> with negative timestamps and claims to process the earliest event. Determine the actual ordering.</p>
-<h3 id="accidental-quadratic-behaviour">Accidental quadratic behaviour<a class="headerlink" href="#accidental-quadratic-behaviour" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">head</span><span class="p">)):</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">node_at</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-</code></pre></div>
-<p>Analyse the total cost and rewrite as one traversal.</p>
-<h2 id="design-problems">Design problems<a class="headerlink" href="#design-problems" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Implement a linked deque supporting insertion and deletion at both ends in <code>O(1)</code>.</li>
-<li>Design a browser history using two stacks and specify the invariant.</li>
-<li>Implement a circular queue with a fixed array and distinguish empty from full states.</li>
-<li>Design a stable priority queue with FIFO tie handling.</li>
-<li>Implement move-to-front search and state when reordering is permitted.</li>
-<li>Describe skip-list insertion, including the predecessor information required at each level.</li>
-<li>Merge two sorted linked lists without allocating data nodes and state the mutation contract.</li>
-<li>Use a circular list to simulate Josephus elimination and analyse the cost.</li>
-</ol>
-<h2 id="mastery-checklist">Mastery checklist<a class="headerlink" href="#mastery-checklist" title="Permanent link">&para;</a></h2>
-<p>You are ready to continue when you can:</p>
+<p>After every iteration record:</p>
 <ul>
-<li>separate an ADT from its representation;</li>
-<li>write and preserve endpoint and link invariants;</li>
-<li>trace reference changes without losing nodes;</li>
-<li>choose correctly among stack, queue, and priority queue semantics;</li>
-<li>compare array-based and linked costs with all assumptions stated;</li>
-<li>explain sentinels and circular stopping conditions;</li>
-<li>analyse self-organising and skip-list guarantees;</li>
-<li>implement and justify selected list algorithms;</li>
-<li>communicate mutation, ownership, and failure behaviour precisely.</li>
+<li><code>previous</code>;</li>
+<li><code>current</code>;</li>
+<li><code>successor</code>;</li>
+<li>every changed <code>next</code> link;</li>
+<li>which nodes belong to the reversed prefix;</li>
+<li>which nodes belong to the untouched suffix.</li>
+</ul>
+<p>Then state the loop invariant and termination measure.</p>
+<h2 id="trace-2-insert-after-a-known-node">Trace 2 — Insert after a known node<a class="headerlink" href="#trace-2-insert-after-a-known-node" title="Permanent link">&para;</a></h2>
+<p>Start with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>A → B → C → None
+</code></pre></div>
+<p>Insert <code>X</code> after <code>B</code>.</p>
+<p>Write the assignments in a safe order and explain exactly what would be lost if <code>B.next</code> were overwritten before the old successor were saved.</p>
+<h2 id="trace-3-doubly-linked-deletion">Trace 3 — Doubly linked deletion<a class="headerlink" href="#trace-3-doubly-linked-deletion" title="Permanent link">&para;</a></h2>
+<p>Remove <code>B</code> from:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>None ← A ⇄ B ⇄ C → None
+</code></pre></div>
+<p>Record:</p>
+<ul>
+<li>predecessor;</li>
+<li>successor;</li>
+<li>forward-link assignment;</li>
+<li>backward-link assignment;</li>
+<li>detached-node state.</li>
+</ul>
+<p>Verify the bidirectional invariant after deletion.</p>
+<h2 id="trace-4-delete-the-only-node">Trace 4 — Delete the only node<a class="headerlink" href="#trace-4-delete-the-only-node" title="Permanent link">&para;</a></h2>
+<p>A doubly linked list stores:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>head = X
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>tail = X
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>size = 1
+</code></pre></div>
+<p>Trace deletion of <code>X</code> and write the complete final representation invariant.</p>
+<h2 id="trace-5-circular-traversal">Trace 5 — Circular traversal<a class="headerlink" href="#trace-5-circular-traversal" title="Permanent link">&para;</a></h2>
+<p>Given:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>A → B → C
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>↑       ↓
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>└───────┘
+</code></pre></div>
+<p>Start at <code>A</code>, list the successive node identities, and state exactly when traversal must stop to visit every node once.</p>
+<h2 id="trace-6-postfix-stack">Trace 6 — Postfix stack<a class="headerlink" href="#trace-6-postfix-stack" title="Permanent link">&para;</a></h2>
+<p>Evaluate:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>8 3 2 * - 5 +
+</code></pre></div>
+<p>Record the complete stack after every token. Explain why subtraction requires distinguishing left and right popped operands.</p>
+<h2 id="trace-7-browser-history">Trace 7 — Browser history<a class="headerlink" href="#trace-7-browser-history" title="Permanent link">&para;</a></h2>
+<p>Starting at page <code>A</code>, perform:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>visit B
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>visit C
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>back
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>back
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>forward
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>visit D
+</code></pre></div>
+<p>Record:</p>
+<ul>
+<li>back stack;</li>
+<li>current page;</li>
+<li>forward stack.</li>
+</ul>
+<p>Explain why visiting <code>D</code> clears forward history.</p>
+<h2 id="trace-8-circular-queue">Trace 8 — Circular queue<a class="headerlink" href="#trace-8-circular-queue" title="Permanent link">&para;</a></h2>
+<p>Use capacity <code>5</code> and perform:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>enqueue A
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>enqueue B
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>enqueue C
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>dequeue
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>dequeue
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>enqueue D
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>enqueue E
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>enqueue F
+</code></pre></div>
+<p>After every operation record:</p>
+<ul>
+<li>physical array;</li>
+<li><code>front</code>;</li>
+<li><code>size</code>;</li>
+<li>logical queue order.</li>
+</ul>
+<p>Identify the first point at which physical and logical order differ visibly.</p>
+<h2 id="trace-9-stable-priority-queue">Trace 9 — Stable priority queue<a class="headerlink" href="#trace-9-stable-priority-queue" title="Permanent link">&para;</a></h2>
+<p>Insert:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>A priority 3
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>B priority 1
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>C priority 3
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>D priority 1
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>E priority 2
+</code></pre></div>
+<p>Use FIFO ties and record the heap-entry keys <code>(priority, sequence)</code>. State the complete extraction order.</p>
+<h2 id="trace-10-skip-list-search">Trace 10 — Skip-list search<a class="headerlink" href="#trace-10-skip-list-search" title="Permanent link">&para;</a></h2>
+<p>Given:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>level 2:  -∞ -------- 20 -------- 50 -------- +∞
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>level 1:  -∞ --- 10 --20 --- 35 --50 --- 70 -- +∞
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>level 0:  -∞ 5 10 14 20 27 35 41 50 63 70 91 +∞
+</code></pre></div>
+<p>Trace searches for:</p>
+<ul>
+<li><code>41</code>;</li>
+<li><code>42</code>;</li>
+<li><code>5</code>;</li>
+<li><code>100</code>.</li>
+</ul>
+<p>At every level state why the next horizontal step is taken or rejected.</p>
+<hr />
+<h1 id="debugging-tasks">Debugging tasks<a class="headerlink" href="#debugging-tasks" title="Permanent link">&para;</a></h1>
+<h2 id="bug-1-lost-suffix">Bug 1 — Lost suffix<a class="headerlink" href="#bug-1-lost-suffix" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">previous</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+</code></pre></div>
+<p>Explain why information is lost and repair the update order.</p>
+<h2 id="bug-2-stale-tail">Bug 2 — Stale tail<a class="headerlink" href="#bug-2-stale-tail" title="Permanent link">&para;</a></h2>
+<p>A singly linked list removes its final node:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>but does not modify <code>tail</code>.</p>
+<p>State the exact invariant that fails and describe a later append that can misbehave.</p>
+<h2 id="bug-3-broken-doubly-linked-invariant">Bug 3 — Broken doubly linked invariant<a class="headerlink" href="#bug-3-broken-doubly-linked-invariant" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">node</span><span class="o">.</span><span class="n">previous</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># reverse link not updated</span>
+</code></pre></div>
+<p>State which adjacency relationship becomes inconsistent.</p>
+<h2 id="bug-4-circular-infinite-loop">Bug 4 — Circular infinite loop<a class="headerlink" href="#bug-4-circular-infinite-loop" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">current</span> <span class="o">=</span> <span class="n">head</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">while</span> <span class="n">current</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+</code></pre></div>
+<p>Explain why this does not terminate on a non-empty circular list and provide two valid stopping strategies.</p>
+<h2 id="bug-5-expensive-stack-front">Bug 5 — Expensive stack front<a class="headerlink" href="#bug-5-expensive-stack-front" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">stack</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">value</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>Explain the cost and redesign the representation without changing the LIFO contract.</p>
+<h2 id="bug-6-quadratic-queue">Bug 6 — Quadratic queue<a class="headerlink" href="#bug-6-quadratic-queue" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">while</span> <span class="n">items</span><span class="p">:</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">process</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<p>Analyse the total cost for <code>n</code> queued items and replace the representation appropriately.</p>
+<h2 id="bug-7-ring-buffer-ambiguity">Bug 7 — Ring-buffer ambiguity<a class="headerlink" href="#bug-7-ring-buffer-ambiguity" title="Permanent link">&para;</a></h2>
+<p>An implementation stores only <code>front</code> and <code>rear</code> and uses:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>front == rear
+</code></pre></div>
+<p>for both empty and full states.</p>
+<p>Explain why the representation is ambiguous and provide three possible design fixes.</p>
+<h2 id="bug-8-wrong-priority-direction">Bug 8 — Wrong priority direction<a class="headerlink" href="#bug-8-wrong-priority-direction" title="Permanent link">&para;</a></h2>
+<p>A scheduler should process the earliest timestamp first but stores:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">task</span><span class="p">))</span>
+</code></pre></div>
+<p>Explain which timestamp leaves first and repair the key design.</p>
+<h2 id="bug-9-accidental-comparison-on-ties">Bug 9 — Accidental comparison on ties<a class="headerlink" href="#bug-9-accidental-comparison-on-ties" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="n">priority</span><span class="p">,</span> <span class="n">task_object</span><span class="p">))</span>
+</code></pre></div>
+<p>Two tasks have equal priority and task objects do not support ordering.</p>
+<p>Explain the failure and design a stable entry format.</p>
+<h2 id="bug-10-false-decrease-key-complexity">Bug 10 — False decrease-key complexity<a class="headerlink" href="#bug-10-false-decrease-key-complexity" title="Permanent link">&para;</a></h2>
+<p>A program stores items in a binary heap and claims:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>change_priority(item) is O(log n)
+</code></pre></div>
+<p>but has no map from item to heap position.</p>
+<p>Explain the missing cost.</p>
+<h2 id="bug-11-invalid-self-organisation">Bug 11 — Invalid self-organisation<a class="headerlink" href="#bug-11-invalid-self-organisation" title="Permanent link">&para;</a></h2>
+<p>A list stores race results in finishing order. After a lookup, the implementation moves the athlete to the front.</p>
+<p>Explain why the representation optimisation changes the abstract value.</p>
+<h2 id="bug-12-skip-list-level-corruption">Bug 12 — Skip-list level corruption<a class="headerlink" href="#bug-12-skip-list-level-corruption" title="Permanent link">&para;</a></h2>
+<p>A new node has height <code>3</code>, but insertion updates predecessors only at levels <code>0</code> and <code>1</code>.</p>
+<p>Explain which invariant fails and why future search may become inconsistent.</p>
+<h2 id="bug-13-expected-versus-amortised-confusion">Bug 13 — Expected versus amortised confusion<a class="headerlink" href="#bug-13-expected-versus-amortised-confusion" title="Permanent link">&para;</a></h2>
+<p>A student writes:</p>
+<blockquote>
+<p>Skip-list search is amortised <code>O(log n)</code> because random levels are usually balanced.</p>
+</blockquote>
+<p>Explain why the terminology is wrong.</p>
+<h2 id="bug-14-value-based-cycle-detection">Bug 14 — Value-based cycle detection<a class="headerlink" href="#bug-14-value-based-cycle-detection" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">if</span> <span class="n">slow</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">fast</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<p>Construct an acyclic counterexample.</p>
+<h2 id="bug-15-indexed-linked-traversal">Bug 15 — Indexed linked traversal<a class="headerlink" href="#bug-15-indexed-linked-traversal" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">head</span><span class="p">)):</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">node_at</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<p>Assuming both <code>length</code> and <code>node_at</code> traverse from the head, derive the total asymptotic cost and rewrite the algorithm as one traversal.</p>
+<hr />
+<h1 id="proof-and-reasoning-exercises">Proof and reasoning exercises<a class="headerlink" href="#proof-and-reasoning-exercises" title="Permanent link">&para;</a></h1>
+<h2 id="proof-1-reversal-invariant">Proof 1 — Reversal invariant<a class="headerlink" href="#proof-1-reversal-invariant" title="Permanent link">&para;</a></h2>
+<p>Prove that the iterative reversal algorithm:</p>
+<ol>
+<li>never loses a node;</li>
+<li>never duplicates a node;</li>
+<li>reverses exactly the processed prefix;</li>
+<li>terminates;</li>
+<li>returns the complete reversed chain.</li>
+</ol>
+<p>Use a loop invariant rather than only an example trace.</p>
+<h2 id="proof-2-linked-queue-endpoint-correctness">Proof 2 — Linked queue endpoint correctness<a class="headerlink" href="#proof-2-linked-queue-endpoint-correctness" title="Permanent link">&para;</a></h2>
+<p>For a queue storing <code>head</code>, <code>tail</code>, and <code>size</code>, prove that enqueue and dequeue preserve:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>head is None iff tail is None iff size == 0
+</code></pre></div>
+<p>and that <code>tail.next is None</code> whenever the queue is non-empty.</p>
+<h2 id="proof-3-bfs-queue-discipline">Proof 3 — BFS queue discipline<a class="headerlink" href="#proof-3-bfs-queue-discipline" title="Permanent link">&para;</a></h2>
+<p>Explain why FIFO ordering causes unweighted breadth-first search to process vertices in nondecreasing distance from the start.</p>
+<p>Your argument must connect discovery time, queue order, and edge-distance layers.</p>
+<h2 id="proof-4-heap-multiway-merge">Proof 4 — Heap multiway merge<a class="headerlink" href="#proof-4-heap-multiway-merge" title="Permanent link">&para;</a></h2>
+<p>For merging sorted streams, prove that the heap root is always the globally smallest not-yet-output value.</p>
+<p>State the heap frontier invariant explicitly.</p>
+<h2 id="proof-5-floyd-cycle-meeting">Proof 5 — Floyd cycle meeting<a class="headerlink" href="#proof-5-floyd-cycle-meeting" title="Permanent link">&para;</a></h2>
+<p>Once both tortoise and hare are inside a finite cycle, explain why their relative position must eventually become zero modulo the cycle length.</p>
+<h2 id="proof-6-expected-skip-list-storage">Proof 6 — Expected skip-list storage<a class="headerlink" href="#proof-6-expected-skip-list-storage" title="Permanent link">&para;</a></h2>
+<p>Assume promotion probability <code>1/2</code>. Use the geometric series:</p>
+<div class="arithmatex">\[
+n + n/2 + n/4 + n/8 + \cdots
+\]</div>
+<p>to justify expected <code>O(n)</code> total level participation.</p>
+<h2 id="proof-7-linked-merge-correctness">Proof 7 — Linked merge correctness<a class="headerlink" href="#proof-7-linked-merge-correctness" title="Permanent link">&para;</a></h2>
+<p>Prove that <code>merge_sorted</code> returns a sorted chain containing exactly the nodes from its two sorted input lists.</p>
+<p>Your argument should identify the processed prefix and two unprocessed suffixes.</p>
+<hr />
+<h1 id="complexity-exercises">Complexity exercises<a class="headerlink" href="#complexity-exercises" title="Permanent link">&para;</a></h1>
+<h2 id="exercise-1-search-and-delete">Exercise 1 — Search and delete<a class="headerlink" href="#exercise-1-search-and-delete" title="Permanent link">&para;</a></h2>
+<p>A singly linked list contains <code>n</code> nodes. Removing a node <strong>after an already-known predecessor</strong> is <code>O(1)</code>.</p>
+<p>What is the complexity of:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>remove the first node whose value equals target
+</code></pre></div>
+<p>in the worst case? Separate search cost from structural update cost.</p>
+<h2 id="exercise-2-repeated-index-access">Exercise 2 — Repeated index access<a class="headerlink" href="#exercise-2-repeated-index-access" title="Permanent link">&para;</a></h2>
+<p>Suppose <code>node_at(head, i)</code> costs <code>Θ(i)</code>. Derive the total cost of calling it for every <code>i</code> from <code>0</code> to <code>n-1</code>.</p>
+<h2 id="exercise-3-linked-append-without-tail">Exercise 3 — Linked append without tail<a class="headerlink" href="#exercise-3-linked-append-without-tail" title="Permanent link">&para;</a></h2>
+<p>A singly linked list stores only <code>head</code>. What is the total cost of appending <code>n</code> values one by one if every append traverses to the end?</p>
+<p>How does storing <code>tail</code> change the result?</p>
+<h2 id="exercise-4-python-list-as-fifo-queue">Exercise 4 — Python list as FIFO queue<a class="headerlink" href="#exercise-4-python-list-as-fifo-queue" title="Permanent link">&para;</a></h2>
+<p>Derive the total shifting work when repeatedly calling <code>pop(0)</code> until a list of <code>n</code> elements is empty.</p>
+<h2 id="exercise-5-multiway-merge">Exercise 5 — Multiway merge<a class="headerlink" href="#exercise-5-multiway-merge" title="Permanent link">&para;</a></h2>
+<p>There are <code>k</code> sorted streams containing <code>N</code> total values. Explain why a heap-frontier implementation costs <code>O(N log k)</code> rather than <code>O(N log N)</code>.</p>
+<h2 id="exercise-6-self-organising-workload">Exercise 6 — Self-organising workload<a class="headerlink" href="#exercise-6-self-organising-workload" title="Permanent link">&para;</a></h2>
+<p>For a given request sequence, count total comparisons under:</p>
+<ul>
+<li>fixed order;</li>
+<li>move-to-front;</li>
+<li>transpose.</li>
+</ul>
+<p>Construct one sequence where move-to-front helps substantially and one where it provides little benefit.</p>
+<h2 id="exercise-7-skip-list-promotion">Exercise 7 — Skip-list promotion<a class="headerlink" href="#exercise-7-skip-list-promotion" title="Permanent link">&para;</a></h2>
+<p>With promotion probability <code>p</code>, what is the expected number of nodes reaching level <code>i</code>? Explain qualitatively how changing <code>p</code> changes number of levels and number of forward links.</p>
+<h2 id="exercise-8-josephus-traversal">Exercise 8 — Josephus traversal<a class="headerlink" href="#exercise-8-josephus-traversal" title="Permanent link">&para;</a></h2>
+<p>If every elimination advances <code>k-1</code> links and there are <code>n-1</code> eliminations, derive an <code>O(nk)</code> bound. What does the bound become when <code>k</code> is a fixed constant independent of <code>n</code>?</p>
+<hr />
+<h1 id="design-problems">Design problems<a class="headerlink" href="#design-problems" title="Permanent link">&para;</a></h1>
+<h2 id="problem-1-linked-deque">Problem 1 — Linked deque<a class="headerlink" href="#problem-1-linked-deque" title="Permanent link">&para;</a></h2>
+<p>Design a deque supporting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>push_front
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>push_back
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>pop_front
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>pop_back
+</code></pre></div>
+<p>all in <code>O(1)</code> time.</p>
+<p>Specify:</p>
+<ul>
+<li>representation;</li>
+<li>endpoint invariant;</li>
+<li>empty state;</li>
+<li>one-element state;</li>
+<li>mutation steps for every operation;</li>
+<li>failure behaviour.</li>
+</ul>
+<p>Explain why a doubly linked representation is more convenient than a singly linked one for <code>pop_back</code>.</p>
+<h2 id="problem-2-browser-history">Problem 2 — Browser history<a class="headerlink" href="#problem-2-browser-history" title="Permanent link">&para;</a></h2>
+<p>Design browser Back/Forward behaviour using two stacks.</p>
+<p>State the invariant connecting:</p>
+<ul>
+<li>current page;</li>
+<li>back stack;</li>
+<li>forward stack.</li>
+</ul>
+<p>Explain why visiting a new page clears forward history.</p>
+<h2 id="problem-3-fixed-circular-queue">Problem 3 — Fixed circular queue<a class="headerlink" href="#problem-3-fixed-circular-queue" title="Permanent link">&para;</a></h2>
+<p>Implement a capacity-<code>c</code> queue with an array.</p>
+<p>Your design must distinguish empty and full states explicitly and prove that enqueue/dequeue do not require shifting.</p>
+<h2 id="problem-4-stable-priority-queue">Problem 4 — Stable priority queue<a class="headerlink" href="#problem-4-stable-priority-queue" title="Permanent link">&para;</a></h2>
+<p>Design a priority queue where:</p>
+<ul>
+<li>smaller number means higher priority;</li>
+<li>equal priorities are processed FIFO;</li>
+<li>arbitrary Python task objects need not be comparable.</li>
+</ul>
+<p>Specify the heap-entry tuple and justify its lexicographic ordering.</p>
+<h2 id="problem-5-mutable-priority-queue">Problem 5 — Mutable priority queue<a class="headerlink" href="#problem-5-mutable-priority-queue" title="Permanent link">&para;</a></h2>
+<p>Design two approaches for priority updates:</p>
+<ol>
+<li>heap plus item-to-index map;</li>
+<li>lazy insertion of new entries plus authoritative current-priority map.</li>
+</ol>
+<p>Compare invariants, memory cost, and implementation complexity.</p>
+<h2 id="problem-6-move-to-front-dictionary">Problem 6 — Move-to-front dictionary<a class="headerlink" href="#problem-6-move-to-front-dictionary" title="Permanent link">&para;</a></h2>
+<p>Implement a linked move-to-front search.</p>
+<p>State exactly which abstract dictionary contract makes reordering legal. Then describe a use case where the same transformation would be illegal.</p>
+<h2 id="problem-7-count-based-self-organising-list">Problem 7 — Count-based self-organising list<a class="headerlink" href="#problem-7-count-based-self-organising-list" title="Permanent link">&para;</a></h2>
+<p>Store an access counter with each node. After a successful access, restore non-increasing count order while preserving stable order among equal counts.</p>
+<p>State the invariant and analyse the worst-case update cost.</p>
+<h2 id="problem-8-skip-list-insertion">Problem 8 — Skip-list insertion<a class="headerlink" href="#problem-8-skip-list-insertion" title="Permanent link">&para;</a></h2>
+<p>Describe skip-list insertion in enough detail to implement it:</p>
+<ul>
+<li>search route;</li>
+<li>predecessor array;</li>
+<li>duplicate policy;</li>
+<li>random height;</li>
+<li>links changed at each level;</li>
+<li>expected search/update complexity.</li>
+</ul>
+<h2 id="problem-9-cycle-diagnostics">Problem 9 — Cycle diagnostics<a class="headerlink" href="#problem-9-cycle-diagnostics" title="Permanent link">&para;</a></h2>
+<p>Given a linked list that may contain a cycle, return:</p>
+<ul>
+<li>whether a cycle exists;</li>
+<li>the cycle entry if one exists;</li>
+<li>optionally the cycle length.</li>
+</ul>
+<p>Use <code>O(1)</code> auxiliary space and justify each phase.</p>
+<h2 id="problem-10-linked-merge-sort">Problem 10 — Linked merge sort<a class="headerlink" href="#problem-10-linked-merge-sort" title="Permanent link">&para;</a></h2>
+<p>Implement linked-list merge sort by relinking existing nodes.</p>
+<p>State:</p>
+<ul>
+<li>split contract;</li>
+<li>merge contract;</li>
+<li>mutation behaviour;</li>
+<li>correctness argument;</li>
+<li>recurrence;</li>
+<li>auxiliary stack space.</li>
+</ul>
+<h2 id="problem-11-representation-choice">Problem 11 — Representation choice<a class="headerlink" href="#problem-11-representation-choice" title="Permanent link">&para;</a></h2>
+<p>For each workload, choose and justify one representation:</p>
+<ol>
+<li>millions of random indexed reads, rare insertion;</li>
+<li>repeated insertion after an already-known iterator;</li>
+<li>nested parser state;</li>
+<li>unweighted breadth-first graph exploration;</li>
+<li>event simulation ordered by timestamp;</li>
+<li>lookup workload dominated by temporal locality;</li>
+<li>ordered dictionary requiring expected logarithmic linked navigation.</li>
+</ol>
+<p>Do not name only the structure. State the operation that dominates and the guarantee you need.</p>
+<hr />
+<h1 id="python-c-comparison-questions">Python ↔ C++ comparison questions<a class="headerlink" href="#python-c-comparison-questions" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Why does assigning <code>current = head</code> in Python not copy the node?</li>
+<li>Why can <code>std::unique_ptr&lt;Node&lt;T&gt;&gt;</code> express ownership more explicitly than a raw pointer?</li>
+<li>Why is <code>std::move</code> required when transferring <code>unique_ptr</code> ownership?</li>
+<li>Why can a raw C++ pointer become dangling after node destruction?</li>
+<li>Why can a detached Python node remain alive if another reference still points to it?</li>
+<li>Why is bidirectional ownership difficult if both C++ neighbour links try to own each other?</li>
+<li>How do Python <code>list</code> and C++ <code>std::vector</code> provide similar stack-friendly end operations?</li>
+<li>How do Python <code>deque</code> and C++ <code>std::queue</code>/<code>std::deque</code> differ between concrete container and restricted adaptor roles?</li>
+<li>Why does Python <code>heapq</code> naturally expose min-heap behaviour while <code>std::priority_queue</code> defaults to max-priority semantics?</li>
+</ol>
+<hr />
+<h1 id="mastery-checklist">Mastery checklist<a class="headerlink" href="#mastery-checklist" title="Permanent link">&para;</a></h1>
+<p>You are ready to continue when you can honestly say:</p>
+<ul>
+<li>[ ] I can separate every ADT in this module from its concrete representations.</li>
+<li>[ ] I can compare contiguous and linked sequence costs without making hidden assumptions.</li>
+<li>[ ] I can state the invariant of an empty, one-node, and multi-node singly linked list.</li>
+<li>[ ] I can trace insertion, deletion, and reversal without losing nodes.</li>
+<li>[ ] I can explain Python aliasing and C++ ownership at the level needed for linked structures.</li>
+<li>[ ] I can preserve both forward and backward invariants in a doubly linked list.</li>
+<li>[ ] I can design a sentinel-based list and explain what special cases it removes.</li>
+<li>[ ] I can traverse a circular list exactly once and state the stopping condition.</li>
+<li>[ ] I can define stack LIFO semantics independently of representation.</li>
+<li>[ ] I can define queue FIFO semantics independently of representation.</li>
+<li>[ ] I can explain why Python list front removal is costly and why a deque avoids that issue.</li>
+<li>[ ] I can implement and trace a circular buffer with wraparound.</li>
+<li>[ ] I can distinguish a priority queue from a heap.</li>
+<li>[ ] I can design stable priority handling and explain lazy deletion.</li>
+<li>[ ] I can compare unsorted, sorted, and heap-backed priority queues by workload.</li>
+<li>[ ] I can distinguish move-to-front, transpose, and count-based self-organisation.</li>
+<li>[ ] I can state when self-organising reordering is semantically legal.</li>
+<li>[ ] I can explain skip-list search, insertion, expected complexity, and expected space.</li>
+<li>[ ] I can distinguish expected analysis from amortised analysis.</li>
+<li>[ ] I can prove the main invariant of reversal and sorted merge.</li>
+<li>[ ] I can explain Floyd cycle detection using node identity and relative movement.</li>
+<li>[ ] I can detect accidental quadratic linked-list algorithms caused by repeated traversal.</li>
+<li>[ ] I can choose a representation from an operation workload and state the assumptions behind the cost.</li>
 </ul>
 <h2 id="connection-to-module-08">Connection to Module 08<a class="headerlink" href="#connection-to-module-08" title="Permanent link">&para;</a></h2>
-<p>Linear structures give each element at most one next position in the logical order. Module 08 moves to branching structures, where a node may lead to multiple subtrees: binary trees, search trees, AVL balancing, dictionaries, and heaps.</p>
+<p>Module 07 showed how representation changes the cost and correctness obligations of linear structures. Module 08 extends the same reasoning to branching structures: binary trees, binary search trees, balancing, AVL rotations, dictionaries, and heaps.</p>
+<p>Before continuing, you should be comfortable asking the same four questions for every structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>What is the abstract promise?
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>What representation encodes it?
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>What invariant must every update preserve?
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>What cost follows from that representation?
+</code></pre></div>
 
 
 
