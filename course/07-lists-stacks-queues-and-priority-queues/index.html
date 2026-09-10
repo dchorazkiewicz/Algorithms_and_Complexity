@@ -4568,6 +4568,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diagnostic-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostic questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mastery-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mastery checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4656,60 +4678,164 @@
 
 <h1 id="module-07-lists-stacks-queues-and-priority-queues">Module 07 — Lists, Stacks, Queues, and Priority Queues<a class="headerlink" href="#module-07-lists-stacks-queues-and-priority-queues" title="Permanent link">&para;</a></h1>
 <h2 id="why-this-module-matters">Why this module matters<a class="headerlink" href="#why-this-module-matters" title="Permanent link">&para;</a></h2>
-<p>Arrays make positions easy to access, but they are not the only way to represent a sequence. Many algorithms need a structure that grows and shrinks, inserts elements without shifting an entire suffix, or restricts access so that only one end or one priority rule is visible.</p>
-<p>This module studies linear dynamic structures as abstract data types and as concrete representations. The central question is not merely how to write <code>append</code> or <code>pop</code>, but what invariant makes each structure behave correctly, which operations its interface permits, and what cost follows from the chosen representation.</p>
+<p>Arrays make positions easy to access, but they are not the only way to represent a sequence. Many algorithms need a structure that grows and shrinks, inserts elements without shifting an entire suffix, removes the most recent item, serves requests in arrival order, or selects the next item by priority.</p>
+<p>This module studies those structures at two levels at once:</p>
+<ol>
+<li>as <strong>abstract data types (ADTs)</strong> that define behaviour and legal operations;</li>
+<li>as <strong>concrete representations</strong> whose memory layout, invariants, mutation rules, and operation costs determine how the ADT behaves in a real program.</li>
+</ol>
+<p>The central question is therefore not merely how to call <code>append</code>, <code>pop</code>, or <code>push</code>. For every representation we ask:</p>
+<ul>
+<li>what does the structure promise to its client?</li>
+<li>which links, indices, endpoints, or ordering rules encode that promise?</li>
+<li>which invariant must remain true after every update?</li>
+<li>what must be known before an operation can be called safely?</li>
+<li>what is the true time and auxiliary-space cost, including any search required to find the update position?</li>
+<li>when do Python and C++ expose materially different implementation concerns?</li>
+</ul>
+<p>These questions prepare the transition from linear structures to trees, heaps, and graphs in later modules.</p>
 <h2 id="syllabus-scope">Syllabus scope<a class="headerlink" href="#syllabus-scope" title="Permanent link">&para;</a></h2>
 <p>This module develops the seventh course-content block:</p>
 <blockquote>
-<p>Linear lists. LIFO stacks and FIFO queues, priority queues, doubly linked and circular lists, self-organising lists, skip lists, and selected list algorithms.</p>
+<p>Linear linked lists. LIFO stacks and FIFO queues, priority queues, doubly linked and circular lists, self-organising lists, skip lists, and selected list-processing algorithms.</p>
 </blockquote>
+<p>Every item in that block appears explicitly in the learning path below. The module also develops representation invariants, ownership and aliasing, amortised costs, and language-specific implementation choices because those ideas are necessary to use the syllabus structures correctly.</p>
 <h2 id="what-you-should-be-able-to-do-after-this-module">What you should be able to do after this module<a class="headerlink" href="#what-you-should-be-able-to-do-after-this-module" title="Permanent link">&para;</a></h2>
 <p>After completing the module, you should be able to:</p>
 <ol>
-<li>distinguish an abstract sequence from its array-based or linked representation;</li>
-<li>explain the role of nodes, links, head, tail, and sentinel nodes;</li>
-<li>maintain invariants of singly, doubly, and circular linked lists;</li>
-<li>compare access, search, insertion, and deletion costs;</li>
-<li>explain LIFO stack and FIFO queue semantics;</li>
-<li>implement stacks and queues with appropriate underlying structures;</li>
-<li>explain how priority queues differ from ordinary queues;</li>
-<li>describe self-organising lists and skip lists;</li>
-<li>trace pointer or reference changes during list algorithms;</li>
-<li>analyse time and auxiliary-space costs honestly.</li>
+<li>distinguish an ADT from one concrete representation;</li>
+<li>distinguish logical order from physical memory layout;</li>
+<li>compare dynamic arrays and linked structures by workload rather than by slogans;</li>
+<li>define nodes, links, <code>head</code>, <code>tail</code>, and sentinel nodes precisely;</li>
+<li>state and preserve invariants for singly, doubly, and circular linked lists;</li>
+<li>trace pointer or reference changes without losing access to nodes;</li>
+<li>explain why a constant-time linked-list update may still require linear-time search;</li>
+<li>explain ownership, aliasing, lifetime, and deletion at an introductory level in Python and C++;</li>
+<li>define stack semantics independently of any particular container;</li>
+<li>compare array-backed and linked stack representations;</li>
+<li>define queue semantics independently of any particular container;</li>
+<li>explain why <code>list.pop(0)</code> is a poor Python queue implementation and why <code>deque</code> is appropriate;</li>
+<li>explain circular-buffer indexing and distinguish logical from physical order;</li>
+<li>distinguish a priority-queue ADT from heap representation;</li>
+<li>compare unsorted, sorted, and heap-based priority-queue costs;</li>
+<li>explain tie policies and stable priority queues;</li>
+<li>describe move-to-front, transpose, and count-based self-organising lists;</li>
+<li>explain when self-organisation is legal and when changing order would violate the contract;</li>
+<li>explain the multi-level structure and expected performance of skip lists;</li>
+<li>distinguish deterministic worst-case guarantees from expected complexity;</li>
+<li>implement and justify selected linked-list algorithms such as reversal, merge, cycle detection, and two-pointer traversal;</li>
+<li>communicate preconditions, mutation, failure behaviour, time cost, and auxiliary-space cost precisely.</li>
 </ol>
 <h2 id="concept-map">Concept map<a class="headerlink" href="#concept-map" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>linear collection
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ├── unrestricted list
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    │       ├── singly linked
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    │       ├── doubly linked
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │       └── circular
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ├── restricted access
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    │       ├── stack: LIFO
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │       └── queue: FIFO
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    ├── ordered removal
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │       └── priority queue
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    └── adaptive search
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            ├── self-organising list
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            └── skip list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>abstract sequence / service discipline
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        ├── unrestricted linear list
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        │       ├── array-backed representation
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        │       └── linked representation
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        │               ├── singly linked
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        │               ├── doubly linked
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        │               ├── circular
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        │               └── sentinel-based
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        ├── restricted access
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        │       ├── stack: LIFO
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        │       └── queue: FIFO
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        │
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        ├── ordered removal
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        │       └── priority queue
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        │               ├── unsorted sequence
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        │               ├── sorted sequence
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        │               └── heap
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        │
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        └── adaptive / indexed linked access
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                ├── self-organising list
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>                │       ├── move-to-front
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>                │       ├── transpose
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>                │       └── count
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>                └── skip list
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>                        ├── ordered base level
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>                        ├── promotion levels
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>                        └── expected O(log n) search
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>representation reasoning
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        ├── invariants
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        ├── ownership and aliasing
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        ├── mutation contracts
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        ├── endpoint cases
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        ├── amortised cost
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        └── Python ↔ C++ differences
 </code></pre></div>
 <h2 id="learning-path">Learning path<a class="headerlink" href="#learning-path" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Linear lists as abstract sequences.</li>
-<li>Singly linked lists.</li>
-<li>Doubly linked and circular lists.</li>
-<li>Stacks.</li>
-<li>Queues.</li>
-<li>Priority queues.</li>
-<li>Self-organising lists and skip lists.</li>
-<li>Selected list algorithms.</li>
-<li>Worked examples.</li>
-<li>Module review.</li>
-</ol>
+<h3 id="1-linear-lists-as-abstract-sequences">1. Linear lists as abstract sequences<a class="headerlink" href="#1-linear-lists-as-abstract-sequences" title="Permanent link">&para;</a></h3>
+<p>Separate list behaviour from representation. Compare contiguous and linked storage, direct access and traversal, operation contracts, and the workload assumptions behind complexity claims.</p>
+<h3 id="2-singly-linked-lists">2. Singly linked lists<a class="headerlink" href="#2-singly-linked-lists" title="Permanent link">&para;</a></h3>
+<p>Develop nodes and one-directional links from first principles. Study traversal, insertion, deletion, sentinels, reversal, endpoint invariants, and Python/C++ ownership differences.</p>
+<h3 id="3-doubly-linked-and-circular-lists">3. Doubly linked and circular lists<a class="headerlink" href="#3-doubly-linked-and-circular-lists" title="Permanent link">&para;</a></h3>
+<p>Add backward links and circularity. Trace every pointer update, handle empty and one-node cases explicitly, and study sentinel-based designs that reduce special-case logic.</p>
+<h3 id="4-stacks">4. Stacks<a class="headerlink" href="#4-stacks" title="Permanent link">&para;</a></h3>
+<p>Treat LIFO as an ADT. Compare Python list, linked-node, C++ vector, and standard stack-adaptor implementations. Apply stacks to nested syntax, postponed work, and explicit traversal.</p>
+<h3 id="5-queues">5. Queues<a class="headerlink" href="#5-queues" title="Permanent link">&para;</a></h3>
+<p>Treat FIFO as an ADT. Compare <code>deque</code>, linked queues, circular buffers, and C++ queue/deque representations. Study endpoint invariants and breadth-first processing.</p>
+<h3 id="6-priority-queues">6. Priority queues<a class="headerlink" href="#6-priority-queues" title="Permanent link">&para;</a></h3>
+<p>Separate priority semantics from heap representation. Compare implementation strategies, tie policies, decrease/update approaches, lazy deletion, and operation mixes.</p>
+<h3 id="7-self-organising-lists-and-skip-lists">7. Self-organising lists and skip lists<a class="headerlink" href="#7-self-organising-lists-and-skip-lists" title="Permanent link">&para;</a></h3>
+<p>Study adaptive linear search and probabilistic multi-level indexing. Distinguish empirical workload improvement from probabilistic expected-complexity guarantees.</p>
+<h3 id="8-selected-list-algorithms">8. Selected list algorithms<a class="headerlink" href="#8-selected-list-algorithms" title="Permanent link">&para;</a></h3>
+<p>Develop algorithms that exploit linked representation directly: middle finding, reversal, cycle detection, sorted merge, duplicate removal, and circular elimination.</p>
+<h3 id="9-worked-examples">9. Worked examples<a class="headerlink" href="#9-worked-examples" title="Permanent link">&para;</a></h3>
+<p>Integrate ADT choice, representation invariant, mutation contract, trace, correctness, and complexity in complete case studies.</p>
+<h3 id="10-module-review">10. Module review<a class="headerlink" href="#10-module-review" title="Permanent link">&para;</a></h3>
+<p>Test terminology, traces, debugging, design choices, ownership reasoning, complexity analysis, and cross-representation comparison.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>You should understand records, references, mutation, aliasing, invariants, dynamic structures, and Big O notation.</p>
+<p>You should already understand:</p>
+<ul>
+<li>records and compound values;</li>
+<li>references, mutation, copying, and aliasing;</li>
+<li>arrays and dynamic arrays;</li>
+<li>invariants and loop termination;</li>
+<li>recursion and explicit stacks;</li>
+<li>amortised cost at an introductory level;</li>
+<li>Big O notation.</li>
+</ul>
+<h2 id="diagnostic-questions">Diagnostic questions<a class="headerlink" href="#diagnostic-questions" title="Permanent link">&para;</a></h2>
+<p>Before beginning, try to answer these questions without looking ahead:</p>
+<ol>
+<li>If linked-list deletion is <code>O(1)</code>, why can <code>remove(value)</code> still be <code>O(n)</code>?</li>
+<li>What information does a <code>tail</code> pointer save, and what new invariant does it create?</li>
+<li>Why can changing one <code>next</code> link too early make an entire suffix unreachable?</li>
+<li>What is the difference between an owning pointer and a non-owning reference to a node?</li>
+<li>Why is a Python list a good stack but a poor default FIFO queue when removing from index zero?</li>
+<li>How can a circular array represent a logically ordered queue when the rear index is numerically smaller than the front index?</li>
+<li>Why is a priority queue not the same thing as a binary heap?</li>
+<li>Under what contract may a self-organising list move an accessed item to the front?</li>
+<li>Why does a skip list normally promise expected rather than deterministic logarithmic search?</li>
+<li>Why can repeatedly calling <code>node_at(head, i)</code> turn one apparent traversal into a quadratic algorithm?</li>
+</ol>
+<p>Return to these questions after completing the module.</p>
+<h2 id="mastery-checklist">Mastery checklist<a class="headerlink" href="#mastery-checklist" title="Permanent link">&para;</a></h2>
+<p>You have mastered this module when you can honestly say:</p>
+<ul>
+<li>[ ] I can define each ADT without naming a concrete container.</li>
+<li>[ ] I can choose between contiguous and linked representations from an operation workload.</li>
+<li>[ ] I can state endpoint and link invariants before implementing an update.</li>
+<li>[ ] I can trace every link changed by insertion and deletion.</li>
+<li>[ ] I can explain what happens to an unlinked node in Python and what ownership means in C++.</li>
+<li>[ ] I can implement and analyse a singly linked list operation without accidental repeated traversal.</li>
+<li>[ ] I can preserve both directions of a doubly linked list.</li>
+<li>[ ] I can explain the stopping condition of a circular traversal.</li>
+<li>[ ] I can choose an appropriate representation for a stack and explain its cost.</li>
+<li>[ ] I can choose an appropriate representation for a queue and explain its cost.</li>
+<li>[ ] I can distinguish queue FIFO order from priority-queue selection order.</li>
+<li>[ ] I can compare unsorted, sorted, and heap-backed priority queues.</li>
+<li>[ ] I can explain stable tie handling in a priority queue.</li>
+<li>[ ] I can distinguish move-to-front, transpose, and count-based self-organisation.</li>
+<li>[ ] I can explain skip-list levels, promotion, and expected complexity.</li>
+<li>[ ] I can trace reversal, merging, and two-speed linked-list algorithms.</li>
+<li>[ ] I can state mutation, failure, correctness, time, and space guarantees precisely.</li>
+</ul>
 <div class="admonition note">
-<p class="admonition-title">Central study question</p>
-<p>For every operation, identify which links or endpoints change, which invariant must remain true, and why the advertised cost follows from the representation.</p>
+<p class="admonition-title">Central study discipline</p>
+<p>Do not memorise container APIs. For every operation, identify the abstract promise, the concrete representation, the invariant, the exact structural changes, and the cost created by that representation.</p>
 </div>
 
 
