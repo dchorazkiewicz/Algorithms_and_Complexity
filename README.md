@@ -1,21 +1,25 @@
 # Algorithms and Complexity
 
-This repository contains a complete set of English-language lecture notes and self-study materials for **Algorithms and Complexity**.
+This repository is a **syllabus-to-learning-material proof of concept** for **Algorithms and Complexity**.
 
-The primary objective is educational: a student should be able to learn the required syllabus material from the website, understand the definitions and theory, follow worked examples, compare Python and C++ implementations, reason about correctness and termination, and analyse computational complexity.
+It explores a simple question: given the course syllabus, what could a structured, student-facing web resource look like if the syllabus topics were expanded into explanations, worked examples, Python/C++ comparisons, correctness and termination arguments, and complexity analysis?
 
-The repository is not intended to be a collection of short tasks or technical project documentation.
+> **Scope note**
+>
+> This is not an official university course repository or an official set of lecture notes. It does not imply that I teach the lecture component of the course. The material is an independent proof of concept derived from the syllabus and built as an experiment in producing reusable learning resources.
+
+The repository is not intended to be a collection of short programming assignments or technical grading infrastructure. A separate proof of concept explores the exercise/feedback workflow.
 
 ## Source documents
 
-- `SYLABUS.md` — filtered Polish source syllabus and the primary scope reference;
+- `SYLABUS.md` — retained Polish syllabus and the primary scope reference;
 - `SYLLABUS_EN.md` — English terminology version of the same syllabus;
-- `CONTENT_REQUIREMENTS.md` — binding student-first editorial requirements;
-- `CONTENT_AUDIT.md` — current audit and required corrections.
+- `CONTENT_REQUIREMENTS.md` — editorial requirements used by this prototype;
+- `CONTENT_AUDIT.md` — current content audit and required corrections.
 
 ## Website
 
-The notes are published with MkDocs Material through GitHub Pages.
+The prototype learning material is published with MkDocs Material through GitHub Pages.
 
 ## Local preview
 
@@ -35,4 +39,4 @@ Open `http://127.0.0.1:8000`.
 mkdocs build --strict
 ```
 
-Development remains iterative, but the public website prioritises learning content. Technical planning documents are kept outside the main student navigation.
+Development remains iterative. The public website prioritises the readability of the learning material; technical planning documents are kept outside the main navigation.
